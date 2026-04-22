@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-04-22 22:45] ingest | CLAUDE.md-Vorlagen ins Wiki integriert
+
+- `templates/`-Ordner aufgelöst — Vorlagen gehören als Wiki-Seiten ins Wiki (Karpathy-Prinzip: alles Wertvolle fließt zurück)
+- 2 neue Wiki-Seiten unter `wiki/vorlagen/` erstellt:
+  - `vorlagen/claude-md-software.md` — CLAUDE.md-Vorlage für Software-Projekte
+  - `vorlagen/claude-md-legacy-forensik.md` — CLAUDE.md-Vorlage für Legacy-Forensik
+- Beide Seiten mit Frontmatter, Konzeptbeschreibung und eingebetteter Vorlage zum Kopieren
+- Mit Konzeptseiten verlinkt (`drei-ebenen-architektur`, `llm-wiki-muster`, `claude-code` etc.)
+- `CLAUDE.md` korrigiert: `templates/` → `wiki/vorlagen/`
+- `index.md` aktualisiert: neuer Abschnitt „Vorlagen"
+
 ## [2026-04-22 20:15] lint | Wiki-Gesundheitsprüfung
 
 7 Befunde behoben:

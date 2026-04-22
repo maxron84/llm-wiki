@@ -50,6 +50,11 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[llm-wiki-tutorial-mit-mario]] — YouTube-Video: Live-Aufbau eines Kochrezepte-Wikis
 - [[obsidian-claude-code-pillitteri]] — Blogartikel: Obsidian + Claude Code als zweites Gehirn
 
+## Vorlagen
+
+- [[claude-md-software]] — CLAUDE.md-Vorlage für allgemeine Software-Projekte
+- [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
+
 ## Log
 
 - [[log]] — Chronologisches Protokoll aller Änderungen

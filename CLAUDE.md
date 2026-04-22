@@ -22,6 +22,7 @@ wiki/konzepte/        -- Konzept- und Ideenseiten
 wiki/quellen/         -- Zusammenfassungen der Quelldokumente
 wiki/personen/        -- Personen und Autoren
 wiki/werkzeuge/       -- Tools, Apps, Technologien
+wiki/vorlagen/        -- CLAUDE.md-Vorlagen für andere Projekttypen
 ```
 
 Neue Unterordner anlegen, wenn ein Thema drei oder mehr Seiten umfasst.
