@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für die forensische Untersuchung von Legacy-Codebases und deren Dokumentation — archäologisch, methodisch, quellenbasiert, auf Enterprise-Niveau.
 **Quellen**: Abgeleitet aus dem Wissen über [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[ingest-workflow]] und [[lint-pruefung]]
-**Zuletzt aktualisiert**: 2026-04-22
+**Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
@@ -240,6 +240,19 @@ Wenn der Benutzer eine Frage stellt:
 
 Claude kann auf Anfrage folgende Berichte generieren:
 
+### Benannte Abfragetypen
+
+Sechs vordefinierte Analysetypen für strukturierte Erkenntnisse:
+
+| Typ | Beispiel-Abfrage |
+|---|---|
+| **Synthese** | „Die eine Erkenntnis, die alles in diesem System zusammenhält?" |
+| **Lückensuche** | „Welche Module oder Schichten sind am schlechtesten dokumentiert?" |
+| **Debatte** | „Wo widersprechen sich Code und Dokumentation am stärksten? Beide Seiten als Steelman." |
+| **Output** | „Erstelle eine Modernisierungspriorität-Matrix / ein Executive Summary" |
+| **Gesundheit** | „Welche Befunde haben seit mehr als 2 Wochen kein Konfidenzniveau-Update erhalten?" |
+| **Persönliche Anwendung** | „Welche Fehlannahmen machen wir in dieser Analyse wahrscheinlich gerade?" |
+
 ### Risikoanalyse
 - Sicherheitslücken (hartcodierte Credentials, SQL-Injection, XSS)
 - End-of-Life-Abhängigkeiten (Frameworks, Bibliotheken, Laufzeiten)
@@ -282,6 +295,7 @@ Wenn der Benutzer das Wiki prüfen lassen will:
 - **Aktualisiere IMMER** `wiki/index.md` und `wiki/log.md` nach Änderungen
 - **Zitiere IMMER** die Quelle eines Befundes
 - **Markiere IMMER** das Konfidenzniveau
+- **Achte auf Kontaminierungsrisiko**: Wenn das LLM beim Ingest einer Quelle fälschlicherweise eine Verbindung herstellt, lebt dieser Irrtum als ⚪ oder 🟡-Befund im Wiki und kann spätere Analysen beeinflussen. Forensische Befunde sind besonders anfällig, weil sie als Entscheidungsgrundlage dienen. Spot-Checking kritischer Befunde gegen die Rohdateien ist Pflicht — besonders vor Risikoanalysen und Modernisierungsentscheidungen.
 
 ### Sprachregeln
 - Schreibe auf Deutsch
@@ -296,15 +310,29 @@ Wenn der Benutzer das Wiki prüfen lassen will:
 - Wenn du dir unsicher bist, sage es — eine ehrliche ⚪-Markierung ist besser als eine falsche 🟢
 - Bei großen Codebasen: Frage den Benutzer, welches Modul zuerst untersucht werden soll
 - Dokumentiere auch **Abwesenheiten**: Fehlende Tests, fehlende Doku, fehlende Fehlerbehandlung sind Befunde
+
+### Skalierung
+
+Bei sehr großen Enterprise-Codebasen kann das Analyse-Wiki schnell wachsen. Wenn `wiki/index.md` mehr als ~100 Einträge hat oder Navigation unzuverlässig wird:
+
+- **qmd** (`npm install -g @tobilu/qmd`): Lokale semantische Suche über alle Wiki-Seiten — findet verwandte Befunde auch mit anderen Wörtern
+- **jDocMunch** (`pip install jdocmunch-mcp`): Sektionsbasierter Direktzugriff — lädt nur den relevanten Abschnitt statt die gesamte Befundseite
+
+Beide lassen sich als MCP-Server in Claude Code integrieren.
 ````
 
 ## Verwandte Seiten
 
 - [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
 - [[ingest-workflow]] — Der Aufnahme-Workflow, hier um Konfidenz erweitert
-- [[lint-pruefung]] — Inspirierten das Konfidenzmodell
+- [[lint-pruefung]] — Inspirierte das Konfidenzmodell
 - [[claude-code]] — Der Agent, der mit dieser Vorlage gesteuert wird
 - [[llm-wiki-muster]] — Das übergeordnete Konzept
+- [[kontaminierungsrisiko]] — Warum Spot-Checking forensischer Befunde Pflicht ist
+- [[query-templates]] — Die 6 Abfragetypen, hier als Forensik-Analysetypen eingebaut
+- [[skalierungsgrenzen]] — Wenn das Analyse-Wiki zu groß für den Kontext wird
+- [[qmd]] — Lokale Suchmaschine für große Analyse-Wikis
+- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
 - [[claude-md-software]] — Schwester-Vorlage für allgemeine Software-Projekte
 
 ---

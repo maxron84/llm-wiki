@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-04-23 00:01] query | Vorlagen auf neueste Datenlage aktualisiert
+
+- `vorlagen/claude-md-legacy-forensik.md` aktualisiert:
+  - **Benannte Abfragetypen** (Spezialberichte): 6 Query-Template-Typen als Forensik-Analysetypen eingebaut
+  - **Kontaminierungsrisiko** (Regeln): Explizite Warnung + Pflicht zum Spot-Checking vor Entscheidungen
+  - **Skalierung** (Regeln): qmd und jdocmunch als Skalierungstools für große Analyse-Wikis
+  - Verwandte Seiten um kontaminierungsrisiko, query-templates, skalierungsgrenzen, qmd, jdocmunch erweitert
+- `vorlagen/claude-md-software.md`: Keine Änderungen nötig — neue Konzepte betreffen das Wiki-Muster selbst, nicht allgemeine Softwareentwicklung
+
 ## [2026-04-23 00:00] ingest | 8 neue Clippings (Community-Reaktionen auf Karpathy)
 
 Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste neue Ideen.
