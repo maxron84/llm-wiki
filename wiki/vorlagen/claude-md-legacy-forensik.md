@@ -57,6 +57,16 @@ Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [[li
 | 🔴 | Niedrig | Basiert auf veralteter Doku oder Einzelaussage |
 | ⚪ | Hypothese | Ableitung aus Indizien, noch ungeprüft |
 
+## Designhinweise
+
+Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:
+
+1. **Fence entfernen**: Der Vorlageninhalt unten steht in einem 4-Backtick-Fence. Beim Kopieren in ein Untersuchungsprojekt **den Fence-Wrapper entfernen** — sonst liest Claude die forensischen Regeln als Illustration statt als operative Anweisungen.
+2. **Link-Stil anpassen**: Die Vorlage nutzt `[[wiki-links]]`. Falls das Untersuchungs-Wiki Standard-Markdown `[text](pfad.md)` verwenden soll, durchgehend anpassen — Inkonsistenz führt zur [[kontaminierungsrisiko|Kontamination]] der Befundseiten.
+3. **Frontmatter-Entscheidung**: Die Vorlage zeigt kein Frontmatter im Seitenformat. Wer [[yaml-frontmatter]] für strukturierte Abfragen nutzen will (z.B. mit [[dataview]]), muss es im Seitenformat ergänzen — aber dann durchgehend.
+4. **Keine toten Links**: Die `{{PLATZHALTER}}` im Header müssen alle ausgefüllt oder entfernt werden. Unbelegte Referenzen im Forensik-Kontext sind besonders gefährlich, weil sie als ⚪-Befunde missverstanden werden können.
+5. **Regelmäßig reviewen**: Bei forensischen Untersuchungen wächst das Wiki schnell. Nach ~10 aufgenommenen Quellen die CLAUDE.md auf neue Muster prüfen.
+
 ## Vorlage
 
 ````markdown
@@ -323,6 +333,7 @@ Beide lassen sich als MCP-Server in Claude Code integrieren.
 
 ## Verwandte Seiten
 
+- [[claude-md-design]] — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
 - [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
 - [[ingest-workflow]] — Der Aufnahme-Workflow, hier um Konfidenz erweitert
 - [[lint-pruefung]] — Inspirierte das Konfidenzmodell
@@ -334,6 +345,7 @@ Beide lassen sich als MCP-Server in Claude Code integrieren.
 - [[qmd]] — Lokale Suchmaschine für große Analyse-Wikis
 - [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
 - [[claude-md-software]] — Schwester-Vorlage für allgemeine Software-Projekte
+- [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
 
 ---
 

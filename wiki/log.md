@@ -21,6 +21,21 @@ status: active
   Kontaminierungsrisiko-Warnung, Skalierungshinweise (qmd/jdocmunch)
 - index.md aktualisiert
 
+## [2026-04-23 21:45] ingest | CLAUDE.md-Designprinzipien aus YouTube-Verlauf-Projekt
+
+- Neue Konzeptseite `konzepte/claude-md-design.md` erstellt: 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
+  - Direkte Anweisungen statt Meta-Vorlagen
+  - Link-Konsistenz zwischen Instruktion und Output
+  - Keine Referenzen auf nicht-existierende Seiten
+  - Frontmatter-Konsistenz
+  - Wertvolle Ergänzungen als Top-Level-Sektionen
+  - Regelmäßiges Review
+- Alle 3 Vorlagen überarbeitet:
+  - `vorlagen/claude-md-software.md` — Designhinweise-Abschnitt ergänzt, Verwandte Seiten erweitert
+  - `vorlagen/claude-md-legacy-forensik.md` — Designhinweise-Abschnitt ergänzt, Verwandte Seiten erweitert
+  - `vorlagen/claude-md-youtube-verlauf.md` — Designhinweise-Abschnitt ergänzt, Verwandte Seiten erweitert
+- `index.md` aktualisiert: `claude-md-design` + `claude-md-youtube-verlauf` ergänzt
+
 ## [2026-04-23 00:01] query | Vorlagen auf neueste Datenlage aktualisiert
 
 - `vorlagen/claude-md-legacy-forensik.md` aktualisiert:

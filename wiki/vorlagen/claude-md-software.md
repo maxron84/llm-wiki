@@ -41,6 +41,16 @@ Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] —
 | Bekannte Probleme | Technische Schulden |
 | Nützliche Befehle | DB-Reset, Docker etc. |
 
+## Designhinweise
+
+Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:
+
+1. **Fence entfernen**: Der Vorlageninhalt unten steht in einem 4-Backtick-Fence — das ist korrekt für diese Referenzseite. Beim Kopieren in ein Projekt **muss der Fence-Wrapper entfernt werden**, sonst liest Claude die Regeln als Illustration statt als Anweisungen.
+2. **Link-Stil anpassen**: Die Vorlage verwendet `[[wiki-links]]`. Wenn dein Projekt Standard-Markdown-Links `[text](pfad.md)` nutzt, durchgehend ersetzen — Inkonsistenz zwischen CLAUDE.md und Output führt zur [[kontaminierungsrisiko|Kontamination]].
+3. **Frontmatter-Entscheidung**: Die Vorlage enthält kein [[yaml-frontmatter|Frontmatter]] in den Seitenformat-Beispielen. Falls dein Projekt Frontmatter nutzt, ergänze es — aber nur wenn *alle* Seiten es haben.
+4. **Keine toten Links**: Entferne alle `{{PLATZHALTER}}`-Referenzen, die du nicht ausfüllst, statt sie stehenzulassen.
+5. **Regelmäßig reviewen**: Die CLAUDE.md altert mit dem Projekt. Nach ~5 neuen Patterns lohnt sich ein Durchgang.
+
 ## Designentscheidungen
 
 - **Platzhalter-Format `{{...}}`**: Universell erkennbar, leicht durchsuchbar mit `grep '{{' CLAUDE.md`
@@ -235,10 +245,13 @@ die PostgreSQL-Datenbank zu."}}
 
 ## Verwandte Seiten
 
+- [[claude-md-design]] — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
 - [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
 - [[claude-code]] — Der Agent, der mit dieser Vorlage gesteuert wird
 - [[llm-wiki-muster]] — Das übergeordnete Konzept
+- [[kontaminierungsrisiko]] — Warum Link-Stil-Konsistenz wichtig ist
 - [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse
+- [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
 
 ---
 

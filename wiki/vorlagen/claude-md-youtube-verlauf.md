@@ -73,6 +73,16 @@ python -c "from youtube_transcript_api import YouTubeTranscriptApi; ..."
 
 Alternativ genügen Video-Beschreibung + eigene Notizen für einen Minimal-Ingest.
 
+## Designhinweise
+
+Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten — die Prinzipien stammen aus der praktischen Erfahrung mit genau dieser Vorlage:
+
+1. **Fence entfernen**: Der Vorlageninhalt unten steht in einem 4-Backtick-Fence. Beim Kopieren in ein YouTube-Wiki-Projekt **den Fence-Wrapper entfernen** — Claude liest Inhalte in Code-Fences als Illustration, nicht als operative Anweisungen.
+2. **Link-Stil anpassen**: Die Vorlage nutzt `[[wiki-links]]`. Falls das Projekt Standard-Markdown verwenden soll, durchgehend anpassen.
+3. **Frontmatter-Entscheidung**: Die Vorlage enthält [[yaml-frontmatter]] im Video-Seitenformat. Wenn man darauf verzichten will, das Format entsprechend anpassen — aber konsistent bleiben.
+4. **Keine toten Links**: Die `{{PLATZHALTER}}` müssen ausgefüllt oder entfernt werden.
+5. **Regelmäßig reviewen**: Nach ~20 aufgenommenen Videos die CLAUDE.md auf neue Muster prüfen (z.B. neuer Kanal-Stil, der eine eigene Extraktionsstrategie braucht).
+
 ## Vorlage
 
 ````markdown
@@ -291,6 +301,7 @@ Wenn das Wiki über ~100 Video-Seiten wächst und `index.md` unhandlich wird:
 
 ## Verwandte Seiten
 
+- [[claude-md-design]] — Die 6 Designprinzipien — stammen aus der Praxis mit dieser Vorlage
 - [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
 - [[kompilierungs-metapher]] — Videos = Quellcode; Wiki = kompiliertes Binary
 - [[ingest-workflow]] — Basis des Aufnahme-Workflows
