@@ -12,6 +12,43 @@ status: active
 
 ---
 
+## [2026-04-23 00:00] ingest | 8 neue Clippings (Community-Reaktionen auf Karpathy)
+
+Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste neue Ideen.
+
+**8 neue Quelltextzusammenfassungen** in `wiki/quellen/`:
+- `llm-wiki-mehul-gupta.md` — Mehul Gupta (Medium): Küchenmetapher, Rollenverschiebung
+- `llm-wiki-urvil-joshi.md` — Urvil Joshi (Medium): Kompilierungs-Metapher, Tutorial-Demo
+- `llm-wiki-plaban-nayak.md` — Plaban Nayak (Level Up Coding): 5-Schritt-Pipeline, RAG über Wiki
+- `llm-wiki-jgravelle.md` — J. Gravelle (DEV.to): Skalierungsproblem + jDocMunch-Lösung
+- `llm-wiki-venturebeat.md` — Carl Franzen (VentureBeat): Community-Reaktionen, Enterprise
+- `llm-wiki-antigravity.md` — Antigravity.codes: Anwendungsfälle, Kompilierungsprofile
+- `llm-wiki-analytics-vidhya.md` — Riya Bansal (Analytics Vidhya): Tool-Stack, Herausforderungen
+- `llm-wiki-mindstudio.md` — MindStudio Team: Best Practices, Inbox-Muster
+
+**6 neue Konzeptseiten** in `wiki/konzepte/`:
+- `kompilierungs-metapher.md` — Rohquellen = Quellcode, Wiki = kompiliertes Binary
+- `skalierungsgrenzen.md` — index.md-Bottleneck, Schwellenwerte, Lösungsansätze
+- `vault-trennung.md` — Steph Angos Empfehlung: sauberes + Agenten-Vault trennen
+- `kontaminierungsrisiko.md` — Halluzinationen als persistente Fakten; Minderungsstrategien
+- `query-templates.md` — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
+- `fortgeschrittene-architektur.md` — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
+
+**2 neue Werkzeugseiten** in `wiki/werkzeuge/`:
+- `jdocmunch.md` — Sektionsbasierte Abfrage, ~95% Token-Reduktion, MCP-Server
+- `qmd.md` — Lokale semantische Suche (BM25/Vektor/Hybrid), Tobi Lütke
+
+**2 neue Personenseiten** in `wiki/personen/`:
+- `steph-ango.md` — Obsidian-CEO, Vault-Trennungs-Empfehlung
+- `tobi-luetke.md` — Shopify-CEO, qmd-Entwickler
+
+**3 bestehende Seiten aktualisiert**:
+- `konzepte/rag-vs-wiki.md` — Kompilierungs-Metapher + Kontaminierungsrisiko ergänzt
+- `konzepte/ingest-workflow.md` — Routing-Schritt + Skalierungsgrenzen ergänzt
+- `werkzeuge/obsidian.md` — Vault-Trennung + Steph Ango ergänzt
+
+`index.md` aktualisiert mit allen 18 neuen Seiten.
+
 ## [2026-04-22 22:45] ingest | CLAUDE.md-Vorlagen ins Wiki integriert
 
 - `templates/`-Ordner aufgelöst — Vorlagen gehören als Wiki-Seiten ins Wiki (Karpathy-Prinzip: alles Wertvolle fließt zurück)

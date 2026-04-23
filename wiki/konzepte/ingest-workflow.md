@@ -51,6 +51,20 @@ Diese Auswahl gibt dem Menschen die Kontrolle über den Detailgrad und verhinder
 
 Karpathy bevorzugt es, Quellen **einzeln** aufzunehmen und dabei involviert zu bleiben — er liest die Zusammenfassungen, prüft die Aktualisierungen und leitet die KI an, was betont werden soll. Man kann aber auch mehrere Quellen im Batch mit weniger Aufsicht aufnehmen. Den eigenen Workflow zu finden und im Schema zu dokumentieren, ist Teil des Prozesses. (Quelle: clippings/llm-wiki.md)
 
+## Routing-Schritt (Kostenkontrolle bei großen Wikis)
+
+Bei größeren Wikis (viele Seiten) würde ein naiver Ingest alle Seiten berühren — teuer. Ein effizienter Ingest-Workflow trennt daher **Routing** von **Synthese**:
+
+1. LLM liest eine kompakte Schema-Zusammenfassung (1 Zeile pro Seite)
+2. LLM gibt zurück, welche Seiten tatsächlich relevant sind
+3. Nur relevante Seiten werden neu synthetisiert
+
+Dieser Routing-Schritt kann die Ingest-Kosten dramatisch reduzieren. (Quelle: clippings/Beyond RAG...)
+
+## Skalierung
+
+Bei wachsendem Wiki entstehen Skalierungsgrenzen: index.md wird bei ~50–100K Token zum Navigationsproblem. Tools wie [[qmd]] (semantische Suche) und [[jdocmunch]] (sektionsbasierter Zugriff) adressieren das. Mehr: [[skalierungsgrenzen]]
+
 ## Bezug zur Architektur
 
 Der Ingest-Workflow verbindet alle drei Ebenen der [[drei-ebenen-architektur]]:
@@ -65,6 +79,8 @@ Der Ingest-Workflow verbindet alle drei Ebenen der [[drei-ebenen-architektur]]:
 - [[query-workflow]]
 - [[lint-pruefung]]
 - [[obsidian-web-clipper]]
+- [[skalierungsgrenzen]]
+- [[kontaminierungsrisiko]]
 
 ---
 

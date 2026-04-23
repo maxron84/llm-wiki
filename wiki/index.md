@@ -24,6 +24,12 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[query-workflow]] — Fragen gegen das Wiki stellen und Antworten zurückspeichern
 - [[lint-pruefung]] — Regelmäßige Gesundheitsprüfung des Wikis
 - [[rag-vs-wiki]] — Vergleich: RAG vs. persistentes Wiki
+- [[kompilierungs-metapher]] — Rohquellen = Quellcode, Wiki = kompiliertes Binary
+- [[skalierungsgrenzen]] — index.md-Bottleneck bei ~50–100K Token; Lösungsansätze
+- [[vault-trennung]] — Sauberes Vault (menschlich) + Agenten-Vault (KI) trennen
+- [[kontaminierungsrisiko]] — Halluzinationen werden als persistente Fakten eingebacken
+- [[query-templates]] — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
+- [[fortgeschrittene-architektur]] — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
 - [[mece-prinzip]] — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
 - [[taeglicher-workflow]] — Sitzungseröffnung und -abschluss als tägliches Protokoll
 - [[modellunabhaengigkeit]] — Markdown = Unabhängigkeit vom KI-Anbieter
@@ -37,18 +43,30 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[obsidian-web-clipper]] — Browser-Erweiterung zum schnellen Quellen-Sammeln
 - [[dataview]] — Obsidian-Plugin für Abfragen über YAML-Frontmatter-Felder
 - [[marp]] — Obsidian-Plugin für Markdown-basierte Präsentationen
+- [[jdocmunch]] — MCP-Server für sektionsbasierte Abfrage; ~95% Token-Reduktion
+- [[qmd]] — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
 
 ## Personen
 
 - [[andrej-karpathy]] — KI-Forscher, Urheber des LLM-Wiki-Musters
 - [[mario]] — Webentwickler und YouTuber, hat das Konzept live demonstriert
 - [[pasquale-pillitteri]] — IT-Berater, Obsidian + Claude Code als zweites Gehirn
+- [[steph-ango]] — Obsidian-CEO, prägte die Vault-Trennungs-Empfehlung
+- [[tobi-luetke]] — Shopify-CEO, Entwickler von qmd
 
 ## Quellen
 
 - [[llm-wiki-karpathy]] — Andrej Karpathys originales Konzeptdokument (GitHub Gist)
 - [[llm-wiki-tutorial-mit-mario]] — YouTube-Video: Live-Aufbau eines Kochrezepte-Wikis
 - [[obsidian-claude-code-pillitteri]] — Blogartikel: Obsidian + Claude Code als zweites Gehirn
+- [[llm-wiki-mehul-gupta]] — Medium: Küchenmetapher, Rollenverschiebung, Einstieg
+- [[llm-wiki-urvil-joshi]] — Medium: Kompilierungs-Metapher, Tutorial-Demo, RAG vs. Wiki ehrlich
+- [[llm-wiki-plaban-nayak]] — Level Up Coding: 5-Schritt-Pipeline, RAG über Wiki, Query-Templates
+- [[llm-wiki-jgravelle]] — DEV.to: Skalierungsproblem + jDocMunch (95% Token-Reduktion)
+- [[llm-wiki-venturebeat]] — VentureBeat: Community-Reaktionen, Enterprise, Feintuning
+- [[llm-wiki-antigravity]] — Antigravity.codes: Anwendungsfälle, Kompilierungsprofile
+- [[llm-wiki-analytics-vidhya]] — Analytics Vidhya: Tool-Stack (qmd, Git), Herausforderungen
+- [[llm-wiki-mindstudio]] — MindStudio: Best Practices, Inbox-Muster, Team-Skalierung
 
 ## Vorlagen
 

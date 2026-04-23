@@ -44,20 +44,35 @@ Beim Wiki-Ansatz ist die Synthese **bereits geschehen**. Die Querverweise sind s
 
 Außerdem: Gute Antworten können als neue Seiten ins Wiki zurückfließen (siehe [[query-workflow]]). So akkumuliert nicht nur das Quellenmaterial, sondern auch deine eigene Analyse.
 
+## Die Kompilierungs-Metapher
+
+Die prägnanteste Formulierung des Unterschieds kommt von mehreren Community-Autoren:
+
+> "You don't execute source code every time you want to run a program. You compile it once into a binary and run that."
+
+RAG = Quellcode bei jeder Abfrage neu ausführen. LLM-Wiki = einmal kompilieren, günstig abfragen. Mehr: [[kompilierungs-metapher]]
+
 ## Wann RAG sinnvoll bleibt
 
 RAG hat weiterhin seine Berechtigung bei:
-- Sehr großen Dokumentensammlungen, die nicht vollständig ins Wiki passen
+- Sehr großen Dokumentensammlungen (Millionen Dokumente), die nicht vollständig ins Wiki passen
 - Situationen, in denen punktuelle Faktensuche wichtiger ist als Synthese
 - Szenarien, in denen die Rohdokumente sich häufig ändern
 
-Das LLM-Wiki ist besonders stark bei **kumulativer Wissensarbeit** über Wochen und Monate.
+Das LLM-Wiki ist besonders stark bei **kumulativer Wissensarbeit** über Wochen und Monate — etwa 100–500 kuratierte Quellen zu einem Thema.
+
+## Wichtiger Vorbehalt: Kontaminierungsrisiko
+
+Das LLM-Wiki hat einen spezifischen Nachteil gegenüber RAG: Halluzinationen beim Ingest werden als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten. Bei RAG bleibt ein Fehler lokal in einer Antwort. Mehr: [[kontaminierungsrisiko]]
 
 ## Verwandte Seiten
 
 - [[llm-wiki-muster]]
 - [[query-workflow]]
 - [[drei-ebenen-architektur]]
+- [[kompilierungs-metapher]]
+- [[kontaminierungsrisiko]]
+- [[skalierungsgrenzen]]
 
 ---
 

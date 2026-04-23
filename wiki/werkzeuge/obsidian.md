@@ -58,6 +58,10 @@ Ein Markdown-basiertes Slide-Deck-Format. Nützlich, um Präsentationen direkt a
 ### Dataview (Plugin)
 Führt Abfragen über [[yaml-frontmatter|YAML-Frontmatter]] von Seiten aus. Wenn die KI Frontmatter (Tags, Daten, Quellenzähler) zu Wiki-Seiten hinzufügt, kann [[dataview|Dataview]] dynamische Tabellen und Listen generieren. (Quelle: clippings/llm-wiki.md)
 
+## Vault-Trennung (Empfehlung von Steph Ango)
+
+[[steph-ango|Steph Ango]] (kepano, Obsidian-CEO) empfahl als Reaktion auf Karpathys Post: Persönliches, sauberes Vault für menschlich kuratiertes Wissen behalten; separates "unordentliches Vault" für KI-generierte Inhalte verwenden. So weiß man immer, welches Wissen man selbst gepflegt hat. Mehr: [[vault-trennung]]
+
 ## Versionierung
 
 Das Wiki ist letztlich ein **Git-Repository aus Markdown-Dateien**. Man bekommt Versionshistorie, Branching und Zusammenarbeit kostenlos dazu. (Quelle: clippings/llm-wiki.md)
@@ -76,6 +80,8 @@ Das Wiki ist letztlich ein **Git-Repository aus Markdown-Dateien**. Man bekommt 
 - [[yaml-frontmatter]]
 - [[dataview]]
 - [[marp]]
+- [[vault-trennung]]
+- [[steph-ango]]
 
 ---
 
