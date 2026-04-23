@@ -1,5 +1,5 @@
 ---
-date: 2026-04-22
+date: 2026-04-23
 type: konzept
 tags: [konzept]
 status: active
@@ -8,7 +8,7 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-04-22
+**Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
@@ -20,6 +20,19 @@ status: active
   Transkript-Beschaffung (yt-dlp, youtube-transcript-api), alle 6 Abfragetypen,
   Kontaminierungsrisiko-Warnung, Skalierungshinweise (qmd/jdocmunch)
 - index.md aktualisiert
+
+## [2026-04-23 22:09] lint | Wiki-Gesundheitsprüfung
+
+3 Befunde behoben:
+1. **Toter Link**: `[[index-workflow]]` in `konzepte/skalierungsgrenzen.md:87` → korrigiert zu `[[ingest-workflow]]`
+2. **Veraltetes Datum**: `index.md` und `log.md` Frontmatter und Zuletzt-aktualisiert von 2026-04-22 → 2026-04-23
+3. **Kein Befund** bei: `[[bitter-lesson]]` (steht in Inline-Code als Beispiel), Backslash in Pipe-Links (korrektes Tabellen-Escape)
+
+Geprüft und in Ordnung:
+- ✅ 46 Wiki-Seiten, alle mit YAML-Frontmatter
+- ✅ 48 Index-Einträge = 46 Seiten + Index + Log
+- ✅ Alle Seiten mit Fußzeile zum Index
+- ✅ Keine echten verwaisten Links (Template-Platzhalter in 4-Backtick-Fences sind korrekt)
 
 ## [2026-04-23 21:45] ingest | CLAUDE.md-Designprinzipien aus YouTube-Verlauf-Projekt
 

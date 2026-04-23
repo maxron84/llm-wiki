@@ -84,7 +84,7 @@ Die Wahl der Lösung hängt von der Wiki-Größe ab:
 - [[fortgeschrittene-architektur]]
 - [[rag-vs-wiki]]
 - [[query-workflow]]
-- [[index-workflow]]
+- [[ingest-workflow]]
 
 ---
 

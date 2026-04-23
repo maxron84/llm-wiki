@@ -1,5 +1,5 @@
 ---
-date: 2026-04-22
+date: 2026-04-23
 type: konzept
 tags: [konzept]
 status: active
@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-04-22
+**Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
