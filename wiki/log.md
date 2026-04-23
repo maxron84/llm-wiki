@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-04-23 00:02] query | Vorlage YouTube-Verlauf-Wiki erstellt
+
+- Neue Vorlage `vorlagen/claude-md-youtube-verlauf.md` angelegt
+- Spezifisch für YouTube-Verlauf als Quellmaterial: Transkripte, Beschreibungen, Notizen
+- Enthält: Extraktionsstrategien nach Video-Typ, spezifisches Seitenformat für Videos/Kanäle/Serien,
+  Transkript-Beschaffung (yt-dlp, youtube-transcript-api), alle 6 Abfragetypen,
+  Kontaminierungsrisiko-Warnung, Skalierungshinweise (qmd/jdocmunch)
+- index.md aktualisiert
+
 ## [2026-04-23 00:01] query | Vorlagen auf neueste Datenlage aktualisiert
 
 - `vorlagen/claude-md-legacy-forensik.md` aktualisiert:
