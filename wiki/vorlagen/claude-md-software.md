@@ -1,5 +1,5 @@
 ---
-date: 2026-04-22
+date: 2026-04-23
 type: vorlage
 tags: [vorlage, schema]
 status: active
@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für allgemeine Software-Projekte — kopierbar in jedes Projekt, mit Platzhaltern zum Ausfüllen durch die KI oder den Entwickler.
 **Quellen**: Abgeleitet aus dem Wissen über [[llm-wiki-muster]], [[drei-ebenen-architektur]] und [[claude-code]]
-**Zuletzt aktualisiert**: 2026-04-22
+**Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
@@ -19,7 +19,7 @@ Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] —
 
 ## Benutzung
 
-1. Kopiere den Vorlageninhalt (unten) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [[claude-md-design|Designprinzip 1]]).
 2. Ersetze alle `{{PLATZHALTER}}` durch die tatsächlichen Werte
 3. Lösche nicht benötigte Abschnitte
 4. Entferne den Anleitungsblock am Anfang

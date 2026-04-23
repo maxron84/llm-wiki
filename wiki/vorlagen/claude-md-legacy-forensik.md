@@ -21,9 +21,9 @@ Der Grundgedanke: Legacy-Code zu verstehen ist wie Archäologie — du gräbst S
 
 ## Benutzung
 
-1. Kopiere den Vorlageninhalt (unten) als `CLAUDE.md` ins Wurzelverzeichnis deines Untersuchungsprojekts
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Untersuchungsprojekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [[claude-md-design|Designprinzip 1]]).
 2. Ersetze die `{{PLATZHALTER}}` im Header
-3. Lege die Quellen in die vorgesehenen `raw/`-Unterordner (Code-Exports, Confluence-Clippings, DB-Schemas, Interview-Notizen)
+3. Lege die Quellen in die vorgesehenen Ordner: `raw/` (manuell abgelegte Exporte) und/oder `clippings/` (Web-Clipper-Exporte von Confluence, Wikis, Webseiten)
 4. Starte Claude Code und sage: „Es gibt neue Quellen — bitte analysiere sie"
 
 ## Besonderheiten gegenüber der Software-Vorlage
@@ -102,12 +102,13 @@ Das Ziel ist **nicht**, den Code zu verändern oder zu modernisieren. Das Ziel i
 ```
 raw/                    -- Unveränderliche Quellen (NIEMALS bearbeiten)
   code/                 -- Quellcode-Snapshots, Repositories, Exports
-  docs/                 -- Confluence-Clippings, Word-Dokumente, PDFs, Wikis
+  docs/                 -- Manuell abgelegte Dokumente (Word, PDF, exportierte Wikis)
   config/               -- Deployment-Konfigurationen, Properties, XML
   db/                   -- Datenbankschemas, Migrationen, Stored Procedures
   infra/                -- Infrastruktur-Beschreibungen, Diagramme, Runbooks
   tickets/              -- Jira/Issue-Tracker-Exports, Changelog-Dateien
   interviews/           -- Gesprächsnotizen mit Stakeholdern und Entwicklern
+clippings/              -- Web-Clipper-Exporte (Confluence, Wikis, Webseiten — NIEMALS bearbeiten)
 
 wiki/                   -- Von Claude gepflegte Analyseergebnisse
   index.md              -- Inhaltsverzeichnis aller Befunde
@@ -127,7 +128,7 @@ wiki/                   -- Von Claude gepflegte Analyseergebnisse
 
 ### Aufnahme neuer Quellen
 
-Wenn der Benutzer neue Quellen zu `raw/` hinzufügt:
+Wenn der Benutzer neue Quellen zu `raw/` oder `clippings/` hinzufügt:
 
 1. **Lies** das vollständige Quelldokument
 2. **Klassifiziere** die Quelle: Ist es Code, Dokumentation, Konfiguration, ein Interview, ein Ticket?
@@ -301,7 +302,7 @@ Wenn der Benutzer das Wiki prüfen lassen will:
 ## Regeln
 
 ### Unveränderliche Regeln
-- **Verändere NIEMALS** etwas in `raw/` — das sind die Originalquellen
+- **Verändere NIEMALS** etwas in `raw/` oder `clippings/` — das sind die Originalquellen
 - **Aktualisiere IMMER** `wiki/index.md` und `wiki/log.md` nach Änderungen
 - **Zitiere IMMER** die Quelle eines Befundes
 - **Markiere IMMER** das Konfidenzniveau

@@ -21,7 +21,7 @@ Das Grundproblem: Man schaut ein interessantes Video, nimmt etwas mit — und ei
 
 ## Benutzung
 
-1. Kopiere den Vorlageninhalt (unten) als `CLAUDE.md` ins Wurzelverzeichnis deines YouTube-Wiki-Projekts
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines YouTube-Wiki-Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [[claude-md-design|Designprinzip 1]]).
 2. Ersetze die `{{PLATZHALTER}}`
 3. Lege Transkripte oder Notizen in `raw/` ab
 4. Sage Claude: „Es gibt neue Quellen — bitte verarbeite sie"
