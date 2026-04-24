@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-04-24 00:01] query | Vorlage Rezepte- und Ernährungs-Wiki erstellt
+
+- Neue Vorlage `vorlagen/claude-md-rezepte-ernaehrung.md` angelegt
+- Spezifisch für Rezepte, Kochbücher, Food-Science und eigene Küchenexperimente als Quellmaterial
+- 5 Entitätstypen: Rezept, Zutat, Technik, Küche, Konzept (Food Science/Ernährung)
+- Enthält: Extraktionsstrategien nach Quelltyp (Rezeptseite, Kochbuch, Food-Science, Eigenexperiment, Ernährungs-Artikel),
+  vollständige Seitenformate (Rezept mit Küche/Diät/Saison-Frontmatter, Technik, Zutat mit Substitutions-Tabelle),
+  geschlossene Diät-Tag-Liste, alle 6 Abfragetypen übersetzt für Kochkontext,
+  Kontaminierungsrisiko-Warnung spezifisch für Ernährungsbehauptungen, Skalierungshinweise (qmd/jdocmunch)
+- `index.md` aktualisiert
+
 ## [2026-04-24 00:00] lint | claude-md-design in bestehende Seiten verlinkt
 
 4 Seiten mit [[claude-md-design]] verknüpft:

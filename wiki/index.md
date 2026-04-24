@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-04-23
+**Zuletzt aktualisiert**: 2026-04-24
 
 ---
 
@@ -74,6 +74,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[claude-md-software]] — CLAUDE.md-Vorlage für allgemeine Software-Projekte
 - [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
 - [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
+- [[claude-md-rezepte-ernaehrung]] — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
 
 ## Log
 
