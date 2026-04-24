@@ -74,7 +74,6 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[claude-md-software]] — CLAUDE.md-Vorlage für allgemeine Software-Projekte
 - [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
 - [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
-- [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für ein Wiki aus dem persönlichen YouTube-Verlauf
 
 ## Log
 
