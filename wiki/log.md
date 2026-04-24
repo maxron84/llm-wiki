@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-04-24 00:00] lint | claude-md-design in bestehende Seiten verlinkt
+
+4 Seiten mit [[claude-md-design]] verknüpft:
+- `konzepte/drei-ebenen-architektur.md` — Inline-Hinweis in Ebene-3-Beschreibung + Verwandte Seiten
+- `konzepte/yaml-frontmatter.md` — Verwandte Seiten (Designprinzip 4: Frontmatter-Konsistenz)
+- `konzepte/lint-pruefung.md` — Verwandte Seiten (Designprinzip 3: keine toten Links)
+- `werkzeuge/claude-code.md` — Verwandte Seiten (CLAUDE.md steuert Claude Code)
+
 ## [2026-04-23 00:02] query | Vorlage YouTube-Verlauf-Wiki erstellt
 
 - Neue Vorlage `vorlagen/claude-md-youtube-verlauf.md` angelegt

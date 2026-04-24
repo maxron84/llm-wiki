@@ -44,6 +44,7 @@ Die Ergebnisse werden als nummerierte Liste mit Korrekturvorschlägen berichtet.
 - [[llm-wiki-muster]]
 - [[ingest-workflow]]
 - [[query-workflow]]
+- [[claude-md-design]] — Designprinzip 3: Keine toten Links in der CLAUDE.md ist eine Lint-Regel
 
 ---
 

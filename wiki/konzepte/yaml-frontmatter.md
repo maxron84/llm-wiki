@@ -60,6 +60,7 @@ Wenn jede Notiz unterschiedliche Tags ohne Konvention hat, funktionieren Abfrage
 - [[obsidian-claude-code-pillitteri]]
 - [[obsidian]]
 - [[mece-prinzip]]
+- [[claude-md-design]] — Designprinzip 4: Frontmatter-Entscheidung muss konsistent zwischen CLAUDE.md und Wiki sein
 
 ---
 

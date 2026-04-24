@@ -54,6 +54,7 @@ Claude Code braucht weder ein Obsidian-Plugin noch einen MCP-Server. Es genügt,
 
 - [[llm-wiki-muster]]
 - [[drei-ebenen-architektur]]
+- [[claude-md-design]] — 6 Designprinzipien für die CLAUDE.md, die Claude Code steuert
 - [[obsidian]]
 - [[statelessness]]
 - [[modellunabhaengigkeit]]
