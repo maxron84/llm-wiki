@@ -12,6 +12,27 @@ status: active
 
 ---
 
+## [2026-04-25 10:30] ingest | YouTube-Verlauf-CLAUDE.md aufgenommen
+
+Quelle: `raw/CLAUDE-2026-04-25_youtube-video-verlauf.md` — gelebte, weiterentwickelte CLAUDE.md eines realen YouTube-Wiki-Projekts.
+Tiefe: **Vollständig**
+
+**Neue Konzeptseite**:
+- `konzepte/seitenklassifikation.md` — Zeitlos/Gemischt/Zeitgenössisch: Pflichtfeld zur Bewertung der zeitlichen Relevanz von Wiki-Seiten
+
+**YouTube-Vorlage grundlegend überarbeitet** (`vorlagen/claude-md-youtube-verlauf.md`):
+- **Klassifikations-System**: Pflichtfeld auf allen Inhaltsseiten (außer Output-Dokumente)
+- **Output-Dokumente**: `wiki/output/betrachter.md`, `zitate.md`, `offene-fragen.md` als neue Ordnerstruktur
+- **Aufnahme-Workflow**: Schritte 10–11 ergänzt — `betrachter.md`-Pflege verpflichtend nach jeder Aufnahme
+- **Vernetzung & Konsistenzpflege**: Neue Sektion — bidirektionale Links als Standard, regelmäßige Audits
+- **Designhinweis 6**: `betrachter.md` ist Sonderfall — kein Klassifikationsfeld
+
+**Weitere Vorlagen mit Klassifikations-Hinweis versehen** (optional):
+- `vorlagen/claude-md-legacy-forensik.md` — Designhinweis 6: Klassifikation als zweite Dimension neben Konfidenzmodell
+- `vorlagen/claude-md-software.md` — Designhinweis 6: Klassifikation optional für ADRs/Modulseiten im Dokumentiert-Modus
+
+`index.md` aktualisiert.
+
 ## [2026-04-25 09:50] query | Software-Vorlage mit Zwei-Modi-System überarbeitet
 
 - `vorlagen/claude-md-software.md` grundlegend überarbeitet:

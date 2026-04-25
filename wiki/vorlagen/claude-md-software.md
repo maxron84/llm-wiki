@@ -112,6 +112,7 @@ Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] 
 3. **Frontmatter-Entscheidung**: Die Vorlage enthält kein [[yaml-frontmatter|Frontmatter]] in den Seitenformat-Beispielen. Falls dein Projekt Frontmatter nutzt, ergänze es — aber nur wenn *alle* Seiten es haben.
 4. **Keine toten Links**: Entferne alle `{{PLATZHALTER}}`-Referenzen, die du nicht ausfüllst, statt sie stehenzulassen.
 5. **Regelmäßig reviewen**: Die CLAUDE.md altert mit dem Projekt. Nach ~5 neuen Patterns lohnt sich ein Durchgang.
+6. **Klassifikation im Dokumentiert-Modus** (optional): Für ADR- und Modulseiten kann das [[seitenklassifikation|Klassifikations-System]] nützlich sein — Zeitlos für stabile Architekturentscheidungen, Zeitgenössisch für versionsspezifische Befunde.
 
 ## Designentscheidungen
 
@@ -388,6 +389,7 @@ Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
 - [[kontaminierungsrisiko]] — Warum Link-Stil-Konsistenz wichtig ist
 - [[qmd]] — Skalierungslösung: semantische Suche über Wiki-Seiten
 - [[jdocmunch]] — Skalierungslösung: nur relevante Sektionen laden
+- [[seitenklassifikation]] — Optional im Dokumentiert-Modus für ADRs und Modulseiten
 - [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
 - [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
 - [[claude-md-rezepte-ernaehrung]] — Schwester-Vorlage für Rezepte-Wikis

@@ -1,5 +1,5 @@
 ---
-date: 2026-04-23
+date: 2026-04-25
 type: vorlage
 tags: [vorlage, schema]
 status: active
@@ -7,9 +7,9 @@ status: active
 
 # CLAUDE.md-Vorlage: YouTube-Verlauf-Wiki
 
-**Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein persönliches Wissenswiki aus dem eigenen YouTube-Verlauf — extrahiert Konzepte aus Transkripten, verknüpft Kanäle, Serien und Themen, und macht gesehene Videos dauerhaft abfragbar.
-**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[ingest-workflow]], [[query-templates]] und [[kompilierungs-metapher]]
-**Zuletzt aktualisiert**: 2026-04-23
+**Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein persönliches Wissenswiki aus dem eigenen YouTube-Verlauf — extrahiert Konzepte aus Transkripten, verknüpft Sprecher und Themen, macht gesehene Videos dauerhaft abfragbar. Enthält Klassifikations-System (Zeitlos/Gemischt/Zeitgenössisch) und lebende Output-Dokumente (`betrachter.md`, `zitate.md`, `offene-fragen.md`).
+**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[ingest-workflow]], [[query-templates]], [[kompilierungs-metapher]] und [[claude-md-design]]; weiterentwickelt durch `raw/CLAUDE-2026-04-25_youtube-video-verlauf.md`
+**Zuletzt aktualisiert**: 2026-04-25
 
 ---
 
@@ -36,6 +36,8 @@ Das Grundproblem: Man schaut ein interessantes Video, nimmt etwas mit — und ei
 | **Metadaten** | Datum, Typ | + Kanal, Dauer, Gesehen-Datum, Zeitstempel |
 | **Extraktionsstrategie** | Einheitlich | Variiert nach Kanal-Stil (Tutorial vs. Vortrag vs. Essay) |
 | **Zeitstempel** | Nicht relevant | Verlinkbare Momente innerhalb eines Videos |
+| **Klassifikation** | Optional | Pflichtfeld: Zeitlos / Gemischt / Zeitgenössisch |
+| **Output-Dokumente** | — | `betrachter.md`, `zitate.md`, `offene-fragen.md` |
 
 ## Ordnerstruktur
 
@@ -46,6 +48,8 @@ raw/                      -- Unveränderliche Quellen (NIEMALS bearbeiten)
   notizen/                -- Eigene Notizen während/nach dem Schauen
   unverarbeitet/          -- Inbox: noch nicht kategorisierte Quellen
 
+clippings/                -- Web-Clipper-Exporte (NIEMALS bearbeiten)
+
 wiki/                     -- Von Claude gepflegtes Wiki
   index.md
   log.md
@@ -54,6 +58,10 @@ wiki/                     -- Von Claude gepflegtes Wiki
   kanaele/                -- Kanal-Profile
   personen/               -- Sprecher, Gäste, Autoren
   serien/                 -- Playlists und thematische Reihen
+  output/                 -- Synthetisierte, lebende Ausgaben
+    betrachter.md         -- Fortlaufende Betrachter-Analyse (lebendes Dokument)
+    zitate.md             -- Prägnante, erinnerungswürdige Zitate
+    offene-fragen.md      -- Fragen, die Videos aufwerfen, aber nicht beantworten
 ```
 
 ## Transkripte beschaffen
@@ -82,6 +90,7 @@ Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] 
 3. **Frontmatter-Entscheidung**: Die Vorlage enthält [[yaml-frontmatter]] im Video-Seitenformat. Wenn man darauf verzichten will, das Format entsprechend anpassen — aber konsistent bleiben.
 4. **Keine toten Links**: Die `{{PLATZHALTER}}` müssen ausgefüllt oder entfernt werden.
 5. **Regelmäßig reviewen**: Nach ~20 aufgenommenen Videos die CLAUDE.md auf neue Muster prüfen (z.B. neuer Kanal-Stil, der eine eigene Extraktionsstrategie braucht).
+6. **`betrachter.md` ist ein Sonderfall**: Lebendes Meta-Dokument — kein `**Klassifikation**:`-Feld, kein fixes Format. Es wächst mit dem Wiki.
 
 ## Vorlage
 
@@ -110,6 +119,8 @@ raw/
   notizen/           -- Eigene Notizen während/nach dem Schauen
   unverarbeitet/     -- Inbox: noch nicht kategorisiert
 
+clippings/           -- Web-Clipper-Exporte (NIEMALS bearbeiten)
+
 wiki/
   index.md           -- Inhaltsverzeichnis
   log.md             -- Änderungsprotokoll
@@ -118,23 +129,30 @@ wiki/
   kanaele/           -- Kanal-Profile
   personen/          -- Sprecher, Gäste, Autoren
   serien/            -- Playlists, thematische Reihen
+  output/            -- Synthetisierte, lebende Ausgaben
+    betrachter.md    -- Fortlaufende Betrachter-Analyse
+    zitate.md        -- Prägnante Zitate
+    offene-fragen.md -- Fragen aus Videos, noch unbeantwortet
 ```
 
 ## Aufnahme-Workflow
 
-Wenn neue Quellen in `raw/` hinzugefügt werden:
+Wenn neue Quellen in `raw/` oder `clippings/` hinzugefügt werden:
 
 1. **Lies** das vollständige Dokument
 2. **Identifiziere den Quelltyp**: Transkript / Beschreibung / Notizen / Playlist-Dump
-3. **Besprich** die wichtigsten Erkenntnisse und frage nach der gewünschten Tiefe:
+3. **Übersetze** ins Deutsche, wenn die Quelle in einer anderen Sprache ist, ohne Informationen inhaltlich zu verändern
+4. **Besprich** die wichtigsten Erkenntnisse und frage nach der gewünschten Tiefe:
    - **Minimal** — Nur eine Video-Zusammenfassungsseite
    - **Mittel** — Video-Seite + Konzeptseiten für die wichtigsten Ideen *(Standard)*
-   - **Vollständig** — Alles oben + Personen-, Kanal- und Serien-Seiten
-4. **Erstelle die Video-Seite** in `wiki/videos/` (Format siehe unten)
-5. **Erstelle oder aktualisiere Konzeptseiten** in `wiki/konzepte/`
-6. **Erstelle oder aktualisiere Kanalseite** in `wiki/kanaele/` (falls neu)
-7. **Verknüpfe** mit `[[wiki-links]]` (verwandte Videos, Konzepte, Sprecher)
-8. **Aktualisiere** `wiki/index.md` und `wiki/log.md`
+   - **Vollständig** — Alles oben + Personen- und Kanalseiten
+5. **Erstelle die Video-Seite** in `wiki/videos/` (Format siehe unten)
+6. **Erstelle oder aktualisiere Konzeptseiten** in `wiki/konzepte/`
+7. **Erstelle oder aktualisiere Kanalseite** in `wiki/kanaele/` (falls neu)
+8. **Verknüpfe** mit `[[wiki-links]]` (verwandte Videos, Konzepte, Sprecher)
+9. **Aktualisiere** `wiki/index.md` und `wiki/log.md`
+10. **Pflege `wiki/output/betrachter.md`** — Prüfe, ob sich Cluster-Tiefen, Wissenslandkarte, Gravitationszentrum oder wiederkehrende Motive verschoben haben. Dieser Schritt ist **verpflichtend**, nicht optional.
+11. **Prüfe weitere Output-Dokumente** — Bei prägnanten Zitaten: in `wiki/output/zitate.md` eintragen. Bei offenen Fragen, die das Video aufwirft, aber nicht beantwortet: in `wiki/output/offene-fragen.md` ergänzen.
 
 ## Seitenformate
 
@@ -158,6 +176,7 @@ duration: "HH:MM"
 **Sprecher**: [[person]] (falls relevant)
 **Quellen**: raw/transkripte/dateiname.md
 **Zuletzt aktualisiert**: YYYY-MM-DD
+**Klassifikation**: Zeitlos | Gemischt | Zeitgenössisch
 
 ---
 
@@ -165,7 +184,6 @@ duration: "HH:MM"
 
 - Wichtigste Erkenntnis 1 (Quelle: raw/transkripte/...)
 - Wichtigste Erkenntnis 2
-- ...
 
 ## Zitate
 
@@ -174,7 +192,6 @@ duration: "HH:MM"
 ## Verwandte Konzepte
 
 - [[konzept-1]] — kurze Erklärung der Verbindung
-- [[konzept-2]]
 
 ## Verwandte Videos
 
@@ -196,6 +213,7 @@ status: active
 **Zusammenfassung**: Ein bis zwei Sätze.
 **Quellen**: Liste der Videos, aus denen dieses Konzept destilliert wurde
 **Zuletzt aktualisiert**: YYYY-MM-DD
+**Klassifikation**: Zeitlos | Gemischt | Zeitgenössisch
 
 ---
 
@@ -222,14 +240,13 @@ status: active
 
 **Zusammenfassung**: Worum geht es auf diesem Kanal? Stil und Stärken.
 **Zuletzt aktualisiert**: YYYY-MM-DD
+**Klassifikation**: Zeitlos | Gemischt | Zeitgenössisch
 
 ---
 
 ## Stil und Extraktionsstrategie
 
 {{z.B. "Lange Vorträge — Zeitstempel sind wertvoll; Kernthesen am Anfang und Ende"}}
-{{z.B. "Kurze Tutorials — Schritt-für-Schritt-Listen extrahieren"}}
-{{z.B. "Essay-Format — Argumentation und Hauptthese fokussieren"}}
 
 ## Gesehene Videos
 
@@ -237,9 +254,23 @@ status: active
 - [[YYYY-MM-DD-video-2]]
 ```
 
-## Extraktionsstrategien nach Video-Typ
+## Klassifikation
 
-Verschiedene Video-Formate verlangen verschiedene Extraktionsschwerpunkte:
+Jede Seite (außer Output-Dokumente) trägt ein `**Klassifikation**:`-Feld direkt nach `**Zuletzt aktualisiert**`:
+
+| Wert | Bedeutung | Typische Seiten |
+|---|---|---|
+| **Zeitlos** | Informationswert verfällt nicht | Konzepte, Frameworks, psychologische Modelle, Designprinzipien |
+| **Gemischt** | Zeitloser Kern, aber zeitgebundene Details | KI-Überblicksseiten, Technologievergleiche mit konkreten Zahlen |
+| **Zeitgenössisch** | Wert an einen spezifischen Moment gebunden | Reaktionsvideos, aktuelle Produktkritiken, politische Ereignisse |
+
+**Pflegeregeln:**
+- Jede neu erstellte Seite bekommt sofort eine Klassifikation.
+- Bei Inhaltsaktualisierungen kurz prüfen, ob die Klassifikation noch stimmt — und ggf. anpassen.
+- `wiki/output/betrachter.md` ist eine Ausnahme: kein Klassifikationsfeld (lebendes Meta-Dokument).
+- Im Lint-Check: Seiten ohne `**Klassifikation**:` melden.
+
+## Extraktionsstrategien nach Video-Typ
 
 | Typ | Fokus beim Extrahieren |
 |---|---|
@@ -249,6 +280,16 @@ Verschiedene Video-Formate verlangen verschiedene Extraktionsschwerpunkte:
 | **Essay / Essay-Video** | Kernargument, Schlussfolgerung, kritisierte Alternativen |
 | **Review / Vergleich** | Kriterien, Bewertungen, Empfehlung und für wen |
 | **Dokumentation** | Fakten, Chronologie, Personen, Quellen |
+
+## Vernetzung & Konsistenzpflege
+
+Das Wiki ist nicht nur ein Archiv einzelner Videos — es ist die Datengrundlage für `wiki/output/betrachter.md`. Fehlende oder falsch gesetzte Verbindungen erzeugen falsche Rückschlüsse über Interessen, Positionen und Muster.
+
+**Bidirektionale Links sind Standard**: Wenn Seite A auf Seite B verweist, verweist Seite B in aller Regel zurück. Keine erzwungenen Links — aber nach jeder Aufnahme explizit prüfen, welche bestehenden Seiten einen Rückverweis auf die neue Seite verdienen.
+
+**Das Betrachter-Profil mitpflegen**: Nach jeder Aufnahme prüfen, ob sich Themengewichtungen, Grundpositionen oder wiederkehrende Motive verschoben haben. `wiki/output/betrachter.md` entsprechend anpassen.
+
+**Regelmäßige Audits**: `python3 ~/.claude/scripts/wiki_lint.py` nach größeren Aufnahmephasen. Tote Links und Waisen werden behoben, nicht ignoriert.
 
 ## Fragenbeantwortung
 
@@ -280,16 +321,18 @@ Wenn ich das Wiki prüfen lasse:
 - Widersprüche zwischen Konzeptseiten verschiedener Videos
 - Video-Seiten ohne Kanalseite
 - Behauptungen ohne Quellenangabe markieren
+- Seiten ohne `**Klassifikation**:`-Feld melden
 
 ## Regeln
 
-- Verändere **NIEMALS** etwas in `raw/` — Originalquellen bleiben unveränderlich
+- Verändere **NIEMALS** etwas in `raw/` oder `clippings/` — Originalquellen bleiben unveränderlich
 - Aktualisiere immer `wiki/index.md` und `wiki/log.md` nach Änderungen
 - Dateinamen für Videos: `YYYY-MM-DD-kurzname.md` (Datum = Gesehen-Datum)
 - Dateinamen für Konzepte: Kleinbuchstaben mit Bindestrichen
+- Bidirektionale Links sind Standard — nach jeder Aufnahme Rückverweise prüfen
 - Wenn du dir beim Kategorisieren unsicher bist, frage nach
 - Gute Antworten auf meine Fragen sollen als Konzept-Seiten ins Wiki zurückfließen
-- **Kontaminierungsrisiko beachten**: Zusammenfassungen immer gegen das Transkript/die Notizen prüfbar halten — jede Kernaussage muss ihre Quelle haben
+- **Kontaminierungsrisiko beachten**: Zusammenfassungen immer gegen das Transkript prüfbar halten — jede Kernaussage muss ihre Quelle haben
 
 ## Skalierung
 
@@ -308,10 +351,12 @@ Wenn das Wiki über ~100 Video-Seiten wächst und `index.md` unhandlich wird:
 - [[query-templates]] — Die 6 Abfragetypen, hier auf YouTube-Inhalte angewendet
 - [[kontaminierungsrisiko]] — Warum Quellenangaben in Video-Seiten Pflicht sind
 - [[skalierungsgrenzen]] — Was tun wenn das Wiki mit dem Verlauf wächst
+- [[seitenklassifikation]] — Das Zeitlos/Gemischt/Zeitgenössisch-System
 - [[qmd]] — Skalierungslösung für große Video-Wikis
 - [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Laden
 - [[claude-md-software]] — Schwester-Vorlage für Software-Projekte
 - [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse
+- [[claude-md-rezepte-ernaehrung]] — Schwester-Vorlage für Rezepte-Wikis
 
 ---
 

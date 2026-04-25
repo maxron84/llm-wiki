@@ -31,6 +31,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[query-templates]] — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
 - [[fortgeschrittene-architektur]] — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
 - [[claude-md-design]] — 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
+- [[seitenklassifikation]] — Zeitlos / Gemischt / Zeitgenössisch: Pflichtfeld für zeitliche Relevanz von Wiki-Seiten
 - [[mece-prinzip]] — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
 - [[taeglicher-workflow]] — Sitzungseröffnung und -abschluss als tägliches Protokoll
 - [[modellunabhaengigkeit]] — Markdown = Unabhängigkeit vom KI-Anbieter

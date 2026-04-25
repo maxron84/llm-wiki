@@ -66,6 +66,7 @@ Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] 
 3. **Frontmatter-Entscheidung**: Die Vorlage zeigt kein Frontmatter im Seitenformat. Wer [[yaml-frontmatter]] für strukturierte Abfragen nutzen will (z.B. mit [[dataview]]), muss es im Seitenformat ergänzen — aber dann durchgehend.
 4. **Keine toten Links**: Die `{{PLATZHALTER}}` im Header müssen alle ausgefüllt oder entfernt werden. Unbelegte Referenzen im Forensik-Kontext sind besonders gefährlich, weil sie als ⚪-Befunde missverstanden werden können.
 5. **Regelmäßig reviewen**: Bei forensischen Untersuchungen wächst das Wiki schnell. Nach ~10 aufgenommenen Quellen die CLAUDE.md auf neue Muster prüfen.
+6. **Klassifikation ergänzen** (optional): Für Befundseiten mit stark unterschiedlicher zeitlicher Relevanz kann das [[seitenklassifikation|Klassifikations-System]] als zweite Dimension neben dem Konfidenzmodell ergänzt werden — Zeitlos für Architekturprinzipien, Zeitgenössisch für spezifische Versionsnummern oder aktuelle Risikobewertungen.
 
 ## Vorlage
 
@@ -345,6 +346,7 @@ Beide lassen sich als MCP-Server in Claude Code integrieren.
 - [[skalierungsgrenzen]] — Wenn das Analyse-Wiki zu groß für den Kontext wird
 - [[qmd]] — Lokale Suchmaschine für große Analyse-Wikis
 - [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
+- [[seitenklassifikation]] — Optional ergänzbar als zweite Dimension neben dem Konfidenzmodell
 - [[claude-md-software]] — Schwester-Vorlage für allgemeine Software-Projekte
 - [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
 
