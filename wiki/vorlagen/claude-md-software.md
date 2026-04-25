@@ -1,5 +1,5 @@
 ---
-date: 2026-04-23
+date: 2026-04-25
 type: vorlage
 tags: [vorlage, schema]
 status: active
@@ -7,39 +7,101 @@ status: active
 
 # CLAUDE.md-Vorlage: Software-Projekte
 
-**Zusammenfassung**: Eine CLAUDE.md-Vorlage für allgemeine Software-Projekte — kopierbar in jedes Projekt, mit Platzhaltern zum Ausfüllen durch die KI oder den Entwickler.
-**Quellen**: Abgeleitet aus dem Wissen über [[llm-wiki-muster]], [[drei-ebenen-architektur]] und [[claude-code]]
-**Zuletzt aktualisiert**: 2026-04-23
+**Zusammenfassung**: Eine CLAUDE.md-Vorlage für Software-Projekte in zwei Modi: **Lean** (reines Coding-Tool) und **Dokumentiert** (Coding + fortlaufendes Projekt-Wiki nach dem LLM-Wiki-Muster).
+**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[claude-code]], [[claude-md-design]] und [[skalierungsgrenzen]]
+**Zuletzt aktualisiert**: 2026-04-25
 
 ---
 
 ## Zweck
 
-Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] — das **Schema** — für Software-Projekte jeglicher Art. Sie definiert, wie [[claude-code|Claude Code]] mit einer Codebase interagieren soll: Projektstruktur, Konventionen, Befehle, Testregeln und Verhaltensrichtlinien.
+Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] — das **Schema** — für Software-Projekte. Sie definiert, wie [[claude-code|Claude Code]] mit einer Codebase interagieren soll.
+
+**Konzeptioneller Unterschied zu den anderen Vorlagen**: Die YouTube-Verlauf-, Rezepte- und Forensik-Vorlagen sind reine *Wissens-Wikis* — der gesamte Kontext ist das Wiki. In einem Software-Projekt konkurriert ein optionales Wiki mit dem **Sourcecode** um das Token-Budget. Deshalb bietet diese Vorlage zwei Modi.
+
+## Zwei Modi
+
+### Modus "Lean" (Standard)
+
+Nur eine CLAUDE.md im Projektstamm. Kein `wiki/`, kein `raw/`. Funktioniert mit jedem Modell, auch lokalen 30B-Modellen mit 8K-Kontext.
+
+```
+mein-projekt/
+  CLAUDE.md              ← Aus dieser Vorlage
+  src/
+  tests/
+  package.json
+```
+
+**Wann Lean reicht**: Kleine bis mittlere Projekte, Solo-Entwicklung, Code spricht weitgehend für sich.
+
+### Modus "Dokumentiert"
+
+CLAUDE.md + ein `wiki/`-Verzeichnis, in dem Claude parallel zum Coding eine fortlaufende Projektdokumentation aufbaut. Folgt dem [[llm-wiki-muster]] — der Sourcecode ist die "Rohquelle", das Wiki das "kompilierte" Verständnis (siehe [[kompilierungs-metapher]]).
+
+```
+mein-projekt/
+  CLAUDE.md              ← Aus dieser Vorlage (mit Wiki-Sektion aktiviert)
+  src/                   ← Sourcecode = Rohquelle (Ebene 1)
+  tests/
+  wiki/                  ← Von Claude gepflegte Doku (Ebene 2)
+    index.md
+    log.md
+    architektur/         ← Systemarchitektur, Datenflüsse
+    module/              ← Analyse einzelner Module
+    entscheidungen/      ← Architecture Decision Records (ADRs)
+    schnittstellen/      ← APIs, Protokolle, Datenformate
+```
+
+**Wann Dokumentiert sinnvoll ist**: Wachsende Projekte, Teamarbeit, komplexe Domänen, wenn man sein eigenes Projekt nach 3 Monaten noch verstehen will.
+
+## Kontextbudget und lokale Modelle
+
+Das Wiki konkurriert mit dem Sourcecode um Token. Die ehrliche Rechnung:
+
+| Modell | Kontextfenster | Code braucht | Wiki-Budget übrig |
+|---|---|---|---|
+| Claude Opus/Sonnet | 200K | ~50–100K | ~100K+ — kein Problem |
+| Lokales 30B, langes Fenster | 128K | ~30–50K | ~50K — geht |
+| Lokales 30B, kurzes Fenster | 8–32K | ~10–20K | ~5–10K — **eng** |
+
+**Empfehlungen nach Modellgröße**:
+
+| Situation | Empfehlung |
+|---|---|
+| Cloud-API (Claude, GPT-4) | Modus Dokumentiert problemlos nutzbar |
+| Lokales 30B + 128K Kontext | Dokumentiert möglich, aber `index.md` schlank halten |
+| Lokales 30B + 8–32K Kontext | Modus Lean verwenden; oder Dokumentiert nur mit [[qmd]]/[[jdocmunch]] (lädt nur die relevante Wiki-Sektion) |
+| Lokales 7B | Nur Lean — Wiki-Pflege übersteigt die Modellkapazität |
+
+Siehe auch [[skalierungsgrenzen]] für die allgemeinen Schwellenwerte.
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [[claude-md-design|Designprinzip 1]]).
-2. Ersetze alle `{{PLATZHALTER}}` durch die tatsächlichen Werte
-3. Lösche nicht benötigte Abschnitte
-4. Entferne den Anleitungsblock am Anfang
-5. Alternativ: Lass Claude Code die Platzhalter selbst ausfüllen — „Analysiere dieses Projekt und fülle die CLAUDE.md aus"
+1. **Modus wählen**: Lean oder Dokumentiert. Im Zweifel mit Lean starten — man kann jederzeit upgraden.
+2. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen (siehe [[claude-md-design|Designprinzip 1]]).
+3. Ersetze alle `{{PLATZHALTER}}` durch die tatsächlichen Werte
+4. **Für Lean**: Lösche den gesamten Abschnitt "Projekt-Wiki" aus der kopierten CLAUDE.md
+5. **Für Dokumentiert**: Behalte den Wiki-Abschnitt und passe ihn an
+6. Lösche weitere nicht benötigte Abschnitte, entferne den Anleitungsblock
+7. Alternativ: Lass Claude Code die Platzhalter selbst ausfüllen — „Analysiere dieses Projekt und fülle die CLAUDE.md aus"
 
 ## Enthaltene Abschnitte
 
-| Abschnitt | Zweck |
-|---|---|
-| Projekt | Name, Sprache, Framework, Paketmanager |
-| Schnelleinstieg | Install, Dev, Test, Lint, Build |
-| Projektstruktur | Verzeichnisbaum |
-| Architektur | Datenfluss in 3–5 Sätzen |
-| Konventionen | Code-Stil, Dateien, Git, Kommentare |
-| Abhängigkeiten | Wichtigste Pakete als Tabelle |
-| Umgebungsvariablen | Secrets-Verwaltung |
-| Tests | Framework, Befehle, Konventionen |
-| Regeln für Claude | Was tun, was lassen |
-| Bekannte Probleme | Technische Schulden |
-| Nützliche Befehle | DB-Reset, Docker etc. |
+| Abschnitt | Modus | Zweck |
+|---|---|---|
+| Projekt | Beide | Name, Sprache, Framework, Paketmanager |
+| Schnelleinstieg | Beide | Install, Dev, Test, Lint, Build |
+| Projektstruktur | Beide | Verzeichnisbaum |
+| Architektur | Beide | Datenfluss in 3–5 Sätzen |
+| Konventionen | Beide | Code-Stil, Dateien, Git, Kommentare |
+| Abhängigkeiten | Beide | Wichtigste Pakete als Tabelle |
+| Umgebungsvariablen | Beide | Secrets-Verwaltung |
+| Tests | Beide | Framework, Befehle, Konventionen |
+| Regeln für Claude | Beide | Was tun, was lassen |
+| Bekannte Probleme | Beide | Technische Schulden |
+| Nützliche Befehle | Beide | DB-Reset, Docker etc. |
+| **Projekt-Wiki** | **Nur Dokumentiert** | Wiki-Workflow, Seitenformat, Prüfung |
 
 ## Designhinweise
 
@@ -53,10 +115,11 @@ Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] 
 
 ## Designentscheidungen
 
+- **Zwei Modi statt zwei Vorlagen**: Die Lean-Basis ist identisch — nur der Wiki-Abschnitt kommt hinzu. Das vermeidet Doppelpflege.
 - **Platzhalter-Format `{{...}}`**: Universell erkennbar, leicht durchsuchbar mit `grep '{{' CLAUDE.md`
 - **Tabellen für Abhängigkeiten und Envvars**: Kompakt, scannbar, erweiterbar
-- **Explizite Verbotsliste**: „Was du NICHT tun sollst" verhindert häufige KI-Fehler (ungefragt Deps hinzufügen, Architektur umwerfen)
-- **Konventionen statt Regeln**: Richtlinien mit Beispielen statt starrer Vorschriften — passt sich an jede Sprache an
+- **Explizite Verbotsliste**: „Was du NICHT tun sollst" verhindert häufige KI-Fehler
+- **Wiki-Ordner `wiki/` statt `docs/`**: Konsistent mit dem LLM-Wiki-Muster. `docs/` bleibt für handgeschriebene Doku oder generierte API-Docs.
 
 ## Vorlage
 
@@ -65,6 +128,8 @@ Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] 
 
 > **Anleitung**: Kopiere diese Datei als `CLAUDE.md` in das Wurzelverzeichnis deines Projekts.
 > Ersetze alle `{{PLATZHALTER}}` durch deine Werte. Lösche Abschnitte, die nicht passen.
+> Für **Modus Lean**: Lösche den Abschnitt "Projekt-Wiki".
+> Für **Modus Dokumentiert**: Behalte ihn und passe die Ordnerstruktur an.
 > Entferne diesen Anleitungsblock, bevor du die Datei produktiv nutzt.
 
 ---
@@ -108,6 +173,7 @@ docs/             -- Dokumentation
 scripts/          -- Hilfsskripte
 config/           -- Konfigurationsdateien
 .github/          -- CI/CD Workflows
+wiki/             -- Projekt-Wiki (nur Modus Dokumentiert — lösche wenn Lean)
 ```
 
 ## Architektur
@@ -241,17 +307,90 @@ die PostgreSQL-Datenbank zu."}}
 # Logs anzeigen
 {{z.B. docker compose logs -f app}}
 ```
+
+## Projekt-Wiki (Modus Dokumentiert)
+
+> **Hinweis**: Diesen gesamten Abschnitt löschen, wenn du den Modus **Lean** verwendest.
+> Behalte ihn nur, wenn du parallel zum Coding eine fortlaufende Projektdokumentation aufbauen willst.
+
+### Zweck
+
+Claude baut parallel zum Coding ein Verständnis-Wiki auf: Architekturentscheidungen, Modulanalysen, Schnittstellenbeschreibungen, erkannte Muster. Der Sourcecode ist die "Rohquelle", das Wiki das "kompilierte" Verständnis.
+
+### Wiki-Ordnerstruktur
+
+```
+wiki/
+  index.md              -- Inhaltsverzeichnis aller Wiki-Seiten
+  log.md                -- Chronologisches Änderungsprotokoll
+  architektur/          -- Systemarchitektur, Datenflüsse, Schichten
+  module/               -- Analyse einzelner Module/Services/Packages
+  entscheidungen/       -- Architecture Decision Records (ADRs)
+  schnittstellen/       -- APIs, Protokolle, Datenformate
+  probleme/             -- Technische Schulden, bekannte Risiken
+```
+
+### Wann Wiki-Seiten entstehen
+
+- **Bei Architekturentscheidungen**: Bevor eine strukturelle Änderung umgesetzt wird, lege eine Entscheidungsseite an (Was, Warum, Alternativen, Konsequenzen)
+- **Bei Modulanalysen**: Wenn ein Modul zum ersten Mal intensiv bearbeitet wird, dokumentiere die Erkenntnisse
+- **Bei Schnittstellenänderungen**: API-Änderungen, Datenbankmigrationen, Protokolländerungen
+- **Bei erkannten Mustern**: Wiederkehrende Patterns oder Anti-Patterns im Code
+
+### Wiki-Seitenformat
+
+```markdown
+# Seitentitel
+
+**Zusammenfassung**: Ein bis zwei Sätze.
+**Quellen**: Betroffene Dateien (z.B. `src/services/auth.ts`, `src/api/routes.ts`)
+**Zuletzt aktualisiert**: YYYY-MM-DD
+
+---
+
+Hauptinhalt.
+
+## Verwandte Seiten
+
+- [[verwandte-seite]]
+
+---
+
+[Wiki-Index](wiki/index.md)
+```
+
+### Wiki-Regeln
+
+- Aktualisiere `wiki/index.md` und `wiki/log.md` nach jeder Wiki-Änderung
+- Wiki-Seiten beschreiben das **Warum** und die **Zusammenhänge** — der Code selbst zeigt das Was
+- Verlinke Wiki-Seiten untereinander mit `[[wiki-links]]`
+- Wenn eine Wiki-Seite durch Code-Änderungen veraltet, aktualisiere sie oder markiere sie als `(veraltet — prüfen)`
+- Seitennamen in Kleinbuchstaben mit Bindestrichen
+
+### Wiki-Prüfung
+
+Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
+
+- Wiki-Seiten auf veraltete Informationen prüfen
+- Verwaiste Seiten finden (keine eingehenden Links)
+- Module identifizieren, die im Code wichtig sind, aber keine Wiki-Seite haben
+- Ergebnisse als nummerierte Liste berichten
 ````
 
 ## Verwandte Seiten
 
 - [[claude-md-design]] — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
+- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema); Modus Dokumentiert nutzt alle 3 Ebenen
+- [[kompilierungs-metapher]] — Im Modus Dokumentiert: Sourcecode = Quellcode, Wiki = kompiliertes Verständnis
+- [[skalierungsgrenzen]] — Kontextbudget-Grenzen, besonders relevant für lokale Modelle
 - [[claude-code]] — Der Agent, der mit dieser Vorlage gesteuert wird
-- [[llm-wiki-muster]] — Das übergeordnete Konzept
+- [[llm-wiki-muster]] — Das übergeordnete Konzept (Modus Dokumentiert folgt diesem Muster)
 - [[kontaminierungsrisiko]] — Warum Link-Stil-Konsistenz wichtig ist
-- [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse
+- [[qmd]] — Skalierungslösung: semantische Suche über Wiki-Seiten
+- [[jdocmunch]] — Skalierungslösung: nur relevante Sektionen laden
+- [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
 - [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
+- [[claude-md-rezepte-ernaehrung]] — Schwester-Vorlage für Rezepte-Wikis
 
 ---
 

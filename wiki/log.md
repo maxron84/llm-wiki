@@ -8,9 +8,20 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-04-23
+**Zuletzt aktualisiert**: 2026-04-25
 
 ---
+
+## [2026-04-25 09:50] query | Software-Vorlage mit Zwei-Modi-System überarbeitet
+
+- `vorlagen/claude-md-software.md` grundlegend überarbeitet:
+  - **Modus "Lean"** (Standard): Reines Coding-Tool, kein Wiki. Funktioniert mit jedem Modell.
+  - **Modus "Dokumentiert"**: Coding + fortlaufendes Projekt-Wiki (Architektur, Module, ADRs, Schnittstellen)
+  - **Kontextbudget-Tabelle**: Ehrliche Token-Rechnung für Cloud-APIs vs. lokale 30B-Modelle (8K–128K Kontext)
+  - **Empfehlungen nach Modellgröße**: Wann Lean, wann Dokumentiert, wann qmd/jdocmunch nötig
+  - Vorlage selbst enthält optionalen "Projekt-Wiki"-Abschnitt mit Ordnerstruktur, Seitenformat und Prüfregeln
+  - Verwandte Seiten um `skalierungsgrenzen`, `kompilierungs-metapher`, `qmd`, `jdocmunch`, `claude-md-rezepte-ernaehrung` erweitert
+- `index.md` aktualisiert: Beschreibung der Software-Vorlage angepasst
 
 ## [2026-04-24 00:01] query | Vorlage Rezepte- und Ernährungs-Wiki erstellt
 
