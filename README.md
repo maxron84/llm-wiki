@@ -22,3 +22,7 @@ Der eigentliche Output dieses Wikis: kopierbare `CLAUDE.md`-Vorlagen für spezia
 | [Rezepte & Ernährung](wiki/vorlagen/claude-md-rezepte-ernaehrung.md) | Vernetzte Rezept-, Technik- und Zutaten-Basis |
 
 Jede Vorlage enthält Ordnerstruktur, Seitenformate, Extraktionsstrategien und Abfragetypen — einfach kopieren, Platzhalter füllen, loslegen.
+
+---
+
+> **Note:** This repository — wiki pages, templates, and documentation — is currently available in German only.
