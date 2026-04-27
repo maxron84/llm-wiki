@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-04-27 00:00] query | Konzeptskizze multimodale Quellen erstellt
+
+- Neue Konzeptseite `konzepte/multimodale-quellen.md` angelegt (status: draft)
+- Beschreibt theoretische Erweiterung des LLM-Wiki-Musters auf Audio, Bilder und Video
+- Enthält: Zwei-Stufen-Pipeline, drei Eingabeklassen, Speicherproblem-Analyse,
+  Verlusttoleranz-Einschätzung, Implikationen für künftige Vorlagen, offene Fragen
+- Explizit als Konzeptskizze markiert — noch nicht in der Praxis erprobt
+- `index.md` aktualisiert
+
 ## [2026-04-25 10:30] ingest | YouTube-Verlauf-CLAUDE.md aufgenommen
 
 Quelle: `raw/CLAUDE-2026-04-25_youtube-video-verlauf.md` — gelebte, weiterentwickelte CLAUDE.md eines realen YouTube-Wiki-Projekts.

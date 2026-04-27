@@ -32,6 +32,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[fortgeschrittene-architektur]] — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
 - [[claude-md-design]] — 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
 - [[seitenklassifikation]] — Zeitlos / Gemischt / Zeitgenössisch: Pflichtfeld für zeitliche Relevanz von Wiki-Seiten
+- [[multimodale-quellen]] — *(Konzeptskizze)* Audio, Bild und Video als Wiki-Quellen jenseits von Text
 - [[mece-prinzip]] — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
 - [[taeglicher-workflow]] — Sitzungseröffnung und -abschluss als tägliches Protokoll
 - [[modellunabhaengigkeit]] — Markdown = Unabhängigkeit vom KI-Anbieter
