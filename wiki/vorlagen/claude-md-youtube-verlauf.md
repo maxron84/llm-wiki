@@ -39,6 +39,23 @@ Das Grundproblem: Man schaut ein interessantes Video, nimmt etwas mit — und ei
 | **Klassifikation** | Optional | Pflichtfeld: Zeitlos / Gemischt / Zeitgenössisch |
 | **Output-Dokumente** | — | `betrachter.md`, `zitate.md`, `offene-fragen.md` |
 
+## Modell-Kompatibilität
+
+| Funktion | 7B | 30B | Cloud (Sonnet/Opus) |
+|---|---|---|---|
+| Video-Zusammenfassungsseiten | ✅ | ✅ | ✅ |
+| Konzept- und Personenseiten | ❌ | ✅ | ✅ |
+| Klassifikation (Zeitlos/…) | ❌ | ✅ | ✅ |
+| Vernetzung & Querverweise | ❌ | ⚠️ mit qmd | ✅ |
+| `betrachter.md` (Synthese) | ❌ | ❌ | ✅ |
+| Vollständiger Workflow (Schritte 1–11) | ❌ | ⚠️ 1–9 | ✅ |
+
+**7B** (z.B. Llama 3.2 8B, Mistral 7B): Nur Video-Zusammenfassungen. Workflow auf Schritte 1–5 kürzen. `betrachter.md` und Konzeptseiten entfernen. Die CLAUDE.md auf ~50 Zeilen reduzieren — zu viele konkurrierende Instruktionen überfordern das Modell.
+
+**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Schritte 1–9 des Workflows. `betrachter.md` weglassen. [[qmd]] für die Navigation ab ~50 Seiten erforderlich. Konzept- und Klassifikationsseiten funktionieren gut.
+
+**Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang. Alle 11 Schritte, `betrachter.md`, Vernetzung & Konsistenzpflege.
+
 ## Ordnerstruktur
 
 ```
@@ -151,8 +168,8 @@ Wenn neue Quellen in `raw/` oder `clippings/` hinzugefügt werden:
 7. **Erstelle oder aktualisiere Kanalseite** in `wiki/kanaele/` (falls neu)
 8. **Verknüpfe** mit `[[wiki-links]]` (verwandte Videos, Konzepte, Sprecher)
 9. **Aktualisiere** `wiki/index.md` und `wiki/log.md`
-10. **Pflege `wiki/output/betrachter.md`** — Prüfe, ob sich Cluster-Tiefen, Wissenslandkarte, Gravitationszentrum oder wiederkehrende Motive verschoben haben. Dieser Schritt ist **verpflichtend**, nicht optional.
-11. **Prüfe weitere Output-Dokumente** — Bei prägnanten Zitaten: in `wiki/output/zitate.md` eintragen. Bei offenen Fragen, die das Video aufwirft, aber nicht beantwortet: in `wiki/output/offene-fragen.md` ergänzen.
+10. *(Cloud)* **Pflege `wiki/output/betrachter.md`** — Prüfe, ob sich Cluster-Tiefen, Wissenslandkarte, Gravitationszentrum oder wiederkehrende Motive verschoben haben. Dieser Schritt ist **verpflichtend**, nicht optional.
+11. *(Cloud)* **Prüfe weitere Output-Dokumente** — Bei prägnanten Zitaten: in `wiki/output/zitate.md` eintragen. Bei offenen Fragen, die das Video aufwirft, aber nicht beantwortet: in `wiki/output/offene-fragen.md` ergänzen.
 
 ## Seitenformate
 

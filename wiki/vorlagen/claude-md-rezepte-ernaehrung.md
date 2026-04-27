@@ -37,6 +37,23 @@ Das Grundproblem: Rezepte sammeln sich in Lesezeichen, Apps und Kochbüchern —
 | **Persönliche Ebene** | Quellenbasiert | + Eigene Anpassungen, Experimente, Bewertungen |
 | **Querverweise** | Konzept ↔ Konzept | Rezept ↔ Technik ↔ Zutat ↔ Küche |
 
+## Modell-Kompatibilität
+
+| Funktion | 7B | 30B | Cloud (Sonnet/Opus) |
+|---|---|---|---|
+| Rezeptseiten (Zutaten, Schritte) | ✅ | ✅ | ✅ |
+| Technikseiten | ❌ | ✅ | ✅ |
+| Zutaten-Profile & Substitutions-Tabelle | ❌ | ✅ | ✅ |
+| „Warum es funktioniert" (Food Science) | ❌ | ⚠️ | ✅ |
+| Küchenübersichten, Vernetzung | ❌ | ⚠️ mit qmd | ✅ |
+| Eigene Anpassungen verfolgen | ⚠️ einfach | ✅ | ✅ |
+
+**7B** (z.B. Llama 3.2 8B, Mistral 7B): Nur Rezeptseiten — strukturierte Extraktion von Zutaten, Mengen und Schritten liegt im Stärkebereich kleiner Modelle. Technik- und Konzeptseiten weglassen. Eigene Anpassungen nur als einfache Liste, keine vergleichende Analyse.
+
+**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Vollständiger Funktionsumfang bis auf Food-Science-Synthese. [[qmd]] für Sammlungen ab ~80 Rezepten empfohlen.
+
+**Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Food-Science-Erklärungen und Substitutions-Analyse über die gesamte Sammlung.
+
 ## Ordnerstruktur
 
 ```

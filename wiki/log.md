@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-04-27 00:01] query | Modell-Tier-Sektion in alle Vorlagen eingebaut
+
+- Alle 4 Vorlagen um einheitliche `## Modell-Kompatibilität`-Sektion erweitert
+  - Tabelle: 7B / 30B / Cloud — welche Features funktionieren, welche nicht
+  - Klare Empfehlung je Tier mit Beispielmodellen
+- `vorlagen/claude-md-youtube-verlauf.md`: Workflow-Schritte 10–11 mit `*(Cloud)*` markiert
+- `vorlagen/claude-md-legacy-forensik.md`: 7B explizit als nicht empfohlen markiert
+- `vorlagen/claude-md-rezepte-ernaehrung.md`: 7B für Rezept-Extraktion als Sonderfall geeignet
+- `vorlagen/claude-md-software.md`: Neue Sektion vor bestehender Kontextbudget-Tabelle ergänzt
+
 ## [2026-04-27 00:00] query | Konzeptskizze multimodale Quellen erstellt
 
 - Neue Konzeptseite `konzepte/multimodale-quellen.md` angelegt (status: draft)

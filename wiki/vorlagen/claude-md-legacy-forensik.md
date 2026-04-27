@@ -57,6 +57,22 @@ Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [[li
 | 🔴 | Niedrig | Basiert auf veralteter Doku oder Einzelaussage |
 | ⚪ | Hypothese | Ableitung aus Indizien, noch ungeprüft |
 
+## Modell-Kompatibilität
+
+| Funktion | 7B | 30B | Cloud (Sonnet/Opus) |
+|---|---|---|---|
+| Modul-/Komponentenseiten | ⚠️ einfach | ✅ | ✅ |
+| Konfidenzmodell (🟢🟡🔴⚪) | ❌ | ⚠️ vereinfacht | ✅ |
+| Widerspruchsanalyse Code↔Doku | ❌ | ⚠️ | ✅ |
+| Spezialberichte (Risiko, Modernisierung) | ❌ | ❌ | ✅ |
+| Vollständige forensische Workflows | ❌ | ⚠️ mit qmd | ✅ |
+
+**7B**: Nicht empfohlen. Die CLAUDE.md ist zu komplex, und das Konfidenzmodell erfordert Urteilsvermögen, das 7B-Modelle nicht zuverlässig liefern. Erzwungene Nutzung produziert Befunde mit falschem Konfidenzniveau — gefährlicher als kein Wiki.
+
+**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). [[qmd]] und [[jdocmunch]] sind bei Enterprise-Codebases notwendige Infrastruktur, nicht optional.
+
+**Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Konfidenzmodell, Spezialberichte und Cross-Source-Synthese.
+
 ## Designhinweise
 
 Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:

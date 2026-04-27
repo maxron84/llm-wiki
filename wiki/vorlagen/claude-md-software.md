@@ -55,6 +55,22 @@ mein-projekt/
 
 **Wann Dokumentiert sinnvoll ist**: Wachsende Projekte, Teamarbeit, komplexe Domänen, wenn man sein eigenes Projekt nach 3 Monaten noch verstehen will.
 
+## Modell-Kompatibilität
+
+| Funktion | 7B | 30B | Cloud (Sonnet/Opus) |
+|---|---|---|---|
+| Modus Lean (nur CLAUDE.md) | ✅ | ✅ | ✅ |
+| Modus Dokumentiert (+ Wiki) | ❌ | ⚠️ mit qmd | ✅ |
+| ADRs, Architekturseiten | ❌ | ⚠️ | ✅ |
+| Cross-Referenz-Pflege im Wiki | ❌ | ⚠️ mit qmd | ✅ |
+| Komplexe CLAUDE.md (>150 Zeilen) | ❌ | ⚠️ | ✅ |
+
+**7B**: Nur Modus Lean. Die CLAUDE.md auf das Wesentliche kürzen (Projektstruktur, Konventionen, Testbefehl). Kein Wiki. Keine komplexen Mehrstufenworkflows.
+
+**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Modus Dokumentiert möglich, aber [[qmd]]/[[jdocmunch]] sind erforderlich sobald das Wiki wächst. Kontextfenster ist die Schranke — nicht die Modellkapazität.
+
+**Cloud** (Claude Sonnet/Opus, GPT-4o): Beide Modi vollständig nutzbar.
+
 ## Kontextbudget und lokale Modelle
 
 Das Wiki konkurriert mit dem Sourcecode um Token. Die ehrliche Rechnung:
