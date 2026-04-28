@@ -67,7 +67,7 @@ mein-projekt/
 
 **7B**: Nur Modus Lean. Die CLAUDE.md auf das Wesentliche kürzen (Projektstruktur, Konventionen, Testbefehl). Kein Wiki. Keine komplexen Mehrstufenworkflows.
 
-**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Modus Dokumentiert möglich, aber [[qmd]]/[[jdocmunch]] sind erforderlich sobald das Wiki wächst. Kontextfenster ist die Schranke — nicht die Modellkapazität.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Modus Dokumentiert gut nutzbar. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — das Kontextproblem ist damit deutlich entschärft. [[qmd]]/[[jdocmunch]] erst bei sehr großen Wikis nötig.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Beide Modi vollständig nutzbar.
 
@@ -78,7 +78,7 @@ Das Wiki konkurriert mit dem Sourcecode um Token. Die ehrliche Rechnung:
 | Modell | Kontextfenster | Code braucht | Wiki-Budget übrig |
 |---|---|---|---|
 | Claude Opus/Sonnet | 200K | ~50–100K | ~100K+ — kein Problem |
-| Lokales 30B, langes Fenster | 128K | ~30–50K | ~50K — geht |
+| Lokales 30B, langes Fenster | bis 256K (z.B. Qwen3.6) | ~30–50K | ~100K+ — kein Problem |
 | Lokales 30B, kurzes Fenster | 8–32K | ~10–20K | ~5–10K — **eng** |
 
 **Empfehlungen nach Modellgröße**:
@@ -86,7 +86,7 @@ Das Wiki konkurriert mit dem Sourcecode um Token. Die ehrliche Rechnung:
 | Situation | Empfehlung |
 |---|---|
 | Cloud-API (Claude, GPT-4) | Modus Dokumentiert problemlos nutzbar |
-| Lokales 30B + 128K Kontext | Dokumentiert möglich, aber `index.md` schlank halten |
+| Lokales 30B + 256K Kontext (z.B. Qwen3.6) | Dokumentiert problemlos nutzbar |
 | Lokales 30B + 8–32K Kontext | Modus Lean verwenden; oder Dokumentiert nur mit [[qmd]]/[[jdocmunch]] (lädt nur die relevante Wiki-Sektion) |
 | Lokales 7B | Nur Lean — Wiki-Pflege übersteigt die Modellkapazität |
 
@@ -373,7 +373,7 @@ Hauptinhalt.
 
 ---
 
-[Wiki-Index](wiki/index.md)
+[Wiki-Index](../index.md)
 ```
 
 ### Wiki-Regeln

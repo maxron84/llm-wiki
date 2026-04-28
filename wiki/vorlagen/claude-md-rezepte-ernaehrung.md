@@ -50,7 +50,7 @@ Das Grundproblem: Rezepte sammeln sich in Lesezeichen, Apps und Kochbüchern —
 
 **7B** (z.B. Llama 3.2 8B, Mistral 7B): Nur Rezeptseiten — strukturierte Extraktion von Zutaten, Mengen und Schritten liegt im Stärkebereich kleiner Modelle. Technik- und Konzeptseiten weglassen. Eigene Anpassungen nur als einfache Liste, keine vergleichende Analyse.
 
-**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Vollständiger Funktionsumfang bis auf Food-Science-Synthese. [[qmd]] für Sammlungen ab ~80 Rezepten empfohlen.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Vollständiger Funktionsumfang bis auf Food-Science-Synthese. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — [[qmd]] erst bei sehr großen Sammlungen nötig.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Food-Science-Erklärungen und Substitutions-Analyse über die gesamte Sammlung.
 

@@ -69,7 +69,7 @@ Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [[li
 
 **7B**: Nicht empfohlen. Die CLAUDE.md ist zu komplex, und das Konfidenzmodell erfordert Urteilsvermögen, das 7B-Modelle nicht zuverlässig liefern. Erzwungene Nutzung produziert Befunde mit falschem Konfidenzniveau — gefährlicher als kein Wiki.
 
-**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). [[qmd]] und [[jdocmunch]] sind bei Enterprise-Codebases notwendige Infrastruktur, nicht optional.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — bei sehr großen Codebases dennoch [[qmd]] und [[jdocmunch]] empfohlen.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Konfidenzmodell, Spezialberichte und Cross-Source-Synthese.
 

@@ -52,7 +52,7 @@ Das Grundproblem: Man schaut ein interessantes Video, nimmt etwas mit — und ei
 
 **7B** (z.B. Llama 3.2 8B, Mistral 7B): Nur Video-Zusammenfassungen. Workflow auf Schritte 1–5 kürzen. `betrachter.md` und Konzeptseiten entfernen. Die CLAUDE.md auf ~50 Zeilen reduzieren — zu viele konkurrierende Instruktionen überfordern das Modell.
 
-**30B** (z.B. Llama 3.3 70B, Qwen 2.5 72B): Schritte 1–9 des Workflows. `betrachter.md` weglassen. [[qmd]] für die Navigation ab ~50 Seiten erforderlich. Konzept- und Klassifikationsseiten funktionieren gut.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Schritte 1–9 des Workflows. `betrachter.md` weglassen. Moderne 30B-Modelle wie Qwen3.6 haben bis zu 256K Kontextfenster — [[qmd]] bleibt bei sehr großen Wikis nützlich, ist aber weniger dringend als bei älteren Modellen. Konzept- und Klassifikationsseiten funktionieren gut.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang. Alle 11 Schritte, `betrachter.md`, Vernetzung & Konsistenzpflege.
 

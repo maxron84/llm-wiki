@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-04-27 00:02] lint | Wiki-Gesundheitsprüfung + Vorlagen-Korrekturen
+
+Befunde:
+1. **Echter toter Link**: `vorlagen/claude-md-software.md` Footer `wiki/index.md` → korrigiert zu `../index.md`
+2. **Falsche Modell-Beispiele**: 30B-Tier verwendete 70B/72B-Modelle (Llama 3.3 70B, Qwen 2.5 72B) — in allen 4 Vorlagen ersetzt durch Qwen3.6:27b / Qwen3.6:35b (tatsächlich ~27–35B, 256K Kontext)
+3. **Kontextbudget-Tabelle** (Software-Vorlage): 128K → bis 256K (Qwen3.6) aktualisiert; Empfehlungstabelle angepasst
+
+Fehlalarme (keine Aktion nötig):
+- Alle Waisen/Fehlende-Index/Format-Warnungen: Lint-Skript erkennt `[[wiki-links]]` nicht als Links
+- `pfad.md`-Warnungen: Inline-Code-Beispiele in Backticks, keine echten Links
+
 ## [2026-04-27 00:01] query | Modell-Tier-Sektion in alle Vorlagen eingebaut
 
 - Alle 4 Vorlagen um einheitliche `## Modell-Kompatibilität`-Sektion erweitert
