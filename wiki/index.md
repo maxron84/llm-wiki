@@ -79,6 +79,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
 - [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
 - [[claude-md-rezepte-ernaehrung]] — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
+- [[claude-md-nachhilfe]] — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
 
 ## Log
 

@@ -273,6 +273,16 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-29 16:00] query | Vorlage Nachhilfe erstellt
+
+- `wiki/vorlagen/claude-md-nachhilfe.md` — neue Vorlage: KI als Fachlehrer, reaktiv, aufgabengetrieben
+  - Ein Fach pro Projekt, kein generierter Lehrplan
+  - Workflow: Material in raw/clippings → Claude erklärt → Lösung vollständig zeigen → Wiki dokumentieren
+  - Seitenformate: aufgaben/, konzepte/, fortschritt.md
+  - Keine Lösungsbeschränkung (bewusste Designentscheidung)
+  - Cloud-Modell empfohlen — einzige Option für Foto/Scan-Input (Vision)
+- `wiki/index.md` aktualisiert
+
 ---
 
 [Zurück zum Index](index.md)
