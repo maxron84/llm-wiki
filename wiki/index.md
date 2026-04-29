@@ -74,6 +74,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 ## Vorlagen
 
 - [[claude-md-software]] — CLAUDE.md-Vorlage für Software-Projekte (Lean oder Dokumentiert mit Projekt-Wiki)
+- [[claude-md-software-begleiter]] — CLAUDE.md-Vorlage: KI als Begleiter — Mensch schreibt Code, KI dokumentiert und reviewt
 - [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
 - [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
 - [[claude-md-rezepte-ernaehrung]] — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis

@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-04-29 00:00] query | Vorlage Software-Begleiter erstellt
+
+- Neue Vorlage `vorlagen/claude-md-software-begleiter.md` angelegt
+- Dritte eigenständige Software-Vorlage neben Lean/Dokumentiert
+- Kernkonzept: Mensch schreibt und besitzt Code vollständig — KI liest, dokumentiert, reviewt, tauscht Ideen aus
+- Enthält: Dokumentations-Workflow, Review-Workflow, Ideen-Workflow, ADR-Format,
+  Modul-Seitenformat, Ideen-Seitenformat, Modell-Kompatibilitäts-Tabelle
+- Zentrale unveränderliche Regel prominent platziert: „Du schreibst keinen Code"
+- `index.md` aktualisiert
+
 ## [2026-04-27 00:02] lint | Wiki-Gesundheitsprüfung + Vorlagen-Korrekturen
 
 Befunde:
