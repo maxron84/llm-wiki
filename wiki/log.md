@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-04-29 00:01] query | Vorlage KI-Lehrer erstellt
+
+- Neue Vorlage `vorlagen/claude-md-lehrer.md` angelegt
+- Variabel einsetzbar: CLAUDE.md definiert Lehrmethode (fest), Lehrplan wird beim ersten Start generiert (dynamisch)
+- Enthält: Aufnahme-Workflow (Phase 1, einmalig), Sitzungsstruktur (Phase 2, wiederholt),
+  Frustrations-Protokoll, Code-Regeln (Konzept-Beispiele erlaubt, Projektcode verboten),
+  Lehrplan-/Fortschritts-/Sitzungsformat, Modell-Kompatibilitäts-Tabelle
+- Zielgruppe: primär Kinder/Einsteiger, generell für jedes Lernprojekt einsetzbar
+- `index.md` aktualisiert
+
 ## [2026-04-29 00:00] query | Vorlage Software-Begleiter erstellt
 
 - Neue Vorlage `vorlagen/claude-md-software-begleiter.md` angelegt
