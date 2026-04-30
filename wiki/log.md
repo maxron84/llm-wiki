@@ -273,6 +273,15 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-30] lint | Vorlagen: [[wiki-links]] → Standard-Markdown
+
+- Alle 7 Vorlagen-Dateien: `[[wiki-links]]` durch Standard-Markdown-Links ersetzt
+- Außerhalb des Fences: Quellen, Verwandte Seiten, Designhinweise, Body-Referenzen
+- Innerhalb des Fences: Beispiel-Seitenformate, Workflow-Anweisungen, Regeln
+- Designhinweis 2 in allen Vorlagen: von "anpassen auf Markdown" zu "Standard ist Markdown"
+- Explizite Markdown-Link-Regel in alle CLAUDE.md-Templates eingebaut
+- Ziel: Vorlagen sind jetzt direkt im Browser/GitHub lesbar ohne Obsidian
+
 ## [2026-04-30] lint | Wiki-Prüfung
 
 - 3 Dead Links gemeldet (`pfad.md`) — alle Falsch-Positive: Syntaxbeispiele in Backtick-Code-Spans

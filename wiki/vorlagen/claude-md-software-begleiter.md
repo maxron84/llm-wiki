@@ -8,7 +8,7 @@ status: active
 # CLAUDE.md-Vorlage: Software-Begleiter
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Projekte, in denen der Mensch den Code allein schreibt und wartet — die KI übernimmt Dokumentation, Code-Review, Lint-Feedback und strukturierten Ideenaustausch, greift aber nie in den Code ein.
-**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[claude-md-design]] und [[claude-md-software]]
+**Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [claude-md-design](../konzepte/claude-md-design.md) und [claude-md-software](claude-md-software.md)
 **Zuletzt aktualisiert**: 2026-04-29
 
 ---
@@ -47,13 +47,13 @@ Das ist kein abgespeckter Modus der Software-Vorlage — es ist eine andere Grun
 
 **7B**: Nur einfache Dokumentation (Funktionslisten, Strukturbeschreibungen). Kein sinnvoller Ideenaustausch.
 
-**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Dokumentation und einfaches Code-Review funktionieren gut. Architektur-Diskussionen möglich, aber ohne tiefe Synthese. [[qmd]] für große Projekte empfohlen.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Dokumentation und einfaches Code-Review funktionieren gut. Architektur-Diskussionen möglich, aber ohne tiefe Synthese. [qmd](../werkzeuge/qmd.md) für große Projekte empfohlen.
 
 **Cloud** (Claude Sonnet/Opus): Voller Funktionsumfang — tiefes Code-Review, Architektur-Analyse, ADR-Destillation aus Gesprächen.
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts (siehe [[claude-md-design|Designprinzip 1]]).
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. Ersetze die `{{PLATZHALTER}}`
 3. Schreibe Code wie gewohnt
 4. Rufe die KI für Dokumentation, Review oder Ideenaustausch auf — nicht zum Coden
@@ -61,7 +61,7 @@ Das ist kein abgespeckter Modus der Software-Vorlage — es ist eine andere Grun
 ## Designhinweise
 
 1. **Die Kernregel ist unverhandelbar**: „Du schreibst keinen Code" muss explizit in der CLAUDE.md stehen. Ohne diese Regel gleitet die KI standardmäßig in den Coding-Modus — besonders wenn man Fragen stellt, die nach Code klingen.
-2. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [[claude-md-design|Designprinzip 1]]).
+2. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 3. **ADRs als Gesprächsoutput**: Wenn ein Architektur-Gespräch zu einer Entscheidung führt, sofort eine ADR-Seite anlegen lassen — bevor die Entscheidung im Alltag untergeht.
 4. **Regelmäßig reviewen**: Nach größeren Refactorings die CLAUDE.md und das Wiki auf Veraltetes prüfen.
 
@@ -172,8 +172,8 @@ Technische Schulden, fragile Stellen, bekannte Bugs.
 
 ## Verwandte Seiten
 
-- [[anderes-modul]]
-- [[entscheidung-die-das-beeinflusst]]
+- [anderes-modul](anderes-modul.md)
+- [entscheidung-die-das-beeinflusst](../entscheidungen/entscheidung-die-das-beeinflusst.md)
 ```
 
 ### ADR-Seite (`wiki/entscheidungen/YYYY-MM-DD-kurzname.md`)
@@ -214,7 +214,7 @@ Was ändert sich durch diese Entscheidung? Was wird schwieriger, was leichter?
 ```markdown
 # Idee: Kurztitel
 
-**Status**: Offen | In Diskussion | Verworfen | Umgesetzt als [[ADR]]
+**Status**: Offen | In Diskussion | Verworfen | Umgesetzt als [ADR](../entscheidungen/YYYY-MM-DD-kurzname.md)
 **Zuletzt aktualisiert**: YYYY-MM-DD
 
 ---
@@ -262,6 +262,7 @@ Wenn der Mensch das Wiki prüfen lässt:
 - Wenn eine Diskussion zu einer Entscheidung führt, lege sofort eine ADR an
 - Wenn du dir beim Kategorisieren unsicher bist, frage nach
 - Schreibe klar und direkt — der Ton ist kollegial, nicht formell
+- Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung
 
@@ -272,16 +273,16 @@ Wenn das Wiki wächst und `index.md` unhandlich wird:
 
 ## Verwandte Seiten
 
-- [[claude-md-software]] — Schwester-Vorlage (Lean/Dokumentiert) für KI-unterstütztes Coding
-- [[claude-md-design]] — 6 Designprinzipien, die beim Einsatz dieser Vorlage gelten
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
-- [[llm-wiki-muster]] — Das übergeordnete Wiki-Muster
-- [[kompilierungs-metapher]] — Sourcecode = Rohquelle; Wiki = kompiliertes Verständnis
-- [[kontaminierungsrisiko]] — Warum Quellenangaben in Modul-Seiten wichtig sind
-- [[skalierungsgrenzen]] — Wenn das Wiki mit dem Projekt wächst
-- [[qmd]] — Semantische Suche für große Projekt-Wikis
-- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Laden
-- [[claude-md-legacy-forensik]] — Verwandt: KI liest Code ohne ihn zu schreiben
+- [claude-md-software](claude-md-software.md) — Schwester-Vorlage (Lean/Dokumentiert) für KI-unterstütztes Coding
+- [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien, die beim Einsatz dieser Vorlage gelten
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Wiki-Muster
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) — Sourcecode = Rohquelle; Wiki = kompiliertes Verständnis
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) — Warum Quellenangaben in Modul-Seiten wichtig sind
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Wenn das Wiki mit dem Projekt wächst
+- [qmd](../werkzeuge/qmd.md) — Semantische Suche für große Projekt-Wikis
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Laden
+- [claude-md-legacy-forensik](claude-md-legacy-forensik.md) — Verwandt: KI liest Code ohne ihn zu schreiben
 
 ---
 

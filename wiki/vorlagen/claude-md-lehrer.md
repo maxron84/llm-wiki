@@ -8,7 +8,7 @@ status: active
 # CLAUDE.md-Vorlage: KI-Lehrer
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für einen KI-gestützten Lehrbegleiter — variabel einsetzbar für jedes Lernprojekt und jeden Schüler. Die KI generiert beim ersten Start einen maßgeschneiderten Lehrplan, lehrt Schritt für Schritt, und passt sich an Tempo und Frustrationsgrad an. Der Schüler schreibt eigenen Code — die KI zeigt Konzept-Beispiele, schreibt aber nie den Projektcode.
-**Quellen**: Abgeleitet aus [[claude-md-software-begleiter]], [[llm-wiki-muster]], [[drei-ebenen-architektur]] und [[claude-md-design]]
+**Quellen**: Abgeleitet aus [claude-md-software-begleiter](claude-md-software-begleiter.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
 **Zuletzt aktualisiert**: 2026-04-29
 
 ---
@@ -44,7 +44,7 @@ Kein allgemeiner Coding-Assistent. Die KI führt — sie hat ein Programm, weiß
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten als `CLAUDE.md` ins Wurzelverzeichnis des Lernprojekts (siehe [[claude-md-design|Designprinzip 1]]).
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten als `CLAUDE.md` ins Wurzelverzeichnis des Lernprojekts (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. Ersetze die `{{PLATZHALTER}}`
 3. Starte Claude und sage: „Wir fangen an"
 4. Claude führt das Aufnahmegespräch und generiert den Lehrplan
@@ -53,7 +53,7 @@ Der Lehrplan kann jederzeit angepasst werden — wenn der Schüler schneller ist
 
 ## Designhinweise
 
-1. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [[claude-md-design|Designprinzip 1]]).
+1. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. **Lehrplan im Wiki, nicht in CLAUDE.md**: Die CLAUDE.md enthält keine Lektionen — nur die Methode. Inhalt gehört in `wiki/lehrplan.md`.
 3. **Die Code-Regel ist keine Empfehlung**: „Du schreibst keinen Projektcode" muss explizit stehen — KI-Assistenten neigen dazu, Code zu produzieren sobald eine Aufgabe codeähnlich klingt.
 4. **Sitzungen enden immer mit Ergebnis**: Das ist keine Empfehlung, sondern eine strukturelle Regel — besonders für Kinder ist ein sichtbares Erfolgserlebnis am Ende jeder Session entscheidend für die Motivation.
@@ -220,6 +220,7 @@ Jede Sitzung folgt dieser Struktur:
 - Fortschritt nach jeder Sitzung aktualisieren
 - Lehrplan anpassen wenn Tempo dauerhaft nicht stimmt — lieber anpassen als quälen
 - Wenn du dir beim Tempo oder Inhalt unsicher bist, frage kurz nach
+- Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung
 
@@ -230,14 +231,14 @@ Wenn das Projekt wächst und `wiki/lehrplan.md` unübersichtlich wird:
 
 ## Verwandte Seiten
 
-- [[claude-md-software-begleiter]] — Schwester-Vorlage: KI als Begleiter für erfahrene Entwickler
-- [[claude-md-design]] — 6 Designprinzipien für CLAUDE.md-Dateien
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
-- [[llm-wiki-muster]] — Das übergeordnete Wiki-Muster
-- [[kompilierungs-metapher]] — Lektionen = Rohquellen; Fortschritt-Wiki = kompiliertes Verständnis
-- [[skalierungsgrenzen]] — Wenn Lehrplan und Sitzungsnotizen wachsen
-- [[qmd]] — Semantische Suche für größere Lernprojekte
-- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Laden
+- [claude-md-software-begleiter](claude-md-software-begleiter.md) — Schwester-Vorlage: KI als Begleiter für erfahrene Entwickler
+- [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien für CLAUDE.md-Dateien
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Wiki-Muster
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) — Lektionen = Rohquellen; Fortschritt-Wiki = kompiliertes Verständnis
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Wenn Lehrplan und Sitzungsnotizen wachsen
+- [qmd](../werkzeuge/qmd.md) — Semantische Suche für größere Lernprojekte
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Laden
 
 ---
 

@@ -8,7 +8,7 @@ status: active
 # CLAUDE.md-Vorlage: Nachhilfe
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für KI-gestützte Nachhilfe in einem Schulfach — reaktiv, aufgabengetrieben, ohne Lösungsbeschränkungen. Gedacht für Schüler bis Klasse 10, insbesondere im Fernunterricht ohne menschlichen Fachlehrer.
-**Quellen**: Abgeleitet aus [[claude-md-lehrer]], [[llm-wiki-muster]], [[drei-ebenen-architektur]] und [[claude-md-design]]
+**Quellen**: Abgeleitet aus [claude-md-lehrer](claude-md-lehrer.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
 **Zuletzt aktualisiert**: 2026-04-29
 
 ---
@@ -27,7 +27,7 @@ Ein Projekt pro Fach. Kein generierter Lehrplan — der Lehrplan ergibt sich aus
 
 ## Was diese Vorlage nicht ist
 
-Kein proaktiver Kursleiter wie [[claude-md-lehrer]]. Die KI wartet auf Material — sie generiert keinen eigenen Unterrichtsplan und lehrt nicht auf Vorrat.
+Kein proaktiver Kursleiter wie [claude-md-lehrer](claude-md-lehrer.md). Die KI wartet auf Material — sie generiert keinen eigenen Unterrichtsplan und lehrt nicht auf Vorrat.
 
 ## Modell-Kompatibilität
 
@@ -47,14 +47,14 @@ Kein proaktiver Kursleiter wie [[claude-md-lehrer]]. Die KI wartet auf Material 
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten als `CLAUDE.md` ins Wurzelverzeichnis des Fach-Projekts (siehe [[claude-md-design|Designprinzip 1]]).
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten als `CLAUDE.md` ins Wurzelverzeichnis des Fach-Projekts (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. Ersetze die `{{PLATZHALTER}}`
 3. Lege Aufgabenmaterial in `raw/` (Fotos, Scans) oder `clippings/` (Webseiten)
 4. Sage Claude: „Neue Aufgabe" — und zeige oder benenne das Material
 
 ## Designhinweise
 
-1. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [[claude-md-design|Designprinzip 1]]).
+1. **Fence entfernen**: Beim Kopieren den 4-Backtick-Wrapper entfernen (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. **Ein Fach pro Projekt**: Nicht mehrere Fächer in einem Projekt mischen — der Kontext verwässert sonst.
 3. **Fotos und Scans brauchen Cloud**: Bildmaterial als Input ist nur mit Vision-fähigen Modellen möglich (Claude Sonnet/Opus). Bei 30B auf reine Textbeschreibung ausweichen.
 4. **Keine Lösungsbeschränkung**: Die Vorlage enthält bewusst keine Einschränkung beim Zeigen von Lösungen — ein Schüler mit Internetzugang hat jederzeit Zugang dazu, eine KI-seitige Sperre wäre wirkungslos.
@@ -187,7 +187,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 
 ## Verwandte Aufgaben
 
-- [[YYYY-MM-DD-thema]]
+- [YYYY-MM-DD-thema](../aufgaben/YYYY-MM-DD-thema.md)
 ```
 
 ### Fortschritt (`wiki/fortschritt.md`)
@@ -220,6 +220,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 - Nach jeder Aufgabe `wiki/aufgaben/` und `wiki/fortschritt.md` aktualisieren
 - Konzeptseite anlegen oder aktualisieren wenn ein Thema neu auftaucht
 - Wenn Bildmaterial nicht lesbar ist, nachfragen — nie raten
+- Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung
 
@@ -230,14 +231,14 @@ Wenn das Wiki wächst und die Suche über viele Aufgaben- und Konzeptseiten nöt
 
 ## Verwandte Seiten
 
-- [[claude-md-lehrer]] — Schwester-Vorlage: proaktiver KI-Lehrer mit generiertem Lehrplan (Coding-Projekte)
-- [[claude-md-design]] — 6 Designprinzipien für CLAUDE.md-Dateien
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
-- [[llm-wiki-muster]] — Das übergeordnete Wiki-Muster
-- [[multimodale-quellen]] — Fotos und Scans als Quellen: offene Fragen zur Speicherung
-- [[skalierungsgrenzen]] — Wenn Aufgaben- und Konzeptseiten wachsen
-- [[qmd]] — Semantische Suche für größere Lernprojekte
-- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Laden
+- [claude-md-lehrer](claude-md-lehrer.md) — Schwester-Vorlage: proaktiver KI-Lehrer mit generiertem Lehrplan (Coding-Projekte)
+- [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien für CLAUDE.md-Dateien
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Wiki-Muster
+- [multimodale-quellen](../konzepte/multimodale-quellen.md) — Fotos und Scans als Quellen: offene Fragen zur Speicherung
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Wenn Aufgaben- und Konzeptseiten wachsen
+- [qmd](../werkzeuge/qmd.md) — Semantische Suche für größere Lernprojekte
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Laden
 
 ---
 

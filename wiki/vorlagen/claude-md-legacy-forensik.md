@@ -8,20 +8,20 @@ status: active
 # CLAUDE.md-Vorlage: Legacy-Codebase-Forensik
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für die forensische Untersuchung von Legacy-Codebases und deren Dokumentation — archäologisch, methodisch, quellenbasiert, auf Enterprise-Niveau.
-**Quellen**: Abgeleitet aus dem Wissen über [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[ingest-workflow]] und [[lint-pruefung]]
+**Quellen**: Abgeleitet aus dem Wissen über [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md) und [lint-pruefung](../konzepte/lint-pruefung.md)
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
 ## Zweck
 
-Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] — das **Schema** — für einen Spezialfall: die systematische Untersuchung bestehender, oft schlecht dokumentierter Software-Systeme. Sie kombiniert das LLM-Wiki-Muster mit forensischer Methodik.
+Diese Vorlage implementiert die dritte Ebene der [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — das **Schema** — für einen Spezialfall: die systematische Untersuchung bestehender, oft schlecht dokumentierter Software-Systeme. Sie kombiniert das LLM-Wiki-Muster mit forensischer Methodik.
 
 Der Grundgedanke: Legacy-Code zu verstehen ist wie Archäologie — du gräbst Schicht für Schicht frei, datierst Funde, stellst Hypothesen auf und versuchst sie zu widerlegen.
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Untersuchungsprojekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [[claude-md-design|Designprinzip 1]]).
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Untersuchungsprojekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen, damit Claude ihn als operative Anweisung liest (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. Ersetze die `{{PLATZHALTER}}` im Header
 3. Lege die Quellen in die vorgesehenen Ordner: `raw/` (manuell abgelegte Exporte) und/oder `clippings/` (Web-Clipper-Exporte von Confluence, Wikis, Webseiten)
 4. Starte Claude Code und sage: „Es gibt neue Quellen — bitte analysiere sie"
@@ -40,7 +40,7 @@ Der Grundgedanke: Legacy-Code zu verstehen ist wie Archäologie — du gräbst S
 
 ## Enthaltene Workflows
 
-- **Quellen-Aufnahme** — Klassifizierung und Konfidenz-Bewertung (erweitert den [[ingest-workflow]])
+- **Quellen-Aufnahme** — Klassifizierung und Konfidenz-Bewertung (erweitert den [ingest-workflow](../konzepte/ingest-workflow.md))
 - **Code-Forensik** — Top-Down-Analyse, Datenflüsse, Dead Code, archäologische Schichten
 - **Doku-Forensik** — Datierung, Gültigkeitsstatus, implizites Wissen, Glossar
 - **DB-Analyse** — Entitäten, implizite Beziehungen, historische Schichten
@@ -48,7 +48,7 @@ Der Grundgedanke: Legacy-Code zu verstehen ist wie Archäologie — du gräbst S
 
 ## Das Konfidenzmodell
 
-Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [[lint-pruefung]], aber um eine Hypothesen-Ebene erweitert:
+Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [lint-pruefung](../konzepte/lint-pruefung.md), aber um eine Hypothesen-Ebene erweitert:
 
 | Symbol | Niveau | Bedeutung |
 |---|---|---|
@@ -69,20 +69,20 @@ Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [[li
 
 **7B**: Nicht empfohlen. Die CLAUDE.md ist zu komplex, und das Konfidenzmodell erfordert Urteilsvermögen, das 7B-Modelle nicht zuverlässig liefern. Erzwungene Nutzung produziert Befunde mit falschem Konfidenzniveau — gefährlicher als kein Wiki.
 
-**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — bei sehr großen Codebases dennoch [[qmd]] und [[jdocmunch]] empfohlen.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — bei sehr großen Codebases dennoch [qmd](../werkzeuge/qmd.md) und [jdocmunch](../werkzeuge/jdocmunch.md) empfohlen.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Konfidenzmodell, Spezialberichte und Cross-Source-Synthese.
 
 ## Designhinweise
 
-Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:
+Beim Einsatz dieser Vorlage die [CLAUDE.md-Designprinzipien](../konzepte/claude-md-design.md) beachten:
 
 1. **Fence entfernen**: Der Vorlageninhalt unten steht in einem 4-Backtick-Fence. Beim Kopieren in ein Untersuchungsprojekt **den Fence-Wrapper entfernen** — sonst liest Claude die forensischen Regeln als Illustration statt als operative Anweisungen.
-2. **Link-Stil anpassen**: Die Vorlage nutzt `[[wiki-links]]`. Falls das Untersuchungs-Wiki Standard-Markdown `[text](pfad.md)` verwenden soll, durchgehend anpassen — Inkonsistenz führt zur [[kontaminierungsrisiko|Kontamination]] der Befundseiten.
-3. **Frontmatter-Entscheidung**: Die Vorlage zeigt kein Frontmatter im Seitenformat. Wer [[yaml-frontmatter]] für strukturierte Abfragen nutzen will (z.B. mit [[dataview]]), muss es im Seitenformat ergänzen — aber dann durchgehend.
+2. **Link-Stil**: Die Vorlage verwendet Standard-Markdown-Links `[text](pfad.md)`. Falls du Obsidian-`[[wiki-links]]` bevorzugst, durchgehend anpassen — Konsistenz zwischen CLAUDE.md und Befundseiten ist entscheidend ([Kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)).
+3. **Frontmatter-Entscheidung**: Die Vorlage zeigt kein Frontmatter im Seitenformat. Wer [yaml-frontmatter](../konzepte/yaml-frontmatter.md) für strukturierte Abfragen nutzen will (z.B. mit [dataview](../werkzeuge/dataview.md)), muss es im Seitenformat ergänzen — aber dann durchgehend.
 4. **Keine toten Links**: Die `{{PLATZHALTER}}` im Header müssen alle ausgefüllt oder entfernt werden. Unbelegte Referenzen im Forensik-Kontext sind besonders gefährlich, weil sie als ⚪-Befunde missverstanden werden können.
 5. **Regelmäßig reviewen**: Bei forensischen Untersuchungen wächst das Wiki schnell. Nach ~10 aufgenommenen Quellen die CLAUDE.md auf neue Muster prüfen.
-6. **Klassifikation ergänzen** (optional): Für Befundseiten mit stark unterschiedlicher zeitlicher Relevanz kann das [[seitenklassifikation|Klassifikations-System]] als zweite Dimension neben dem Konfidenzmodell ergänzt werden — Zeitlos für Architekturprinzipien, Zeitgenössisch für spezifische Versionsnummern oder aktuelle Risikobewertungen.
+6. **Klassifikation ergänzen** (optional): Für Befundseiten mit stark unterschiedlicher zeitlicher Relevanz kann das [Klassifikations-System](../konzepte/seitenklassifikation.md) als zweite Dimension neben dem Konfidenzmodell ergänzt werden — Zeitlos für Architekturprinzipien, Zeitgenössisch für spezifische Versionsnummern oder aktuelle Risikobewertungen.
 
 ## Vorlage
 
@@ -225,8 +225,8 @@ Nummerierte Liste konkreter Befunde mit Quellenangabe.
 
 ## Verwandte Seiten
 
-- [[verwandtes-modul]]
-- [[verwandte-schnittstelle]]
+- [verwandtes-modul](verwandtes-modul.md)
+- [verwandte-schnittstelle](verwandte-schnittstelle.md)
 
 ---
 
@@ -351,20 +351,20 @@ Beide lassen sich als MCP-Server in Claude Code integrieren.
 
 ## Verwandte Seiten
 
-- [[claude-md-design]] — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
-- [[ingest-workflow]] — Der Aufnahme-Workflow, hier um Konfidenz erweitert
-- [[lint-pruefung]] — Inspirierte das Konfidenzmodell
-- [[claude-code]] — Der Agent, der mit dieser Vorlage gesteuert wird
-- [[llm-wiki-muster]] — Das übergeordnete Konzept
-- [[kontaminierungsrisiko]] — Warum Spot-Checking forensischer Befunde Pflicht ist
-- [[query-templates]] — Die 6 Abfragetypen, hier als Forensik-Analysetypen eingebaut
-- [[skalierungsgrenzen]] — Wenn das Analyse-Wiki zu groß für den Kontext wird
-- [[qmd]] — Lokale Suchmaschine für große Analyse-Wikis
-- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
-- [[seitenklassifikation]] — Optional ergänzbar als zweite Dimension neben dem Konfidenzmodell
-- [[claude-md-software]] — Schwester-Vorlage für allgemeine Software-Projekte
-- [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
+- [claude-md-design](../konzepte/claude-md-design.md) — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
+- [ingest-workflow](../konzepte/ingest-workflow.md) — Der Aufnahme-Workflow, hier um Konfidenz erweitert
+- [lint-pruefung](../konzepte/lint-pruefung.md) — Inspirierte das Konfidenzmodell
+- [claude-code](../werkzeuge/claude-code.md) — Der Agent, der mit dieser Vorlage gesteuert wird
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Konzept
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) — Warum Spot-Checking forensischer Befunde Pflicht ist
+- [query-templates](../konzepte/query-templates.md) — Die 6 Abfragetypen, hier als Forensik-Analysetypen eingebaut
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Wenn das Analyse-Wiki zu groß für den Kontext wird
+- [qmd](../werkzeuge/qmd.md) — Lokale Suchmaschine für große Analyse-Wikis
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
+- [seitenklassifikation](../konzepte/seitenklassifikation.md) — Optional ergänzbar als zweite Dimension neben dem Konfidenzmodell
+- [claude-md-software](claude-md-software.md) — Schwester-Vorlage für allgemeine Software-Projekte
+- [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
 
 ---
 

@@ -8,20 +8,20 @@ status: active
 # CLAUDE.md-Vorlage: Rezepte- und Ernährungs-Wiki
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein persönliches Wissenswiki über Kochen und Ernährung — vernetzt Rezepte, Zutaten, Techniken, Küchen und Ernährungskonzepte zu einer dauerhaft abfragbaren Wissensbasis.
-**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[ingest-workflow]], [[query-templates]], [[kompilierungs-metapher]] und [[claude-md-design]]
+**Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md), [query-templates](../konzepte/query-templates.md), [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) und [claude-md-design](../konzepte/claude-md-design.md)
 **Zuletzt aktualisiert**: 2026-04-24
 
 ---
 
 ## Zweck
 
-Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] — das **Schema** — für ein spezifisches Quellmaterial: Rezepte, Kochbücher, Food-Science-Artikel und eigene Küchenexperimente.
+Diese Vorlage implementiert die dritte Ebene der [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — das **Schema** — für ein spezifisches Quellmaterial: Rezepte, Kochbücher, Food-Science-Artikel und eigene Küchenexperimente.
 
 Das Grundproblem: Rezepte sammeln sich in Lesezeichen, Apps und Kochbüchern — aber das Wissen bleibt isoliert. Warum funktioniert diese Technik? Was haben diese drei Rezepte gemeinsam? Welche Zutaten kann man womit ersetzen? Das Wiki beantwortet diese Fragen, weil es Wissen **beim Ingest vernetzt** statt bei jeder Frage neu zu suchen.
 
 ## Benutzung
 
-1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ```````` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen (siehe [[claude-md-design|Designprinzip 1]]).
+1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ```````` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 2. Ersetze die `{{PLATZHALTER}}`
 3. Lege geclippte Rezepte, Kochbuch-Notizen oder eigene Aufzeichnungen in `raw/` bzw. `clippings/` ab
 4. Sage Claude: „Es gibt neue Quellen — bitte verarbeite sie"
@@ -50,7 +50,7 @@ Das Grundproblem: Rezepte sammeln sich in Lesezeichen, Apps und Kochbüchern —
 
 **7B** (z.B. Llama 3.2 8B, Mistral 7B): Nur Rezeptseiten — strukturierte Extraktion von Zutaten, Mengen und Schritten liegt im Stärkebereich kleiner Modelle. Technik- und Konzeptseiten weglassen. Eigene Anpassungen nur als einfache Liste, keine vergleichende Analyse.
 
-**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Vollständiger Funktionsumfang bis auf Food-Science-Synthese. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — [[qmd]] erst bei sehr großen Sammlungen nötig.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Vollständiger Funktionsumfang bis auf Food-Science-Synthese. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — [qmd](../werkzeuge/qmd.md) erst bei sehr großen Sammlungen nötig.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Food-Science-Erklärungen und Substitutions-Analyse über die gesamte Sammlung.
 
@@ -77,11 +77,11 @@ wiki/                     -- Von Claude gepflegtes Wiki
 
 ## Designhinweise
 
-Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:
+Beim Einsatz dieser Vorlage die [CLAUDE.md-Designprinzipien](../konzepte/claude-md-design.md) beachten:
 
 1. **Fence entfernen**: Beim Kopieren in ein neues Projekt den 4-Backtick-Wrapper entfernen — nur den Inhalt als direkte Prosa ins Projekt-Root kopieren.
 2. **Diät-Flags konsistent halten**: Eine geschlossene Liste erlaubter Werte für `diät`-Tags definieren und nie davon abweichen — sonst funktionieren Dataview-Abfragen nicht.
-3. **Frontmatter-Entscheidung**: Die Vorlage nutzt [[yaml-frontmatter]] für Rezeptseiten. Wenn Dataview nicht genutzt wird, kann Frontmatter vereinfacht werden — aber konsistent bleiben.
+3. **Frontmatter-Entscheidung**: Die Vorlage nutzt [yaml-frontmatter](../konzepte/yaml-frontmatter.md) für Rezeptseiten. Wenn Dataview nicht genutzt wird, kann Frontmatter vereinfacht werden — aber konsistent bleiben.
 4. **Keine toten Links**: Alle `{{PLATZHALTER}}` müssen ausgefüllt oder entfernt werden.
 5. **Regelmäßig reviewen**: Nach ~30 aufgenommenen Rezepten die CLAUDE.md auf neue Muster prüfen (z.B. neue Quelltypen oder Küchen, die eigene Extraktionsstrategien brauchen).
 
@@ -137,7 +137,7 @@ Wenn neue Quellen in `raw/` oder `clippings/` hinzugefügt werden:
 4. **Erstelle die Rezeptseite** in `wiki/rezepte/` (Format siehe unten)
 5. **Erstelle oder aktualisiere** Technik-, Zutaten- und Konzeptseiten
 6. **Erstelle oder aktualisiere Küchenübersicht** in `wiki/kuechen/` (falls neue Küche)
-7. **Verknüpfe** mit `[[wiki-links]]` (Techniken, Zutaten, verwandte Rezepte)
+7. **Verknüpfe** mit Standard-Markdown-Links (Techniken, Zutaten, verwandte Rezepte): `[Seitenname](../kategorie/seitenname.md)`
 8. **Aktualisiere** `wiki/index.md` und `wiki/log.md`
 
 ## Extraktionsstrategien nach Quelltyp
@@ -170,7 +170,7 @@ saison: [{{z.B. Frühling, Sommer, Herbst, Winter, ganzjährig}}]
 # Rezeptname
 
 **Zusammenfassung**: Ein bis zwei Sätze — was ist das Besondere an diesem Rezept?
-**Quelle**: [[kanalname]] / (Quelle: clippings/dateiname.md)
+**Quelle**: [kanalname](../personen/kanalname.md) / (Quelle: clippings/dateiname.md)
 **Zuletzt aktualisiert**: YYYY-MM-DD
 
 ---
@@ -198,11 +198,11 @@ Kurze Food-Science-Erklärung: Warum ergibt diese Kombination/Technik das Ergebn
 
 ## Verwandte Techniken
 
-- [[technik-name]] — wie sie in diesem Rezept vorkommt
+- [technik-name](../techniken/technik-name.md) — wie sie in diesem Rezept vorkommt
 
 ## Verwandte Rezepte
 
-- [[anderes-rezept]] — warum verwandt (gleiche Technik, ähnliche Zutaten, selbe Küche)
+- [anderes-rezept](anderes-rezept.md) — warum verwandt (gleiche Technik, ähnliche Zutaten, selbe Küche)
 ```
 
 ### Technik-Seite (`wiki/techniken/technikname.md`)
@@ -238,8 +238,8 @@ In welchen Situationen bringt diese Technik den größten Vorteil?
 
 ## Rezepte, die diese Technik nutzen
 
-- [[rezept-1]]
-- [[rezept-2]]
+- [rezept-1](../rezepte/rezept-1.md)
+- [rezept-2](../rezepte/rezept-2.md)
 ```
 
 ### Zutaten-Seite (`wiki/zutaten/zutatname.md`)
@@ -276,7 +276,7 @@ Wann verfügbar, wie lagern.
 
 ## Rezepte mit dieser Zutat
 
-- [[rezept-1]]
+- [rezept-1](../rezepte/rezept-1.md)
 ```
 
 ## Fragenbeantwortung
@@ -331,18 +331,18 @@ Wenn das Wiki über ~100 Rezeptseiten wächst und `index.md` unhandlich wird:
 
 ## Verwandte Seiten
 
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema)
-- [[claude-md-design]] — 6 Designprinzipien, die beim Einsatz dieser Vorlage gelten
-- [[kompilierungs-metapher]] — Rezepte = Quellcode; Wiki = kompiliertes Binary
-- [[ingest-workflow]] — Basis des Aufnahme-Workflows
-- [[query-templates]] — Die 6 Abfragetypen, hier auf Kochthemen angewendet
-- [[kontaminierungsrisiko]] — Warum Quellenangaben bei Ernährungsbehauptungen Pflicht sind
-- [[skalierungsgrenzen]] — Was tun wenn das Wiki mit dem Rezeptarchiv wächst
-- [[qmd]] — Skalierungslösung für große Rezepte-Wikis
-- [[jdocmunch]] — Sektionsbasierter Zugriff als Alternative zu vollem Laden
-- [[yaml-frontmatter]] — Basis für Diät-Flags und Dataview-Abfragen
-- [[claude-md-software]] — Schwester-Vorlage für Software-Projekte
-- [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
+- [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien, die beim Einsatz dieser Vorlage gelten
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) — Rezepte = Quellcode; Wiki = kompiliertes Binary
+- [ingest-workflow](../konzepte/ingest-workflow.md) — Basis des Aufnahme-Workflows
+- [query-templates](../konzepte/query-templates.md) — Die 6 Abfragetypen, hier auf Kochthemen angewendet
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) — Warum Quellenangaben bei Ernährungsbehauptungen Pflicht sind
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Was tun wenn das Wiki mit dem Rezeptarchiv wächst
+- [qmd](../werkzeuge/qmd.md) — Skalierungslösung für große Rezepte-Wikis
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Laden
+- [yaml-frontmatter](../konzepte/yaml-frontmatter.md) — Basis für Diät-Flags und Dataview-Abfragen
+- [claude-md-software](claude-md-software.md) — Schwester-Vorlage für Software-Projekte
+- [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf
 
 ---
 

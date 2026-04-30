@@ -8,14 +8,14 @@ status: active
 # CLAUDE.md-Vorlage: Software-Projekte
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Software-Projekte in zwei Modi: **Lean** (reines Coding-Tool) und **Dokumentiert** (Coding + fortlaufendes Projekt-Wiki nach dem LLM-Wiki-Muster).
-**Quellen**: Abgeleitet aus [[llm-wiki-muster]], [[drei-ebenen-architektur]], [[claude-code]], [[claude-md-design]] und [[skalierungsgrenzen]]
+**Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [claude-code](../werkzeuge/claude-code.md), [claude-md-design](../konzepte/claude-md-design.md) und [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
 **Zuletzt aktualisiert**: 2026-04-25
 
 ---
 
 ## Zweck
 
-Diese Vorlage implementiert die dritte Ebene der [[drei-ebenen-architektur]] — das **Schema** — für Software-Projekte. Sie definiert, wie [[claude-code|Claude Code]] mit einer Codebase interagieren soll.
+Diese Vorlage implementiert die dritte Ebene der [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — das **Schema** — für Software-Projekte. Sie definiert, wie [Claude Code](../werkzeuge/claude-code.md) mit einer Codebase interagieren soll.
 
 **Konzeptioneller Unterschied zu den anderen Vorlagen**: Die YouTube-Verlauf-, Rezepte- und Forensik-Vorlagen sind reine *Wissens-Wikis* — der gesamte Kontext ist das Wiki. In einem Software-Projekt konkurriert ein optionales Wiki mit dem **Sourcecode** um das Token-Budget. Deshalb bietet diese Vorlage zwei Modi.
 
@@ -37,7 +37,7 @@ mein-projekt/
 
 ### Modus "Dokumentiert"
 
-CLAUDE.md + ein `wiki/`-Verzeichnis, in dem Claude parallel zum Coding eine fortlaufende Projektdokumentation aufbaut. Folgt dem [[llm-wiki-muster]] — der Sourcecode ist die "Rohquelle", das Wiki das "kompilierte" Verständnis (siehe [[kompilierungs-metapher]]).
+CLAUDE.md + ein `wiki/`-Verzeichnis, in dem Claude parallel zum Coding eine fortlaufende Projektdokumentation aufbaut. Folgt dem [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — der Sourcecode ist die "Rohquelle", das Wiki das "kompilierte" Verständnis (siehe [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md)).
 
 ```
 mein-projekt/
@@ -67,7 +67,7 @@ mein-projekt/
 
 **7B**: Nur Modus Lean. Die CLAUDE.md auf das Wesentliche kürzen (Projektstruktur, Konventionen, Testbefehl). Kein Wiki. Keine komplexen Mehrstufenworkflows.
 
-**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Modus Dokumentiert gut nutzbar. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — das Kontextproblem ist damit deutlich entschärft. [[qmd]]/[[jdocmunch]] erst bei sehr großen Wikis nötig.
+**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Modus Dokumentiert gut nutzbar. Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — das Kontextproblem ist damit deutlich entschärft. [qmd](../werkzeuge/qmd.md)/[jdocmunch](../werkzeuge/jdocmunch.md) erst bei sehr großen Wikis nötig.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Beide Modi vollständig nutzbar.
 
@@ -87,15 +87,15 @@ Das Wiki konkurriert mit dem Sourcecode um Token. Die ehrliche Rechnung:
 |---|---|
 | Cloud-API (Claude, GPT-4) | Modus Dokumentiert problemlos nutzbar |
 | Lokales 30B + 256K Kontext (z.B. Qwen3.6) | Dokumentiert problemlos nutzbar |
-| Lokales 30B + 8–32K Kontext | Modus Lean verwenden; oder Dokumentiert nur mit [[qmd]]/[[jdocmunch]] (lädt nur die relevante Wiki-Sektion) |
+| Lokales 30B + 8–32K Kontext | Modus Lean verwenden; oder Dokumentiert nur mit [qmd](../werkzeuge/qmd.md)/[jdocmunch](../werkzeuge/jdocmunch.md) (lädt nur die relevante Wiki-Sektion) |
 | Lokales 7B | Nur Lean — Wiki-Pflege übersteigt die Modellkapazität |
 
-Siehe auch [[skalierungsgrenzen]] für die allgemeinen Schwellenwerte.
+Siehe auch [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) für die allgemeinen Schwellenwerte.
 
 ## Benutzung
 
 1. **Modus wählen**: Lean oder Dokumentiert. Im Zweifel mit Lean starten — man kann jederzeit upgraden.
-2. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen (siehe [[claude-md-design|Designprinzip 1]]).
+2. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne die ` ```` ` Fence-Markierungen) als `CLAUDE.md` ins Wurzelverzeichnis deines Projekts. Der 4-Backtick-Fence dient hier nur als Darstellung — in deinem Projekt muss der Inhalt als direkter Top-Level-Markdown stehen (siehe [Designprinzip 1](../konzepte/claude-md-design.md)).
 3. Ersetze alle `{{PLATZHALTER}}` durch die tatsächlichen Werte
 4. **Für Lean**: Lösche den gesamten Abschnitt "Projekt-Wiki" aus der kopierten CLAUDE.md
 5. **Für Dokumentiert**: Behalte den Wiki-Abschnitt und passe ihn an
@@ -121,14 +121,14 @@ Siehe auch [[skalierungsgrenzen]] für die allgemeinen Schwellenwerte.
 
 ## Designhinweise
 
-Beim Einsatz dieser Vorlage die [[claude-md-design|CLAUDE.md-Designprinzipien]] beachten:
+Beim Einsatz dieser Vorlage die [CLAUDE.md-Designprinzipien](../konzepte/claude-md-design.md) beachten:
 
 1. **Fence entfernen**: Der Vorlageninhalt unten steht in einem 4-Backtick-Fence — das ist korrekt für diese Referenzseite. Beim Kopieren in ein Projekt **muss der Fence-Wrapper entfernt werden**, sonst liest Claude die Regeln als Illustration statt als Anweisungen.
-2. **Link-Stil anpassen**: Die Vorlage verwendet `[[wiki-links]]`. Wenn dein Projekt Standard-Markdown-Links `[text](pfad.md)` nutzt, durchgehend ersetzen — Inkonsistenz zwischen CLAUDE.md und Output führt zur [[kontaminierungsrisiko|Kontamination]].
-3. **Frontmatter-Entscheidung**: Die Vorlage enthält kein [[yaml-frontmatter|Frontmatter]] in den Seitenformat-Beispielen. Falls dein Projekt Frontmatter nutzt, ergänze es — aber nur wenn *alle* Seiten es haben.
+2. **Link-Stil**: Die Vorlage verwendet Standard-Markdown-Links `[text](pfad.md)`. Falls du Obsidian-`[[wiki-links]]` bevorzugst, durchgehend anpassen — Konsistenz zwischen CLAUDE.md und Output ist entscheidend ([Kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)).
+3. **Frontmatter-Entscheidung**: Die Vorlage enthält kein [Frontmatter](../konzepte/yaml-frontmatter.md) in den Seitenformat-Beispielen. Falls dein Projekt Frontmatter nutzt, ergänze es — aber nur wenn *alle* Seiten es haben.
 4. **Keine toten Links**: Entferne alle `{{PLATZHALTER}}`-Referenzen, die du nicht ausfüllst, statt sie stehenzulassen.
 5. **Regelmäßig reviewen**: Die CLAUDE.md altert mit dem Projekt. Nach ~5 neuen Patterns lohnt sich ein Durchgang.
-6. **Klassifikation im Dokumentiert-Modus** (optional): Für ADR- und Modulseiten kann das [[seitenklassifikation|Klassifikations-System]] nützlich sein — Zeitlos für stabile Architekturentscheidungen, Zeitgenössisch für versionsspezifische Befunde.
+6. **Klassifikation im Dokumentiert-Modus** (optional): Für ADR- und Modulseiten kann das [Klassifikations-System](../konzepte/seitenklassifikation.md) nützlich sein — Zeitlos für stabile Architekturentscheidungen, Zeitgenössisch für versionsspezifische Befunde.
 
 ## Designentscheidungen
 
@@ -369,7 +369,7 @@ Hauptinhalt.
 
 ## Verwandte Seiten
 
-- [[verwandte-seite]]
+- [verwandte-seite](verwandte-seite.md)
 
 ---
 
@@ -380,7 +380,7 @@ Hauptinhalt.
 
 - Aktualisiere `wiki/index.md` und `wiki/log.md` nach jeder Wiki-Änderung
 - Wiki-Seiten beschreiben das **Warum** und die **Zusammenhänge** — der Code selbst zeigt das Was
-- Verlinke Wiki-Seiten untereinander mit `[[wiki-links]]`
+- Verlinke Wiki-Seiten untereinander mit Standard-Markdown-Links `[text](pfad.md)`
 - Wenn eine Wiki-Seite durch Code-Änderungen veraltet, aktualisiere sie oder markiere sie als `(veraltet — prüfen)`
 - Seitennamen in Kleinbuchstaben mit Bindestrichen
 
@@ -396,19 +396,19 @@ Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
 
 ## Verwandte Seiten
 
-- [[claude-md-design]] — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
-- [[drei-ebenen-architektur]] — Die Vorlage implementiert Ebene 3 (Schema); Modus Dokumentiert nutzt alle 3 Ebenen
-- [[kompilierungs-metapher]] — Im Modus Dokumentiert: Sourcecode = Quellcode, Wiki = kompiliertes Verständnis
-- [[skalierungsgrenzen]] — Kontextbudget-Grenzen, besonders relevant für lokale Modelle
-- [[claude-code]] — Der Agent, der mit dieser Vorlage gesteuert wird
-- [[llm-wiki-muster]] — Das übergeordnete Konzept (Modus Dokumentiert folgt diesem Muster)
-- [[kontaminierungsrisiko]] — Warum Link-Stil-Konsistenz wichtig ist
-- [[qmd]] — Skalierungslösung: semantische Suche über Wiki-Seiten
-- [[jdocmunch]] — Skalierungslösung: nur relevante Sektionen laden
-- [[seitenklassifikation]] — Optional im Dokumentiert-Modus für ADRs und Modulseiten
-- [[claude-md-legacy-forensik]] — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
-- [[claude-md-youtube-verlauf]] — Schwester-Vorlage für YouTube-Verlauf-Wikis
-- [[claude-md-rezepte-ernaehrung]] — Schwester-Vorlage für Rezepte-Wikis
+- [claude-md-design](../konzepte/claude-md-design.md) — Die 6 Designprinzipien für effektive CLAUDE.md-Dateien
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema); Modus Dokumentiert nutzt alle 3 Ebenen
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) — Im Modus Dokumentiert: Sourcecode = Quellcode, Wiki = kompiliertes Verständnis
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Kontextbudget-Grenzen, besonders relevant für lokale Modelle
+- [claude-code](../werkzeuge/claude-code.md) — Der Agent, der mit dieser Vorlage gesteuert wird
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Konzept (Modus Dokumentiert folgt diesem Muster)
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) — Warum Link-Stil-Konsistenz wichtig ist
+- [qmd](../werkzeuge/qmd.md) — Skalierungslösung: semantische Suche über Wiki-Seiten
+- [jdocmunch](../werkzeuge/jdocmunch.md) — Skalierungslösung: nur relevante Sektionen laden
+- [seitenklassifikation](../konzepte/seitenklassifikation.md) — Optional im Dokumentiert-Modus für ADRs und Modulseiten
+- [claude-md-legacy-forensik](claude-md-legacy-forensik.md) — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
+- [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
+- [claude-md-rezepte-ernaehrung](claude-md-rezepte-ernaehrung.md) — Schwester-Vorlage für Rezepte-Wikis
 
 ---
 
