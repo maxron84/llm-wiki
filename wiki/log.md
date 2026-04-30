@@ -273,6 +273,14 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-30] lint | Wiki-Prüfung
+
+- 3 Dead Links gemeldet (`pfad.md`) — alle Falsch-Positive: Syntaxbeispiele in Backtick-Code-Spans
+- Alle Orphan/Missing-Meldungen — Falsch-Positive: Skript erkennt `[[wiki-links]]` nicht
+- Alle Format-Fehler (no H1, no Footer) — Falsch-Positive: Skript überspringt YAML-Frontmatter nicht
+- Wiki ist sauber — keine echten Fehler
+- `README.md` um Software-Begleiter, KI-Lehrer und Nachhilfe erweitert (7 Vorlagen gesamt)
+
 ## [2026-04-29 16:00] query | Vorlage Nachhilfe erstellt
 
 - `wiki/vorlagen/claude-md-nachhilfe.md` — neue Vorlage: KI als Fachlehrer, reaktiv, aufgabengetrieben
