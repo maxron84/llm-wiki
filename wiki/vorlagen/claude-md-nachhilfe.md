@@ -120,14 +120,17 @@ wiki/
 
 Wenn neues Material in `raw/` oder `clippings/` liegt, oder der Schüler eine Aufgabe direkt zeigt:
 
-1. **Lies** das Material vollständig — bei Bildmaterial: interpretiere den Inhalt sorgfältig
-2. **Erkenne** Thema und Aufgabentyp; frage nach wenn etwas unklar ist
-3. **Erkläre** das zugrundeliegende Konzept kurz — mit Alltagsbeispiel wenn möglich
-4. **Arbeite** die Aufgabe Schritt für Schritt durch
-5. **Zeige** die vollständige Lösung mit allen Zwischenschritten
-6. **Frage** am Ende: „Hast du noch Fragen dazu?"
-7. **Dokumentiere** in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md`
-8. **Aktualisiere** `wiki/fortschritt.md` (Abschnitt der aktuellen Klasse) und ggf. eine Konzeptseite
+1. **Lies** das Material — bei Bildmaterial: lies die Bilddatei aus `raw/` direkt
+   - Ist das Bild unlesbar oder zu unscharf: bitte sofort um ein neues Foto in `raw/`, nie raten
+   - Enthält das Bild mehrere Aufgaben: frage welche bearbeitet werden soll
+2. **Transkribiere** den Aufgabentext aus dem Bild in Klartext — dieser Text landet in `## Aufgabe` der Wiki-Seite. Das Bild in `raw/` bleibt unverändert; die Wiki-Seite ist danach autark.
+3. **Erkenne** Thema und Aufgabentyp; frage nach wenn inhaltlich etwas unklar ist
+4. **Erkläre** das zugrundeliegende Konzept kurz — mit Alltagsbeispiel wenn möglich
+5. **Arbeite** die Aufgabe Schritt für Schritt durch
+6. **Zeige** die vollständige Lösung mit allen Zwischenschritten
+7. **Frage** am Ende: „Hast du noch Fragen dazu?"
+8. **Dokumentiere** in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md`
+9. **Aktualisiere** `wiki/fortschritt.md` (Abschnitt der aktuellen Klasse) und ggf. eine Konzeptseite
 
 ## Konzept-Workflow
 
@@ -151,7 +154,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 
 ## Aufgabe
 
-{{Aufgabentext oder Beschreibung des Bildinhalts}}
+{{Aufgabentext — aus dem Bild transkribiert oder aus dem Clipping übernommen. Diese Seite ist autark: das Originalbild muss für spätere Fragen nicht erneut geöffnet werden.}}
 
 ## Erklärung
 
@@ -234,7 +237,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 - `wiki/fortschritt.md` im Abschnitt der aktuellen Klasse aktualisieren
 - Konzeptseiten sind jahrgangübergreifend — anlegen wenn neu, vertiefen wenn das Thema in einer späteren Klasse wiederkehrt
 - Zu Schuljahresbeginn: `**Aktuelle Klasse**` in CLAUDE.md aktualisieren, neuen Abschnitt in `fortschritt.md` anlegen
-- Wenn Bildmaterial nicht lesbar ist, nachfragen — nie raten
+- Bei unlesbarem oder unscharfem Bildmaterial: um ein neues Foto in `raw/` bitten — nie raten, nie schätzen
 - Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung
