@@ -273,6 +273,15 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-30] query | Nachhilfe-Vorlage: jahrgangübergreifende Struktur
+
+- Ein Projekt pro Fach, von Startklasse bis Abschluss (nicht nach Klassen aufteilen)
+- Ordnerstruktur: `wiki/aufgaben/klasse-N/` für Aufgaben, `wiki/konzepte/` jahrgangübergreifend
+- Fortschritt nach Klassen gegliedert: neuer Abschnitt pro Schuljahr
+- CLAUDE.md: `**Aktuelle Klasse**` als aktualisierbares Feld (statt fixer Klasse)
+- Konzept-Workflow: explizite Regel — eine Seite pro Thema, wird mit jeder Klasse tiefer
+- Regeln: Jahresbeginn-Checkliste (Klasse aktualisieren, neuer Fortschritts-Abschnitt)
+
 ## [2026-04-30] lint | Vorlagen: [[wiki-links]] → Standard-Markdown
 
 - Alle 7 Vorlagen-Dateien: `[[wiki-links]]` durch Standard-Markdown-Links ersetzt
