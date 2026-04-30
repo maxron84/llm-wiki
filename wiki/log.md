@@ -273,6 +273,14 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-30] query | Nachhilfe-Vorlage — Foto-Workflow und Transkription
+
+- Aufgaben-Workflow erweitert: Bild aus raw/ lesen → Aufgabentext transkribieren → Wiki-Seite autark
+- Schritt 2 neu: explizite Transkriptions-Anweisung mit Autark-Prinzip
+- Schritt 1: bei Unlesbarkeit neues Foto anfordern, nie raten; bei mehreren Aufgaben im Bild nachfragen
+- Aufgaben-Seite: `## Aufgabe` Platzhalter erklärt das Autark-Prinzip
+- Regel aktualisiert: Bildmaterial-Verhalten präzisiert
+
 ## [2026-04-30] query | Nachhilfe-Vorlage: jahrgangübergreifende Struktur
 
 - Ein Projekt pro Fach, von Startklasse bis Abschluss (nicht nach Klassen aufteilen)
