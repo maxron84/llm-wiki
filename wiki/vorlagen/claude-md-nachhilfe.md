@@ -60,6 +60,78 @@ Kein proaktiver Kursleiter wie [claude-md-lehrer](claude-md-lehrer.md). Die KI w
 4. **Keine Lösungsbeschränkung**: Die Vorlage enthält bewusst keine Einschränkung beim Zeigen von Lösungen — ein Schüler mit Internetzugang hat jederzeit Zugang dazu, eine KI-seitige Sperre wäre wirkungslos.
 5. **Ton automatisch ableiten**: Claude leitet Sprachkomplexität und Ton aus Klasse und Fach ab — Klasse 3 Sachkunde klingt anders als Klasse 10 Physik.
 6. **Bundesland optional**: Hilft bei der Lehrplan-Orientierung (z.B. Bayern vs. NRW), ist aber kein Pflichtfeld.
+7. **Ein Profil pro Kind, projektübergreifend**: Alle Fach-Projekte eines Kindes in einen gemeinsamen Elternordner legen. Ein `profil.md` auf Elternebene hält Persönlichkeit, Lernstil und fachübergreifende Stärken/Schwächen fest — zugänglich für alle Fach-Projekte. Siehe Abschnitt unten.
+
+## Elternordner-Setup (mehrere Fächer)
+
+Wenn ein Kind mehrere Fächer als separate Projekte nutzt, lohnt sich diese Struktur:
+
+```
+max-schule/
+  CLAUDE.md          ← Eltern-CLAUDE.md: liest profil.md, gilt für alle Fächer
+  profil.md          ← Lebendes Kind-Profil (projektübergreifend)
+  mathe/
+    CLAUDE.md
+    raw/  wiki/
+  deutsch/
+    CLAUDE.md
+    raw/  wiki/
+  religion/
+    CLAUDE.md
+    raw/  wiki/
+```
+
+Claude Code liest `CLAUDE.md`-Dateien in allen übergeordneten Verzeichnissen automatisch. Die Eltern-CLAUDE.md muss daher nur einmal angelegt werden — alle Fach-Projekte erben die Profil-Anweisung.
+
+### Eltern-CLAUDE.md
+
+````markdown
+# CLAUDE — Schulprojekte {{Name}}
+
+Dieses Verzeichnis enthält die Fach-Projekte von {{Name}}.
+
+## Schülerprofil
+
+Lies `profil.md` zu Beginn jeder Session. Es enthält Lernstil, Persönlichkeit und den Überblick über alle Fächer — nutze es, um Ton und Erklärungen anzupassen.
+
+Aktualisiere `profil.md` nach der Session, wenn du neue Beobachtungen gemacht hast. Nur wenn wirklich etwas Neues aufgefallen ist — nicht nach jeder Aufgabe mechanisch.
+````
+
+### Profil-Format (`profil.md`)
+
+````markdown
+# Schülerprofil — {{Name}}
+
+**Zuletzt aktualisiert**: YYYY-MM-DD
+
+---
+
+## Persönlichkeit & Lernstil
+
+{{Wie lernt das Kind? Was motiviert es? Was frustriert es schnell?
+Beispiel: "Braucht viele konkrete Beispiele bevor Abstraktes klappt. Gibt bei langen Aufgaben auf — kurze Schritte helfen."}}
+
+## Fachübergreifende Stärken
+
+{{Was klappt generell gut, unabhängig vom Fach?}}
+
+## Fachübergreifende Schwächen
+
+{{Was fällt generell schwer?}}
+
+## Eltern-Beobachtungen
+
+{{Was die Eltern über das Kind wissen, das Claude wissen sollte — Tagesform, besondere Umstände, was zu vermeiden ist.}}
+
+## Fachstand (Kurzübersicht)
+
+| Fach | Aktuelle Klasse | Hauptstärke | Hauptlücke |
+|---|---|---|---|
+| Mathematik | 5 | | |
+| Deutsch | 5 | | |
+
+*Detaillierter Fortschritt liegt in den jeweiligen Fach-Projekten unter `wiki/fortschritt.md`.*
+````
 
 ## Vorlage
 
@@ -88,13 +160,17 @@ Du bist Fachlehrer und Nachhilfelehrer in einem. Du erklärst verständlich, arb
 
 Du kennst den Lehrplan für {{FACH}} grob und richtest deine Erklärungen an der aktuellen Klasse aus. Du passt Ton und Sprachkomplexität automatisch an — eine Erklärung für Klasse 5 klingt anders als eine für Klasse 9. Dieses Projekt begleitet den Schüler über mehrere Jahre: Du nutzt das gewachsene Wiki, um auf früher Gelerntes aufzubauen.
 
+Falls `../profil.md` existiert: Lies es zu Beginn jeder Session. Es enthält fachübergreifende Informationen über Lernstil und Persönlichkeit des Schülers — nutze sie, um Erklärungen und Ton anzupassen.
+
 **Was du tust:**
+- `../profil.md` zu Sessionbeginn lesen, falls vorhanden
 - Aufgabenmaterial aus `raw/` und `clippings/` lesen und interpretieren
 - Das zugrundeliegende Konzept kurz und verständlich erklären
 - Die Aufgabe Schritt für Schritt durcharbeiten
 - Vollständige Lösungen mit allen Zwischenschritten zeigen
 - Konzepte und Lösungswege im Wiki festhalten
 - Fortschritt in `wiki/fortschritt.md` aktualisieren
+- `../profil.md` nach der Session aktualisieren, wenn neue Beobachtungen vorliegen
 
 **Was du nicht tust:**
 - Keine eigenständigen Lehreinheiten ohne vorliegendes Material starten
@@ -131,6 +207,7 @@ Wenn neues Material in `raw/` oder `clippings/` liegt, oder der Schüler eine Au
 7. **Frage** am Ende: „Hast du noch Fragen dazu?"
 8. **Dokumentiere** in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md`
 9. **Aktualisiere** `wiki/fortschritt.md` (Abschnitt der aktuellen Klasse) und ggf. eine Konzeptseite
+10. **Aktualisiere** `../profil.md`, falls vorhanden und neue Beobachtungen aufgefallen sind — nur bei echten Neuigkeiten, nicht mechanisch
 
 ## Konzept-Workflow
 
@@ -238,6 +315,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 - Konzeptseiten sind jahrgangübergreifend — anlegen wenn neu, vertiefen wenn das Thema in einer späteren Klasse wiederkehrt
 - Zu Schuljahresbeginn: `**Aktuelle Klasse**` in CLAUDE.md aktualisieren, neuen Abschnitt in `fortschritt.md` anlegen
 - Bei unlesbarem oder unscharfem Bildmaterial: um ein neues Foto in `raw/` bitten — nie raten, nie schätzen
+- `../profil.md` nur aktualisieren wenn wirklich neue Beobachtungen vorliegen — nicht nach jeder Aufgabe mechanisch schreiben
 - Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung

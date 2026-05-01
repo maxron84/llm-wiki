@@ -273,6 +273,14 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `log.md` erstellt (dieses Protokoll)
 - Drei Quellen in `clippings/` identifiziert, Aufnahme steht bevor
 
+## [2026-04-30] query | Nachhilfe-Vorlage — projektübergreifendes Schülerprofil
+
+- Neuer Designhinweis 7: Ein Profil pro Kind, Elternordner-Struktur
+- Neuer Abschnitt außerhalb Fence: Elternordner-Setup mit Ordnerstruktur, Eltern-CLAUDE.md und profil.md-Format
+- Inside Fence: profil.md zu Sessionbeginn lesen, nach Session aktualisieren (nur bei echten Neuigkeiten)
+- Workflow Schritt 10 neu: Profil-Update nach Session
+- Regel ergänzt: Profil nur bei echten Beobachtungen aktualisieren
+
 ## [2026-04-30] query | Nachhilfe-Vorlage — Foto-Workflow und Transkription
 
 - Aufgaben-Workflow erweitert: Bild aus raw/ lesen → Aufgabentext transkribieren → Wiki-Seite autark
