@@ -12,6 +12,11 @@ status: active
 
 ---
 
+## [2026-05-01 00:00] lint | [[wiki-links]] → Standard-Markdown in index.md
+
+- `wiki/index.md`: Alle 54 Einträge von `[[wiki-link]]` auf `[name](kategorie/seitenname.md)` umgestellt
+- Datum `Zuletzt aktualisiert` auf 2026-05-01 gesetzt
+
 ## [2026-04-29 00:01] query | Vorlage KI-Lehrer erstellt
 
 - Neue Vorlage `vorlagen/claude-md-lehrer.md` angelegt

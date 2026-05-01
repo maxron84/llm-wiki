@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-04-25
+**Zuletzt aktualisiert**: 2026-05-01
 
 ---
 
@@ -16,73 +16,73 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 
 ## Konzepte
 
-- [[llm-wiki-muster]] — Das Kernkonzept: KI baut ein persistentes, wachsendes Wiki statt RAG
-- [[chat-problem]] — Das fundamentale Problem: Wissen verschwindet in Chats
-- [[statelessness]] — Das technische Problem: KI-Agenten sind zustandslos
-- [[drei-ebenen-architektur]] — Rohquellen → Wiki → Schema
-- [[ingest-workflow]] — Der Prozess zur Aufnahme neuer Quellen (inkl. Tiefe-Auswahl)
-- [[query-workflow]] — Fragen gegen das Wiki stellen und Antworten zurückspeichern
-- [[lint-pruefung]] — Regelmäßige Gesundheitsprüfung des Wikis
-- [[rag-vs-wiki]] — Vergleich: RAG vs. persistentes Wiki
-- [[kompilierungs-metapher]] — Rohquellen = Quellcode, Wiki = kompiliertes Binary
-- [[skalierungsgrenzen]] — index.md-Bottleneck bei ~50–100K Token; Lösungsansätze
-- [[vault-trennung]] — Sauberes Vault (menschlich) + Agenten-Vault (KI) trennen
-- [[kontaminierungsrisiko]] — Halluzinationen werden als persistente Fakten eingebacken
-- [[query-templates]] — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
-- [[fortgeschrittene-architektur]] — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
-- [[claude-md-design]] — 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
-- [[seitenklassifikation]] — Zeitlos / Gemischt / Zeitgenössisch: Pflichtfeld für zeitliche Relevanz von Wiki-Seiten
-- [[multimodale-quellen]] — *(Konzeptskizze)* Audio, Bild und Video als Wiki-Quellen jenseits von Text
-- [[mece-prinzip]] — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
-- [[taeglicher-workflow]] — Sitzungseröffnung und -abschluss als tägliches Protokoll
-- [[modellunabhaengigkeit]] — Markdown = Unabhängigkeit vom KI-Anbieter
-- [[yaml-frontmatter]] — Standardisierte Metadaten für Wiki-Seiten
-- [[memex]] — Vannevar Bushs Memex (1945) als geistiger Vorläufer
+- [llm-wiki-muster](konzepte/llm-wiki-muster.md) — Das Kernkonzept: KI baut ein persistentes, wachsendes Wiki statt RAG
+- [chat-problem](konzepte/chat-problem.md) — Das fundamentale Problem: Wissen verschwindet in Chats
+- [statelessness](konzepte/statelessness.md) — Das technische Problem: KI-Agenten sind zustandslos
+- [drei-ebenen-architektur](konzepte/drei-ebenen-architektur.md) — Rohquellen → Wiki → Schema
+- [ingest-workflow](konzepte/ingest-workflow.md) — Der Prozess zur Aufnahme neuer Quellen (inkl. Tiefe-Auswahl)
+- [query-workflow](konzepte/query-workflow.md) — Fragen gegen das Wiki stellen und Antworten zurückspeichern
+- [lint-pruefung](konzepte/lint-pruefung.md) — Regelmäßige Gesundheitsprüfung des Wikis
+- [rag-vs-wiki](konzepte/rag-vs-wiki.md) — Vergleich: RAG vs. persistentes Wiki
+- [kompilierungs-metapher](konzepte/kompilierungs-metapher.md) — Rohquellen = Quellcode, Wiki = kompiliertes Binary
+- [skalierungsgrenzen](konzepte/skalierungsgrenzen.md) — index.md-Bottleneck bei ~50–100K Token; Lösungsansätze
+- [vault-trennung](konzepte/vault-trennung.md) — Sauberes Vault (menschlich) + Agenten-Vault (KI) trennen
+- [kontaminierungsrisiko](konzepte/kontaminierungsrisiko.md) — Halluzinationen werden als persistente Fakten eingebacken
+- [query-templates](konzepte/query-templates.md) — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
+- [fortgeschrittene-architektur](konzepte/fortgeschrittene-architektur.md) — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
+- [claude-md-design](konzepte/claude-md-design.md) — 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
+- [seitenklassifikation](konzepte/seitenklassifikation.md) — Zeitlos / Gemischt / Zeitgenössisch: Pflichtfeld für zeitliche Relevanz von Wiki-Seiten
+- [multimodale-quellen](konzepte/multimodale-quellen.md) — *(Konzeptskizze)* Audio, Bild und Video als Wiki-Quellen jenseits von Text
+- [mece-prinzip](konzepte/mece-prinzip.md) — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
+- [taeglicher-workflow](konzepte/taeglicher-workflow.md) — Sitzungseröffnung und -abschluss als tägliches Protokoll
+- [modellunabhaengigkeit](konzepte/modellunabhaengigkeit.md) — Markdown = Unabhängigkeit vom KI-Anbieter
+- [yaml-frontmatter](konzepte/yaml-frontmatter.md) — Standardisierte Metadaten für Wiki-Seiten
+- [memex](konzepte/memex.md) — Vannevar Bushs Memex (1945) als geistiger Vorläufer
 
 ## Werkzeuge
 
-- [[obsidian]] — Kostenlose Markdown-basierte Notizen-App, dient als Wiki-Viewer/IDE
-- [[claude-code]] — Anthropics KI-Agent, der das Wiki schreibt und pflegt
-- [[obsidian-web-clipper]] — Browser-Erweiterung zum schnellen Quellen-Sammeln
-- [[dataview]] — Obsidian-Plugin für Abfragen über YAML-Frontmatter-Felder
-- [[marp]] — Obsidian-Plugin für Markdown-basierte Präsentationen
-- [[jdocmunch]] — MCP-Server für sektionsbasierte Abfrage; ~95% Token-Reduktion
-- [[qmd]] — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
+- [obsidian](werkzeuge/obsidian.md) — Kostenlose Markdown-basierte Notizen-App, dient als Wiki-Viewer/IDE
+- [claude-code](werkzeuge/claude-code.md) — Anthropics KI-Agent, der das Wiki schreibt und pflegt
+- [obsidian-web-clipper](werkzeuge/obsidian-web-clipper.md) — Browser-Erweiterung zum schnellen Quellen-Sammeln
+- [dataview](werkzeuge/dataview.md) — Obsidian-Plugin für Abfragen über YAML-Frontmatter-Felder
+- [marp](werkzeuge/marp.md) — Obsidian-Plugin für Markdown-basierte Präsentationen
+- [jdocmunch](werkzeuge/jdocmunch.md) — MCP-Server für sektionsbasierte Abfrage; ~95% Token-Reduktion
+- [qmd](werkzeuge/qmd.md) — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
 
 ## Personen
 
-- [[andrej-karpathy]] — KI-Forscher, Urheber des LLM-Wiki-Musters
-- [[mario]] — Webentwickler und YouTuber, hat das Konzept live demonstriert
-- [[pasquale-pillitteri]] — IT-Berater, Obsidian + Claude Code als zweites Gehirn
-- [[steph-ango]] — Obsidian-CEO, prägte die Vault-Trennungs-Empfehlung
-- [[tobi-luetke]] — Shopify-CEO, Entwickler von qmd
+- [andrej-karpathy](personen/andrej-karpathy.md) — KI-Forscher, Urheber des LLM-Wiki-Musters
+- [mario](personen/mario.md) — Webentwickler und YouTuber, hat das Konzept live demonstriert
+- [pasquale-pillitteri](personen/pasquale-pillitteri.md) — IT-Berater, Obsidian + Claude Code als zweites Gehirn
+- [steph-ango](personen/steph-ango.md) — Obsidian-CEO, prägte die Vault-Trennungs-Empfehlung
+- [tobi-luetke](personen/tobi-luetke.md) — Shopify-CEO, Entwickler von qmd
 
 ## Quellen
 
-- [[llm-wiki-karpathy]] — Andrej Karpathys originales Konzeptdokument (GitHub Gist)
-- [[llm-wiki-tutorial-mit-mario]] — YouTube-Video: Live-Aufbau eines Kochrezepte-Wikis
-- [[obsidian-claude-code-pillitteri]] — Blogartikel: Obsidian + Claude Code als zweites Gehirn
-- [[llm-wiki-mehul-gupta]] — Medium: Küchenmetapher, Rollenverschiebung, Einstieg
-- [[llm-wiki-urvil-joshi]] — Medium: Kompilierungs-Metapher, Tutorial-Demo, RAG vs. Wiki ehrlich
-- [[llm-wiki-plaban-nayak]] — Level Up Coding: 5-Schritt-Pipeline, RAG über Wiki, Query-Templates
-- [[llm-wiki-jgravelle]] — DEV.to: Skalierungsproblem + jDocMunch (95% Token-Reduktion)
-- [[llm-wiki-venturebeat]] — VentureBeat: Community-Reaktionen, Enterprise, Feintuning
-- [[llm-wiki-antigravity]] — Antigravity.codes: Anwendungsfälle, Kompilierungsprofile
-- [[llm-wiki-analytics-vidhya]] — Analytics Vidhya: Tool-Stack (qmd, Git), Herausforderungen
-- [[llm-wiki-mindstudio]] — MindStudio: Best Practices, Inbox-Muster, Team-Skalierung
+- [llm-wiki-karpathy](quellen/llm-wiki-karpathy.md) — Andrej Karpathys originales Konzeptdokument (GitHub Gist)
+- [llm-wiki-tutorial-mit-mario](quellen/llm-wiki-tutorial-mit-mario.md) — YouTube-Video: Live-Aufbau eines Kochrezepte-Wikis
+- [obsidian-claude-code-pillitteri](quellen/obsidian-claude-code-pillitteri.md) — Blogartikel: Obsidian + Claude Code als zweites Gehirn
+- [llm-wiki-mehul-gupta](quellen/llm-wiki-mehul-gupta.md) — Medium: Küchenmetapher, Rollenverschiebung, Einstieg
+- [llm-wiki-urvil-joshi](quellen/llm-wiki-urvil-joshi.md) — Medium: Kompilierungs-Metapher, Tutorial-Demo, RAG vs. Wiki ehrlich
+- [llm-wiki-plaban-nayak](quellen/llm-wiki-plaban-nayak.md) — Level Up Coding: 5-Schritt-Pipeline, RAG über Wiki, Query-Templates
+- [llm-wiki-jgravelle](quellen/llm-wiki-jgravelle.md) — DEV.to: Skalierungsproblem + jDocMunch (95% Token-Reduktion)
+- [llm-wiki-venturebeat](quellen/llm-wiki-venturebeat.md) — VentureBeat: Community-Reaktionen, Enterprise, Feintuning
+- [llm-wiki-antigravity](quellen/llm-wiki-antigravity.md) — Antigravity.codes: Anwendungsfälle, Kompilierungsprofile
+- [llm-wiki-analytics-vidhya](quellen/llm-wiki-analytics-vidhya.md) — Analytics Vidhya: Tool-Stack (qmd, Git), Herausforderungen
+- [llm-wiki-mindstudio](quellen/llm-wiki-mindstudio.md) — MindStudio: Best Practices, Inbox-Muster, Team-Skalierung
 
 ## Vorlagen
 
-- [[claude-md-software]] — CLAUDE.md-Vorlage für Software-Projekte (Lean oder Dokumentiert mit Projekt-Wiki)
-- [[claude-md-software-begleiter]] — CLAUDE.md-Vorlage: KI als Begleiter — Mensch schreibt Code, KI dokumentiert und reviewt
-- [[claude-md-lehrer]] — CLAUDE.md-Vorlage: KI als Lehrbegleiter — adaptiver Unterricht mit dynamisch generiertem Lehrplan
-- [[claude-md-legacy-forensik]] — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
-- [[claude-md-youtube-verlauf]] — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
-- [[claude-md-rezepte-ernaehrung]] — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
-- [[claude-md-nachhilfe]] — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
+- [claude-md-software](vorlagen/claude-md-software.md) — CLAUDE.md-Vorlage für Software-Projekte (Lean oder Dokumentiert mit Projekt-Wiki)
+- [claude-md-software-begleiter](vorlagen/claude-md-software-begleiter.md) — CLAUDE.md-Vorlage: KI als Begleiter — Mensch schreibt Code, KI dokumentiert und reviewt
+- [claude-md-lehrer](vorlagen/claude-md-lehrer.md) — CLAUDE.md-Vorlage: KI als Lehrbegleiter — adaptiver Unterricht mit dynamisch generiertem Lehrplan
+- [claude-md-legacy-forensik](vorlagen/claude-md-legacy-forensik.md) — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
+- [claude-md-youtube-verlauf](vorlagen/claude-md-youtube-verlauf.md) — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
+- [claude-md-rezepte-ernaehrung](vorlagen/claude-md-rezepte-ernaehrung.md) — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
+- [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
 
 ## Log
 
-- [[log]] — Chronologisches Protokoll aller Änderungen
+- [log](log.md) — Chronologisches Protokoll aller Änderungen
 
 ---
