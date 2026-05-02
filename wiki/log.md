@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-02 00:00] query | Anleitung „Erste Schritte" erstellt
+
+- Neue Seite `anleitungen/erste-schritte.md` angelegt (neuer Ordner `wiki/anleitungen/`)
+- Zielgruppe: DAU — keine Vorkenntnisse vorausgesetzt
+- **Hauptpfad** (Windows/macOS): Claude Code Desktop App + Claude.ai-Abo, 6 Schritte von Installation bis erster Sitzung
+- **Fortgeschrittener Pfad**: VS Code / VS Codium (inkl. Linux-Hinweis), API-Key-Einrichtung, Git-Backup
+- Vorlage-Auswahl-Tabelle mit allen 7 Vorlagen
+- `index.md` aktualisiert: neuer Abschnitt `## Anleitungen`
+
 ## [2026-05-01 00:00] lint | [[wiki-links]] → Standard-Markdown in index.md
 
 - `wiki/index.md`: Alle 54 Einträge von `[[wiki-link]]` auf `[name](kategorie/seitenname.md)` umgestellt

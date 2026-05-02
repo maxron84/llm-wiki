@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-01
+**Zuletzt aktualisiert**: 2026-05-02
 
 ---
 
@@ -80,6 +80,10 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-youtube-verlauf](vorlagen/claude-md-youtube-verlauf.md) — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
 - [claude-md-rezepte-ernaehrung](vorlagen/claude-md-rezepte-ernaehrung.md) — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
+
+## Anleitungen
+
+- [erste-schritte](anleitungen/erste-schritte.md) — Setup von Null: Claude Code, Obsidian, Vorlage wählen, erste Sitzung starten
 
 ## Log
 
