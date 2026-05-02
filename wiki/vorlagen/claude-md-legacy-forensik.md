@@ -314,6 +314,7 @@ Wenn der Benutzer das Wiki prüfen lassen will:
 - Markiere Befunde mit 🔴 oder ⚪ Konfidenz, die seit längerem nicht verifiziert wurden
 - Prüfe, ob alle Seiten dem Seitenformat folgen
 - Liste offene Fragen auf, die beantwortet werden könnten
+- Bei unlösbaren Widersprüchen: To-do-Liste für Mensch erstellen statt selbst entscheiden — forensische Befunde sind Entscheidungsgrundlage
 - Berichte als nummerierte Liste mit Handlungsvorschlägen
 
 ## Regeln

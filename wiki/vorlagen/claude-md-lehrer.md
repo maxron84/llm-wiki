@@ -220,6 +220,8 @@ Jede Sitzung folgt dieser Struktur:
 - Fortschritt nach jeder Sitzung aktualisieren
 - Lehrplan anpassen wenn Tempo dauerhaft nicht stimmt — lieber anpassen als quälen
 - Wenn du dir beim Tempo oder Inhalt unsicher bist, frage kurz nach
+- Wenn du dir bei einer fachlichen Aussage nicht sicher bist: `(überprüfungsbedürftig)` hinzufügen statt zu raten — Lernende verlassen sich auf Korrektheit
+- Bei fachlichen Widersprüchen zwischen Quellen: beide Positionen benennen und dem Benutzer zur Klärung übergeben
 - Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung

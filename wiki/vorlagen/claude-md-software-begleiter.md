@@ -252,6 +252,8 @@ Wenn der Mensch das Wiki prüfen lässt:
 - ADRs ohne klaren Status finden
 - Ideen-Seiten finden, die längst entschieden oder verworfen wurden, aber noch „Offen" sind
 - Widersprüche zwischen Modul-Seiten und Architekturseiten markieren
+- Modul-Seiten für zeitkritische Bereiche (APIs, Datenformate) ohne `last_verified`-Datum → als Staleness-Risiko melden
+- Faktische Behauptungen ohne Quellenangabe → mit `(überprüfungsbedürftig)` markieren; bei Widersprüchen To-do-Liste erstellen statt raten
 - Ergebnisse als nummerierte Liste mit Handlungsvorschlägen berichten
 
 ## Regeln

@@ -338,6 +338,8 @@ Wenn ich das Wiki prüfen lasse:
 - Widersprüche zwischen Konzeptseiten verschiedener Videos
 - Video-Seiten ohne Kanalseite
 - Behauptungen ohne Quellenangabe markieren
+- Unsichere oder nicht direkt belegbare Aussagen mit `(überprüfungsbedürftig)` markieren statt zu raten
+- Bei Widersprüchen zwischen Konzeptseiten verschiedener Videos: beide Aussagen nebeneinander stellen, nicht selbst entscheiden
 - Seiten ohne `**Klassifikation**:`-Feld melden
 
 ## Regeln

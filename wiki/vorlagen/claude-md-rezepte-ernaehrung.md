@@ -309,6 +309,8 @@ Wenn ich das Wiki prüfen lasse:
 - Widersprüche zwischen Rezepten bei derselben Technik
 - Zutaten ohne Saison-Angabe
 - Behauptungen ohne Quellenangabe markieren
+- Unsichere Ernährungs- oder Technikaussagen mit `(überprüfungsbedürftig)` markieren statt zu raten
+- Bei Widersprüchen zwischen Quellen: beide Positionen benennen und mit `(Widerspruch — Klärung nötig)` markieren; nicht selbst entscheiden
 - Alle Seiten auf Frontmatter und korrekte Tags prüfen
 
 ## Regeln

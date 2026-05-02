@@ -340,6 +340,28 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - Explizite Markdown-Link-Regel in alle CLAUDE.md-Templates eingebaut
 - Ziel: Vorlagen sind jetzt direkt im Browser/GitHub lesbar ohne Obsidian
 
+## [2026-05-03] lint | Wiki-Prüfung + Vorlagen-Update
+
+- **Lint-Skript verbessert**: Anker-Links (`#heading`) nicht mehr als Dead Links gemeldet; Backtick-Code-Spans ausgenommen; `wiki/vorlagen/` übersprungen (Platzhalter-Inhalt); `type: anleitung` vom Quellen-Pflicht-Check befreit
+- **3 fehlende Seiten für Fulkerson-Quelle nachgeliefert**: `exokortex.md`, `lernschleifen.md`, `personen/aaron-fulkerson.md`
+- **7 Vorlagen aktualisiert** — Qualitätssicherung aus Community-Konsens (Constrained Pipelines) eingebaut:
+  - `claude-md-software.md`: `last_verified`-Feld, Git-Hook-Hinweis, `(überprüfungsbedürftig)`-Praxis in Wiki-Prüfung
+  - `claude-md-software-begleiter.md`: Staleness-Risiko-Meldung, `(überprüfungsbedürftig)` in Lint-Sektion
+  - `claude-md-rezepte-ernaehrung.md`, `claude-md-youtube-verlauf.md`, `claude-md-legacy-forensik.md`, `claude-md-lehrer.md`, `claude-md-nachhilfe.md`: Jeweils Prüfung oder Regeln um Confidence-Marking und Human-in-the-Loop erweitert
+- **Neue Vorlage**: `wiki/vorlagen/claude-md-team.md` — Team-Wiki für 2–8 Personen mit Ownership-Tabelle, Provenienz-Tags und `entwuerfe/`-Pufferzone
+- **Lint-Ergebnis**: 0 Dead Links, 0 Orphans, 0 Format-Fehler (67 Seiten)
+
+## [2026-05-02] ingest | TecAdRise, LLM Wiki v2 (Tamiltech), Enterprise-Wiki (Falconer)
+
+- `wiki/quellen/llm-wiki-tecadrise.md` — TecAdRise.ai: Karpathys Idee als Bewegung, 3 Kritikpunkte (Halluzination, Konsistenz, Architektur), Constrained Pipelines, 3 Community-Projekte
+- `wiki/quellen/llm-wiki-v2-tamiltech.md` — Tamiltech/LLM Wiki v2: Produktionserfahrung, typisierte Beziehungen (relationships.json), Git-Hooks, Trust Score
+- `wiki/quellen/llm-wiki-enterprise-falconer.md` — Falconer: Enterprise-Skalierung, warum `raw/`-Ordner-Modell nicht skaliert, cross-tool Entity Resolution, automatische Drift-Erkennung
+- `wiki/konzepte/community-projekte.md` — neu: Swarm Vault, BrainDB, Menmo Vault
+- `wiki/konzepte/llm-wiki-v2.md` — neu: 4 Produktionserweiterungen, relationships.json, Lifecycle-Management
+- `wiki/konzepte/enterprise-skalierung.md` — neu: 4 Eigenschaften (Capture/Link/Compound/Stay Current) auf Enterprise-Niveau
+- `wiki/konzepte/kontaminierungsrisiko.md` — Constrained Pipelines (Community-Konsens) und Trust Score (v2) ergänzt
+- `wiki/konzepte/rag-vs-wiki.md` — v2-Argument (RAG als 2023-Workaround) und Enterprise-Retrieval-Kritik ergänzt
+
 ## [2026-04-30] lint | Wiki-Prüfung
 
 - 3 Dead Links gemeldet (`pfad.md`) — alle Falsch-Positive: Syntaxbeispiele in Backtick-Code-Spans

@@ -316,6 +316,7 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 - Zu Schuljahresbeginn: `**Aktuelle Klasse**` in CLAUDE.md aktualisieren, neuen Abschnitt in `fortschritt.md` anlegen
 - Bei unlesbarem oder unscharfem Bildmaterial: um ein neues Foto in `raw/` bitten — nie raten, nie schätzen
 - `../profil.md` nur aktualisieren wenn wirklich neue Beobachtungen vorliegen — nicht nach jeder Aufgabe mechanisch schreiben
+- Wenn du dir bei einer fachlichen Aussage nicht sicher bist: `(überprüfungsbedürftig)` hinzufügen — Schüler verlassen sich auf Korrektheit
 - Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
 
 ## Skalierung

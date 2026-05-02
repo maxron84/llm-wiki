@@ -362,6 +362,7 @@ wiki/
 **Zusammenfassung**: Ein bis zwei Sätze.
 **Quellen**: Betroffene Dateien (z.B. `src/services/auth.ts`, `src/api/routes.ts`)
 **Zuletzt aktualisiert**: YYYY-MM-DD
+**last_verified**: YYYY-MM-DD  ← optional; für zeitkritische Einträge (APIs, Datenformat, Abhängigkeitsversionen)
 
 ---
 
@@ -381,7 +382,8 @@ Hauptinhalt.
 - Aktualisiere `wiki/index.md` und `wiki/log.md` nach jeder Wiki-Änderung
 - Wiki-Seiten beschreiben das **Warum** und die **Zusammenhänge** — der Code selbst zeigt das Was
 - Verlinke Wiki-Seiten untereinander mit Standard-Markdown-Links `[text](pfad.md)`
-- Wenn eine Wiki-Seite durch Code-Änderungen veraltet, aktualisiere sie oder markiere sie als `(veraltet — prüfen)`
+- Wenn Code-Dateien geändert werden: Prüfe, ob betroffene Wiki-Seiten noch stimmen. Unsichere Einträge mit `(überprüfungsbedürftig)` markieren statt stillschweigend veralten zu lassen
+- Optional — Git-Hook: Ein Pre-Commit-Hook kann den Abgleich automatisch triggern: "Du hast `src/auth.ts` geändert — ist `wiki/module/auth.md` noch aktuell?"
 - Seitennamen in Kleinbuchstaben mit Bindestrichen
 
 ### Wiki-Prüfung
@@ -391,6 +393,8 @@ Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
 - Wiki-Seiten auf veraltete Informationen prüfen
 - Verwaiste Seiten finden (keine eingehenden Links)
 - Module identifizieren, die im Code wichtig sind, aber keine Wiki-Seite haben
+- Einträge ohne Quellenangabe mit faktischen Behauptungen → `(überprüfungsbedürftig)` markieren
+- Bei unlösbaren Widersprüchen zwischen Seiten: To-do-Eintrag erstellen statt raten — der Mensch entscheidet
 - Ergebnisse als nummerierte Liste berichten
 ````
 
@@ -406,6 +410,7 @@ Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
 - [qmd](../werkzeuge/qmd.md) — Skalierungslösung: semantische Suche über Wiki-Seiten
 - [jdocmunch](../werkzeuge/jdocmunch.md) — Skalierungslösung: nur relevante Sektionen laden
 - [seitenklassifikation](../konzepte/seitenklassifikation.md) — Optional im Dokumentiert-Modus für ADRs und Modulseiten
+- [claude-md-team](claude-md-team.md) — Schwester-Vorlage für Teams (2–8 Personen) mit Ownership und Entwurfs-Pufferzone
 - [claude-md-legacy-forensik](claude-md-legacy-forensik.md) — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
 - [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
 - [claude-md-rezepte-ernaehrung](claude-md-rezepte-ernaehrung.md) — Schwester-Vorlage für Rezepte-Wikis

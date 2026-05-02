@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-02
+**Zuletzt aktualisiert**: 2026-05-03
 
 ---
 
@@ -38,6 +38,11 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [modellunabhaengigkeit](konzepte/modellunabhaengigkeit.md) — Markdown = Unabhängigkeit vom KI-Anbieter
 - [yaml-frontmatter](konzepte/yaml-frontmatter.md) — Standardisierte Metadaten für Wiki-Seiten
 - [memex](konzepte/memex.md) — Vannevar Bushs Memex (1945) als geistiger Vorläufer
+- [community-projekte](konzepte/community-projekte.md) — Swarm Vault, BrainDB, Menmo Vault: drei herausragende Implementierungen
+- [llm-wiki-v2](konzepte/llm-wiki-v2.md) — Community-Erweiterung: typisierte Beziehungen, Lifecycle, Automation, Trust Score
+- [enterprise-skalierung](konzepte/enterprise-skalierung.md) — Warum das persönliche Muster bei Unternehmen bricht und wie Enterprise-Wikis anders arbeiten müssen
+- [exokortex](konzepte/exokortex.md) — Aaron Fulkersons „Exo" als externes kognitives Betriebssystem: 26 Skills, 14 MCP-Server, Auto-Enrichment
+- [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
 
 ## Werkzeuge
 
@@ -56,6 +61,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [pasquale-pillitteri](personen/pasquale-pillitteri.md) — IT-Berater, Obsidian + Claude Code als zweites Gehirn
 - [steph-ango](personen/steph-ango.md) — Obsidian-CEO, prägte die Vault-Trennungs-Empfehlung
 - [tobi-luetke](personen/tobi-luetke.md) — Shopify-CEO, Entwickler von qmd
+- [aaron-fulkerson](personen/aaron-fulkerson.md) — Mitgründer MindTouch, Erbauer von Exo — reichhaltigste Produktionsquelle im Wiki
 
 ## Quellen
 
@@ -70,6 +76,10 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-antigravity](quellen/llm-wiki-antigravity.md) — Antigravity.codes: Anwendungsfälle, Kompilierungsprofile
 - [llm-wiki-analytics-vidhya](quellen/llm-wiki-analytics-vidhya.md) — Analytics Vidhya: Tool-Stack (qmd, Git), Herausforderungen
 - [llm-wiki-mindstudio](quellen/llm-wiki-mindstudio.md) — MindStudio: Best Practices, Inbox-Muster, Team-Skalierung
+- [llm-wiki-fulkerson-exo](quellen/llm-wiki-fulkerson-exo.md) — Aaron Fulkerson: 2 Monate Produktionsbetrieb mit Exo (26 Skills, 14 MCP-Server, 3 Lernschleifen)
+- [llm-wiki-tecadrise](quellen/llm-wiki-tecadrise.md) — TecAdRise.ai: Karpathys Idee als Bewegung, Community-Projekte, Constrained Pipelines
+- [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
+- [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
 
 ## Vorlagen
 
@@ -80,6 +90,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-youtube-verlauf](vorlagen/claude-md-youtube-verlauf.md) — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
 - [claude-md-rezepte-ernaehrung](vorlagen/claude-md-rezepte-ernaehrung.md) — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
+- [claude-md-team](vorlagen/claude-md-team.md) — CLAUDE.md-Vorlage: Team-Wiki für 2–8 Personen mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone
 
 ## Anleitungen
 
