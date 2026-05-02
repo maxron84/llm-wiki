@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-05-02 00:02] lint | werkzeuge/claude-code.md aktualisiert
+
+- [[wiki-links]] → Standard-Markdown-Links
+- Inhalt auf aktuellen Stand gebracht: Desktop App, Web App, VS Code/JetBrains Extension, CLI
+- Neuer Abschnitt „Geplante Agenten (Routinen)": Funktionsweise, Einrichtung, Voraussetzungen
+- Hinweis auf laufende Routine `lokale-modelle-aktualisierung`
+- Verwandte Seiten erweitert (erste-schritte, lokale-modelle)
+
 ## [2026-05-02 00:01] query | Anleitung „Lokale Modelle" erstellt
 
 - Neue Seite `anleitungen/lokale-modelle.md` angelegt
