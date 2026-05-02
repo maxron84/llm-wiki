@@ -18,6 +18,7 @@ Der eigentliche Output dieses Wikis: kopierbare `CLAUDE.md`-Vorlagen für spezia
 |---|---|
 | [Software-Projekte](wiki/vorlagen/claude-md-software.md) | Codebase-Dokumentation — Lean (nur CLAUDE.md) oder Dokumentiert (+ Projekt-Wiki) |
 | [Software-Begleiter](wiki/vorlagen/claude-md-software-begleiter.md) | Mensch schreibt Code allein — KI übernimmt Dokumentation, Review und Ideenaustausch |
+| [Team-Wiki](wiki/vorlagen/claude-md-team.md) | Gemeinsames Wiki für 2–8 Personen — mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone |
 | [Legacy-Forensik](wiki/vorlagen/claude-md-legacy-forensik.md) | Analyse und Kartierung gewachsener Codebases |
 | [KI-Lehrer](wiki/vorlagen/claude-md-lehrer.md) | Proaktiver Lehrbegleiter — generiert Lehrplan, lehrt Schritt für Schritt (z.B. Coding-Projekte) |
 | [Nachhilfe](wiki/vorlagen/claude-md-nachhilfe.md) | Fachlehrer für ein Schulfach — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10 |
