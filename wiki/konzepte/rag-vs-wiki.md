@@ -8,8 +8,8 @@ status: active
 # RAG vs. Persistentes Wiki
 
 **Zusammenfassung**: Ein Vergleich zwischen dem klassischen RAG-Ansatz (Retrieval-Augmented Generation) und dem LLM-Wiki-Muster — zwei grundverschiedene Strategien für den Umgang mit Wissen.
-**Quellen**: clippings/llm-wiki.md
-**Zuletzt aktualisiert**: 2026-04-22
+**Quellen**: clippings/llm-wiki.md, clippings/LLM Wiki v2 Extending Karpathy's Pattern with Production Lessons.md, clippings/The enterprise LLM wiki scaling Karpathy's pattern to your org (April 2026).md
+**Zuletzt aktualisiert**: 2026-05-02
 
 ---
 
@@ -65,6 +65,20 @@ Das LLM-Wiki ist besonders stark bei **kumulativer Wissensarbeit** über Wochen 
 
 Das LLM-Wiki hat einen spezifischen Nachteil gegenüber RAG: Halluzinationen beim Ingest werden als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten. Bei RAG bleibt ein Fehler lokal in einer Antwort. Mehr: [kontaminierungsrisiko](kontaminierungsrisiko.md)
 
+## RAG als historischer Workaround (LLM Wiki v2)
+
+[LLM Wiki v2](llm-wiki-v2.md) formuliert einen wichtigen historischen Einordnung:
+
+> RAG war ein **2023-Workaround für 8K-Kontextfenster**. Mit 1M-Token-Fenstern als Standard (DeepSeek V4, GPT-5.5, Qwen 3.6) schwächt sich die ökonomische Begründung für Retrieval gegenüber direkter Inclusion jeden Quartal.
+
+Das bedeutet nicht, dass RAG obsolet wird — aber die Kosten-Nutzen-Rechnung verschiebt sich: Was früher zu teuer war (den gesamten Wiki-Kontext zu laden), ist mit wachsenden Kontextfenstern erschwinglich. (Quelle: clippings/LLM Wiki v2 Extending Karpathy's Pattern with Production Lessons.md)
+
+## Enterprise-Kontext: Retrieval-Tools lösen das Wartungsproblem nicht
+
+Glean, Notion AI, Confluence Search sind Retrieval-Werkzeuge. Sie verbessern das Finden von Erfasstem — aber beheben nicht das zugrundeliegende Wartungsproblem. Besseres Retrieval über veraltete Wissensbasis liefert **confident-formulierte falsche Antworten, schneller als schlechtes Retrieval über schlechte Basis**.
+
+Was Karpathys Muster einzigartig macht, ist nicht die Suchschicht — es ist die Wartungsschleife. Mehr: [enterprise-skalierung](enterprise-skalierung.md)
+
 ## Verwandte Seiten
 
 - [llm-wiki-muster](llm-wiki-muster.md)
@@ -73,6 +87,8 @@ Das LLM-Wiki hat einen spezifischen Nachteil gegenüber RAG: Halluzinationen bei
 - [kompilierungs-metapher](kompilierungs-metapher.md)
 - [kontaminierungsrisiko](kontaminierungsrisiko.md)
 - [skalierungsgrenzen](skalierungsgrenzen.md)
+- [llm-wiki-v2](llm-wiki-v2.md) — v2 und der historische RAG-Workaround-Kontext
+- [enterprise-skalierung](enterprise-skalierung.md) — Warum Retrieval-Tools Enterprise-Wikis nicht retten
 
 ---
 

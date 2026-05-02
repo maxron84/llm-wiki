@@ -8,8 +8,8 @@ status: active
 # Kontaminierungsrisiko
 
 **Zusammenfassung**: Das zentrale Kritikpunkt am LLM-Wiki-Muster: Wenn das LLM beim Aufbau des Wikis halluziniert, werden diese Fehler als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten — im Gegensatz zu RAG, wo Fehler lokal bleiben.
-**Quellen**: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
-**Zuletzt aktualisiert**: 2026-04-23
+**Quellen**: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md, clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md
+**Zuletzt aktualisiert**: 2026-05-02
 
 ---
 
@@ -47,6 +47,21 @@ Das Drei-Ebenen-Muster sorgt dafür, dass `raw/` und `clippings/` niemals verän
 ### 5. Spot-Checking
 Wichtige Wiki-Seiten gegen die Rohdateien prüfen — besonders vor wichtigen Entscheidungen auf Basis des Wikis.
 
+### 6. Constrained Pipelines (Community-Konsens)
+
+Die Community entwickelte nach Karpathys Gist ein Set von vier Absicherungsmechanismen, die zusammen als „Constrained Pipeline" funktionieren: (Quelle: clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md)
+
+- **Strenge Schemas** — erzwingen Formatierungs- und Organisationsregeln, damit der LLM nicht „kreativ" wird
+- **Confidence Scoring** — KI flaggt unsichere Outputs statt zu raten; ermöglicht gezielte menschliche Prüfung
+- **Human-in-the-Loop** — Bei Widersprüchen, die das System nicht lösen kann: To-do-Liste für Menschen statt schlechte automatische Entscheidung
+- **Source Linking** — Wiki zeigt immer auf Originaldokumente zurück; verhindert Drift von der Quelle
+
+Das Ziel verschob sich von „perfekte KI" zu „perfektes System um imperfekte KI": Co-Pilot für 90% der Arbeit, Mensch für die 10% mit hohem Risiko.
+
+### 7. Trust Score und Verfallslogik (LLM Wiki v2)
+
+[LLM Wiki v2](llm-wiki-v2.md) fügt einen **Trust Score pro Eintrag** hinzu, der über Zeit verfällt, wenn keine Verifikation stattfindet. Erzwingt periodische Überprüfung systematisch, statt auf manuelle Disziplin zu vertrauen.
+
 ## Karpathys Einschätzung
 
 Karpathy erwähnt Lint-Checks als direkte Reaktion auf das Kontaminierungsrisiko. Die Community (besonders [Steph Ango](../personen/steph-ango.md)) hob das Thema als den wichtigsten offenen Punkt des Musters hervor.
@@ -60,6 +75,8 @@ Das Konsens in der Community: Das Risiko ist real, aber handhabbar — wenn man 
 - [steph-ango](../personen/steph-ango.md)
 - [drei-ebenen-architektur](drei-ebenen-architektur.md)
 - [rag-vs-wiki](rag-vs-wiki.md)
+- [llm-wiki-v2](llm-wiki-v2.md) — Trust Score und automatische Verfallslogik
+- [llm-wiki-tecadrise](../quellen/llm-wiki-tecadrise.md) — Constrained Pipelines
 
 ---
 
