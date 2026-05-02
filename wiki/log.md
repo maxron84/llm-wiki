@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-02 00:01] query | Anleitung „Lokale Modelle" erstellt
+
+- Neue Seite `anleitungen/lokale-modelle.md` angelegt
+- Recherche via WebSearch: aktueller Stand lokaler LLM-Tools 2025/2026
+- **Anfänger-Pfad**: LM Studio (5/5 DAU) — Installation, Modell-Download, System-Prompt-Setup, erste Sitzung; Jan.ai als Alternative
+- **Fortgeschrittener Pfad**: Ollama, Open WebUI, Continue in VS Code (einzige Option mit Dateizugriff)
+- Hardware-Tabelle: RAM-Anforderungen nach Modellgröße; Apple MLX-Hinweis für M-Chips
+- Modell-Empfehlungen 2026: Qwen3 (14b/27b), Llama 3.3, Mistral Small 3, Phi-4-mini
+- Ehrliche Einschränkungs-Tabelle vorangestellt: kein automatisches Wiki-Wachstum ohne Dateizugriff
+- `index.md` aktualisiert
+
 ## [2026-05-02 00:00] query | Anleitung „Erste Schritte" erstellt
 
 - Neue Seite `anleitungen/erste-schritte.md` angelegt (neuer Ordner `wiki/anleitungen/`)

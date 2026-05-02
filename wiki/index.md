@@ -84,6 +84,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 ## Anleitungen
 
 - [erste-schritte](anleitungen/erste-schritte.md) — Setup von Null: Claude Code, Obsidian, Vorlage wählen, erste Sitzung starten
+- [lokale-modelle](anleitungen/lokale-modelle.md) — Betrieb mit lokalen Modellen: LM Studio (Anfänger), Ollama + Open WebUI + Continue (Fortgeschrittene)
 
 ## Log
 
