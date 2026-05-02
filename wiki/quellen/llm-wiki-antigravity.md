@@ -68,15 +68,15 @@ Verschiedene Wikis brauchen verschiedene Kompilierungsstrategien:
 
 ## Bezug zum bestehenden Wiki
 
-Reichste Quelle für konkrete Anwendungsfälle und das Konzept der [[kompilierungs-metapher]]. Die vier Kompilierungsprofile sind ein nützliches Erweiterungskonzept für die [[drei-ebenen-architektur]].
+Reichste Quelle für konkrete Anwendungsfälle und das Konzept der [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md). Die vier Kompilierungsprofile sind ein nützliches Erweiterungskonzept für die [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md).
 
 ## Verwandte Seiten
 
-- [[kompilierungs-metapher]]
-- [[drei-ebenen-architektur]]
-- [[lint-pruefung]]
-- [[query-workflow]]
-- [[fortgeschrittene-architektur]]
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md)
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md)
+- [lint-pruefung](../konzepte/lint-pruefung.md)
+- [query-workflow](../konzepte/query-workflow.md)
+- [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 
 ---
 

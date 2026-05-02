@@ -25,7 +25,7 @@ Mario beschreibt ihn als „einen der wenigen Leute in der Branche, bei denen ic
 
 ## Das LLM-Wiki-Konzept
 
-Karpathy hat das [[llm-wiki-muster]] als GitHub Gist veröffentlicht — ein Konzeptdokument, das beschreibt, wie man mit LLMs persönliche Wissensbasen aufbaut. Die Kernidee: Statt Wissen in Chats verschwinden zu lassen, baut die KI ein **persistentes, wachsendes Wiki** aus verlinkten Markdown-Dateien.
+Karpathy hat das [llm-wiki-muster](../konzepte/llm-wiki-muster.md) als GitHub Gist veröffentlicht — ein Konzeptdokument, das beschreibt, wie man mit LLMs persönliche Wissensbasen aufbaut. Die Kernidee: Statt Wissen in Chats verschwinden zu lassen, baut die KI ein **persistentes, wachsendes Wiki** aus verlinkten Markdown-Dateien.
 
 Das Dokument ist bewusst abstrakt gehalten — es beschreibt die Idee, nicht eine spezifische Implementierung. Es ist als Ausgangspunkt gedacht, den man mit seinem LLM-Agenten gemeinsam an die eigenen Bedürfnisse anpasst. (Quelle: clippings/llm-wiki.md)
 
@@ -33,10 +33,10 @@ Das Dokument ist bewusst abstrakt gehalten — es beschreibt die Idee, nicht ein
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[llm-wiki-karpathy]] — Das originale Konzeptdokument
-- [[llm-wiki-tutorial-mit-mario]] — Video-Erklärung des Konzepts
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
+- [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Das originale Konzeptdokument
+- [llm-wiki-tutorial-mit-mario](../quellen/llm-wiki-tutorial-mit-mario.md) — Video-Erklärung des Konzepts
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

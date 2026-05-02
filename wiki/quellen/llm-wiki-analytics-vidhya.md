@@ -23,12 +23,12 @@ status: active
 
 ### Der vollständige Tool-Stack nach Karpathy
 
-1. **[[obsidian]]** — IDE für das Wiki
+1. **[obsidian](../werkzeuge/obsidian.md)** — IDE für das Wiki
    - **Graphansicht**: Seiten als Knoten, Wiki-Links als Kanten; Hub-Seiten sind größer, Waisen sind isoliert
-   - **[[dataview]]-Plugin**: SQL-ähnliche Abfragen über YAML-Frontmatter aller Seiten
+   - **[dataview](../werkzeuge/dataview.md)-Plugin**: SQL-ähnliche Abfragen über YAML-Frontmatter aller Seiten
    - **Web Clipper**: Ein-Klick-Artikel-zu-Markdown-Konvertierung
 
-2. **[[qmd]]** — Lokale semantische Suche von Tobi Lütke (Shopify CEO)
+2. **[qmd](../werkzeuge/qmd.md)** — Lokale semantische Suche von Tobi Lütke (Shopify CEO)
    - Drei Suchmodi: BM25-Keyword, Vektorsuche, Hybrid mit LLM-Reranking
    - Vollständig lokal mit GGUF-Modellen (keine API, keine Datenweitergabe)
    - MCP-Server-Modus: Claude Code nutzt qmd als natives Werkzeug
@@ -62,16 +62,16 @@ Bansal benennt 5 realistische Hürden:
 
 ## Bezug zum bestehenden Wiki
 
-Wichtigste neue Quelle für [[qmd]] als Skalierungslösung neben [[jdocmunch]]. Die 5 Herausforderungen sind eine nützliche Ergänzung für [[ingest-workflow]] und [[lint-pruefung]].
+Wichtigste neue Quelle für [qmd](../werkzeuge/qmd.md) als Skalierungslösung neben [jdocmunch](../werkzeuge/jdocmunch.md). Die 5 Herausforderungen sind eine nützliche Ergänzung für [ingest-workflow](../konzepte/ingest-workflow.md) und [lint-pruefung](../konzepte/lint-pruefung.md).
 
 ## Verwandte Seiten
 
-- [[qmd]]
-- [[obsidian]]
-- [[dataview]]
-- [[skalierungsgrenzen]]
-- [[lint-pruefung]]
-- [[tobi-luetke]]
+- [qmd](../werkzeuge/qmd.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [dataview](../werkzeuge/dataview.md)
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [lint-pruefung](../konzepte/lint-pruefung.md)
+- [tobi-luetke](../personen/tobi-luetke.md)
 
 ---
 

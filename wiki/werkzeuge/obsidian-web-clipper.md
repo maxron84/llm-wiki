@@ -15,24 +15,24 @@ status: active
 
 ## Was ist der Obsidian Web Clipper?
 
-Eine Browser-Erweiterung für Chrome (und kompatible Browser), die Webseiten-Inhalte als Markdown-Dateien in deinen [[obsidian|Obsidian]]-Vault speichert. Ein Klick auf die Erweiterung, und der Artikel landet als `.md`-Datei im `clippings/`-Ordner.
+Eine Browser-Erweiterung für Chrome (und kompatible Browser), die Webseiten-Inhalte als Markdown-Dateien in deinen [Obsidian](obsidian.md)-Vault speichert. Ein Klick auf die Erweiterung, und der Artikel landet als `.md`-Datei im `clippings/`-Ordner.
 
 **Download**: https://chromewebstore.google.com/detail/obsidian-web-clipper/cnjifjpddelmedmihgijeibhnjfabmlf
 
 ## Rolle im LLM-Wiki
 
-Der Web Clipper ist das **Sammelnetz** für neue Quellen. Im [[llm-wiki-muster]] ist der Workflow:
+Der Web Clipper ist das **Sammelnetz** für neue Quellen. Im [llm-wiki-muster](../konzepte/llm-wiki-muster.md) ist der Workflow:
 
 1. Du liest einen interessanten Artikel im Browser
 2. Du klickst auf den Web Clipper → der Artikel wird als Markdown in `clippings/` gespeichert
 3. Du sagst der KI: „Es gibt neue Quelldateien, bitte verarbeite diese"
-4. Die KI führt den [[ingest-workflow]] aus
+4. Die KI führt den [ingest-workflow](../konzepte/ingest-workflow.md) aus
 
 Die Dateien landen automatisch im Obsidian-Vault, der gerade im Hintergrund geöffnet ist. (Quelle: clippings/LLM Wiki Tutorial - So baut KI dir eine Wissensbasis.md)
 
 ## Praxisbeispiel
 
-Mario demonstriert im [[llm-wiki-tutorial-mit-mario|Tutorial]], wie er in Sekunden drei Quellen von einer Kochwebseite clippt:
+Mario demonstriert im [Tutorial](../quellen/llm-wiki-tutorial-mit-mario.md), wie er in Sekunden drei Quellen von einer Kochwebseite clippt:
 
 - Ein glutenfreies Keksrezept
 - Ein Artikel zum einhändigen Eieraufschlagen
@@ -42,10 +42,10 @@ Jeder Clip dauert nur wenige Sekunden — der eigentliche Aufwand liegt bei der 
 
 ## Verwandte Seiten
 
-- [[obsidian]]
-- [[ingest-workflow]]
-- [[llm-wiki-tutorial-mit-mario]]
+- [obsidian](obsidian.md)
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [llm-wiki-tutorial-mit-mario](../quellen/llm-wiki-tutorial-mit-mario.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

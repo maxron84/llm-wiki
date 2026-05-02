@@ -69,10 +69,12 @@ Eine treffendere Erweiterung: Es ist eher wie ein **Lehrbuch, das bei jeder neue
 
 ## Verwandte Seiten
 
-- [[rag-vs-wiki]]
-- [[llm-wiki-muster]]
-- [[ingest-workflow]]
-- [[drei-ebenen-architektur]]
+- [rag-vs-wiki](rag-vs-wiki.md)
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [ingest-workflow](ingest-workflow.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [llm-wiki-urvil-joshi](../quellen/llm-wiki-urvil-joshi.md) — Quelle der Kompilierungs-Metapher
+- [llm-wiki-antigravity](../quellen/llm-wiki-antigravity.md) — Kompilierungsprofile und Anwendungsfälle
 
 ---
 

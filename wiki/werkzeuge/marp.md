@@ -15,11 +15,11 @@ status: active
 
 ## Was ist Marp?
 
-Marp ist ein Open-Source-Framework, das Markdown-Dateien in Präsentationen umwandelt. Als [[obsidian|Obsidian]]-Plugin erlaubt es, Slide-Decks direkt im Vault zu erstellen und zu rendern — ohne PowerPoint oder ähnliche Tools.
+Marp ist ein Open-Source-Framework, das Markdown-Dateien in Präsentationen umwandelt. Als [Obsidian](obsidian.md)-Plugin erlaubt es, Slide-Decks direkt im Vault zu erstellen und zu rendern — ohne PowerPoint oder ähnliche Tools.
 
 ## Relevanz für das LLM-Wiki
 
-Im [[query-workflow|Query-Workflow]] kann die KI Wiki-Inhalte in verschiedene Formate ausgeben. Karpathy nennt Marp explizit als eines der möglichen Ausgabeformate:
+Im [Query-Workflow](../konzepte/query-workflow.md) kann die KI Wiki-Inhalte in verschiedene Formate ausgeben. Karpathy nennt Marp explizit als eines der möglichen Ausgabeformate:
 
 > „Ein Slide-Deck (Marp)"
 
@@ -27,8 +27,8 @@ Das bedeutet: Statt eine Antwort als Markdown-Seite zurückzuspeichern, kann die
 
 ## Verwandte Seiten
 
-- [[obsidian]]
-- [[query-workflow]]
+- [obsidian](obsidian.md)
+- [query-workflow](../konzepte/query-workflow.md)
 
 ---
 

@@ -27,7 +27,7 @@ Joshi erklärt die zentrale Analogie prägnant:
 
 > "You don't execute source code every time you want to run a program. You compile it once into a binary and run that."
 
-Rohquellen = Quellcode. Wiki = kompiliertes Binärformat. Die Kompilierung ist teuer — aber sie zahlt sich bei jeder nachfolgenden Nutzung aus. Mehr dazu: [[kompilierungs-metapher]]
+Rohquellen = Quellcode. Wiki = kompiliertes Binärformat. Die Kompilierung ist teuer — aber sie zahlt sich bei jeder nachfolgenden Nutzung aus. Mehr dazu: [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md)
 
 ### Live-Demo: Wissens-Kompoundierung
 
@@ -54,20 +54,20 @@ Joshi betont: Keines "gewinnt" — sie lösen verschiedene Probleme.
 
 ### Kontaminierungsrisiko
 
-Joshi nennt den wichtigsten Kritikpunkt des Musters offen: Wenn das LLM eine Verbindung halluziniert, lebt dieser Irrtum im Wiki und beeinflusst zukünftige Abfragen. Bei klassischem RAG bleibt ein Fehler lokal. Beim LLM-Wiki kann er sich über verlinkte Seiten ausbreiten. Deshalb ist der Lint-Schritt kritisch. Mehr: [[kontaminierungsrisiko]]
+Joshi nennt den wichtigsten Kritikpunkt des Musters offen: Wenn das LLM eine Verbindung halluziniert, lebt dieser Irrtum im Wiki und beeinflusst zukünftige Abfragen. Bei klassischem RAG bleibt ein Fehler lokal. Beim LLM-Wiki kann er sich über verlinkte Seiten ausbreiten. Deshalb ist der Lint-Schritt kritisch. Mehr: [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)
 
 ## Bezug zum bestehenden Wiki
 
-Erklärt dasselbe wie [[llm-wiki-karpathy]], aber mit einer Tutorial-Perspektive und dem Fokus auf den Kompoundierungseffekt. Die Kompilierungs-Metapher ist prägnanter als jede bisherige Formulierung im Wiki.
+Erklärt dasselbe wie [llm-wiki-karpathy](llm-wiki-karpathy.md), aber mit einer Tutorial-Perspektive und dem Fokus auf den Kompoundierungseffekt. Die Kompilierungs-Metapher ist prägnanter als jede bisherige Formulierung im Wiki.
 
 ## Verwandte Seiten
 
-- [[kompilierungs-metapher]]
-- [[kontaminierungsrisiko]]
-- [[rag-vs-wiki]]
-- [[ingest-workflow]]
-- [[lint-pruefung]]
-- [[drei-ebenen-architektur]]
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md)
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)
+- [rag-vs-wiki](../konzepte/rag-vs-wiki.md)
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [lint-pruefung](../konzepte/lint-pruefung.md)
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md)
 
 ---
 

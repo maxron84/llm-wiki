@@ -15,7 +15,7 @@ status: active
 
 ## Was ist Dataview?
 
-Dataview ist ein Community-Plugin für [[obsidian|Obsidian]], das den Vault wie eine Datenbank behandelt. Es liest [[yaml-frontmatter|YAML-Frontmatter]]-Felder aller Notizen und erlaubt SQL-ähnliche Abfragen über diese Metadaten.
+Dataview ist ein Community-Plugin für [Obsidian](obsidian.md), das den Vault wie eine Datenbank behandelt. Es liest [YAML-Frontmatter](../konzepte/yaml-frontmatter.md)-Felder aller Notizen und erlaubt SQL-ähnliche Abfragen über diese Metadaten.
 
 ## Relevanz für das LLM-Wiki
 
@@ -28,13 +28,13 @@ Wenn die KI konsistent Frontmatter zu Wiki-Seiten hinzufügt, entstehen mit Data
 
 (Quelle: clippings/llm-wiki.md)
 
-Das macht [[yaml-frontmatter]] zur Voraussetzung: Ohne konsistente Metadaten liefern Dataview-Abfragen keine sinnvollen Ergebnisse. Pillitteri betont: Eine geschlossene Liste zulässiger Tags ist Pflicht, damit Abfragen zuverlässig funktionieren. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Das macht [yaml-frontmatter](../konzepte/yaml-frontmatter.md) zur Voraussetzung: Ohne konsistente Metadaten liefern Dataview-Abfragen keine sinnvollen Ergebnisse. Pillitteri betont: Eine geschlossene Liste zulässiger Tags ist Pflicht, damit Abfragen zuverlässig funktionieren. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 ## Verwandte Seiten
 
-- [[obsidian]]
-- [[yaml-frontmatter]]
-- [[llm-wiki-muster]]
+- [obsidian](obsidian.md)
+- [yaml-frontmatter](../konzepte/yaml-frontmatter.md)
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
 
 ---
 

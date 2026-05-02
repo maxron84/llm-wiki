@@ -27,7 +27,7 @@ Der Artikel trifft den Kern präzise: Durch das Sitzungsende oder Kontextlimit-R
 
 ### Community-Reaktionen
 
-**Steph Ango ([@kepano](https://stephango.com/), Obsidian-Mitgründer)**: Schlug [[vault-trennung]] vor — persönliches sauberes Vault + separates "unordentliches Vault" für KI-generierte Inhalte. Verhindert Kontaminierung; der Mensch weiß immer, welches Wissen menschlich kuratiert vs. KI-kompiliert ist.
+**Steph Ango ([@kepano](https://stephango.com/), Obsidian-Mitgründer)**: Schlug [vault-trennung](../konzepte/vault-trennung.md) vor — persönliches sauberes Vault + separates "unordentliches Vault" für KI-generierte Inhalte. Verhindert Kontaminierung; der Mensch weiß immer, welches Wissen menschlich kuratiert vs. KI-kompiliert ist.
 
 **Lex Fridman**: Bestätigte ähnliches Setup. Nutzt dynamisches HTML mit JavaScript für interaktive Visualisierungen. Erwähnte auch "ephemere Mini-Wissensbasis" — ein temporäres, aufgabenspezifisches Wiki, das nach dem Abschlussbericht gelöscht wird.
 
@@ -43,7 +43,7 @@ Eugen Alpeza (Edra): Der Sprung von persönlichem Wiki zu Enterprise-Betrieb ist
 
 ### Feintuning-Potenzial
 
-VentureBeat hebt einen Aspekt hervor, der in anderen Quellen fehlt: Wenn das Wiki durch kontinuierliches LLM-Linting "sauber" wird, wird es zum perfekten Trainingsdatensatz. Man kann dann ein kleineres, effizienteres Modell auf dem Wiki feintunen — das Modell würde das persönliche Wissen in seinen Gewichten "kennen". Mehr: [[fortgeschrittene-architektur]]
+VentureBeat hebt einen Aspekt hervor, der in anderen Quellen fehlt: Wenn das Wiki durch kontinuierliches LLM-Linting "sauber" wird, wird es zum perfekten Trainingsdatensatz. Man kann dann ein kleineres, effizienteres Modell auf dem Wiki feintunen — das Modell würde das persönliche Wissen in seinen Gewichten "kennen". Mehr: [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 
 ### Multi-Agent-Erweiterung
 
@@ -55,15 +55,15 @@ Der @jumperz-"Swarm Knowledge Base"-Ansatz: 10-Agenten-System über OpenClaw, be
 
 ## Bezug zum bestehenden Wiki
 
-Primär wertvolle Quelle für [[vault-trennung]] (Steph Ango), [[kontaminierungsrisiko]] und [[fortgeschrittene-architektur]] (Feintuning). Wichtige Community-Perspektive.
+Primär wertvolle Quelle für [vault-trennung](../konzepte/vault-trennung.md) (Steph Ango), [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) und [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md) (Feintuning). Wichtige Community-Perspektive.
 
 ## Verwandte Seiten
 
-- [[vault-trennung]]
-- [[kontaminierungsrisiko]]
-- [[fortgeschrittene-architektur]]
-- [[steph-ango]]
-- [[statelessness]]
+- [vault-trennung](../konzepte/vault-trennung.md)
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)
+- [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
+- [steph-ango](../personen/steph-ango.md)
+- [statelessness](../konzepte/statelessness.md)
 
 ---
 

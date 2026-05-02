@@ -19,7 +19,7 @@ status: active
 
 ## Bezug zum LLM-Wiki
 
-Karpathy stellt eine direkte Verbindung her: Das [[llm-wiki-muster]] ist dem Memex im Geist näher als dem, was das Web letztlich wurde. Bushs Vision war:
+Karpathy stellt eine direkte Verbindung her: Das [llm-wiki-muster](llm-wiki-muster.md) ist dem Memex im Geist näher als dem, was das Web letztlich wurde. Bushs Vision war:
 
 - **Privat** — ein persönlicher Speicher, kein öffentliches Netzwerk
 - **Aktiv kuratiert** — nicht einfach angehäuft, sondern organisiert
@@ -33,9 +33,9 @@ Was Bush nicht lösen konnte: **Wer macht die Pflege?** Assoziative Pfade zu ers
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[llm-wiki-karpathy]]
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

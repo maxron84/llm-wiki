@@ -15,7 +15,7 @@ status: active
 
 ## Die Idee
 
-Der tägliche Workflow besteht aus zwei Ritualen, die zusammen das [[statelessness|Zustandslosigkeits-Problem]] von [[claude-code|Claude Code]] lösen. Zwei Befehle reichen aus, um unbegrenzten Speicher zu erreichen — ohne monastische Disziplin. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Der tägliche Workflow besteht aus zwei Ritualen, die zusammen das [Zustandslosigkeits-Problem](statelessness.md) von [Claude Code](../werkzeuge/claude-code.md) lösen. Zwei Befehle reichen aus, um unbegrenzten Speicher zu erreichen — ohne monastische Disziplin. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 ## Sitzungseröffnung: „Guten Morgen"
 
@@ -56,16 +56,17 @@ Die Antworten werden in der Tagesnotiz gespeichert, mit relevanten Ordnern verli
 
 ## Bezug zum LLM-Wiki
 
-Dieser Workflow ergänzt das [[llm-wiki-muster]] um eine **tägliche Ebene**. Während das LLM-Wiki auf Quellen-Aufnahme und -Abfrage fokussiert ist, kümmert sich der tägliche Workflow um den **persönlichen Arbeitsalltag**. Beide Ansätze teilen die Kernidee: Wissen fließt in persistente Dateien statt in flüchtige Chats.
+Dieser Workflow ergänzt das [llm-wiki-muster](llm-wiki-muster.md) um eine **tägliche Ebene**. Während das LLM-Wiki auf Quellen-Aufnahme und -Abfrage fokussiert ist, kümmert sich der tägliche Workflow um den **persönlichen Arbeitsalltag**. Beide Ansätze teilen die Kernidee: Wissen fließt in persistente Dateien statt in flüchtige Chats.
 
 ## Verwandte Seiten
 
-- [[obsidian-claude-code-pillitteri]]
-- [[statelessness]]
-- [[claude-code]]
-- [[mece-prinzip]]
-- [[chat-problem]]
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [statelessness](statelessness.md)
+- [claude-code](../werkzeuge/claude-code.md)
+- [mece-prinzip](mece-prinzip.md)
+- [chat-problem](chat-problem.md)
+- [llm-wiki-mindstudio](../quellen/llm-wiki-mindstudio.md) — Best Practices und Inbox-Muster
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

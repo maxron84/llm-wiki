@@ -19,7 +19,7 @@ Mario ist Webentwickler und betreibt den YouTube-Kanal **Mit Mario**, der sich a
 
 ## Beitrag zum LLM-Wiki-Thema
 
-In seinem Video [[llm-wiki-tutorial-mit-mario|„LLM Wiki Tutorial — So baut KI dir eine Wissensbasis"]] (2026-04-17) stellt Mario [[andrej-karpathy|Karpathys]] LLM-Wiki-Muster vor und baut live ein Kochrezepte-Wiki mit [[claude-code|Claude Code/Cowork]] und [[obsidian|Obsidian]] auf.
+In seinem Video [„LLM Wiki Tutorial — So baut KI dir eine Wissensbasis"](../quellen/llm-wiki-tutorial-mit-mario.md) (2026-04-17) stellt Mario [Karpathys](andrej-karpathy.md) LLM-Wiki-Muster vor und baut live ein Kochrezepte-Wiki mit [Claude Code/Cowork](../werkzeuge/claude-code.md) und [Obsidian](../werkzeuge/obsidian.md) auf.
 
 Wichtigster Beitrag: Er macht das abstrakte Konzept durch eine Live-Demo greifbar und führt die **Tiefe-Auswahl** beim Ingest-Workflow als klares Drei-Stufen-Modell (Minimal / Mittel / Vollständig) ein. (Quelle: clippings/LLM Wiki Tutorial - So baut KI dir eine Wissensbasis.md)
 
@@ -28,9 +28,9 @@ Wichtigster Beitrag: Er macht das abstrakte Konzept durch eine Live-Demo greifba
 
 ## Verwandte Seiten
 
-- [[llm-wiki-tutorial-mit-mario]] — Das Video dieser Person
-- [[andrej-karpathy]] — Der Urheber des beschriebenen Konzepts
-- [[llm-wiki-muster]]
+- [llm-wiki-tutorial-mit-mario](../quellen/llm-wiki-tutorial-mit-mario.md) — Das Video dieser Person
+- [andrej-karpathy](andrej-karpathy.md) — Der Urheber des beschriebenen Konzepts
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
 
 ---
 

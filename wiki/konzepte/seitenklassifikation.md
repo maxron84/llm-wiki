@@ -54,15 +54,15 @@ Alle Seiten ohne `**Klassifikation**:`-Feld melden. Das Feld ist Pflicht auf Vid
 
 ## In welchen Vorlagen
 
-- [[claude-md-youtube-verlauf]] — Pflichtfeld auf allen Inhaltsseiten; Ursprung dieses Konzepts
-- [[claude-md-legacy-forensik]] — Optional, als zweite Dimension neben dem Konfidenzmodell (Zeitlos: Architekturprinzipien; Zeitgenössisch: spezifische Versionsnummern)
-- [[claude-md-software]] — Optional im Dokumentiert-Modus für ADRs und Modulseiten
+- [claude-md-youtube-verlauf](../vorlagen/claude-md-youtube-verlauf.md) — Pflichtfeld auf allen Inhaltsseiten; Ursprung dieses Konzepts
+- [claude-md-legacy-forensik](../vorlagen/claude-md-legacy-forensik.md) — Optional, als zweite Dimension neben dem Konfidenzmodell (Zeitlos: Architekturprinzipien; Zeitgenössisch: spezifische Versionsnummern)
+- [claude-md-software](../vorlagen/claude-md-software.md) — Optional im Dokumentiert-Modus für ADRs und Modulseiten
 
 ## Verwandte Seiten
 
-- [[lint-pruefung]] — Klassifikations-Check ist Teil des Lint-Workflows
-- [[claude-md-youtube-verlauf]] — Ursprungsvorlage dieses Konzepts
-- [[yaml-frontmatter]] — Alternativ kann die Klassifikation ins Frontmatter wandern
+- [lint-pruefung](lint-pruefung.md) — Klassifikations-Check ist Teil des Lint-Workflows
+- [claude-md-youtube-verlauf](../vorlagen/claude-md-youtube-verlauf.md) — Ursprungsvorlage dieses Konzepts
+- [yaml-frontmatter](yaml-frontmatter.md) — Alternativ kann die Klassifikation ins Frontmatter wandern
 
 ---
 

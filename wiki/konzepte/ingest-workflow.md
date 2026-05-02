@@ -15,7 +15,7 @@ status: active
 
 ## Überblick
 
-„Ingest" ist die erste der drei Kernoperationen im [[llm-wiki-muster]]. Du legst eine neue Quelle in den `raw/`- oder `clippings/`-Ordner und sagst der KI, sie soll die Quelle verarbeiten. Die KI liest, bespricht, schreibt und verknüpft — das Wiki wächst.
+„Ingest" ist die erste der drei Kernoperationen im [llm-wiki-muster](llm-wiki-muster.md). Du legst eine neue Quelle in den `raw/`- oder `clippings/`-Ordner und sagst der KI, sie soll die Quelle verarbeiten. Die KI liest, bespricht, schreibt und verknüpft — das Wiki wächst.
 
 ## Ablauf
 
@@ -39,7 +39,7 @@ Eine einzelne Quelle kann **10–15 Wiki-Seiten** betreffen. Das ist normal und 
 
 ## Tiefe-Auswahl
 
-Ein wichtiger Aspekt, den Mario im [[llm-wiki-tutorial-mit-mario|Tutorial]] demonstriert: Die KI fragt aktiv, **wie tief** man gehen will. Drei typische Stufen:
+Ein wichtiger Aspekt, den Mario im [Tutorial](../quellen/llm-wiki-tutorial-mit-mario.md) demonstriert: Die KI fragt aktiv, **wie tief** man gehen will. Drei typische Stufen:
 
 - **Minimal** — Nur die Kernseite (z.B. nur das Rezept)
 - **Mittel** — Kernseite + übergreifende Konzeptseiten (z.B. Rezept + „Glutenfreies Backen")
@@ -63,25 +63,25 @@ Dieser Routing-Schritt kann die Ingest-Kosten dramatisch reduzieren. (Quelle: cl
 
 ## Skalierung
 
-Bei wachsendem Wiki entstehen Skalierungsgrenzen: index.md wird bei ~50–100K Token zum Navigationsproblem. Tools wie [[qmd]] (semantische Suche) und [[jdocmunch]] (sektionsbasierter Zugriff) adressieren das. Mehr: [[skalierungsgrenzen]]
+Bei wachsendem Wiki entstehen Skalierungsgrenzen: index.md wird bei ~50–100K Token zum Navigationsproblem. Tools wie [qmd](../werkzeuge/qmd.md) (semantische Suche) und [jdocmunch](../werkzeuge/jdocmunch.md) (sektionsbasierter Zugriff) adressieren das. Mehr: [skalierungsgrenzen](skalierungsgrenzen.md)
 
 ## Bezug zur Architektur
 
-Der Ingest-Workflow verbindet alle drei Ebenen der [[drei-ebenen-architektur]]:
+Der Ingest-Workflow verbindet alle drei Ebenen der [drei-ebenen-architektur](drei-ebenen-architektur.md):
 - Er **liest** aus Ebene 1 (Rohquellen)
 - Er **schreibt** in Ebene 2 (Wiki)
 - Er **folgt** Ebene 3 (Schema)
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[drei-ebenen-architektur]]
-- [[query-workflow]]
-- [[lint-pruefung]]
-- [[obsidian-web-clipper]]
-- [[skalierungsgrenzen]]
-- [[kontaminierungsrisiko]]
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [query-workflow](query-workflow.md)
+- [lint-pruefung](lint-pruefung.md)
+- [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md)
+- [skalierungsgrenzen](skalierungsgrenzen.md)
+- [kontaminierungsrisiko](kontaminierungsrisiko.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

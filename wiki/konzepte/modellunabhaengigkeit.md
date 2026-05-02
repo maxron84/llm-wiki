@@ -17,7 +17,7 @@ status: active
 
 Wenn deine Arbeit innerhalb von Claude eingeschlossen ist, bist du ein Gefangener von Anthropic. Wenn Claude morgen ausfällt, die Preise anzieht oder ein Konkurrent ein überlegenes Modell veröffentlicht, bist du blockiert. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
-[[obsidian|Obsidian]] durchbricht diese Abhängigkeit. Der Vault besteht nur aus **Markdown-Dateien** — dem universellsten Textformat. Morgen kannst du denselben Vault mit einem beliebigen Agenten öffnen:
+[Obsidian](../werkzeuge/obsidian.md) durchbricht diese Abhängigkeit. Der Vault besteht nur aus **Markdown-Dateien** — dem universellsten Textformat. Morgen kannst du denselben Vault mit einem beliebigen Agenten öffnen:
 
 - **Codex CLI** (OpenAI)
 - **Gemini CLI** (Google)
@@ -31,7 +31,7 @@ Du änderst nur den Namen der Schema-Datei (`CLAUDE.md` → `AGENTS.md` → `GEM
 
 > Die KI wird austauschbar, so wie eine Datenbank für eine Anwendung: Du tauschst die Engine aus, nicht die Daten.
 
-Das Schema (die dritte Ebene der [[drei-ebenen-architektur]]) ist die Schnittstelle. Die Rohquellen und das Wiki bleiben unverändert, egal welches Modell die Arbeit macht.
+Das Schema (die dritte Ebene der [drei-ebenen-architektur](drei-ebenen-architektur.md)) ist die Schnittstelle. Die Rohquellen und das Wiki bleiben unverändert, egal welches Modell die Arbeit macht.
 
 ## Strategischer Vorteil: Risikodiversifizierung
 
@@ -46,16 +46,16 @@ Für Unternehmen ist das kein philosophisches Detail — es ist **Risikomanageme
 
 ## Bezug zum LLM-Wiki
 
-Das [[llm-wiki-muster]] profitiert direkt von dieser Eigenschaft. Karpathy beschreibt das Wiki als „ein Git-Repository aus Markdown-Dateien" — versionierbar, portabel, zukunftssicher. Die Wahl des LLM-Agenten wird zu einer taktischen, nicht strategischen Entscheidung. (Quelle: clippings/llm-wiki.md)
+Das [llm-wiki-muster](llm-wiki-muster.md) profitiert direkt von dieser Eigenschaft. Karpathy beschreibt das Wiki als „ein Git-Repository aus Markdown-Dateien" — versionierbar, portabel, zukunftssicher. Die Wahl des LLM-Agenten wird zu einer taktischen, nicht strategischen Entscheidung. (Quelle: clippings/llm-wiki.md)
 
 ## Verwandte Seiten
 
-- [[obsidian-claude-code-pillitteri]]
-- [[obsidian]]
-- [[claude-code]]
-- [[drei-ebenen-architektur]]
-- [[llm-wiki-muster]]
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [claude-code](../werkzeuge/claude-code.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [llm-wiki-muster](llm-wiki-muster.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

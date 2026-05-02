@@ -15,7 +15,7 @@ status: active
 
 ## Was ist jDocMunch?
 
-jDocMunch löst das [[skalierungsgrenzen|Skalierungsproblem]] des LLM-Wikis. Wenn das Wiki über ~50–100K Token wächst, wird das Laden des gesamten Wikis (oder auch nur der index.md) prohibitiv teuer. jDocMunch implementiert einen anderen Zugriffsmodus:
+jDocMunch löst das [Skalierungsproblem](../konzepte/skalierungsgrenzen.md) des LLM-Wikis. Wenn das Wiki über ~50–100K Token wächst, wird das Laden des gesamten Wikis (oder auch nur der index.md) prohibitiv teuer. jDocMunch implementiert einen anderen Zugriffsmodus:
 
 1. Dokument in **Abschnitte** parsen (mit Byte-Offsets für effizienten Direktzugriff)
 2. Index **auf der Festplatte** durchsuchen statt im Prompt
@@ -87,11 +87,11 @@ Für kleine Wikis (< 50 Seiten) ist direktes Laden einfacher und ausreichend.
 
 ## Verwandte Seiten
 
-- [[skalierungsgrenzen]]
-- [[qmd]]
-- [[fortgeschrittene-architektur]]
-- [[query-workflow]]
-- [[llm-wiki-jgravelle]]
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [qmd](qmd.md)
+- [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
+- [query-workflow](../konzepte/query-workflow.md)
+- [llm-wiki-jgravelle](../quellen/llm-wiki-jgravelle.md)
 
 ---
 

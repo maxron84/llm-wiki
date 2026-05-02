@@ -30,7 +30,7 @@ Pillitteri schlägt 7 Top-Level-Ordner vor als minimale Basis:
 |---|---|
 | **/Business** | Aktive Unternehmen, Projekte, Vertriebsstrategien, SOPs |
 | **/Context** | Wer du bist: Tonfall, Positionierung, Werte, Zielgruppe |
-| **/Daily** | Tägliche Notizen (siehe [[taeglicher-workflow]]) |
+| **/Daily** | Tägliche Notizen (siehe [taeglicher-workflow](taeglicher-workflow.md)) |
 | **/Library** | Referenzwissen: Frameworks, Marktforschung, Meeting-Protokolle |
 | **/Projects** | Projekte mit Frist — nicht für den Langzeitspeicher |
 | **/Skills** | Wiederverwendbare Anweisungen für die KI |
@@ -40,7 +40,7 @@ Pillitteri schlägt 7 Top-Level-Ordner vor als minimale Basis:
 
 ## Abgrenzung zur Wiki-Struktur
 
-Dieses Wiki verwendet eine andere, einfachere Struktur (`raw/`, `clippings/`, `wiki/`), die dem [[llm-wiki-muster]] von [[andrej-karpathy]] folgt. Die MECE-Struktur eignet sich besonders für **persönliche Produktivitätssysteme**, bei denen der Vault den gesamten Arbeitsalltag abdeckt — nicht nur eine einzelne Wissensdomain.
+Dieses Wiki verwendet eine andere, einfachere Struktur (`raw/`, `clippings/`, `wiki/`), die dem [llm-wiki-muster](llm-wiki-muster.md) von [andrej-karpathy](../personen/andrej-karpathy.md) folgt. Die MECE-Struktur eignet sich besonders für **persönliche Produktivitätssysteme**, bei denen der Vault den gesamten Arbeitsalltag abdeckt — nicht nur eine einzelne Wissensdomain.
 
 Beide Ansätze teilen die Grundidee: **klare Trennung der Bereiche**, damit die KI weiß, wo sie suchen muss.
 
@@ -50,11 +50,11 @@ Am ersten Tag 40 Ordner zu erstellen, ist der schnellste Weg, das System aufzuge
 
 ## Verwandte Seiten
 
-- [[obsidian-claude-code-pillitteri]]
-- [[obsidian]]
-- [[drei-ebenen-architektur]]
-- [[taeglicher-workflow]]
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [taeglicher-workflow](taeglicher-workflow.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

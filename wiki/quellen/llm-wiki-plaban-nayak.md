@@ -40,7 +40,7 @@ Das Besondere an Nayaks Implementierung: Die Retrieval-Schicht arbeitet auf den 
 3. Vollständige Seitentexte als Kontext laden
 4. Antwort streamen
 
-Der Qualitätsunterschied zu klassischem RAG: Das LLM liest keine zufälligen PDF-Chunk. Es liest eine **vorsynthetisierte, querverlinkte Enzyklopädie-Seite**, die alles integriert, was das System je über dieses Konzept gelernt hat. Mehr: [[fortgeschrittene-architektur]]
+Der Qualitätsunterschied zu klassischem RAG: Das LLM liest keine zufälligen PDF-Chunk. Es liest eine **vorsynthetisierte, querverlinkte Enzyklopädie-Seite**, die alles integriert, was das System je über dieses Konzept gelernt hat. Mehr: [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 
 ### Prompt Caching
 
@@ -59,7 +59,7 @@ Benannte Abfragetypen, die das Wiki vom Frage-Antwort-System zum Denkpartner mac
 | Health | Duplikate, Konsistenz, Integrität prüfen |
 | Persönliche Anwendung | „Welche Fehler mache ich gerade wahrscheinlich?" |
 
-Mehr: [[query-templates]]
+Mehr: [query-templates](../konzepte/query-templates.md)
 
 ### Python-Modulstruktur
 
@@ -67,11 +67,11 @@ Saubere Trennung: `embeddings.py`, `index.py` (EmbeddingIndex über flat JSON), 
 
 ## Verwandte Seiten
 
-- [[fortgeschrittene-architektur]]
-- [[query-templates]]
-- [[ingest-workflow]]
-- [[rag-vs-wiki]]
-- [[skalierungsgrenzen]]
+- [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
+- [query-templates](../konzepte/query-templates.md)
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [rag-vs-wiki](../konzepte/rag-vs-wiki.md)
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
 
 ---
 

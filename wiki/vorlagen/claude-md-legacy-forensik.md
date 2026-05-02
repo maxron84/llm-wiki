@@ -230,7 +230,7 @@ Nummerierte Liste konkreter Befunde mit Quellenangabe.
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)
 ```
 
 ## Konfidenzmodell

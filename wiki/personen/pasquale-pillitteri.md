@@ -19,15 +19,15 @@ Pasquale Pillitteri ist IT-Berater mit Fokus auf KI-Integration in Unternehmensp
 
 ## Beitrag zum LLM-Wiki-Thema
 
-In seinem Artikel [[obsidian-claude-code-pillitteri|„Obsidian + Claude Code: Das zweite Gehirn"]] (2026-04-17) beschreibt Pillitteri, wie man [[obsidian|Obsidian]] als persistenten externen Speicher für [[claude-code|Claude Code]] einsetzt.
+In seinem Artikel [„Obsidian + Claude Code: Das zweite Gehirn"](../quellen/obsidian-claude-code-pillitteri.md) (2026-04-17) beschreibt Pillitteri, wie man [Obsidian](../werkzeuge/obsidian.md) als persistenten externen Speicher für [Claude Code](../werkzeuge/claude-code.md) einsetzt.
 
 Seine wichtigsten Beiträge über das ursprüngliche Karpathy-Konzept hinaus:
 
-- **[[statelessness]]** als zentrale Einschränkung von Claude Code klar benennen
-- **[[mece-prinzip|MECE-Ordnerstruktur]]** als Methode für skalierbare Vault-Architektur
-- **[[taeglicher-workflow|Täglicher Workflow]]** mit zwei Befehlen (Morgen/Abend)
-- **[[modellunabhaengigkeit]]** als strategischen Unternehmensvorteil framen
-- **[[yaml-frontmatter]]** als Voraussetzung für gezielte KI-Abfragen beschreiben
+- **[statelessness](../konzepte/statelessness.md)** als zentrale Einschränkung von Claude Code klar benennen
+- **[MECE-Ordnerstruktur](../konzepte/mece-prinzip.md)** als Methode für skalierbare Vault-Architektur
+- **[Täglicher Workflow](../konzepte/taeglicher-workflow.md)** mit zwei Befehlen (Morgen/Abend)
+- **[modellunabhaengigkeit](../konzepte/modellunabhaengigkeit.md)** als strategischen Unternehmensvorteil framen
+- **[yaml-frontmatter](../konzepte/yaml-frontmatter.md)** als Voraussetzung für gezielte KI-Abfragen beschreiben
 
 (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
@@ -36,9 +36,9 @@ Seine wichtigsten Beiträge über das ursprüngliche Karpathy-Konzept hinaus:
 
 ## Verwandte Seiten
 
-- [[obsidian-claude-code-pillitteri]] — Der Artikel dieser Person
-- [[andrej-karpathy]] — Urheber des zugrundeliegenden Konzepts
-- [[llm-wiki-muster]]
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md) — Der Artikel dieser Person
+- [andrej-karpathy](andrej-karpathy.md) — Urheber des zugrundeliegenden Konzepts
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
 
 ---
 

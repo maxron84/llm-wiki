@@ -15,7 +15,7 @@ status: active
 
 ## Überblick
 
-„Query" ist die zweite der drei Kernoperationen im [[llm-wiki-muster]]. Du stellst eine Frage, und die KI beantwortet sie anhand des Wikis — nicht anhand der Rohdokumente, sondern anhand der bereits aufbereiteten Wissensbasis.
+„Query" ist die zweite der drei Kernoperationen im [llm-wiki-muster](llm-wiki-muster.md). Du stellst eine Frage, und die KI beantwortet sie anhand des Wikis — nicht anhand der Rohdokumente, sondern anhand der bereits aufbereiteten Wissensbasis.
 
 ## Ablauf
 
@@ -45,15 +45,15 @@ Antworten können je nach Frage verschiedene Formen annehmen:
 
 ## Unterschied zu RAG
 
-Bei [[rag-vs-wiki|RAG-Systemen]] arbeitet die KI mit den Rohdokumenten. Beim Wiki-Muster arbeitet sie mit einer **vorbereiteten Wissensbasis**, die der Mensch selbst aufgebaut hat. Die Synthese ist schon geschehen, die Querverweise sind schon da.
+Bei [RAG-Systemen](rag-vs-wiki.md) arbeitet die KI mit den Rohdokumenten. Beim Wiki-Muster arbeitet sie mit einer **vorbereiteten Wissensbasis**, die der Mensch selbst aufgebaut hat. Die Synthese ist schon geschehen, die Querverweise sind schon da.
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[ingest-workflow]]
-- [[lint-pruefung]]
-- [[rag-vs-wiki]]
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [ingest-workflow](ingest-workflow.md)
+- [lint-pruefung](lint-pruefung.md)
+- [rag-vs-wiki](rag-vs-wiki.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

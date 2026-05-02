@@ -15,7 +15,7 @@ status: active
 
 ## Das Problem
 
-Jede Konversation mit [[claude-code|Claude Code]] beginnt wieder bei null. Die KI erinnert sich an nichts — weder an gestrige Sitzungen noch an das Projekt, an dem du seit drei Monaten arbeitest. Du erklärst jedes Mal alles neu. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Jede Konversation mit [Claude Code](../werkzeuge/claude-code.md) beginnt wieder bei null. Die KI erinnert sich an nichts — weder an gestrige Sitzungen noch an das Projekt, an dem du seit drei Monaten arbeitest. Du erklärst jedes Mal alles neu. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 Das ist die „frustrierendste Einschränkung jedes KI-Agenten" und erklärt, warum viele Projekte nach zwei Wochen in der Schublade landen.
 
@@ -45,20 +45,20 @@ Vorteile:
 
 ## Bezug zum Chat-Problem
 
-Statelessness ist die technische Ursache des [[chat-problem|Chat-Problems]]. Während das Chat-Problem beschreibt, *was* der Benutzer erlebt (Wissen verschwindet), beschreibt Statelessness, *warum* das passiert (die KI hat kein persistentes Gedächtnis).
+Statelessness ist die technische Ursache des [Chat-Problems](chat-problem.md). Während das Chat-Problem beschreibt, *was* der Benutzer erlebt (Wissen verschwindet), beschreibt Statelessness, *warum* das passiert (die KI hat kein persistentes Gedächtnis).
 
 Die Lösungen sind komplementär:
-- Das [[llm-wiki-muster]] löst das Chat-Problem auf **Wissensebene** (Quellen → Wiki)
-- [[obsidian|Obsidian]] als externer Speicher löst die Statelessness auf **Systemebene** (Dateien → Kontext)
+- Das [llm-wiki-muster](llm-wiki-muster.md) löst das Chat-Problem auf **Wissensebene** (Quellen → Wiki)
+- [Obsidian](../werkzeuge/obsidian.md) als externer Speicher löst die Statelessness auf **Systemebene** (Dateien → Kontext)
 
 ## Verwandte Seiten
 
-- [[chat-problem]]
-- [[claude-code]]
-- [[obsidian]]
-- [[obsidian-claude-code-pillitteri]]
-- [[taeglicher-workflow]]
+- [chat-problem](chat-problem.md)
+- [claude-code](../werkzeuge/claude-code.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [taeglicher-workflow](taeglicher-workflow.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

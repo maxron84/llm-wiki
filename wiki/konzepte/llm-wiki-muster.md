@@ -28,7 +28,7 @@ Das LLM-Wiki-Muster dreht das um: Die KI baut **inkrementell ein persistentes Wi
 - Die Synthese spiegelt bereits alles wider, was du gelesen hast
 - Das Wiki wird mit jeder Quelle reicher
 
-Im Gegensatz zu [[rag-vs-wiki|RAG-Systemen]], wo Wissen bei jeder Abfrage neu zusammengesetzt wird, ist das Wiki eine **vorkompilierte Wissensbasis**, die einmal erstellt und dann laufend aktualisiert wird.
+Im Gegensatz zu [RAG-Systemen](rag-vs-wiki.md), wo Wissen bei jeder Abfrage neu zusammengesetzt wird, ist das Wiki eine **vorkompilierte Wissensbasis**, die einmal erstellt und dann laufend aktualisiert wird.
 
 ## Rollenverteilung
 
@@ -41,13 +41,13 @@ Du schreibst das Wiki nie (oder selten) selbst. Die KI übernimmt das gesamte �
 
 ## Praxisaufbau
 
-In der Praxis hat Karpathy den LLM-Agenten auf einer Seite und [[obsidian|Obsidian]] auf der anderen. Die KI bearbeitet Dateien basierend auf dem Gespräch, und er browst die Ergebnisse in Echtzeit — folgt Links, prüft die Graphansicht, liest aktualisierte Seiten.
+In der Praxis hat Karpathy den LLM-Agenten auf einer Seite und [Obsidian](../werkzeuge/obsidian.md) auf der anderen. Die KI bearbeitet Dateien basierend auf dem Gespräch, und er browst die Ergebnisse in Echtzeit — folgt Links, prüft die Graphansicht, liest aktualisierte Seiten.
 
-Das Muster wird durch die [[drei-ebenen-architektur]] realisiert und über drei Operationen betrieben: [[ingest-workflow|Ingest]], [[query-workflow|Query]] und [[lint-pruefung|Lint]].
+Das Muster wird durch die [drei-ebenen-architektur](drei-ebenen-architektur.md) realisiert und über drei Operationen betrieben: [Ingest](ingest-workflow.md), [Query](query-workflow.md) und [Lint](lint-pruefung.md).
 
 ## Modellunabhängigkeit
 
-Ein strategischer Vorteil: Da das Wiki nur aus Markdown-Dateien besteht, ist es [[modellunabhaengigkeit|vollständig modellunabhängig]]. Man kann den KI-Agenten wechseln, ohne das Wiki zu verlieren. Die KI wird austauschbar wie eine Datenbank-Engine — die Daten bleiben. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Ein strategischer Vorteil: Da das Wiki nur aus Markdown-Dateien besteht, ist es [vollständig modellunabhängig](modellunabhaengigkeit.md). Man kann den KI-Agenten wechseln, ohne das Wiki zu verlieren. Die KI wird austauschbar wie eine Datenbank-Engine — die Daten bleiben. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 ## Warum Menschen Wikis aufgeben — und KI das ändert
 
@@ -55,21 +55,23 @@ Menschen geben Wikis auf, weil der **Pflegeaufwand schneller wächst als der Nut
 
 ## Verwandte Seiten
 
-- [[llm-wiki-karpathy]] — Die Originalquelle
-- [[llm-wiki-tutorial-mit-mario]] — Live-Demo des Konzepts
-- [[drei-ebenen-architektur]]
-- [[chat-problem]] — Das Problem, das das Muster löst
-- [[rag-vs-wiki]]
-- [[ingest-workflow]]
-- [[query-workflow]]
-- [[lint-pruefung]]
-- [[memex]]
-- [[andrej-karpathy]] — Der Urheber des Konzepts
-- [[statelessness]] — Das technische Problem, das das Muster löst
-- [[modellunabhaengigkeit]] — Strategischer Vorteil
-- [[mece-prinzip]] — Alternative Ordnerstruktur
-- [[obsidian-claude-code-pillitteri]]
+- [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Die Originalquelle
+- [llm-wiki-tutorial-mit-mario](../quellen/llm-wiki-tutorial-mit-mario.md) — Live-Demo des Konzepts
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [chat-problem](chat-problem.md) — Das Problem, das das Muster löst
+- [rag-vs-wiki](rag-vs-wiki.md)
+- [ingest-workflow](ingest-workflow.md)
+- [query-workflow](query-workflow.md)
+- [lint-pruefung](lint-pruefung.md)
+- [memex](memex.md)
+- [andrej-karpathy](../personen/andrej-karpathy.md) — Der Urheber des Konzepts
+- [llm-wiki-mehul-gupta](../quellen/llm-wiki-mehul-gupta.md) — Küchenmetapher und Rollenverschiebung
+- [llm-wiki-venturebeat](../quellen/llm-wiki-venturebeat.md) — Community-Reaktionen und Enterprise-Perspektive
+- [statelessness](statelessness.md) — Das technische Problem, das das Muster löst
+- [modellunabhaengigkeit](modellunabhaengigkeit.md) — Strategischer Vorteil
+- [mece-prinzip](mece-prinzip.md) — Alternative Ordnerstruktur
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

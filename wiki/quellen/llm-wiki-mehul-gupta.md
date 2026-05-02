@@ -45,14 +45,14 @@ Karpathy beschreibt, dass gute Antworten als neue Seiten ins Wiki zurückfließe
 
 ## Bezug zum bestehenden Wiki
 
-Diese Quelle erklärt dasselbe Konzept wie [[llm-wiki-karpathy]], jedoch für ein breiteres Publikum ohne technischen Hintergrund. Ergänzt die [[rag-vs-wiki]]-Seite um die Küchenmetapher.
+Diese Quelle erklärt dasselbe Konzept wie [llm-wiki-karpathy](llm-wiki-karpathy.md), jedoch für ein breiteres Publikum ohne technischen Hintergrund. Ergänzt die [rag-vs-wiki](../konzepte/rag-vs-wiki.md)-Seite um die Küchenmetapher.
 
 ## Verwandte Seiten
 
-- [[rag-vs-wiki]]
-- [[llm-wiki-muster]]
-- [[kompilierungs-metapher]]
-- [[kontaminierungsrisiko]]
+- [rag-vs-wiki](../konzepte/rag-vs-wiki.md)
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
+- [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md)
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)
 
 ---
 

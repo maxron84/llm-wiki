@@ -54,7 +54,7 @@ Das Wiki kann als MCP-Server exposiert werden — damit wird es zu einem nativen
 - `wiki_ingest` — Neue Quelle aufnehmen
 - `wiki_lint` — Wiki-Gesundheitsprüfung
 
-Tools wie [[jdocmunch]] und [[qmd]] sind bereits als MCP-Server verfügbar und können das Wiki direkt in den Claude-Code-Workflow integrieren. (Quelle: clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md)
+Tools wie [jdocmunch](../werkzeuge/jdocmunch.md) und [qmd](../werkzeuge/qmd.md) sind bereits als MCP-Server verfügbar und können das Wiki direkt in den Claude-Code-Workflow integrieren. (Quelle: clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md)
 
 ## Feintuning-Potenzial
 
@@ -70,11 +70,11 @@ Lex Fridman erwähnte ein nützliches Variante: Für spezifische Aufgaben eine t
 
 ## Verwandte Seiten
 
-- [[skalierungsgrenzen]]
-- [[jdocmunch]]
-- [[qmd]]
-- [[ingest-workflow]]
-- [[drei-ebenen-architektur]]
+- [skalierungsgrenzen](skalierungsgrenzen.md)
+- [jdocmunch](../werkzeuge/jdocmunch.md)
+- [qmd](../werkzeuge/qmd.md)
+- [ingest-workflow](ingest-workflow.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
 
 ---
 

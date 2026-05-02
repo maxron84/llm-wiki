@@ -37,17 +37,17 @@ Wenn der alte Chat zu lang wird und man einen neuen aufmacht, startet man **tats
 
 ## Die Lösung
 
-Das [[llm-wiki-muster]] löst dieses Problem, indem Wissen **nicht im Chat** bleibt, sondern in ein **persistentes Wiki** fließt. Neue Erkenntnisse werden sofort in verlinkte Markdown-Seiten integriert. Das Wiki überlebt jeden Chat und wächst mit jeder Quelle.
+Das [llm-wiki-muster](llm-wiki-muster.md) löst dieses Problem, indem Wissen **nicht im Chat** bleibt, sondern in ein **persistentes Wiki** fließt. Neue Erkenntnisse werden sofort in verlinkte Markdown-Seiten integriert. Das Wiki überlebt jeden Chat und wächst mit jeder Quelle.
 
-Karpathy formuliert den Unterschied so: Bei [[rag-vs-wiki|RAG]] wird Wissen bei jeder Frage neu abgeleitet. Beim Wiki-Muster wird es einmal kompiliert und dann aktuell gehalten. (Quelle: clippings/llm-wiki.md)
+Karpathy formuliert den Unterschied so: Bei [RAG](rag-vs-wiki.md) wird Wissen bei jeder Frage neu abgeleitet. Beim Wiki-Muster wird es einmal kompiliert und dann aktuell gehalten. (Quelle: clippings/llm-wiki.md)
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[rag-vs-wiki]]
-- [[query-workflow]]
-- [[llm-wiki-tutorial-mit-mario]]
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [rag-vs-wiki](rag-vs-wiki.md)
+- [query-workflow](query-workflow.md)
+- [llm-wiki-tutorial-mit-mario](../quellen/llm-wiki-tutorial-mit-mario.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

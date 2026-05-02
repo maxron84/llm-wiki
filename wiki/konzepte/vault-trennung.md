@@ -15,7 +15,7 @@ status: active
 
 ## Die Empfehlung
 
-[[steph-ango|Steph Ango]] (kepano, Obsidian-Mitgründer) antwortete auf Karpathys Post mit einer konkreten architektonischen Empfehlung:
+[Steph Ango](../personen/steph-ango.md) (kepano, Obsidian-Mitgründer) antwortete auf Karpathys Post mit einer konkreten architektonischen Empfehlung:
 
 > Behalte dein persönliches Vault **sauber und hochwertig** — du weißt den Ursprung jedes Inhalts. Erstelle ein separates, "unordentliches Vault" für KI-generierte Inhalte.
 
@@ -49,9 +49,9 @@ Wertvolle Artefakte aus dem Agenten-Vault können nach Prüfung ins saubere Vaul
 
 ## Verhältnis zum Kontaminierungsrisiko
 
-Vault-Trennung ist eine der Haupt-Minderungsstrategien für das [[kontaminierungsrisiko]]. Sie verhindert nicht, dass Halluzinationen ins Agenten-Vault gelangen — aber sie verhindert, dass sie unkontrolliert mit vertrauenswürdigem Wissen vermischt werden.
+Vault-Trennung ist eine der Haupt-Minderungsstrategien für das [kontaminierungsrisiko](kontaminierungsrisiko.md). Sie verhindert nicht, dass Halluzinationen ins Agenten-Vault gelangen — aber sie verhindert, dass sie unkontrolliert mit vertrauenswürdigem Wissen vermischt werden.
 
-Weitere Schutzmaßnahmen: Quellenverweise auf jede Seite, regelmäßige [[lint-pruefung|Lint-Prüfungen]], [[jdocmunch]]-basierter Zugriff statt Volllade.
+Weitere Schutzmaßnahmen: Quellenverweise auf jede Seite, regelmäßige [Lint-Prüfungen](lint-pruefung.md), [jdocmunch](../werkzeuge/jdocmunch.md)-basierter Zugriff statt Volllade.
 
 ## Praktische Umsetzung in diesem Projekt
 
@@ -62,11 +62,11 @@ In diesem Wiki-Projekt entspricht das Schema der CLAUDE.md dem "sauberen Vault"-
 
 ## Verwandte Seiten
 
-- [[kontaminierungsrisiko]]
-- [[steph-ango]]
-- [[drei-ebenen-architektur]]
-- [[obsidian]]
-- [[lint-pruefung]]
+- [kontaminierungsrisiko](kontaminierungsrisiko.md)
+- [steph-ango](../personen/steph-ango.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [lint-pruefung](lint-pruefung.md)
 
 ---
 

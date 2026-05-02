@@ -15,9 +15,9 @@ status: active
 
 ## Was ist eine CLAUDE.md?
 
-Eine CLAUDE.md (oder allgemeiner: eine LLM-Instruktionsdatei) ist eine Markdown-Datei im Projektstamm, die einem AI-Coding-Assistenten wie [[claude-code|Claude Code]] die Regeln, Strukturen und Workflows eines Projekts erklärt. Sie ist das „Betriebssystem" des Projekts — was für Menschen ein Onboarding-Dokument wäre, ist für die AI die CLAUDE.md.
+Eine CLAUDE.md (oder allgemeiner: eine LLM-Instruktionsdatei) ist eine Markdown-Datei im Projektstamm, die einem AI-Coding-Assistenten wie [Claude Code](../werkzeuge/claude-code.md) die Regeln, Strukturen und Workflows eines Projekts erklärt. Sie ist das „Betriebssystem" des Projekts — was für Menschen ein Onboarding-Dokument wäre, ist für die AI die CLAUDE.md.
 
-Im Kontext des [[llm-wiki-muster|LLM-Wiki-Musters]] bildet die CLAUDE.md die **dritte Ebene** der [[drei-ebenen-architektur]]: das Schema, das die Verarbeitung von Rohquellen zu Wiki-Seiten steuert.
+Im Kontext des [LLM-Wiki-Musters](llm-wiki-muster.md) bildet die CLAUDE.md die **dritte Ebene** der [drei-ebenen-architektur](drei-ebenen-architektur.md): das Schema, das die Verarbeitung von Rohquellen zu Wiki-Seiten steuert.
 
 ## Designprinzip 1: Direkte Anweisungen, keine Meta-Vorlagen
 
@@ -31,7 +31,7 @@ Im Kontext des [[llm-wiki-muster|LLM-Wiki-Musters]] bildet die CLAUDE.md die **d
 
 ## Designprinzip 2: Link-Konsistenz zwischen Instruktion und Output
 
-**Problem**: Eine überarbeitete CLAUDE.md verwendete `[[wiki-links]]` (Obsidian-Syntax), während das gesamte Wiki durchgehend `[text](pfad.md)` (Standard-Markdown) nutzte. Das ist ein Widerspruch: Claude sieht einen Stil in der Instruktionsdatei und einen anderen im Output. Das kann zur Kontamination des Wikis mit dem falschen Link-Stil führen. (Siehe auch [[kontaminierungsrisiko]])
+**Problem**: Eine überarbeitete CLAUDE.md verwendete `[[wiki-links]]` (Obsidian-Syntax), während das gesamte Wiki durchgehend `[text](pfad.md)` (Standard-Markdown) nutzte. Das ist ein Widerspruch: Claude sieht einen Stil in der Instruktionsdatei und einen anderen im Output. Das kann zur Kontamination des Wikis mit dem falschen Link-Stil führen. (Siehe auch [kontaminierungsrisiko](kontaminierungsrisiko.md))
 
 **Lösung**: Die Instruktionsdatei muss denselben Link-Stil verwenden wie das Wiki selbst. Wenn das Wiki Standard-Markdown nutzt, muss auch die CLAUDE.md Standard-Markdown nutzen.
 
@@ -39,13 +39,13 @@ Im Kontext des [[llm-wiki-muster|LLM-Wiki-Musters]] bildet die CLAUDE.md die **d
 
 **Problem**: Eine CLAUDE.md referenzierte Seiten, die in einem anderen Obsidian-Vault existierten, aber nicht in diesem Repo. Claude kann diese Referenzen nicht auflösen und ignoriert sie oder halluziniert Zusammenhänge.
 
-**Lösung**: Jede Referenz in der CLAUDE.md muss entweder auf eine existierende Datei im Repo verweisen oder als Konzept inline erklärt werden. Keine toten Links. Das ist verwandt mit der [[lint-pruefung]] — auch dort wird nach verwaisten Links gesucht.
+**Lösung**: Jede Referenz in der CLAUDE.md muss entweder auf eine existierende Datei im Repo verweisen oder als Konzept inline erklärt werden. Keine toten Links. Das ist verwandt mit der [lint-pruefung](lint-pruefung.md) — auch dort wird nach verwaisten Links gesucht.
 
 ## Designprinzip 4: Frontmatter nur wo nötig
 
 **Problem**: YAML-Frontmatter (`---` Blöcke mit `date`, `type`, `tags`) wurde zur CLAUDE.md hinzugefügt, obwohl keine einzige Wiki-Seite Frontmatter verwendete. Das schafft eine Inkonsistenz: Claude könnte anfangen, Frontmatter in neue Wiki-Seiten einzubauen.
 
-**Lösung**: Frontmatter-Nutzung muss konsistent sein. Wenn das Wiki [[yaml-frontmatter|YAML-Frontmatter]] verwendet (wie dieses Wiki hier), dann gehört es auch in die CLAUDE.md. Wenn nicht, dann nicht. Die Regel ist **Konsistenz**, nicht Frontmatter an sich.
+**Lösung**: Frontmatter-Nutzung muss konsistent sein. Wenn das Wiki [YAML-Frontmatter](yaml-frontmatter.md) verwendet (wie dieses Wiki hier), dann gehört es auch in die CLAUDE.md. Wenn nicht, dann nicht. Die Regel ist **Konsistenz**, nicht Frontmatter an sich.
 
 ## Designprinzip 5: Wertvolle Ergänzungen als Top-Level-Sektionen
 
@@ -53,11 +53,11 @@ Bestimmte Ergänzungen bringen erst dann Nutzen, wenn sie als eigenständige Sek
 
 | Ergänzung | Nutzen |
 |---|---|
-| **3-Stufen-Tiefe** (Minimal/Mittel/Vollständig) | Vermeidet Über- oder Unterverarbeitung von Quellen (siehe [[ingest-workflow]]) |
+| **3-Stufen-Tiefe** (Minimal/Mittel/Vollständig) | Vermeidet Über- oder Unterverarbeitung von Quellen (siehe [ingest-workflow](ingest-workflow.md)) |
 | **Extraktionsstrategien nach Quelltyp** | Verschiedene Quellen brauchen verschiedene Schwerpunkte |
-| **Benannte Abfragetypen** | Standardisierte Frage-Muster (siehe [[query-templates]]) |
-| **[[kontaminierungsrisiko|Kontaminierungsrisiko]]-Regel** | Zusammenfassungen müssen gegen Rohquellen prüfbar bleiben |
-| **Skalierungshinweise** | Plan B für 100+ Seiten (siehe [[skalierungsgrenzen]], [[qmd]], [[jdocmunch]]) |
+| **Benannte Abfragetypen** | Standardisierte Frage-Muster (siehe [query-templates](query-templates.md)) |
+| **[Kontaminierungsrisiko](kontaminierungsrisiko.md)-Regel** | Zusammenfassungen müssen gegen Rohquellen prüfbar bleiben |
+| **Skalierungshinweise** | Plan B für 100+ Seiten (siehe [skalierungsgrenzen](skalierungsgrenzen.md), [qmd](../werkzeuge/qmd.md), [jdocmunch](../werkzeuge/jdocmunch.md)) |
 
 ## Designprinzip 6: Die CLAUDE.md entwickelt sich mit dem Projekt
 
@@ -65,7 +65,7 @@ Eine CLAUDE.md ist kein statisches Dokument. Sie sollte regelmäßig überprüft
 
 - Neue Ordner oder Seitentypen entstehen
 - Wiederkehrende Fehler ein neues Muster erfordern
-- Das Wiki eine Größe erreicht, bei der bestehende Konventionen nicht mehr skalieren (siehe [[skalierungsgrenzen]])
+- Das Wiki eine Größe erreicht, bei der bestehende Konventionen nicht mehr skalieren (siehe [skalierungsgrenzen](skalierungsgrenzen.md))
 
 Im YouTube-Verlauf-Projekt wuchs die CLAUDE.md von ~100 Zeilen (initiales Setup) auf ~190 Zeilen (nach Integration aller Verbesserungen) über 7 Aufnahme-Zyklen.
 
@@ -80,16 +80,16 @@ Im YouTube-Verlauf-Projekt wuchs die CLAUDE.md von ~100 Zeilen (initiales Setup)
 
 ## Verwandte Seiten
 
-- [[drei-ebenen-architektur]] — CLAUDE.md ist die dritte Ebene (Schema)
-- [[llm-wiki-muster]] — Das übergeordnete Konzept, das die CLAUDE.md steuert
-- [[kontaminierungsrisiko]] — Designprinzip 2 und 5 adressieren dieses Risiko direkt
-- [[lint-pruefung]] — Designprinzip 3 (keine toten Links) ist eine Lint-Regel
-- [[yaml-frontmatter]] — Designprinzip 4 betrifft die Frontmatter-Entscheidung
-- [[query-templates]] — Designprinzip 5: Benannte Abfragetypen als Top-Level-Sektion
-- [[skalierungsgrenzen]] — Designprinzip 6: Wann die CLAUDE.md wachsen muss
-- [[claude-md-software]] — Vorlage, die diese Prinzipien anwenden sollte
-- [[claude-md-legacy-forensik]] — Vorlage, die diese Prinzipien anwenden sollte
-- [[claude-md-youtube-verlauf]] — Die Vorlage, aus deren Praxis diese Prinzipien stammen
+- [drei-ebenen-architektur](drei-ebenen-architektur.md) — CLAUDE.md ist die dritte Ebene (Schema)
+- [llm-wiki-muster](llm-wiki-muster.md) — Das übergeordnete Konzept, das die CLAUDE.md steuert
+- [kontaminierungsrisiko](kontaminierungsrisiko.md) — Designprinzip 2 und 5 adressieren dieses Risiko direkt
+- [lint-pruefung](lint-pruefung.md) — Designprinzip 3 (keine toten Links) ist eine Lint-Regel
+- [yaml-frontmatter](yaml-frontmatter.md) — Designprinzip 4 betrifft die Frontmatter-Entscheidung
+- [query-templates](query-templates.md) — Designprinzip 5: Benannte Abfragetypen als Top-Level-Sektion
+- [skalierungsgrenzen](skalierungsgrenzen.md) — Designprinzip 6: Wann die CLAUDE.md wachsen muss
+- [claude-md-software](../vorlagen/claude-md-software.md) — Vorlage, die diese Prinzipien anwenden sollte
+- [claude-md-legacy-forensik](../vorlagen/claude-md-legacy-forensik.md) — Vorlage, die diese Prinzipien anwenden sollte
+- [claude-md-youtube-verlauf](../vorlagen/claude-md-youtube-verlauf.md) — Die Vorlage, aus deren Praxis diese Prinzipien stammen
 
 ---
 

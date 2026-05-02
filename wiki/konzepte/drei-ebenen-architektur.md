@@ -15,7 +15,7 @@ status: active
 
 ## Überblick
 
-Das [[llm-wiki-muster]] basiert auf einer klaren Trennung in drei Ebenen. Jede Ebene hat eine eigene Rolle und eigene Regeln, wer sie lesen und bearbeiten darf.
+Das [llm-wiki-muster](llm-wiki-muster.md) basiert auf einer klaren Trennung in drei Ebenen. Jede Ebene hat eine eigene Rolle und eigene Regeln, wer sie lesen und bearbeiten darf.
 
 ## Ebene 1: Rohquellen
 
@@ -48,18 +48,18 @@ Der Index funktioniert überraschend gut bei moderater Größe (~100 Quellen, ~h
 
 Das Schema definiert:
 - Zweck des Wikis
-- Wie neue Quellen verarbeitet werden ([[ingest-workflow]])
+- Wie neue Quellen verarbeitet werden ([ingest-workflow](ingest-workflow.md))
 - Wie Seiten formatiert werden
-- Wie die KI Fragen beantwortet ([[query-workflow]])
-- Wie Prüfungen ablaufen ([[lint-pruefung]])
+- Wie die KI Fragen beantwortet ([query-workflow](query-workflow.md))
+- Wie Prüfungen ablaufen ([lint-pruefung](lint-pruefung.md))
 
 Ohne Schema verhält sich die KI wie ein generischer Chatbot. Das Schema macht den Unterschied. (Quelle: clippings/llm-wiki.md)
 
-Für die Gestaltung einer effektiven Schema-Datei gibt es [[claude-md-design|6 Designprinzipien]] aus der Praxis — u.a. dass operative Regeln nie in Code-Fences stecken dürfen und Link-Stil sowie Frontmatter konsistent mit dem Wiki sein müssen.
+Für die Gestaltung einer effektiven Schema-Datei gibt es [6 Designprinzipien](claude-md-design.md) aus der Praxis — u.a. dass operative Regeln nie in Code-Fences stecken dürfen und Link-Stil sowie Frontmatter konsistent mit dem Wiki sein müssen.
 
 ### CLAUDE.md als Orchestrator
 
-Pillitteri beschreibt die `CLAUDE.md` als **Einstiegspunkt des Systems**. Jede Claude Code-Sitzung liest sie als Erstes. Eine gute CLAUDE.md enthält: die Ordnerkarte mit Rollen, Namenskonventionen, das Standard-[[yaml-frontmatter]], benutzerdefinierte Befehle und verfügbare Skills. Wichtig: Die CLAUDE.md ist ein lebendiges Dokument und sollte monatlich aktualisiert werden. Bei >500 Zeilen liegt ein Architekturfehler vor — der eigentliche Inhalt gehört in den Vault, nicht in die Schema-Datei. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Pillitteri beschreibt die `CLAUDE.md` als **Einstiegspunkt des Systems**. Jede Claude Code-Sitzung liest sie als Erstes. Eine gute CLAUDE.md enthält: die Ordnerkarte mit Rollen, Namenskonventionen, das Standard-[yaml-frontmatter](yaml-frontmatter.md), benutzerdefinierte Befehle und verfügbare Skills. Wichtig: Die CLAUDE.md ist ein lebendiges Dokument und sollte monatlich aktualisiert werden. Bei >500 Zeilen liegt ein Architekturfehler vor — der eigentliche Inhalt gehört in den Vault, nicht in die Schema-Datei. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 ## Zusammenspiel der Ebenen
 
@@ -75,16 +75,16 @@ Der Mensch kuratiert die Rohquellen und gestaltet das Schema. Die KI liest die R
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[llm-wiki-karpathy]]
-- [[obsidian-claude-code-pillitteri]]
-- [[ingest-workflow]]
-- [[query-workflow]]
-- [[lint-pruefung]]
-- [[modellunabhaengigkeit]]
-- [[yaml-frontmatter]]
-- [[claude-md-design]] — 6 Designprinzipien für die Schema-Datei (Ebene 3)
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md)
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [ingest-workflow](ingest-workflow.md)
+- [query-workflow](query-workflow.md)
+- [lint-pruefung](lint-pruefung.md)
+- [modellunabhaengigkeit](modellunabhaengigkeit.md)
+- [yaml-frontmatter](yaml-frontmatter.md)
+- [claude-md-design](claude-md-design.md) — 6 Designprinzipien für die Schema-Datei (Ebene 3)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

@@ -15,9 +15,9 @@ status: active
 
 ## Was ist qmd?
 
-qmd ist eine lokale Suchmaschine, die speziell für Markdown-Wissensbases entwickelt wurde. Sie löst das [[skalierungsgrenzen|Skalierungsproblem]], das entsteht, wenn die index.md-Datei für eine einzelne Kontextfenster-Sitzung zu groß wird.
+qmd ist eine lokale Suchmaschine, die speziell für Markdown-Wissensbases entwickelt wurde. Sie löst das [Skalierungsproblem](../konzepte/skalierungsgrenzen.md), das entsteht, wenn die index.md-Datei für eine einzelne Kontextfenster-Sitzung zu groß wird.
 
-**Entwickler**: [[tobi-luetke|Tobi Lütke]] (CEO von Shopify)
+**Entwickler**: [Tobi Lütke](../personen/tobi-luetke.md) (CEO von Shopify)
 
 Technischer Unterbau: `node-llama-cpp` mit GGUF-Modellen — alles lokal, keine API-Verbindungen, keine Datenweitergabe.
 
@@ -63,7 +63,7 @@ Im MCP-Server-Modus ist qmd direkt in Claude Code als natives Werkzeug verfügba
 | Ideal für | Navigation bei großem Wiki | Gezielte Abschnitte laden |
 | Komplementär? | Ja | Ja — kombinierbar |
 
-qmd findet die relevanten Seiten; [[jdocmunch]] lädt dann nur den nötigen Abschnitt. Zusammen adressieren sie das Skalierungsproblem vollständiger als jedes Tool allein.
+qmd findet die relevanten Seiten; [jdocmunch](jdocmunch.md) lädt dann nur den nötigen Abschnitt. Zusammen adressieren sie das Skalierungsproblem vollständiger als jedes Tool allein.
 
 ## Wann einsetzen
 
@@ -76,11 +76,11 @@ Für Wikis unter ~100 Seiten ist direktes Laden in der Regel einfacher.
 
 ## Verwandte Seiten
 
-- [[skalierungsgrenzen]]
-- [[jdocmunch]]
-- [[fortgeschrittene-architektur]]
-- [[tobi-luetke]]
-- [[llm-wiki-analytics-vidhya]]
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [jdocmunch](jdocmunch.md)
+- [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
+- [tobi-luetke](../personen/tobi-luetke.md)
+- [llm-wiki-analytics-vidhya](../quellen/llm-wiki-analytics-vidhya.md)
 
 ---
 

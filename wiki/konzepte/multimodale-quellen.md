@@ -8,7 +8,7 @@ status: draft
 # Multimodale Quellen im LLM-Wiki
 
 **Zusammenfassung**: Eine Konzeptskizze zur Erweiterung des LLM-Wiki-Musters auf nicht-textuelle Eingaben — Audio, Bilder und Video. Noch nicht in der Praxis erprobt; beschreibt mögliche Pipelines, offene Fragen und Implikationen für künftige Vorlagen.
-**Quellen**: (überprüfungsbedürftig — theoretische Ableitung aus [[llm-wiki-muster]] und [[drei-ebenen-architektur]])
+**Quellen**: (überprüfungsbedürftig — theoretische Ableitung aus [llm-wiki-muster](llm-wiki-muster.md) und [drei-ebenen-architektur](drei-ebenen-architektur.md))
 **Zuletzt aktualisiert**: 2026-04-27
 
 > **Konzeptskizze**: Diese Seite beschreibt eine theoretische Erweiterung, keine erprobte Praxis. Sie hält fest, was konzeptionell durchdacht wurde — als Ausgangspunkt für spätere Vorlagen oder Experimente, nicht als fertige Anleitung.
@@ -17,7 +17,7 @@ status: draft
 
 ## Kerngedanke
 
-Das [[llm-wiki-muster]] ist in seiner Grundform textbasiert: Quellen kommen als Markdown oder Plaintext herein, das Wiki ist Markdown. Die [[kompilierungs-metapher]] gilt trotzdem für jedes Medium — Audio, Bilder und Video lassen sich ebenfalls *einmal kompilieren* und dann billig abfragen. Der Unterschied: Vor dem eigentlichen Ingest braucht es einen zusätzlichen Konvertierungsschritt.
+Das [llm-wiki-muster](llm-wiki-muster.md) ist in seiner Grundform textbasiert: Quellen kommen als Markdown oder Plaintext herein, das Wiki ist Markdown. Die [kompilierungs-metapher](kompilierungs-metapher.md) gilt trotzdem für jedes Medium — Audio, Bilder und Video lassen sich ebenfalls *einmal kompilieren* und dann billig abfragen. Der Unterschied: Vor dem eigentlichen Ingest braucht es einen zusätzlichen Konvertierungsschritt.
 
 ```
 Text    →  Ingest  →  Wiki
@@ -50,7 +50,7 @@ Screenshots, Fotos, Whiteboards, Buchseiten, Diagramme, Slides, handschriftliche
 
 **Pipeline**: Direkte multimodale Analyse durch Claude (ohne Vorverarbeitung) → Beschreibung + extrahiertes Wissen → Wiki-Seite.
 
-**Stärke**: Claude analysiert Bilder nativ. Für das [[claude-md-rezepte-ernaehrung|Rezepte-Wiki]] wären abfotografierte Rezeptkarten oder Bilder von Gerichten sofort verwertbar. Whiteboards aus Meetings könnten direkt in Architekturseiten landen.
+**Stärke**: Claude analysiert Bilder nativ. Für das [Rezepte-Wiki](../vorlagen/claude-md-rezepte-ernaehrung.md) wären abfotografierte Rezeptkarten oder Bilder von Gerichten sofort verwertbar. Whiteboards aus Meetings könnten direkt in Architekturseiten landen.
 
 **Verlust**: Visuelle Präzision. Eine Beschreibung eines Diagramms ist nicht das Diagramm.
 
@@ -121,14 +121,14 @@ Eine neue Vorlage in diesem Bereich würde einen **Medien-Aufnahme-Workflow** al
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]] — Das Basismuster, das hier erweitert wird
-- [[kompilierungs-metapher]] — Gilt auch für multimodale Quellen
-- [[ingest-workflow]] — Bestehender Workflow; multimodaler Kanal würde vorgelagert eingehängt
-- [[drei-ebenen-architektur]] — Ebene 1 (Rohquellen) erweitert sich auf nicht-textuelle Medien
-- [[kontaminierungsrisiko]] — Bei Bildbeschreibungen erhöhtes Risiko: Modell interpretiert, nicht nur extrahiert
-- [[skalierungsgrenzen]] — Mediadateien verschärfen das Speicherproblem erheblich
-- [[claude-md-youtube-verlauf]] — Bereits gelöste Variante: Audio via Transkript
-- [[claude-md-rezepte-ernaehrung]] — Kandidat für Bild-Input
+- [llm-wiki-muster](llm-wiki-muster.md) — Das Basismuster, das hier erweitert wird
+- [kompilierungs-metapher](kompilierungs-metapher.md) — Gilt auch für multimodale Quellen
+- [ingest-workflow](ingest-workflow.md) — Bestehender Workflow; multimodaler Kanal würde vorgelagert eingehängt
+- [drei-ebenen-architektur](drei-ebenen-architektur.md) — Ebene 1 (Rohquellen) erweitert sich auf nicht-textuelle Medien
+- [kontaminierungsrisiko](kontaminierungsrisiko.md) — Bei Bildbeschreibungen erhöhtes Risiko: Modell interpretiert, nicht nur extrahiert
+- [skalierungsgrenzen](skalierungsgrenzen.md) — Mediadateien verschärfen das Speicherproblem erheblich
+- [claude-md-youtube-verlauf](../vorlagen/claude-md-youtube-verlauf.md) — Bereits gelöste Variante: Audio via Transkript
+- [claude-md-rezepte-ernaehrung](../vorlagen/claude-md-rezepte-ernaehrung.md) — Kandidat für Bild-Input
 
 ---
 

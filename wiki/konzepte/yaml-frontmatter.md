@@ -29,7 +29,7 @@ type: konzept
 
 ## Warum ist es wichtig?
 
-Ohne Frontmatter behandelt [[claude-code|Claude]] alle Dateien gleich und verliert wertvolle Informationen. Mit standardisiertem Frontmatter werden gezielte Abfragen möglich:
+Ohne Frontmatter behandelt [Claude](../werkzeuge/claude-code.md) alle Dateien gleich und verliert wertvolle Informationen. Mit standardisiertem Frontmatter werden gezielte Abfragen möglich:
 
 - „Finde alle Notizen mit `status=active` und `tag=claude-code`"
 - „Zeige alle Konzeptseiten, die seit letzter Woche aktualisiert wurden"
@@ -49,7 +49,7 @@ Ohne Frontmatter behandelt [[claude-code|Claude]] alle Dateien gleich und verlie
 
 ## Dataview-Integration
 
-Das [[obsidian|Obsidian]]-Plugin [[dataview|Dataview]] kann Abfragen über Frontmatter-Felder ausführen und dynamische Tabellen und Listen generieren. Wenn die KI konsistent Frontmatter zu Seiten hinzufügt, entstehen automatisch nützliche Dashboards. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
+Das [Obsidian](../werkzeuge/obsidian.md)-Plugin [Dataview](../werkzeuge/dataview.md) kann Abfragen über Frontmatter-Felder ausführen und dynamische Tabellen und Listen generieren. Wenn die KI konsistent Frontmatter zu Seiten hinzufügt, entstehen automatisch nützliche Dashboards. (Quelle: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md)
 
 ## Häufiger Fehler: Inkonsistente Tags
 
@@ -57,11 +57,11 @@ Wenn jede Notiz unterschiedliche Tags ohne Konvention hat, funktionieren Abfrage
 
 ## Verwandte Seiten
 
-- [[obsidian-claude-code-pillitteri]]
-- [[obsidian]]
-- [[mece-prinzip]]
-- [[claude-md-design]] — Designprinzip 4: Frontmatter-Entscheidung muss konsistent zwischen CLAUDE.md und Wiki sein
+- [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [mece-prinzip](mece-prinzip.md)
+- [claude-md-design](claude-md-design.md) — Designprinzip 4: Frontmatter-Entscheidung muss konsistent zwischen CLAUDE.md und Wiki sein
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

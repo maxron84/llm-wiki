@@ -67,14 +67,14 @@ MCP-Server läuft mit `uvx jdocmunch-mcp`.
 
 ## Bezug zum bestehenden Wiki
 
-Diese Quelle führt das [[skalierungsgrenzen]]-Problem ein und liefert mit [[jdocmunch]] die erste spezifische Lösung dafür. Ergänzt die Diskussion über [[rag-vs-wiki]] um eine praktische Einschränkung des Wiki-Ansatzes.
+Diese Quelle führt das [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)-Problem ein und liefert mit [jdocmunch](../werkzeuge/jdocmunch.md) die erste spezifische Lösung dafür. Ergänzt die Diskussion über [rag-vs-wiki](../konzepte/rag-vs-wiki.md) um eine praktische Einschränkung des Wiki-Ansatzes.
 
 ## Verwandte Seiten
 
-- [[skalierungsgrenzen]]
-- [[jdocmunch]]
-- [[rag-vs-wiki]]
-- [[query-workflow]]
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [jdocmunch](../werkzeuge/jdocmunch.md)
+- [rag-vs-wiki](../konzepte/rag-vs-wiki.md)
+- [query-workflow](../konzepte/query-workflow.md)
 
 ---
 

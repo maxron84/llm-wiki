@@ -38,7 +38,7 @@ Spannungen und Widersprüche aufdecken.
 
 Beispiel: *"Was ist der größte Widerspruch zwischen meinen Quellen? Erkläre beide Seiten als Steelman-Argumente."*
 
-Nutzen: Verhindert, dass das Wiki zu einer Echo-Kammer wird. Ähnlich dem [[lint-pruefung|Lint-Prozess]], aber auf Inhaltsebene statt Struktur.
+Nutzen: Verhindert, dass das Wiki zu einer Echo-Kammer wird. Ähnlich dem [Lint-Prozess](lint-pruefung.md), aber auf Inhaltsebene statt Struktur.
 
 ### 4. Output-Generierung
 Artefakte aus dem Wiki kompilieren.
@@ -55,7 +55,7 @@ Das Wiki selbst auditieren.
 
 Beispiele: Duplikat-Seiten finden, Konsistenz-Audit, Integritätsbericht.
 
-Nutzen: Ergänzt den formalen [[lint-pruefung|Lint-Workflow]] um inhaltliche Tiefenprüfung.
+Nutzen: Ergänzt den formalen [Lint-Workflow](lint-pruefung.md) um inhaltliche Tiefenprüfung.
 
 ### 6. Persönliche Anwendung
 Das Wiki auf die eigene Situation anwenden.
@@ -74,14 +74,15 @@ Das Wiki ist kein besseres Google. Es ist ein Denkpartner, der das gesamte kompi
 
 ## Bezug zum täglichen Workflow
 
-Query-Templates sind besonders wertvoll beim [[taeglicher-workflow|täglichen Workflow]] als strukturierte Einstiegspunkte statt leerer Seite. Eine wöchentliche Lückensuche + monatliche Synthese-Abfrage als Standard-Routine ergibt sich natürlich.
+Query-Templates sind besonders wertvoll beim [täglichen Workflow](taeglicher-workflow.md) als strukturierte Einstiegspunkte statt leerer Seite. Eine wöchentliche Lückensuche + monatliche Synthese-Abfrage als Standard-Routine ergibt sich natürlich.
 
 ## Verwandte Seiten
 
-- [[query-workflow]]
-- [[lint-pruefung]]
-- [[taeglicher-workflow]]
-- [[llm-wiki-muster]]
+- [query-workflow](query-workflow.md)
+- [lint-pruefung](lint-pruefung.md)
+- [taeglicher-workflow](taeglicher-workflow.md)
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [llm-wiki-plaban-nayak](../quellen/llm-wiki-plaban-nayak.md) — Quelle der 6 Query-Template-Typen
 
 ---
 

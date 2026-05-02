@@ -15,17 +15,17 @@ status: active
 
 ## Überblick
 
-[[andrej-karpathy|Andrej Karpathy]] — Mitgründer von OpenAI und ehemaliger KI-Direktor bei Tesla — hat dieses Konzeptdokument als GitHub Gist veröffentlicht. Es beschreibt ein Muster, bei dem LLMs nicht nur Dokumente durchsuchen (wie bei [[rag-vs-wiki|RAG]]), sondern aktiv ein **persistentes, wachsendes Wiki** aus Markdown-Dateien aufbauen und pflegen.
+[Andrej Karpathy](../personen/andrej-karpathy.md) — Mitgründer von OpenAI und ehemaliger KI-Direktor bei Tesla — hat dieses Konzeptdokument als GitHub Gist veröffentlicht. Es beschreibt ein Muster, bei dem LLMs nicht nur Dokumente durchsuchen (wie bei [RAG](../konzepte/rag-vs-wiki.md)), sondern aktiv ein **persistentes, wachsendes Wiki** aus Markdown-Dateien aufbauen und pflegen.
 
 Das Dokument ist bewusst abstrakt gehalten. Es beschreibt die Idee, nicht eine spezifische Implementierung. Verzeichnisstruktur, Schema-Konventionen, Seitenformate und Werkzeuge hängen von der jeweiligen Domäne, den persönlichen Vorlieben und dem gewählten LLM ab. (Quelle: clippings/llm-wiki.md)
 
 ## Kernkonzept
 
-Das [[llm-wiki-muster]] dreht das übliche Muster um: Statt bei jeder Frage die Rohdokumente von Grund auf zu durchsuchen, lässt die KI deine Quellen **einmal lesen** und baut ein strukturiertes Wiki daraus. Neues Wissen wird integriert, Widersprüche markiert, Querverweise gepflegt. Das Wiki ist ein **persistentes, kumulatives Artefakt**. (Quelle: clippings/llm-wiki.md)
+Das [llm-wiki-muster](../konzepte/llm-wiki-muster.md) dreht das übliche Muster um: Statt bei jeder Frage die Rohdokumente von Grund auf zu durchsuchen, lässt die KI deine Quellen **einmal lesen** und baut ein strukturiertes Wiki daraus. Neues Wissen wird integriert, Widersprüche markiert, Querverweise gepflegt. Das Wiki ist ein **persistentes, kumulatives Artefakt**. (Quelle: clippings/llm-wiki.md)
 
 ## Architektur
 
-Die [[drei-ebenen-architektur]] besteht aus:
+Die [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) besteht aus:
 
 1. **Rohquellen** — Unveränderliche Quelldokumente (Artikel, Papers, Bilder, Daten)
 2. **Das Wiki** — Von der KI erstellte und gepflegte Markdown-Dateien
@@ -35,9 +35,9 @@ Die [[drei-ebenen-architektur]] besteht aus:
 
 Drei Kernoperationen definieren den Workflow:
 
-- **[[ingest-workflow|Ingest]]** — Neue Quelle aufnehmen, besprechen, ins Wiki integrieren
-- **[[query-workflow|Query]]** — Fragen gegen das Wiki stellen, Antworten zurückspeichern
-- **[[lint-pruefung|Lint]]** — Regelmäßige Gesundheitsprüfung des Wikis
+- **[Ingest](../konzepte/ingest-workflow.md)** — Neue Quelle aufnehmen, besprechen, ins Wiki integrieren
+- **[Query](../konzepte/query-workflow.md)** — Fragen gegen das Wiki stellen, Antworten zurückspeichern
+- **[Lint](../konzepte/lint-pruefung.md)** — Regelmäßige Gesundheitsprüfung des Wikis
 
 ## Schlüsselmetapher
 
@@ -64,7 +64,7 @@ Karpathy nennt zahlreiche Einsatzmöglichkeiten:
 
 ## Historischer Bezug
 
-Das Konzept ist verwandt mit [[memex|Vannevar Bushs Memex]] (1945) — einem persönlichen Wissensspeicher mit assoziativen Pfaden zwischen Dokumenten. Was Bush fehlte, war jemand, der die Pflege übernimmt. Die KI löst dieses Problem. (Quelle: clippings/llm-wiki.md)
+Das Konzept ist verwandt mit [Vannevar Bushs Memex](../konzepte/memex.md) (1945) — einem persönlichen Wissensspeicher mit assoziativen Pfaden zwischen Dokumenten. Was Bush fehlte, war jemand, der die Pflege übernimmt. Die KI löst dieses Problem. (Quelle: clippings/llm-wiki.md)
 
 ## Warum es funktioniert
 
@@ -72,16 +72,16 @@ Der mühsame Teil einer Wissensbasis ist nicht das Lesen oder Denken — es ist 
 
 ## Verwandte Seiten
 
-- [[andrej-karpathy]] — Autor dieses Dokuments
-- [[llm-wiki-muster]]
-- [[drei-ebenen-architektur]]
-- [[ingest-workflow]]
-- [[query-workflow]]
-- [[lint-pruefung]]
-- [[rag-vs-wiki]]
-- [[memex]]
-- [[obsidian]]
+- [andrej-karpathy](../personen/andrej-karpathy.md) — Autor dieses Dokuments
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
+- [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md)
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [query-workflow](../konzepte/query-workflow.md)
+- [lint-pruefung](../konzepte/lint-pruefung.md)
+- [rag-vs-wiki](../konzepte/rag-vs-wiki.md)
+- [memex](../konzepte/memex.md)
+- [obsidian](../werkzeuge/obsidian.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

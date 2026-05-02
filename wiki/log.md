@@ -140,7 +140,7 @@ Tiefe: **Vollständig**
 
 ## [2026-04-24 00:00] lint | claude-md-design in bestehende Seiten verlinkt
 
-4 Seiten mit [[claude-md-design]] verknüpft:
+4 Seiten mit [claude-md-design](konzepte/claude-md-design.md) verknüpft:
 - `konzepte/drei-ebenen-architektur.md` — Inline-Hinweis in Ebene-3-Beschreibung + Verwandte Seiten
 - `konzepte/yaml-frontmatter.md` — Verwandte Seiten (Designprinzip 4: Frontmatter-Konsistenz)
 - `konzepte/lint-pruefung.md` — Verwandte Seiten (Designprinzip 3: keine toten Links)
@@ -158,7 +158,7 @@ Tiefe: **Vollständig**
 ## [2026-04-23 22:09] lint | Wiki-Gesundheitsprüfung
 
 3 Befunde behoben:
-1. **Toter Link**: `[[index-workflow]]` in `konzepte/skalierungsgrenzen.md:87` → korrigiert zu `[[ingest-workflow]]`
+1. **Toter Link**: `[[index-workflow]]` in `konzepte/skalierungsgrenzen.md:87` → korrigiert zu `[ingest-workflow](konzepte/ingest-workflow.md)`
 2. **Veraltetes Datum**: `index.md` und `log.md` Frontmatter und Zuletzt-aktualisiert von 2026-04-22 → 2026-04-23
 3. **Kein Befund** bei: `[[bitter-lesson]]` (steht in Inline-Code als Beispiel), Backslash in Pipe-Links (korrektes Tabellen-Escape)
 
@@ -245,8 +245,8 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 7 Befunde behoben:
 1. **YAML-Frontmatter** auf allen 22 Wiki-Seiten ergänzt (`date`, `type`, `tags`, `status`)
 2. **Personenseiten** `personen/mario.md` und `personen/pasquale-pillitteri.md` angelegt; in Quellseiten und Index verlinkt
-3. **Link ergänzt**: `[[andrej-karpathy]]` in `quellen/llm-wiki-karpathy.md` (Fließtext + Verwandte Seiten)
-4. **Link ergänzt**: `[[obsidian-web-clipper]]` in `konzepte/ingest-workflow.md` (Verwandte Seiten)
+3. **Link ergänzt**: `[andrej-karpathy](personen/andrej-karpathy.md)` in `quellen/llm-wiki-karpathy.md` (Fließtext + Verwandte Seiten)
+4. **Link ergänzt**: `[obsidian-web-clipper](werkzeuge/obsidian-web-clipper.md)` in `konzepte/ingest-workflow.md` (Verwandte Seiten)
 5. **Werkzeugseiten** `werkzeuge/dataview.md` und `werkzeuge/marp.md` angelegt; in `obsidian.md`, `yaml-frontmatter.md` und Index verlinkt
 6. **Zitationslücke** in `konzepte/rag-vs-wiki.md`: Behauptung über NotebookLM/ChatGPT als `(überprüfungsbedürftig)` markiert
 7. **Selbstreferenz** in `index.md`-Fußzeile entfernt

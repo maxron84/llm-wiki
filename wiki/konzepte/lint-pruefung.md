@@ -15,7 +15,7 @@ status: active
 
 ## Überblick
 
-„Lint" ist die dritte der drei Kernoperationen im [[llm-wiki-muster]]. Wie ein Code-Linter prüft die KI regelmäßig die Gesundheit des Wikis und schlägt Korrekturen vor. Das hält das Wiki konsistent, während es wächst.
+„Lint" ist die dritte der drei Kernoperationen im [llm-wiki-muster](llm-wiki-muster.md). Wie ein Code-Linter prüft die KI regelmäßig die Gesundheit des Wikis und schlägt Korrekturen vor. Das hält das Wiki konsistent, während es wächst.
 
 ## Prüfpunkte
 
@@ -41,11 +41,11 @@ Die Ergebnisse werden als nummerierte Liste mit Korrekturvorschlägen berichtet.
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[ingest-workflow]]
-- [[query-workflow]]
-- [[claude-md-design]] — Designprinzip 3: Keine toten Links in der CLAUDE.md ist eine Lint-Regel
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [ingest-workflow](ingest-workflow.md)
+- [query-workflow](query-workflow.md)
+- [claude-md-design](claude-md-design.md) — Designprinzip 3: Keine toten Links in der CLAUDE.md ist eine Lint-Regel
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

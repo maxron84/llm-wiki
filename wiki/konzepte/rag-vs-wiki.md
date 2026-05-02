@@ -15,7 +15,7 @@ status: active
 
 ## Überblick
 
-RAG (Retrieval-Augmented Generation) und das [[llm-wiki-muster]] lösen dasselbe Problem — „Wie beantwortet eine KI Fragen über meine Dokumente?" — auf fundamental unterschiedliche Weise.
+RAG (Retrieval-Augmented Generation) und das [llm-wiki-muster](llm-wiki-muster.md) lösen dasselbe Problem — „Wie beantwortet eine KI Fragen über meine Dokumente?" — auf fundamental unterschiedliche Weise.
 
 ## Vergleich
 
@@ -42,7 +42,7 @@ NotebookLM, ChatGPT-Datei-Uploads und die meisten RAG-Systeme funktionieren auf 
 
 Beim Wiki-Ansatz ist die Synthese **bereits geschehen**. Die Querverweise sind schon da. Die Widersprüche sind schon markiert. Wenn du eine Frage stellst, arbeitet die KI mit einer **vorbereiteten Wissensbasis**, nicht mit Rohdokumenten.
 
-Außerdem: Gute Antworten können als neue Seiten ins Wiki zurückfließen (siehe [[query-workflow]]). So akkumuliert nicht nur das Quellenmaterial, sondern auch deine eigene Analyse.
+Außerdem: Gute Antworten können als neue Seiten ins Wiki zurückfließen (siehe [query-workflow](query-workflow.md)). So akkumuliert nicht nur das Quellenmaterial, sondern auch deine eigene Analyse.
 
 ## Die Kompilierungs-Metapher
 
@@ -50,7 +50,7 @@ Die prägnanteste Formulierung des Unterschieds kommt von mehreren Community-Aut
 
 > "You don't execute source code every time you want to run a program. You compile it once into a binary and run that."
 
-RAG = Quellcode bei jeder Abfrage neu ausführen. LLM-Wiki = einmal kompilieren, günstig abfragen. Mehr: [[kompilierungs-metapher]]
+RAG = Quellcode bei jeder Abfrage neu ausführen. LLM-Wiki = einmal kompilieren, günstig abfragen. Mehr: [kompilierungs-metapher](kompilierungs-metapher.md)
 
 ## Wann RAG sinnvoll bleibt
 
@@ -63,17 +63,17 @@ Das LLM-Wiki ist besonders stark bei **kumulativer Wissensarbeit** über Wochen 
 
 ## Wichtiger Vorbehalt: Kontaminierungsrisiko
 
-Das LLM-Wiki hat einen spezifischen Nachteil gegenüber RAG: Halluzinationen beim Ingest werden als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten. Bei RAG bleibt ein Fehler lokal in einer Antwort. Mehr: [[kontaminierungsrisiko]]
+Das LLM-Wiki hat einen spezifischen Nachteil gegenüber RAG: Halluzinationen beim Ingest werden als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten. Bei RAG bleibt ein Fehler lokal in einer Antwort. Mehr: [kontaminierungsrisiko](kontaminierungsrisiko.md)
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[query-workflow]]
-- [[drei-ebenen-architektur]]
-- [[kompilierungs-metapher]]
-- [[kontaminierungsrisiko]]
-- [[skalierungsgrenzen]]
+- [llm-wiki-muster](llm-wiki-muster.md)
+- [query-workflow](query-workflow.md)
+- [drei-ebenen-architektur](drei-ebenen-architektur.md)
+- [kompilierungs-metapher](kompilierungs-metapher.md)
+- [kontaminierungsrisiko](kontaminierungsrisiko.md)
+- [skalierungsgrenzen](skalierungsgrenzen.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

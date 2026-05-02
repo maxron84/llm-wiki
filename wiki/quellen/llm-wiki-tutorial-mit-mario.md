@@ -15,14 +15,14 @@ status: active
 
 ## Überblick
 
-Mario ist Webentwickler und betreibt einen YouTube-Kanal zu Webentwicklung und KI. In diesem Video erklärt er [[andrej-karpathy|Andrej Karpathys]] [[llm-wiki-muster|LLM-Wiki-Konzept]] und baut live ein Wiki zum Thema Kochen und Ernährung auf — mit [[claude-code|Claude Cowork]] und [[obsidian|Obsidian]].
+Mario ist Webentwickler und betreibt einen YouTube-Kanal zu Webentwicklung und KI. In diesem Video erklärt er [Andrej Karpathys](../personen/andrej-karpathy.md) [LLM-Wiki-Konzept](../konzepte/llm-wiki-muster.md) und baut live ein Wiki zum Thema Kochen und Ernährung auf — mit [Claude Cowork](../werkzeuge/claude-code.md) und [Obsidian](../werkzeuge/obsidian.md).
 
 **Video**: https://www.youtube.com/watch?v=52LoAEo1C_M
 **Veröffentlicht**: 2026-04-17
 
 ## Das Chat-Problem
 
-Mario beginnt mit dem [[chat-problem|fundamentalen Problem]]: Wissen verschwindet in Chats. Du lädst PDFs hoch, stellst Fragen, bekommst Antworten — aber sobald der Chat zu lang wird, vergisst die KI den Anfang. Ein neuer Chat bedeutet: bei null anfangen. Die Synthese, die Verbindungen, das über 20 Fragen aufgebaute Verständnis — alles weg. (Quelle: clippings/LLM Wiki Tutorial - So baut KI dir eine Wissensbasis.md)
+Mario beginnt mit dem [fundamentalen Problem](../konzepte/chat-problem.md): Wissen verschwindet in Chats. Du lädst PDFs hoch, stellst Fragen, bekommst Antworten — aber sobald der Chat zu lang wird, vergisst die KI den Anfang. Ein neuer Chat bedeutet: bei null anfangen. Die Synthese, die Verbindungen, das über 20 Fragen aufgebaute Verständnis — alles weg. (Quelle: clippings/LLM Wiki Tutorial - So baut KI dir eine Wissensbasis.md)
 
 > „Das eigentliche Problem ist nicht, dass KI kein Gedächtnis hat. Das eigentliche Problem ist, dass Wissen in einem Chat verschwindet."
 
@@ -34,15 +34,15 @@ Mario richtet ein Obsidian-Projekt ein mit drei Ordnern (`raw/`, `clippings/`, `
 
 - Zweck des Wikis (Rezepte und Ernährung)
 - Ordnerstruktur
-- [[ingest-workflow|Aufnahme-Workflow]] (9 Schritte)
+- [Aufnahme-Workflow](../konzepte/ingest-workflow.md) (9 Schritte)
 - Seitenformat
 - Zitierregeln
-- [[query-workflow|Fragebeantwortung]]
-- [[lint-pruefung|Prüfregeln]]
+- [Fragebeantwortung](../konzepte/query-workflow.md)
+- [Prüfregeln](../konzepte/lint-pruefung.md)
 
 ### Erste Aufnahme
 
-Er clippt ein glutenfreies Keksrezept mit dem [[obsidian-web-clipper|Obsidian Web Clipper]] und lässt Claude die Quelle verarbeiten. Die KI:
+Er clippt ein glutenfreies Keksrezept mit dem [Obsidian Web Clipper](../werkzeuge/obsidian-web-clipper.md) und lässt Claude die Quelle verarbeiten. Die KI:
 
 1. Liest die Quelle und erkennt die Schlüsselkonzepte
 2. **Fragt nach der gewünschten Tiefe** — drei Optionen:
@@ -58,7 +58,7 @@ Dann fügt Mario zwei weitere Quellen hinzu (Eier aufschlagen, Eier aufbewahren)
 
 ### Prüfung
 
-Die [[lint-pruefung]] findet einen echten Fehler: Im Rezept fehlt ein Link zur Eier-Seite. Die KI korrigiert das nach Bestätigung.
+Die [lint-pruefung](../konzepte/lint-pruefung.md) findet einen echten Fehler: Im Rezept fehlt ein Link zur Eier-Seite. Die KI korrigiert das nach Bestätigung.
 
 ### Frage stellen
 
@@ -73,23 +73,23 @@ Mario fragt: „Ich brauche ein glutenfreies Rezept. Zudem habe ich Probleme bei
 
 ## Benötigte Werkzeuge
 
-- [[obsidian]] (kostenlos)
-- [[claude-code|Claude Code/Cowork]] oder ein anderer Agent
+- [obsidian](../werkzeuge/obsidian.md) (kostenlos)
+- [Claude Code/Cowork](../werkzeuge/claude-code.md) oder ein anderer Agent
 - Eine `CLAUDE.md` Schema-Datei
-- [[obsidian-web-clipper]] (Browser-Erweiterung)
+- [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md) (Browser-Erweiterung)
 
 ## Verwandte Seiten
 
-- [[llm-wiki-muster]]
-- [[chat-problem]]
-- [[andrej-karpathy]]
-- [[mario]] — Autor dieses Videos
-- [[claude-code]]
-- [[obsidian]]
-- [[obsidian-web-clipper]]
-- [[ingest-workflow]]
-- [[lint-pruefung]]
+- [llm-wiki-muster](../konzepte/llm-wiki-muster.md)
+- [chat-problem](../konzepte/chat-problem.md)
+- [andrej-karpathy](../personen/andrej-karpathy.md)
+- [mario](../personen/mario.md) — Autor dieses Videos
+- [claude-code](../werkzeuge/claude-code.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md)
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [lint-pruefung](../konzepte/lint-pruefung.md)
 
 ---
 
-[Zurück zum Index](../index.md)
+[Wiki-Index](../index.md)

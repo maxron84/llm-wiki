@@ -17,25 +17,25 @@ status: active
 
 - **Name**: Steph Ango
 - **Alias**: kepano (X/Twitter-Handle)
-- **Rolle**: Mitgründer und CEO von [[obsidian|Obsidian]]
+- **Rolle**: Mitgründer und CEO von [Obsidian](../werkzeuge/obsidian.md)
 - **Website**: https://stephango.com/
 
 ## Beitrag zum LLM-Wiki-Diskurs
 
-Als [[andrej-karpathy|Karpathy]] sein LLM-Wiki-Konzept im April 2026 vorstellte, reagierte Steph Ango mit der präzisesten architektonischen Empfehlung der Community:
+Als [Karpathy](andrej-karpathy.md) sein LLM-Wiki-Konzept im April 2026 vorstellte, reagierte Steph Ango mit der präzisesten architektonischen Empfehlung der Community:
 
-**[[vault-trennung|Vault-Trennung]]**: Persönliches, sauberes Vault für menschlich kuratiertes Wissen; separates "unordentliches Vault" für KI-generierte Inhalte. Damit weiß man immer, welches Wissen menschlich gepflegt und welches KI-kompiliert ist.
+**[Vault-Trennung](../konzepte/vault-trennung.md)**: Persönliches, sauberes Vault für menschlich kuratiertes Wissen; separates "unordentliches Vault" für KI-generierte Inhalte. Damit weiß man immer, welches Wissen menschlich gepflegt und welches KI-kompiliert ist.
 
-Die VentureBeat-Berichterstattung nannte dies "Contamination Mitigation" — eine direkte Antwort auf das [[kontaminierungsrisiko|Kontaminierungsrisiko]] des Wiki-Musters.
+Die VentureBeat-Berichterstattung nannte dies "Contamination Mitigation" — eine direkte Antwort auf das [Kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) des Wiki-Musters.
 
 Ango prägte außerdem das Konzept "Obsidian Skills": Fähigkeiten, die KI-Agenten beibringen, mit Obsidians nativen Formaten zu arbeiten (`[[wikilinks]]`, Callouts, Bases, Canvas).
 
 ## Verwandte Seiten
 
-- [[obsidian]]
-- [[vault-trennung]]
-- [[kontaminierungsrisiko]]
-- [[andrej-karpathy]]
+- [obsidian](../werkzeuge/obsidian.md)
+- [vault-trennung](../konzepte/vault-trennung.md)
+- [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md)
+- [andrej-karpathy](andrej-karpathy.md)
 
 ---
 

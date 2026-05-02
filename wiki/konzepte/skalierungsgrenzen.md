@@ -55,15 +55,15 @@ Statt das Wiki als Dokument zu laden, wird es als Datenbank abgefragt:
 "Lies index.md"  →  ERSETZEN DURCH  →  search_sections → get_section
 ```
 
-Benchmark: ~95% Token-Reduktion bei 5 Abfragen über 7 Seiten. Mehr: [[jdocmunch]]
+Benchmark: ~95% Token-Reduktion bei 5 Abfragen über 7 Seiten. Mehr: [jdocmunch](../werkzeuge/jdocmunch.md)
 
 ### 2. qmd — Lokale semantische Suche
 
-Drei Suchmodi (BM25, Vektor, Hybrid mit LLM-Reranking), vollständig lokal, MCP-Server-Integration. Wird relevant ab ~100+ Seiten. Mehr: [[qmd]]
+Drei Suchmodi (BM25, Vektor, Hybrid mit LLM-Reranking), vollständig lokal, MCP-Server-Integration. Wird relevant ab ~100+ Seiten. Mehr: [qmd](../werkzeuge/qmd.md)
 
 ### 3. RAG über kompiliertes Wiki
 
-Fortgeschrittener Ansatz: Wiki-Seiten in einem Vektor-Index einbetten — nicht die Rohquellen. Die Embeddings der vorsynthetisierten Seiten liefern bessere Retrieval-Qualität als Embeddings von Rohchunks. Mehr: [[fortgeschrittene-architektur]]
+Fortgeschrittener Ansatz: Wiki-Seiten in einem Vektor-Index einbetten — nicht die Rohquellen. Die Embeddings der vorsynthetisierten Seiten liefern bessere Retrieval-Qualität als Embeddings von Rohchunks. Mehr: [fortgeschrittene-architektur](fortgeschrittene-architektur.md)
 
 ## Das mentale Modell (J. Gravelle)
 
@@ -79,12 +79,12 @@ Die Wahl der Lösung hängt von der Wiki-Größe ab:
 
 ## Verwandte Seiten
 
-- [[jdocmunch]]
-- [[qmd]]
-- [[fortgeschrittene-architektur]]
-- [[rag-vs-wiki]]
-- [[query-workflow]]
-- [[ingest-workflow]]
+- [jdocmunch](../werkzeuge/jdocmunch.md)
+- [qmd](../werkzeuge/qmd.md)
+- [fortgeschrittene-architektur](fortgeschrittene-architektur.md)
+- [rag-vs-wiki](rag-vs-wiki.md)
+- [query-workflow](query-workflow.md)
+- [ingest-workflow](ingest-workflow.md)
 
 ---
 

@@ -17,11 +17,11 @@ status: active
 
 - **Name**: Tobias Lütke (Tobi Lütke)
 - **Rolle**: CEO und Mitgründer von Shopify
-- **Beitrag**: Entwickler von [[qmd]]
+- **Beitrag**: Entwickler von [qmd](../werkzeuge/qmd.md)
 
 ## Beitrag zum LLM-Wiki-Ökosystem
 
-Tobi Lütke entwickelte [[qmd]], eine lokale Suchmaschine für Markdown-Wissensbases. qmd wird in der LLM-Wiki-Community als Skalierungslösung für Wikis mit mehr als ~100 Seiten verwendet.
+Tobi Lütke entwickelte [qmd](../werkzeuge/qmd.md), eine lokale Suchmaschine für Markdown-Wissensbases. qmd wird in der LLM-Wiki-Community als Skalierungslösung für Wikis mit mehr als ~100 Seiten verwendet.
 
 qmd bietet drei Suchmodi: BM25-Keyword-Suche, semantische Vektorsuche und hybride Suche mit LLM-Reranking. Alles läuft lokal mit GGUF-Modellen ohne API-Verbindung — ein bewusster Fokus auf Datensouveränität.
 
@@ -29,9 +29,9 @@ qmd ist außerdem als MCP-Server verfügbar, womit es sich nahtlos in Claude-Cod
 
 ## Verwandte Seiten
 
-- [[qmd]]
-- [[skalierungsgrenzen]]
-- [[andrej-karpathy]]
+- [qmd](../werkzeuge/qmd.md)
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [andrej-karpathy](andrej-karpathy.md)
 
 ---
 

@@ -44,7 +44,7 @@ Der Artikel liefert die prägnanteste Begründung für Markdown:
 
 ### Skalierung: Wann RAG wieder nötig wird
 
-Der direkte Datei-Lese-Ansatz skaliert für Wikis bis einige hundert Notizen. Bei größerer Skala: semantische Suche hinzufügen, damit Claude Kandidaten eingrenzen kann, bevor vollständige Dateien gelesen werden. Empfehlung: RAG hinzufügen, wenn Claude Dinge nicht findet, von denen man weiß, dass sie im Wiki sind. (Ergänzend zu [[skalierungsgrenzen]])
+Der direkte Datei-Lese-Ansatz skaliert für Wikis bis einige hundert Notizen. Bei größerer Skala: semantische Suche hinzufügen, damit Claude Kandidaten eingrenzen kann, bevor vollständige Dateien gelesen werden. Empfehlung: RAG hinzufügen, wenn Claude Dinge nicht findet, von denen man weiß, dass sie im Wiki sind. (Ergänzend zu [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md))
 
 ### Team-Skalierung
 
@@ -52,15 +52,15 @@ Für Team-Wikis empfiehlt MindStudio eine no-code Plattform wie ihre eigene stat
 
 ## Bezug zum bestehenden Wiki
 
-Ergänzt [[ingest-workflow]] um Qualitätspraktiken und [[obsidian]] um das Inbox-Muster. Die Begründung für Markdown ist die prägnanteste im Wiki und könnte in [[modellunabhaengigkeit]] einfließen.
+Ergänzt [ingest-workflow](../konzepte/ingest-workflow.md) um Qualitätspraktiken und [obsidian](../werkzeuge/obsidian.md) um das Inbox-Muster. Die Begründung für Markdown ist die prägnanteste im Wiki und könnte in [modellunabhaengigkeit](../konzepte/modellunabhaengigkeit.md) einfließen.
 
 ## Verwandte Seiten
 
-- [[ingest-workflow]]
-- [[obsidian]]
-- [[modellunabhaengigkeit]]
-- [[skalierungsgrenzen]]
-- [[query-workflow]]
+- [ingest-workflow](../konzepte/ingest-workflow.md)
+- [obsidian](../werkzeuge/obsidian.md)
+- [modellunabhaengigkeit](../konzepte/modellunabhaengigkeit.md)
+- [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
+- [query-workflow](../konzepte/query-workflow.md)
 
 ---
 
