@@ -18,9 +18,8 @@ Bevor du anfängst, stelle sicher dass folgendes installiert ist:
 
 - **Claude Code** — [Anleitung: Erste Schritte](erste-schritte.md)
 - **Ein Terminal** — Windows: PowerShell oder Windows Terminal / Mac: Terminal / Linux: Terminal
-- **Einen Text-Editor** — Notepad (Windows), TextEdit (Mac) oder besser [VS Code](https://code.visualstudio.com/) (kostenlos, alle Systeme)
-
-Kein Obsidian nötig für diese Anleitung.
+- **Einen Text-Editor** — Notepad (Windows), TextEdit (Mac) oder besser [VS Code](https://code.visualstudio.com/) / [VS Codium](https://vscodium.com/) (kostenlos, alle Systeme, VS Codium ohne Microsoft-Telemetrie)
+- **Obsidian** — zum Lesen und Durchsuchen des Wikis. Falls noch nicht installiert: [erste-schritte](erste-schritte.md)
 
 ---
 
