@@ -248,6 +248,7 @@ git commit -m "Erstes Commit"
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Nachhilfe-Vorlage inkl. Elternordner-Setup
 - [claude-md-lehrer](../vorlagen/claude-md-lehrer.md) — KI-Lehrer-Vorlage
 - [claude-md-software](../vorlagen/claude-md-software.md) — Software-Vorlage
+- [vorlage-einrichten](vorlage-einrichten.md) — Nächster Schritt: wie du eine Vorlage in ein echtes Projekt verwandelst
 
 ---
 
