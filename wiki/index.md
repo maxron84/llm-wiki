@@ -96,6 +96,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 
 - [erste-schritte](anleitungen/erste-schritte.md) — Setup von Null: Claude Code, Obsidian, Vorlage wählen, erste Sitzung starten
 - [lokale-modelle](anleitungen/lokale-modelle.md) — Betrieb mit lokalen Modellen: LM Studio (Anfänger), Ollama + Open WebUI + Continue (Fortgeschrittene)
+- [vorlage-einrichten](anleitungen/vorlage-einrichten.md) — Schritt für Schritt: Vorlage kopieren, Platzhalter füllen, Projekt starten (Beispiel: Pygame-Lernprojekt)
 
 ## Log
 

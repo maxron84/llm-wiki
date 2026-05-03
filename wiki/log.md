@@ -340,6 +340,15 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - Explizite Markdown-Link-Regel in alle CLAUDE.md-Templates eingebaut
 - Ziel: Vorlagen sind jetzt direkt im Browser/GitHub lesbar ohne Obsidian
 
+## [2026-05-03] query | Anleitung „Vorlage einrichten"
+
+- `wiki/anleitungen/vorlage-einrichten.md` — neu: DAU-Schritt-für-Schritt-Anleitung
+  - Vorlagenauswahl-Tabelle (welche Vorlage für welchen Zweck)
+  - Genaue Kopier-Anleitung (was zu kopieren ist, was nicht — Fence-Problem)
+  - Platzhalter-Ausfüllen mit konkretem Pygame-Beispiel
+  - Erste Sitzung und Folgesitzungen erklärt
+  - Häufige Fehler mit direkten Lösungen
+
 ## [2026-05-03] lint | Wiki-Prüfung + Vorlagen-Update
 
 - **Lint-Skript verbessert**: Anker-Links (`#heading`) nicht mehr als Dead Links gemeldet; Backtick-Code-Spans ausgenommen; `wiki/vorlagen/` übersprungen (Platzhalter-Inhalt); `type: anleitung` vom Quellen-Pflicht-Check befreit
