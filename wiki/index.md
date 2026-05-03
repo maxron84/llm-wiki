@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-03
+**Zuletzt aktualisiert**: 2026-05-03 (rev 2)
 
 ---
 
@@ -97,6 +97,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [erste-schritte](anleitungen/erste-schritte.md) — Setup von Null: Claude Code, Obsidian, Vorlage wählen, erste Sitzung starten
 - [lokale-modelle](anleitungen/lokale-modelle.md) — Betrieb mit lokalen Modellen: LM Studio (Anfänger), Ollama + Open WebUI + Continue (Fortgeschrittene)
 - [vorlage-einrichten](anleitungen/vorlage-einrichten.md) — Schritt für Schritt: Vorlage kopieren, Platzhalter füllen, Projekt starten (Beispiel: Pygame-Lernprojekt)
+- [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb
 
 ## Log
 

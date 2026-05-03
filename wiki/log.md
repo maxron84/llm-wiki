@@ -12,6 +12,18 @@ status: active
 
 ---
 
+## [2026-05-03 15:00] query | Anleitung „Lokale Modelle Fortgeschritten" erstellt
+
+- Neue Seite `anleitungen/lokale-modelle-fortgeschritten.md` angelegt
+- Zielgruppe: erfahrene Programmierer, Pygame-Beispielprojekt
+- Stack: Ollama + Qwen3 27B/35B (inkl. MoE-Variante) + Continue in VS Codium
+- Hardware-Tabelle mit RAM/VRAM-Anforderungen für 27B, 30B MoE, 32B
+- Continue-Konfiguration: config.json, @-Referenzen für Dateizugriff, System-Prompt-Strategien
+- Qwen3-Tipps: Thinking Mode, Kontextfenstermanagement, Temperatur für Code
+- Halbautomatischer Wiki-Betrieb: Sitzungsnotizen manuell anlegen, fortschritt.md als Sitzungsanker
+- Obsidian-Integration für Vault-Betrieb
+- Häufige Probleme: langsame CPU-Inference, MLX-Empfehlung, Kontextverlust bei langen Sitzungen
+
 ## [2026-05-02 00:02] lint | werkzeuge/claude-code.md aktualisiert
 
 - [[wiki-links]] → Standard-Markdown-Links

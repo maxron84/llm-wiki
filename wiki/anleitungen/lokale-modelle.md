@@ -255,6 +255,7 @@ So kann das lokale Modell die Wiki-Seiten lesen und Inhalte vorschlagen — manu
 
 ## Verwandte Seiten
 
+- [lokale-modelle-fortgeschritten](lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B: Ollama + Continue in VS Codium, für erfahrene Programmierer
 - [erste-schritte](erste-schritte.md) — Einrichtung mit Claude Code Desktop (Cloud-Pfad)
 - [claude-code](../werkzeuge/claude-code.md) — Claude Code im Detail
 - [obsidian](../werkzeuge/obsidian.md) — Wiki-Oberfläche
