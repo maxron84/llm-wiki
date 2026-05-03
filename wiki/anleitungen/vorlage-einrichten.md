@@ -60,36 +60,19 @@ Für Pygame als Anfänger → **KI-Lehrer**.
 
 ## Schritt 3: Den Vorlageninhalt kopieren
 
-In der Vorlage siehst du einen Block, der so aussieht:
+Scrolle auf der Vorlagenseite nach unten bis zum Abschnitt **„Vorlage"**. Dort siehst du einen grau hinterlegten Codeblock — er beginnt mit einer Zeile aus vier Backticks gefolgt von `markdown`:
 
-````
-````markdown
-# CLAUDE.md — KI-Lehrer
+    ````markdown
 
-> **Anleitung**: Kopiere diese Datei als `CLAUDE.md` ...
+und endet mit einer Zeile aus vier Backticks:
 
----
+    ````
 
-# CLAUDE
-...
-````
-````
+**Diese zwei Rahmenzeilen selbst nicht mitkopieren.** Nur den Inhalt dazwischen — alles von `# CLAUDE.md — KI-Lehrer` bis zur letzten Zeile vor dem schließenden ` ```` `.
 
-**Wichtig:** Du kopierst **nur den Inhalt innerhalb** der äußeren Backtick-Fence — **nicht** die erste Zeile ` ````markdown ` und **nicht** die letzte Zeile ` ```` `.
+Das sind ca. 100–150 Zeilen. Alles davon kommt in deine neue `CLAUDE.md`.
 
-So sieht es aus — was du kopierst ist **fett markiert**:
-
-```
-````markdown          ← DIESE ZEILE NICHT KOPIEREN
-# CLAUDE.md ...       ← AB HIER KOPIEREN
-> Anleitung ...
----
-# CLAUDE
-...
-````                  ← DIESE ZEILE NICHT KOPIEREN
-```
-
-**Alles zwischen den äußeren Backtick-Fences** kommt in deine CLAUDE.md. Das sind ca. 100–150 Zeilen Text.
+> **Zur Kontrolle:** Deine kopierte CLAUDE.md sollte mit `# CLAUDE.md — KI-Lehrer` beginnen — nicht mit ` ````markdown `.
 
 ---
 
