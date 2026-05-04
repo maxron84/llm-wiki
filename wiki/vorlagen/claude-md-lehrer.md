@@ -233,6 +233,8 @@ Wenn das Projekt wächst und `wiki/lehrplan.md` unübersichtlich wird:
 
 ## Verwandte Seiten
 
+- [claude-md-nachhilfe](claude-md-nachhilfe.md) — Schwester-Vorlage: reaktiv, aufgabengetrieben, Kind sitzt selbst am Gerät
+- [claude-md-laienlehrer](claude-md-laienlehrer.md) — Schwester-Vorlage: Elternteil unterrichtet, KI coacht den Erwachsenen
 - [claude-md-software-begleiter](claude-md-software-begleiter.md) — Schwester-Vorlage: KI als Begleiter für erfahrene Entwickler
 - [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien für CLAUDE.md-Dateien
 - [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)

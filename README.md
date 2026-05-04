@@ -22,6 +22,7 @@ Der eigentliche Output dieses Wikis: kopierbare `CLAUDE.md`-Vorlagen für spezia
 | [Legacy-Forensik](wiki/vorlagen/claude-md-legacy-forensik.md) | Analyse und Kartierung gewachsener Codebases |
 | [KI-Lehrer](wiki/vorlagen/claude-md-lehrer.md) | Proaktiver Lehrbegleiter — generiert Lehrplan, lehrt Schritt für Schritt (z.B. Coding-Projekte) |
 | [Nachhilfe](wiki/vorlagen/claude-md-nachhilfe.md) | Fachlehrer für ein Schulfach — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10 |
+| [Laienlehrer](wiki/vorlagen/claude-md-laienlehrer.md) | Elternteil oder Laie unterrichtet — KI coacht den Erwachsenen, zweistufige Erklärungen |
 | [YouTube-Verlauf](wiki/vorlagen/claude-md-youtube-verlauf.md) | Wissensbasis aus dem eigenen Video-Verlauf |
 | [Rezepte & Ernährung](wiki/vorlagen/claude-md-rezepte-ernaehrung.md) | Vernetzte Rezept-, Technik- und Zutaten-Basis |
 

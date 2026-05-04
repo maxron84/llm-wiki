@@ -89,10 +89,12 @@ Jedes Projekt braucht eine Datei namens `CLAUDE.md` im Projektordner. Diese Date
 
 | Vorlage | Wann passend |
 |---|---|
-| [Nachhilfe](../vorlagen/claude-md-nachhilfe.md) | Schulfächer, Aufgaben aus Buch/Foto, kein fester Lehrplan |
+| [Nachhilfe](../vorlagen/claude-md-nachhilfe.md) | Schulfächer, Aufgaben aus Buch/Foto — Kind sitzt selbst am Gerät |
+| [Laienlehrer](../vorlagen/claude-md-laienlehrer.md) | Elternteil oder Laie unterrichtet — KI coacht den Erwachsenen, nicht das Kind |
 | [KI-Lehrer](../vorlagen/claude-md-lehrer.md) | Lernprojekte mit eigenem Kurs und Lehrplan |
 | [Software](../vorlagen/claude-md-software.md) | Software-Projekte, KI schreibt und dokumentiert Code |
 | [Software-Begleiter](../vorlagen/claude-md-software-begleiter.md) | Mensch schreibt Code, KI dokumentiert und reviewt |
+| [Team-Wiki](../vorlagen/claude-md-team.md) | Gemeinsames Wiki für 2–8 Personen mit Ownership und Provenienz-Tags |
 | [Rezepte & Ernährung](../vorlagen/claude-md-rezepte-ernaehrung.md) | Kochbücher, Rezepte, eigene Experimente |
 | [YouTube-Verlauf](../vorlagen/claude-md-youtube-verlauf.md) | YouTube-Videos und Transkripte als Wissensquelle |
 | [Legacy-Forensik](../vorlagen/claude-md-legacy-forensik.md) | Unbekannte oder gewachsene Codebase analysieren |
@@ -134,9 +136,14 @@ Ersetze alle `{{...}}`-Felder mit deinen Angaben. Beispiel aus der Nachhilfe-Vor
 | Vorlage | Erster Start |
 |---|---|
 | KI-Lehrer | Aufnahmegespräch → Claude generiert `wiki/lehrplan.md` |
-| Nachhilfe | Kurze Begrüßung → Warten auf erste Aufgabe |
+| Nachhilfe | Kurze Begrüßung → Warten auf erste Aufgabe oder Foto |
+| Laienlehrer | Kurze Vorstellung → Warten auf Stundenauftrag oder Korrekturaufgabe |
 | Software | Claude liest bestehenden Code und legt Wiki-Seiten an |
+| Software-Begleiter | Claude liest Code, richtet Dokumentationsstruktur ein |
+| Team-Wiki | Claude stellt Onboarding-Fragen → legt `wiki/team.md` an |
 | Rezepte | Warten auf erste Quelle in `raw/` oder `clippings/` |
+| YouTube-Verlauf | Warten auf erste Video-URL oder Transkript in `clippings/` |
+| Legacy-Forensik | Claude liest Codebase, erstellt erste Übersichtsseite |
 
 > Claude legt den `wiki/`-Ordner und alle Unterordner **automatisch beim ersten Schreiben** an — du musst nichts manuell erstellen.
 
@@ -246,8 +253,10 @@ git commit -m "Erstes Commit"
 - [obsidian](../werkzeuge/obsidian.md) — Obsidian-Funktionen und Plugins
 - [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das Konzept hinter diesem Wiki-Ansatz
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Nachhilfe-Vorlage inkl. Elternordner-Setup
+- [claude-md-laienlehrer](../vorlagen/claude-md-laienlehrer.md) — Laienlehrer-Vorlage: KI coacht den Erwachsenen
 - [claude-md-lehrer](../vorlagen/claude-md-lehrer.md) — KI-Lehrer-Vorlage
 - [claude-md-software](../vorlagen/claude-md-software.md) — Software-Vorlage
+- [claude-md-team](../vorlagen/claude-md-team.md) — Team-Wiki-Vorlage
 - [vorlage-einrichten](vorlage-einrichten.md) — Nächster Schritt: wie du eine Vorlage in ein echtes Projekt verwandelst
 
 ---

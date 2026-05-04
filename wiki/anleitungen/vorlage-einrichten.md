@@ -42,14 +42,18 @@ Du kannst den Ordnernamen frei wählen — keine Leerzeichen, nur Buchstaben, Za
 
 ## Schritt 2: Die richtige Vorlage finden
 
-Dieses Wiki hat 8 Vorlagen für verschiedene Einsatzzwecke. Für ein **Lernprojekt** ist die KI-Lehrer-Vorlage richtig:
+Dieses Wiki hat 9 Vorlagen für verschiedene Einsatzzwecke. Für ein **Lernprojekt** ist die KI-Lehrer-Vorlage richtig:
 
 | Vorlage | Wann? |
 |---|---|
 | [KI-Lehrer](../vorlagen/claude-md-lehrer.md) | Du willst etwas lernen — KI führt dich mit Lehrplan |
-| [Nachhilfe](../vorlagen/claude-md-nachhilfe.md) | Ein Schulfach, konkrete Aufgaben lösen |
+| [Nachhilfe](../vorlagen/claude-md-nachhilfe.md) | Ein Schulfach, konkrete Aufgaben lösen — Kind am Gerät |
+| [Laienlehrer](../vorlagen/claude-md-laienlehrer.md) | Elternteil unterrichtet — KI bereitet den Erwachsenen vor |
 | [Software](../vorlagen/claude-md-software.md) | Du weißt schon was du baust, KI hilft beim Coden |
-| [Begleiter](../vorlagen/claude-md-software-begleiter.md) | Du codesd selbst, KI dokumentiert und reviewt |
+| [Begleiter](../vorlagen/claude-md-software-begleiter.md) | Du codest selbst, KI dokumentiert und reviewt |
+| [Team-Wiki](../vorlagen/claude-md-team.md) | Gemeinsames Projekt mit 2–8 Personen |
+
+Vollständige Übersicht aller 9 Vorlagen → [erste-schritte](erste-schritte.md)
 
 Für Pygame als Anfänger → **KI-Lehrer**.
 
