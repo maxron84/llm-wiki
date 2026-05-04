@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-05-04 14:00] query | Vorlage claude-md-laienlehrer erstellt
+
+- Neue Seite `vorlagen/claude-md-laienlehrer.md`
+- Zielgruppe: Eltern und Laien als Unterrichtende (Fernunterricht, Heimunterricht)
+- Kernprinzip: zweistufige Ausgabe — „Für dich" (vollständig) + „Formulierung fürs Kind" (altersgerecht)
+- 3 Workflows: Stundenvorbereitung, Hausaufgabenkorrektur, Schnellerklärung
+- 4 Seitenformate: Lektions-Seite, Korrektur-Seite, Kind-Profil, Fortschritt
+- Explizite Warnpflicht: KI sagt klar, wenn ein Thema einen echten Fachlehrer braucht
+- Modell-Kompatibilitätstabelle analog zur Nachhilfe-Vorlage
+
 ## [2026-05-04 13:00] query | Einrichtungsanleitung Beratungs-CRM erstellt
 
 - Neue Seite `anleitungen/beratungs-crm-einrichtung.md`
