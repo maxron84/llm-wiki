@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-05-04 13:00] query | Einrichtungsanleitung Beratungs-CRM erstellt
+
+- Neue Seite `anleitungen/beratungs-crm-einrichtung.md`
+- Vollständige Einrichtung auf Linux: Systemabhängigkeiten, Ollama + Qwen3, VS Codium + Continue, Python-venv
+- 3 vollständige Python-Skripte: berechne-profil.py (Numerologie + Astrologie via kerykeion), woche.py (Wochenvorschau mit offenen Punkten), offene-rechnungen.py
+- CLAUDE.md-Template für das Projekt, Knowledge-Base-Aufbau
+- Obsidian-Einrichtung (Gesamtprojektordner als Vault, Sync deaktivieren)
+- Typischer Tagesablauf: Vorbereitung, Nachbereitung, monatliche Rechnungen
+- Git-Backup-Hinweis: kein GitHub/GitLab, nur eigene Infrastruktur
+
 ## [2026-05-04 12:00] query | Konzeptpapier Beratungs-CRM erstellt
 
 - Neue Seite `projekte/beratungs-crm.md` angelegt (neuer Bereich `projekte/`)

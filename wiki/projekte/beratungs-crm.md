@@ -398,7 +398,8 @@ Vor Projektstart zu klären:
 
 ## Verwandte Seiten
 
-- [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md) — Technische Einrichtung: Ollama, Qwen3, Continue
+- [beratungs-crm-einrichtung](../anleitungen/beratungs-crm-einrichtung.md) — Schritt-für-Schritt-Einrichtung auf Linux mit allen Python-Skripten
+- [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md) — Technische Grundlagen: Ollama, Qwen3, Continue
 - [claude-md-software](../vorlagen/claude-md-software.md) — Basis für die CLAUDE.md dieses Projekts
 - [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md) — Warum KI-Vorschläge immer menschlich überprüft werden müssen
 - [vault-trennung](../konzepte/vault-trennung.md) — Empfehlung für den Obsidian-Vault-Aufbau

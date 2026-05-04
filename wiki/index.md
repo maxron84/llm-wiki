@@ -98,6 +98,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [lokale-modelle](anleitungen/lokale-modelle.md) — Betrieb mit lokalen Modellen: LM Studio (Anfänger), Ollama + Open WebUI + Continue (Fortgeschrittene)
 - [vorlage-einrichten](anleitungen/vorlage-einrichten.md) — Schritt für Schritt: Vorlage kopieren, Platzhalter füllen, Projekt starten (Beispiel: Pygame-Lernprojekt)
 - [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb
+- [beratungs-crm-einrichtung](anleitungen/beratungs-crm-einrichtung.md) — Beratungs-CRM auf Linux einrichten: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil
 
 ## Projekte
 
