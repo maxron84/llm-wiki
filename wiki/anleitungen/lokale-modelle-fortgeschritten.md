@@ -363,6 +363,7 @@ Besonders nützlich ist die Volltextsuche über alle Sitzungsnotizen — so lass
 
 ## Verwandte Seiten
 
+- [beratungs-crm](../projekte/beratungs-crm.md) — Anwendungsbeispiel: lokales CRM mit Qwen3 für psychologische Beraterin
 - [lokale-modelle](lokale-modelle.md) — Einstieg: LM Studio, Jan, Ollama-Grundlagen
 - [vorlage-einrichten](vorlage-einrichten.md) — Vorlage einrichten Schritt für Schritt (Anfänger-Version)
 - [claude-md-software](../vorlagen/claude-md-software.md) — Software-Vorlage im Detail

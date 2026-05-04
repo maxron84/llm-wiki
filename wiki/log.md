@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-04 12:00] query | Konzeptpapier Beratungs-CRM erstellt
+
+- Neue Seite `projekte/beratungs-crm.md` angelegt (neuer Bereich `projekte/`)
+- Vollständiges Konzept für lokales CRM: psychologische Beraterin + Numerologie + Astrologie
+- Datenmodell: Klientenprofil, Sitzungsnotiz, Rechnung (YAML-Frontmatter-Beispiele)
+- 5 Python-Skripte beschrieben: berechne-profil.py (kerykeion), woche.py, rechnung-pdf.py, monatsbericht.py, loesche-klient.py
+- KI-Integration: CLAUDE.md-Kern, 3 typische Arbeitsabläufe
+- 3 Ausbaustufen: Kern (V1), Erweiterung (V2), Optional (V3)
+- DSGVO-Hinweise: Art. 9, Aufbewahrungspflichten, Backup-Empfehlungen
+- Offene Entscheidungen vor Projektstart tabellarisch festgehalten
+
 ## [2026-05-03 15:00] query | Anleitung „Lokale Modelle Fortgeschritten" erstellt
 
 - Neue Seite `anleitungen/lokale-modelle-fortgeschritten.md` angelegt
