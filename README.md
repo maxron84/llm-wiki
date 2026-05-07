@@ -28,6 +28,24 @@ Der eigentliche Output dieses Wikis: kopierbare `CLAUDE.md`-Vorlagen für spezia
 
 Jede Vorlage enthält Ordnerstruktur, Seitenformate, Extraktionsstrategien und Abfragetypen — einfach kopieren, Platzhalter füllen, loslegen.
 
+## Anleitungen
+
+Schritt-für-Schritt-Guides für den Einstieg und Betrieb:
+
+| Anleitung | Inhalt |
+|---|---|
+| [Erste Schritte](wiki/anleitungen/erste-schritte.md) | Setup von Null: Claude Code, Obsidian, Vorlage wählen, erste Sitzung starten |
+| [Lokale Modelle](wiki/anleitungen/lokale-modelle.md) | Betrieb mit LM Studio (Anfänger) oder Ollama + Open WebUI + Continue (Fortgeschrittene) |
+| [Vorlage einrichten](wiki/anleitungen/vorlage-einrichten.md) | Vorlage kopieren, Platzhalter füllen, Projekt starten — Schritt für Schritt am Pygame-Beispiel |
+| [Lokale Modelle (Fortgeschritten)](wiki/anleitungen/lokale-modelle-fortgeschritten.md) | Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb |
+| [Beratungs-CRM einrichten](wiki/anleitungen/beratungs-crm-einrichtung.md) | Lokales CRM auf Linux: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil |
+
+## Aktuelle Zahlen
+
+- **72 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
+- **16 Quelldokumente** (Clippings + Raw)
+- Keine toten Links, keine verwaisten Seiten (geprüft mit `wiki_lint.py`)
+
 ---
 
 > **Note:** This repository — wiki pages, templates, and documentation — is currently available in German only.
