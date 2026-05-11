@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-05-11 02:00] query | Kostenhinweis in erste-schritte.md ergänzt
+
+- Neuer Abschnitt `## Was kostet das?` in `wiki/anleitungen/erste-schritte.md`
+- $51-Richtwert für Karpathys Use Case (100 Seiten, 3 Monate, Sonnet 4.6)
+- Kosten-Tabelle: Haiku/Sonnet/Team-Szenarien
+- Verweis auf `usd-pro-wiki-seite.md` und `token-sparen.md`
+- Verwandte Seiten um token-sparen und usd-pro-wiki-seite erweitert
+
 ## [2026-05-04 14:00] query | Vorlage claude-md-laienlehrer erstellt
 
 - Neue Seite `vorlagen/claude-md-laienlehrer.md`

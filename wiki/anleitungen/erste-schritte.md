@@ -8,7 +8,7 @@ status: active
 # Erste Schritte: LLM-Wiki einrichten
 
 **Zusammenfassung**: Schritt-für-Schritt-Einrichtung eines LLM-Wiki-Projekts — von der Installation bis zur ersten Sitzung mit Claude.
-**Zuletzt aktualisiert**: 2026-05-02
+**Zuletzt aktualisiert**: 2026-05-11
 
 ---
 
@@ -182,6 +182,26 @@ Das war's für das Grundsetup. Von hier aus wächst das Wiki automatisch: Jedes 
 
 ---
 
+## Was kostet das?
+
+Kurze Antwort: **weniger als du wahrscheinlich denkst.**
+
+Karpathys eigener Use Case — 100 Wiki-Seiten, ~70 Quellen, 3 Monate, Sonnet 4.6 — kostet bei API-Nutzung **ca. $51 gesamt**. Das ist weniger als ein Monatsabo vieler Notiz-Tools.
+
+| Nutzung | Modell | Kosten (Richtwert) |
+|---|---|---|
+| 100 Seiten, 3 Monate | Sonnet 4.6 | ~$51 gesamt |
+| 100 Seiten, 1 Jahr | Haiku 4.5 | ~$7 gesamt |
+| 500 Seiten, 6 Monate | Sonnet 4.6 | ~$660 gesamt |
+
+(Quelle: [usd-pro-wiki-seite](../konzepte/usd-pro-wiki-seite.md))
+
+**Claude.ai Pro-Abo vs. API-Key**: Das Pro-Abo ist eine Monats-Flatrate (~$20/Monat) — rechnet sich bei täglicher Nutzung. Der API-Key ist verbrauchsbasiert — günstiger bei gelegentlicher Nutzung oder wenn du die Kosten genau kontrollieren willst.
+
+Wenn das Wiki wächst und die Kosten steigen, gibt es klare Strategien dagegen — von einfach bis fortgeschritten: [token-sparen](token-sparen.md)
+
+---
+
 ## Fortgeschrittener Pfad (optional)
 
 Dieser Abschnitt richtet sich an Linux-Nutzer und alle, die mehr Kontrolle wollen: eigene Entwicklungsumgebung, API-Key statt Abo, oder Git-Backup.
@@ -258,6 +278,8 @@ git commit -m "Erstes Commit"
 - [claude-md-software](../vorlagen/claude-md-software.md) — Software-Vorlage
 - [claude-md-team](../vorlagen/claude-md-team.md) — Team-Wiki-Vorlage
 - [vorlage-einrichten](vorlage-einrichten.md) — Nächster Schritt: wie du eine Vorlage in ein echtes Projekt verwandelst
+- [token-sparen](token-sparen.md) — Strategien zur Kostensenkung, wenn das Wiki wächst
+- [usd-pro-wiki-seite](../konzepte/usd-pro-wiki-seite.md) — Detaillierte Kostenkalkulation: $/WP-Metrik, drei Szenarien
 
 ---
 
