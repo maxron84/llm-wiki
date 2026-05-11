@@ -39,11 +39,12 @@ Schritt-für-Schritt-Guides für den Einstieg und Betrieb:
 | [Vorlage einrichten](wiki/anleitungen/vorlage-einrichten.md) | Vorlage kopieren, Platzhalter füllen, Projekt starten — Schritt für Schritt am Pygame-Beispiel |
 | [Lokale Modelle (Fortgeschritten)](wiki/anleitungen/lokale-modelle-fortgeschritten.md) | Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb |
 | [Beratungs-CRM einrichten](wiki/anleitungen/beratungs-crm-einrichtung.md) | Lokales CRM auf Linux: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil |
+| [Token sparen](wiki/anleitungen/token-sparen.md) | 4-stufige Strategie zur Token-Reduktion — von Sofortmaßnahmen bis fortgeschrittener Architektur |
 
 ## Aktuelle Zahlen
 
-- **72 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
-- **16 Quelldokumente** (Clippings + Raw)
+- **73 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
+- **17 Quelldokumente** (Clippings + Raw)
 - Keine toten Links, keine verwaisten Seiten (geprüft mit `wiki_lint.py`)
 
 ---
