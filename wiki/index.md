@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-11
+**Zuletzt aktualisiert**: 2026-05-11 (Ingest ralph-claude-code-llm-wiki_metrik)
 
 ---
 
@@ -43,6 +43,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [enterprise-skalierung](konzepte/enterprise-skalierung.md) — Warum das persönliche Muster bei Unternehmen bricht und wie Enterprise-Wikis anders arbeiten müssen
 - [exokortex](konzepte/exokortex.md) — Aaron Fulkersons „Exo" als externes kognitives Betriebssystem: 26 Skills, 14 MCP-Server, Auto-Enrichment
 - [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
+- [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
+- [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 
 ## Werkzeuge
 
@@ -53,6 +55,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [marp](werkzeuge/marp.md) — Obsidian-Plugin für Markdown-basierte Präsentationen
 - [jdocmunch](werkzeuge/jdocmunch.md) — MCP-Server für sektionsbasierte Abfrage; ~95% Token-Reduktion
 - [qmd](werkzeuge/qmd.md) — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
+- [wiki-ralph-sh](werkzeuge/wiki-ralph-sh.md) — Bash-Skript: Ralph-Schleife für autonomen LLM-Wiki-Ingest aus inbox/
 
 ## Personen
 
@@ -62,6 +65,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [steph-ango](personen/steph-ango.md) — Obsidian-CEO, prägte die Vault-Trennungs-Empfehlung
 - [tobi-luetke](personen/tobi-luetke.md) — Shopify-CEO, Entwickler von qmd
 - [aaron-fulkerson](personen/aaron-fulkerson.md) — Mitgründer MindTouch, Erbauer von Exo — reichhaltigste Produktionsquelle im Wiki
+- [geoffrey-huntley](personen/geoffrey-huntley.md) — Erfinder der Ralph-Schleife, $10,42/h-Kostenbenchmark für agentische Arbeit
 
 ## Quellen
 
@@ -80,6 +84,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-tecadrise](quellen/llm-wiki-tecadrise.md) — TecAdRise.ai: Karpathys Idee als Bewegung, Community-Projekte, Constrained Pipelines
 - [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
 - [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
+- [ralph-claude-code-llm-wiki-metrik](quellen/ralph-claude-code-llm-wiki-metrik.md) — Ökonomische Analyse: Ralph + Karpathy, US$/WP-Metrik, drei Kostenszenarien
 
 ## Vorlagen
 

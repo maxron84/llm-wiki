@@ -414,6 +414,22 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `wiki/konzepte/kontaminierungsrisiko.md` — Constrained Pipelines (Community-Konsens) und Trust Score (v2) ergänzt
 - `wiki/konzepte/rag-vs-wiki.md` — v2-Argument (RAG als 2023-Workaround) und Enterprise-Retrieval-Kritik ergänzt
 
+## [2026-05-11 01:00] ingest | Die fehlende Metrik — Was kostet eine Seite im LLM Wiki?
+
+**Neue Seiten (5):**
+- `wiki/quellen/ralph-claude-code-llm-wiki-metrik.md` — Quellartikel: Ralph + Karpathy, US$/WP, drei Kostenszenarien
+- `wiki/konzepte/ralph-schleife.md` — Deterministisches Agentenmuster, $10,42/h Sonnet-Benchmark, fehlende Ingest-Automatisierung
+- `wiki/konzepte/usd-pro-wiki-seite.md` — Stückkostenmetrik: $0,043/WP roh, $0,42/WP Lifetime (Sonnet 4.6)
+- `wiki/personen/geoffrey-huntley.md` — Erfinder der Ralph-Schleife
+- `wiki/werkzeuge/wiki-ralph-sh.md` — Bash-Skript für autonomen Inbox-Ingest incl. Lint-Pass
+
+**Aktualisierte Seiten (5):**
+- `wiki/konzepte/fortgeschrittene-architektur.md` — Ralph als Ingest-Backbone, $0,32/Iteration Sonnet 4.6
+- `wiki/konzepte/skalierungsgrenzen.md` — US$/WP-Tabelle, 200K-Wort-Klippe als harte Grenze
+- `wiki/konzepte/enterprise-skalierung.md` — Szenario C: $19.870/Jahr, $6,60/WP bei Opus 4.7
+- `wiki/konzepte/kontaminierungsrisiko.md` — Halluzinations-Kostenfaktor in der Wirtschaftlichkeitsrechnung
+- `wiki/anleitungen/token-sparen.md` — US$/WP-Referenzwerte, Ralph-Schleife als Stufe 3.3
+
 ## [2026-05-11 00:00] query | Token sparen mit Claude Code
 
 - `wiki/anleitungen/token-sparen.md` — neu: 4-stufiger Leitfaden zur Token-Reduktion beim LLM-Wiki-Betrieb

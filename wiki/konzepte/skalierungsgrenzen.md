@@ -65,6 +65,18 @@ Drei Suchmodi (BM25, Vektor, Hybrid mit LLM-Reranking), vollständig lokal, MCP-
 
 Fortgeschrittener Ansatz: Wiki-Seiten in einem Vektor-Index einbetten — nicht die Rohquellen. Die Embeddings der vorsynthetisierten Seiten liefern bessere Retrieval-Qualität als Embeddings von Rohchunks. Mehr: [fortgeschrittene-architektur](fortgeschrittene-architektur.md)
 
+## Kostenperspektive: Was Skalierung tatsächlich kostet
+
+Das Skalierungsproblem hat nicht nur eine technische, sondern auch eine ökonomische Seite. Die Metrik [US$/WP](usd-pro-wiki-seite.md) (Dollar pro Wiki-Seite, Lifetime) macht die Kosten greifbar:
+
+| Modell | $/WP (Lifetime, inkl. Lint) |
+|---|---|
+| Haiku 4.5 | ~$0,07 |
+| Sonnet 4.6 | ~$0,42 |
+| Opus 4.7 | ~$1,80 |
+
+**Context-Window-Klippe bei ~200.000 Wörtern**: Karpathys Muster setzt voraus, dass das LLM den gesamten Index in einem Rutsch lesen kann. Jenseits von ~200K Wörtern passt das nicht mehr — hybride Retrieval-Strategien (BM25 + Vektor + Graph) werden nötig, was die Stückkosten nicht-linear erhöht. Das ist eine härtere Grenze als die graduellen Token-Schwellenwerte. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
+
 ## Das mentale Modell (J. Gravelle)
 
 > "Your wiki is not a document. It's a database. Stop loading it. Start querying it."

@@ -78,6 +78,23 @@ Y Combinator Spring 2026 Requests for Startups benennt den Bedarf direkt:
 
 Das ist präzise das, was Karpathys persönliches Muster auf Unternehmensebene leisten müsste.
 
+## Kostenbenchmark: Enterprise mit US$/WP
+
+Die [US$/WP-Metrik](usd-pro-wiki-seite.md) macht den Enterprise-Case konkret. Szenario C aus der Ralph-Analyse:
+
+**5.000 Quellen, 3.000 Wiki-Seiten, 1 Jahr, Opus 4.7, Human-in-the-Loop:**
+
+| Posten | Kosten |
+|---|---:|
+| Ingest (5.000 × $1,61) | $8.050 |
+| Lint × 52 Wochen (~$35/Woche) | $1.820 |
+| Queries (~100/Tag × 250 Werktage) | $10.000 |
+| **Jahresgesamt** | **$19.870** |
+
+**~$6,60/WP** über ein Jahr. Verhältnis zu einem menschlichen Knowledge-Manager (≥$80.000/Jahr fully loaded): ca. **1:4**. Selbst wenn die Qualität nicht gleich ist, bleibt das Verhältnis ökonomisch eindeutig. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
+
+Voraussetzung für diese Kosten: eine [Ralph-Schleife](ralph-schleife.md) oder ein Äquivalent für automatisierten Ingest — ohne Automatisierung kommen menschliche Arbeitsstunden als versteckte Kosten hinzu.
+
 ## Abgrenzung zu technischen Skalierungsgrenzen
 
 Die [technischen Skalierungsgrenzen](skalierungsgrenzen.md) des LLM-Wikis (index.md als Token-Flaschenhals, ~50–300K Token Degradierung) sind ein anderes Problem: Sie entstehen bei jedem Wiki ab einer bestimmten Größe, unabhängig von Nutzerzahl. Die Enterprise-Skalierungsprobleme entstehen schon bei kleinen Wikis, sobald die Kurations-Verantwortung auf mehrere Schultern verteilt werden muss.

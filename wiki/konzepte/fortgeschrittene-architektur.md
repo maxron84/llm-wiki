@@ -64,6 +64,14 @@ Das reifste Wiki ist auch ein hochwertiger Trainingsdatensatz:
 
 Statt das Wiki im Kontextfenster zu laden, könnte man ein kleineres Modell auf dem Wiki feintunen — das Modell würde die persönliche Wissensbasis in seinen Gewichten "kennen". Noch experimentell, aber konzeptuell der logische Endpunkt.
 
+## Ralph-Schleife als Ingest-Backbone
+
+Karpathys Ingest-Workflow setzt implizit voraus, dass Operationen manuell angestoßen werden. Eine [Ralph-Schleife](ralph-schleife.md) schließt diese Lücke: Sie pollt ein `inbox/`-Verzeichnis und ingestiert neue Quellen autonom, ohne menschliches Anstoßen.
+
+Die Architektur — zustandslose Iterationen, frischer Kontext per Durchlauf, Persistenz über Dateisystem — ist exakt das, was Karpathys Muster für Ingest und Lint implizit fordert. Ohne eine solche Schleife ist das LLM-Wiki ein halbmanuelles System.
+
+Benchmark: ~$0,32 pro Ingest-Iteration mit Sonnet 4.6; lifetime ~$0,42 pro substanziell gepflegter Wiki-Seite inklusive Lint-Amortisierung. Mehr: [usd-pro-wiki-seite](usd-pro-wiki-seite.md), [wiki-ralph-sh](../werkzeuge/wiki-ralph-sh.md)
+
 ## Ephemere Mini-Wissensbases
 
 Lex Fridman erwähnte ein nützliches Variante: Für spezifische Aufgaben eine temporäre, fokussierte Mini-Wissensbasis erzeugen — und diese nach dem Abschlussbericht auflösen. Der Vorteil: maximale Relevanz bei minimalem Token-Overhead für die jeweilige Aufgabe.

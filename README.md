@@ -43,8 +43,8 @@ Schritt-für-Schritt-Guides für den Einstieg und Betrieb:
 
 ## Aktuelle Zahlen
 
-- **73 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
-- **17 Quelldokumente** (Clippings + Raw)
+- **78 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
+- **18 Quelldokumente** (Clippings + Raw)
 - Keine toten Links, keine verwaisten Seiten (geprüft mit `wiki_lint.py`)
 
 ---

@@ -62,6 +62,14 @@ Das Ziel verschob sich von „perfekte KI" zu „perfektes System um imperfekte 
 
 [LLM Wiki v2](llm-wiki-v2.md) fügt einen **Trust Score pro Eintrag** hinzu, der über Zeit verfällt, wenn keine Verifikation stattfindet. Erzwingt periodische Überprüfung systematisch, statt auf manuelle Disziplin zu vertrauen.
 
+### 8. Halluzinations-Kosten in der Wirtschaftlichkeitsrechnung
+
+Die [US$/WP-Metrik](usd-pro-wiki-seite.md) zählt produzierte Seiten — nicht korrekte Seiten. Das ist ihr blinder Fleck: Wenn 5 % der ingestierten Behauptungen falsch sind und eine teure Halluzination einen Mitarbeiter eine Stunde kostet, kippt die Wirtschaftlichkeitsrechnung.
+
+Quantifiziert: Ein Stundensatz von $80 bei einer Stunde verlorener Arbeitszeit pro Quartal durch Halluzinationen entspricht $320/Jahr — das kann bei kleinen Wikis die gesamten Token-Kosten übersteigen.
+
+Abhilfe: Confidence Scores (LLM Wiki v2), harte Source-Linking-Regel (eine Behauptung = eine Quelldatei), regelmäßiger Lint. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
+
 ## Karpathys Einschätzung
 
 Karpathy erwähnt Lint-Checks als direkte Reaktion auf das Kontaminierungsrisiko. Die Community (besonders [Steph Ango](../personen/steph-ango.md)) hob das Thema als den wichtigsten offenen Punkt des Musters hervor.

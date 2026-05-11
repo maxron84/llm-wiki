@@ -8,7 +8,7 @@ status: active
 # Token sparen mit Claude Code — ein Leitfaden
 
 **Zusammenfassung**: Praktische Strategien zur Reduktion von Token-Verbrauch beim Betrieb eines LLM-Wikis mit Claude Code — von einfachen Sofortmaßnahmen bis zur fortgeschrittenen Architektur.
-**Quellen**: wiki/konzepte/skalierungsgrenzen.md, wiki/konzepte/fortgeschrittene-architektur.md, wiki/werkzeuge/jdocmunch.md, wiki/werkzeuge/qmd.md, wiki/konzepte/ingest-workflow.md, wiki/konzepte/lernschleifen.md
+**Quellen**: wiki/konzepte/skalierungsgrenzen.md, wiki/konzepte/fortgeschrittene-architektur.md, wiki/werkzeuge/jdocmunch.md, wiki/werkzeuge/qmd.md, wiki/konzepte/ingest-workflow.md, wiki/konzepte/lernschleifen.md, raw/ralph-claude-code-llm-wiki_metrik.md
 **Zuletzt aktualisiert**: 2026-05-11
 
 ---
@@ -27,6 +27,20 @@ Die Strategien in diesem Leitfaden sind nach Aufwand gestaffelt:
 | 2 — Werkzeuge einsetzen | Einmalige Einrichtung | 65–95% |
 | 3 — Fortgeschrittene Architektur | Systemumbau | 90%+ |
 | 4 — Systemebene | Laufender Prozess | akkumulierend |
+
+## Was kostet ein Wiki tatsächlich?
+
+Bevor Optimierungen Sinn ergeben, braucht man Referenzwerte. Die Metrik [US$/WP](../konzepte/usd-pro-wiki-seite.md) (Dollar pro substanziell gepflegter Wiki-Seite, Lifetime inkl. Lint-Amortisierung) liefert sie:
+
+| Modell | $/WP (Lifetime) | Konkret: 100-Seiten-Wiki/Jahr |
+|---|---:|---:|
+| Haiku 4.5 | ~$0,07 | ~$7 |
+| **Sonnet 4.6** | **~$0,42** | **~$42** |
+| Opus 4.7 | ~$1,80 | **~$180** |
+
+Karpathys eigener Use Case (100 Artikel, 3 Monate, Sonnet 4.6) kostet demnach **~$51 gesamt** — weniger als ein Monatsabo gängiger Notiz-Tools. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
+
+Diese Zahlen sind **obere Schranken ohne Caching-Optimierung**. Mit den Stufen unten sinken sie deutlich.
 
 ---
 
@@ -147,7 +161,20 @@ Besonders wirksam bei:
 
 Mehr: [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 
-### 3.3 Ephemere Mini-Wissensbases für Spezialaufgaben
+### 3.3 Ralph-Schleife — Ingest automatisieren
+
+Jede manuelle Ingest-Operation kostet neben Token auch Arbeitszeit: Quelle ablegen, Claude anstoßen, warten, nächste Quelle. Eine [Ralph-Schleife](../konzepte/ralph-schleife.md) macht daraus einen autonomen Prozess: Quellen in `inbox/` ablegen, Skript starten, Wiki wächst von allein.
+
+Warum das Token-relevant ist: Die Schleife startet jede Iteration mit frischem Kontext. Das verhindert akkumulierten Kontextaufbau über mehrere Quellen in einer Sitzung — der teuerste Token-Treiber bei Batch-Ingest.
+
+```bash
+# inbox/ befüllen, dann:
+./wiki-ralph.sh ~/mein-wiki
+```
+
+Mehr: [wiki-ralph-sh](../werkzeuge/wiki-ralph-sh.md), [ralph-schleife](../konzepte/ralph-schleife.md)
+
+### 3.4 Ephemere Mini-Wissensbases für Spezialaufgaben
 
 Für eng begrenzte Aufgaben (z.B. "Schreib einen Artikel über X") eine temporäre, fokussierte Mini-Wissensbasis erstellen — und sie nach Abschluss wieder auflösen. Statt das gesamte Wiki zu laden, lädt Claude nur die 3–5 relevanten Seiten für diese Aufgabe.
 
@@ -193,8 +220,9 @@ Mehr: [taeglicher-workflow](../konzepte/taeglicher-workflow.md)
 | 50–100 Seiten | + jDocMunch einrichten |
 | 100–500 Seiten | + qmd als MCP-Server; Routing-Schritt beim Ingest |
 | > 500 Seiten | + RAG über kompilierte Wiki-Seiten; Prompt Caching optimieren |
+| Regelmäßiger Batch-Ingest | + Ralph-Schleife für automatisierten Ingest |
 
-(Quelle: [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md))
+(Quellen: [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md), [usd-pro-wiki-seite](../konzepte/usd-pro-wiki-seite.md))
 
 ---
 
@@ -206,7 +234,8 @@ Token-Kosten beim LLM-Wiki entstehen an drei Stellen: beim Laden des Wikis, beim
 2. **95% Einsparung**: jDocMunch für sektionsbasierten Zugriff
 3. **Navigation**: qmd für semantische Suche bei 100+ Seiten
 4. **Sitzungskosten**: Strukturierter Tages-Workflow; Lernschleifen mit Graduation
-5. **Ingest-Kosten**: Routing-Schritt; Prompt Caching
+5. **Ingest-Kosten**: Routing-Schritt; Prompt Caching; Ralph-Schleife für Batch-Automatisierung
+6. **Benchmark**: Sonnet 4.6 ohne Optimierung ~$0,42/WP Lifetime — mit Caching und jDocMunch deutlich weniger
 
 Der entscheidende Perspektivwechsel kommt von J. Gravelle:
 
@@ -214,6 +243,9 @@ Der entscheidende Perspektivwechsel kommt von J. Gravelle:
 
 ## Verwandte Seiten
 
+- [usd-pro-wiki-seite](../konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik $/WP
+- [ralph-schleife](../konzepte/ralph-schleife.md) — Automatisierungsmuster für Ingest
+- [wiki-ralph-sh](../werkzeuge/wiki-ralph-sh.md) — Konkrete Implementierung
 - [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
 - [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 - [jdocmunch](../werkzeuge/jdocmunch.md)
