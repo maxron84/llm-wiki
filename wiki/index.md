@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-04
+**Zuletzt aktualisiert**: 2026-05-11
 
 ---
 
@@ -100,6 +100,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [vorlage-einrichten](anleitungen/vorlage-einrichten.md) — Schritt für Schritt: Vorlage kopieren, Platzhalter füllen, Projekt starten (Beispiel: Pygame-Lernprojekt)
 - [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb
 - [beratungs-crm-einrichtung](anleitungen/beratungs-crm-einrichtung.md) — Beratungs-CRM auf Linux einrichten: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil
+- [token-sparen](anleitungen/token-sparen.md) — Token sparen mit Claude Code: 4-stufige Strategie von Sofortmaßnahmen bis fortgeschrittener Architektur
 
 ## Projekte
 

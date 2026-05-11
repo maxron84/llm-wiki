@@ -414,6 +414,16 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 - `wiki/konzepte/kontaminierungsrisiko.md` — Constrained Pipelines (Community-Konsens) und Trust Score (v2) ergänzt
 - `wiki/konzepte/rag-vs-wiki.md` — v2-Argument (RAG als 2023-Workaround) und Enterprise-Retrieval-Kritik ergänzt
 
+## [2026-05-11 00:00] query | Token sparen mit Claude Code
+
+- `wiki/anleitungen/token-sparen.md` — neu: 4-stufiger Leitfaden zur Token-Reduktion beim LLM-Wiki-Betrieb
+  - Stufe 1: Sofortmaßnahmen (Tiefenwahl, gezielte Fragen, schlanke CLAUDE.md)
+  - Stufe 2: jDocMunch (95% Einsparung) + qmd (Semantische Suche ab 100 Seiten)
+  - Stufe 3: Routing-Schritt beim Ingest, Prompt Caching (~90%), Ephemere Mini-Bases
+  - Stufe 4: Lernschleifen + Graduation, täglicher Workflow
+  - Schwellenwert-Tabelle: welche Strategie bei welcher Wiki-Größe
+- `wiki/index.md` aktualisiert
+
 ## [2026-04-30] lint | Wiki-Prüfung
 
 - 3 Dead Links gemeldet (`pfad.md`) — alle Falsch-Positive: Syntaxbeispiele in Backtick-Code-Spans
