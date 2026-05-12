@@ -31,6 +31,16 @@ Die KI prüft auf:
 
 (Quelle: clippings/llm-wiki.md)
 
+## Automatisierte Prüfung
+
+Das Skript `wiki_lint.py` im Projekt-Root prüft automatisch auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler:
+
+```bash
+python3 wiki_lint.py   # aus dem Projekt-Root
+```
+
+Ergänzt die KI-Prüfung — sinnvoll vor jedem Commit oder nach einem größeren Ingest.
+
 ## Wann prüfen?
 
 Karpathy empfiehlt, die Prüfung **periodisch** durchzuführen — insbesondere nach mehreren Ingest-Vorgängen, wenn viele neue Seiten entstanden sind. Die KI ist auch gut darin, neue Fragen zum Untersuchen und neue Quellen zum Suchen vorzuschlagen. (Quelle: clippings/llm-wiki.md)

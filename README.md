@@ -41,6 +41,14 @@ Schritt-für-Schritt-Guides für den Einstieg und Betrieb:
 | [Beratungs-CRM einrichten](wiki/anleitungen/beratungs-crm-einrichtung.md) | Lokales CRM auf Linux: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil |
 | [Token sparen](wiki/anleitungen/token-sparen.md) | 4-stufige Strategie zur Token-Reduktion — von Sofortmaßnahmen bis fortgeschrittener Architektur |
 
+## Hilfsskripte
+
+| Skript | Zweck | Aufruf |
+|---|---|---|
+| `wiki_lint.py` | Prüft auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler | `python3 wiki_lint.py` (aus dem Projekt-Root) |
+
+Das Skript liegt im Projekt-Root und braucht keine zusätzlichen Abhängigkeiten.
+
 ## Aktuelle Zahlen
 
 - **78 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
