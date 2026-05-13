@@ -12,6 +12,11 @@ status: active
 
 ---
 
+## [2026-05-13 00:02] lint | Wiki-Gesundheitsprüfung
+
+- 0 Dead Links, 0 Orphans, 0 fehlende Index-Einträge, 0 Format-Fehler
+- 78 Seiten — alles sauber
+
 ## [2026-05-13 00:01] query | lokale-modelle-fortgeschritten.md auf Code-Digest aktualisiert
 
 - Projektstruktur: `wiki/code-stand.md` ergänzt
