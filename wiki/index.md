@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-13 (Code-Digest-Option in KI-Lehrer-Vorlage)
+**Zuletzt aktualisiert**: 2026-05-13 (lokale-modelle-fortgeschritten auf Ollama-Modelle 2026 aktualisiert)
 
 ---
 

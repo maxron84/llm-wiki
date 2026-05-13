@@ -7,8 +7,8 @@ status: active
 
 # Lokale Modelle für Fortgeschrittene: Pygame-Projekt mit Qwen3
 
-**Zusammenfassung**: Einrichtung eines Pygame-Projekts mit lokalem Qwen3-Modell (27B oder 35B) — Ollama als Backend, Continue in VS Codium als Arbeitsumgebung, halbautomatischer Wiki-Betrieb ohne Cloud.
-**Zuletzt aktualisiert**: 2026-05-03
+**Zusammenfassung**: Einrichtung eines Pygame-Projekts mit lokalem Qwen3-Modell — Ollama als Backend, Continue in VS Codium als Arbeitsumgebung, halbautomatischer Wiki-Betrieb ohne Cloud.
+**Zuletzt aktualisiert**: 2026-05-13
 
 ---
 
@@ -20,18 +20,20 @@ status: active
 
 ### Hardware
 
-Qwen3 27B und 35B sind rechenintensive Modelle. Die Mindestanforderungen im Überblick:
+Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen:
 
-| Modell | RAM (CPU) | VRAM (GPU) | Anmerkung |
-|---|---|---|---|
-| Qwen3:27b | 32 GB | 24 GB | Q4_K_M-Quantisierung |
-| Qwen3:30b-a3b (MoE) | 24 GB | 18 GB | Mixture-of-Experts — schneller als 27B bei ähnlicher Qualität |
-| Qwen3:32b | 40 GB | 28 GB | Vollständiges Modell |
-| Qwen3 235B-A22B (MoE) | 64 GB | — | Nur für sehr leistungsstarke Hardware |
+| Modell | Größe | Kontext | VRAM | Anmerkung |
+|---|---|---|---|---|
+| qwen3:8b | 5,2 GB | 40K | ~6 GB | Einstieg, sehr schnell |
+| qwen3:14b | 9,3 GB | 40K | ~10 GB | **Empfehlung für 16 GB VRAM** |
+| qwen3:30b | 19 GB | 256K | ~20 GB | Übersteigt 16 GB → CPU-Offload |
+| qwen3:32b | 20 GB | 40K | ~21 GB | Für 24+ GB VRAM |
 
-> **Mac mit Apple Silicon (M2 Pro / M3 / M4)**: Unified Memory wird besonders effizient genutzt — mit 32 GB laufen 27B-MLX-Modelle flüssig, mit 24 GB das 30B-MoE-Modell.
+> **RTX 5080 (16 GB VRAM)**: `qwen3:14b` ist die saubere Wahl — passt mit ~6 GB Puffer ins VRAM, GDDR7-Bandbreite sorgt für schnelle Inferenz. `qwen3:30b` übersteigt das VRAM um ~3 GB und fällt auf CPU-Offload zurück (deutlich langsamer).
 
-**Wenig RAM?** Das Qwen3 30B-A3B MoE-Modell (`qwen3:30b-a3b`) ist ein guter Kompromiss: Es liefert die Qualität eines 30B-Modells, aktiviert aber nur 3B Parameter pro Token — deutlich schneller und speichersparender als ein vollständiges Modell gleicher Größe.
+> **Mac mit Apple Silicon (M2 Pro / M3 / M4)**: Unified Memory wird besonders effizient genutzt — mit 32 GB läuft `qwen3:30b` flüssig, mit 16 GB `qwen3:14b`.
+
+**Community-Modelle**: Reasoning-Distillate (z.B. `Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled`) können eine gute Alternative sein, wenn sie in die VRAM-Lücke zwischen 14B und 30B fallen. Qualität variiert je nach Distillationsprozess — vor dem Einsatz kurz testen.
 
 ### Software
 
@@ -58,21 +60,21 @@ curl -fsSL https://ollama.com/install.sh | sh
 Modell herunterladen — je nach verfügbarer Hardware:
 
 ```bash
-# Empfehlung ab 32 GB RAM
-ollama pull qwen3:27b
+# 16 GB VRAM (z.B. RTX 5080) — Empfehlung
+ollama pull qwen3:14b
 
-# Für 24 GB RAM oder GPU-knapp
-ollama pull qwen3:30b-a3b
+# 24+ GB VRAM (z.B. RTX 4090, RTX 5090)
+ollama pull qwen3:32b
 
-# Mac mit Apple Silicon (MLX — 20–50 % schneller als Standard)
-ollama pull qwen3:27b-mlx
+# Mac mit Apple Silicon, 32 GB Unified Memory
+ollama pull qwen3:30b
 ```
 
-Der Download dauert je nach Modell 15–45 Minuten (ca. 15–20 GB). Anschließend kurz testen:
+Der Download dauert je nach Modell 10–30 Minuten. Anschließend kurz testen:
 
 ```bash
 ollama list
-ollama run qwen3:27b   # Direkttest im Terminal, mit /bye beenden
+ollama run qwen3:14b   # Direkttest im Terminal, mit /bye beenden
 ```
 
 Nach der Installation läuft Ollama dauerhaft als lokaler Server auf `http://localhost:11434`.
@@ -92,27 +94,27 @@ Nach der Installation läuft Ollama dauerhaft als lokaler Server auf `http://loc
 
 Continue speichert seine Konfiguration in `~/.continue/config.json`. Öffnen: Continue-Panel → Zahnrad-Icon → `config.json`.
 
-Grundkonfiguration für Qwen3:
+Grundkonfiguration für Qwen3 (Beispiel RTX 5080):
 
 ```json
 {
   "models": [
     {
-      "title": "Qwen3 27B (lokal)",
+      "title": "Qwen3 14B (lokal)",
       "provider": "ollama",
-      "model": "qwen3:27b",
-      "contextLength": 32768
+      "model": "qwen3:14b",
+      "contextLength": 40960
     }
   ],
   "tabAutocompleteModel": {
-    "title": "Qwen3 27B Autocomplete",
+    "title": "Qwen3 14B Autocomplete",
     "provider": "ollama",
-    "model": "qwen3:27b"
+    "model": "qwen3:14b"
   }
 }
 ```
 
-> **MoE-Variante**: `"model": "qwen3:30b-a3b"` eintragen. Mac MLX: `"model": "qwen3:27b-mlx"`.
+> **Größeres VRAM**: `"model": "qwen3:32b"`, `"contextLength": 40960`. Mac mit 32 GB: `"model": "qwen3:30b"`, `"contextLength": 262144`.
 
 Zum Testen im Continue-Chat `Hallo` eingeben — das Modell sollte innerhalb weniger Sekunden antworten.
 
@@ -308,7 +310,7 @@ Kontext bleibt dauerhaft unter ~8k Token — unabhängig davon wie groß das Pro
 
 ### Thinking Mode
 
-Qwen3 27B und größer unterstützen einen expliziten Denkmodus für anspruchsvolle Fragen. Er lässt sich in Ollama durch einen vorangestellten Befehl aktivieren:
+Qwen3 14B und größer unterstützen einen expliziten Denkmodus für anspruchsvolle Fragen. Er lässt sich in Ollama durch einen vorangestellten Befehl aktivieren:
 
 ```
 /think Analysiere diese Kollisionslogik und finde den Fehler:
@@ -319,7 +321,7 @@ Das Modell denkt vor der Antwort — sichtbar als `<think>...</think>`-Block. Be
 
 ### Kontextfenster
 
-Qwen3 27B hat ein 32K-Token-Kontextfenster. Bei wachsendem Projekt den Code-Digest aktivieren (s. Schritt 7) — das ist die sauberere Lösung als manuell einzelne Dateien auszuwählen:
+Qwen3 14B hat ein 40K-Token-Kontextfenster — ausreichend für die meisten Pygame-Projekte. Bei sehr großem Projekt (2000+ Zeilen Code) trotzdem Code-Digest aktivieren (s. Schritt 7):
 
 ```
 @wiki/code-stand.md @src/aktuelle-datei.py    ← mit Code-Digest: konstant ~4–6k Token
@@ -334,10 +336,10 @@ Für Code-Generierung empfiehlt sich ein niedriger Temperaturwert. In `config.js
 {
   "models": [
     {
-      "title": "Qwen3 27B (lokal)",
+      "title": "Qwen3 14B (lokal)",
       "provider": "ollama",
-      "model": "qwen3:27b",
-      "contextLength": 32768,
+      "model": "qwen3:14b",
+      "contextLength": 40960,
       "completionOptions": {
         "temperature": 0.2
       }
@@ -365,8 +367,8 @@ Besonders nützlich ist die Volltextsuche über alle Sitzungsnotizen — so lass
 ## Häufige Probleme
 
 **„Das Modell antwortet sehr langsam"**
-→ CPU-Inferenz für ein 27B-Modell ist langsam (1–3 Token/s). Entweder auf das MoE-Modell wechseln (`qwen3:30b-a3b`) oder auf einem Rechner mit dedizierter GPU arbeiten.
-→ Mac-Nutzer: MLX-Variante verwenden (`qwen3:27b-mlx`) — 3–5× schneller als die Standardversion.
+→ CPU-Inferenz ist langsam (1–3 Token/s) — eine dedizierte GPU ist für flüssiges Arbeiten nötig.
+→ Bei GPU-Offload (Modell zu groß für VRAM): auf das kleinere Modell wechseln. RTX 5080-Nutzer: `qwen3:14b` statt `qwen3:30b`.
 
 **„Continue findet @CLAUDE.md nicht"**
 → Prüfen: Ist VS Codium mit dem richtigen Projektordner geöffnet? `Datei → Ordner öffnen` → Projektordner wählen.

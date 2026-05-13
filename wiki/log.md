@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-13 00:03] query | lokale-modelle-fortgeschritten auf offizielle Ollama-Modelle aktualisiert
+
+- Hardware-Tabelle: ersetzt durch tatsächliche Ollama-Modelle mit Größe, Kontext und VRAM
+- RTX 5080 (16 GB): `qwen3:14b` als Empfehlung dokumentiert, `qwen3:30b` als CPU-Offload-Fall
+- Hinweis auf Community-Reasoning-Distillate (Qwen3.5-27B) ergänzt
+- Pull-Befehle: `qwen3:14b` / `qwen3:32b` / `qwen3:30b` nach Hardware-Tier
+- Continue-Config, Temperatur-Config, Test-Befehl: alle auf `qwen3:14b` aktualisiert
+- Thinking Mode: „14B und größer" statt „27B und größer"
+- Kontextfenster-Tipp: 40K statt 32K, Code-Digest erst ab 2000+ Zeilen nötig
+- Häufige Probleme: qwen3:30b-a3b und MLX-Referenzen entfernt, RTX 5080-Hinweis ergänzt
+
 ## [2026-05-13 00:02] lint | Wiki-Gesundheitsprüfung
 
 - 0 Dead Links, 0 Orphans, 0 fehlende Index-Einträge, 0 Format-Fehler
