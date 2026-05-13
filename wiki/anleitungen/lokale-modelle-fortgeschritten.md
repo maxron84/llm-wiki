@@ -134,6 +134,7 @@ pygame-projekt/
   CLAUDE.md          ← Vorlage (im nächsten Schritt anlegen)
   src/               ← Pygame-Code
   wiki/
+    code-stand.md    ← Kompakte Codebasis-Übersicht (für 32k-Kontext, s. Schritt 7)
     sitzungen/       ← Sitzungsnotizen (manuell gepflegt)
 ```
 
@@ -148,30 +149,27 @@ Für ein Pygame-Projekt als erfahrener Programmierer bieten sich zwei Vorlagen a
 | [KI-Lehrer](../vorlagen/claude-md-lehrer.md) | Pygame systematisch gelernt werden soll — mit Lehrplan, Lektionen, Fortschrittstracking |
 | [Software](../vorlagen/claude-md-software.md) | Das Ziel bereits feststeht — KI hilft beim Coden, dokumentiert und schlägt Architektur vor |
 
-Als erfahrener Programmierer ist die **Software-Vorlage** meist die bessere Wahl. Programmierprinzipien sind bekannt — gefragt ist eine zügige Einarbeitung in die Pygame-API, kein Unterricht von Grund auf.
+**Wahl nach Ziel:**
+
+- **KI-Lehrer** — wenn Pygame strukturiert gelernt werden soll: Lehrplan, Lektionen, adaptives Tempo. Für 32k-Modelle den Code-Digest aktivieren (s. Schritt 7).
+- **Software** — wenn das Ziel bereits feststeht und nur Coding-Hilfe gefragt ist. Kein Lehrplan, weniger Kontext-Overhead.
 
 ### Vorlage kopieren
 
-1. [wiki/vorlagen/claude-md-software.md](../vorlagen/claude-md-software.md) öffnen
+1. Gewählte Vorlage öffnen: [KI-Lehrer](../vorlagen/claude-md-lehrer.md) oder [Software](../vorlagen/claude-md-software.md)
 2. Den Inhalt unter `## Vorlage` kopieren (ohne die ` ```` `-Rahmenzeilen)
 3. Als `CLAUDE.md` im Projektordner speichern
 
-### Platzhalter füllen
-
-Typische Anpassungen für ein Pygame-Projekt:
+### Platzhalter füllen (Beispiel KI-Lehrer)
 
 ```markdown
-## Projekt
+## Lernprojekt
 
-**Name**: Pygame Side-Scroller
-**Sprache**: Python / Pygame
-**Ziel**: Ein lauffähiges 2D-Platformer-Spiel mit Spieler, Gegnern und Level-System
-**Stand**: Greenfield — noch kein Code vorhanden
-
-## Kontext
-
-Erfahrener Python-Entwickler, vertraut mit OOP, neu in der Pygame-API.
-Fokus: idiomatische Pygame-Patterns, keine Erklärungen zu Python-Grundlagen.
+**Projekttitel**: Mein erstes 2D-Spiel mit Pygame
+**Schüler**: Max, 41 Jahre
+**Vorkenntnisse**: Erfahrener Software-Entwickler, Python bekannt, Pygame neu
+**Zeitbudget**: 60 Minuten pro Sitzung
+**Sprache des Unterrichts**: Deutsch
 ```
 
 ---
@@ -283,6 +281,27 @@ Weiter. Was steht als nächstes an?
 
 Das Modell hat damit den vollständigen Kontext: Projektziele, aktueller Stand und vorhandener Code.
 
+### Code-Digest (für 32k-Modelle empfohlen)
+
+Ab ~500 Zeilen Code wird `@src/` zu groß für ein 32k-Kontextfenster. Der Code-Digest ersetzt es durch eine kompakte Übersicht.
+
+`wiki/code-stand.md` nach jeder Sitzung aktualisieren lassen:
+
+```
+Aktualisiere wiki/code-stand.md: alle Module mit 2–3 Zeilen Beschreibung,
+wichtige Klassen und Funktionen mit Signatur, aktuelle offene Punkte.
+```
+
+Ab dann zu Sitzungsbeginn statt `@src/` nur noch:
+
+```
+@CLAUDE.md @wiki/fortschritt.md @wiki/code-stand.md @src/main.py
+
+Weiter.
+```
+
+Kontext bleibt dauerhaft unter ~8k Token — unabhängig davon wie groß das Projekt wächst.
+
 ---
 
 ## Qwen3-spezifische Tipps
@@ -300,11 +319,11 @@ Das Modell denkt vor der Antwort — sichtbar als `<think>...</think>`-Block. Be
 
 ### Kontextfenster
 
-Qwen3 27B hat ein 32K-Token-Kontextfenster. Bei wachsendem Projekt gezielt einzelne Dateien einbinden statt den gesamten Ordner:
+Qwen3 27B hat ein 32K-Token-Kontextfenster. Bei wachsendem Projekt den Code-Digest aktivieren (s. Schritt 7) — das ist die sauberere Lösung als manuell einzelne Dateien auszuwählen:
 
 ```
-@src/player.py @src/physics.py    ← besser: gezielte Auswahl
-@src/                              ← bei großem Projekt zu viel Kontext auf einmal
+@wiki/code-stand.md @src/aktuelle-datei.py    ← mit Code-Digest: konstant ~4–6k Token
+@src/                                          ← ohne Digest: wächst unkontrolliert
 ```
 
 ### Temperatur

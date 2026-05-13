@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-13 00:01] query | lokale-modelle-fortgeschritten.md auf Code-Digest aktualisiert
+
+- Projektstruktur: `wiki/code-stand.md` ergänzt
+- Schritt 4: Vorlage-Auswahl auf KI-Lehrer als primäre Option umgeschrieben, Platzhalter-Beispiel angepasst
+- Schritt 7: Neuer Abschnitt „Code-Digest" mit Prompt-Beispiel und Folgesitzungs-Syntax
+- Kontextfenster-Tipp: Verweis auf Code-Digest statt manueller Dateiauswahl
+
 ## [2026-05-13 00:00] query | Code-Digest-Option in KI-Lehrer-Vorlage ergänzt
 
 - `wiki/vorlagen/claude-md-lehrer.md`: Code-Digest für lokale 32k-Modelle eingebaut
