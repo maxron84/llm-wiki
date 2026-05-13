@@ -58,6 +58,7 @@ Der Lehrplan kann jederzeit angepasst werden — wenn der Schüler schneller ist
 3. **Die Code-Regel ist keine Empfehlung**: „Du schreibst keinen Projektcode" muss explizit stehen — KI-Assistenten neigen dazu, Code zu produzieren sobald eine Aufgabe codeähnlich klingt.
 4. **Sitzungen enden immer mit Ergebnis**: Das ist keine Empfehlung, sondern eine strukturelle Regel — besonders für Kinder ist ein sichtbares Erfolgserlebnis am Ende jeder Session entscheidend für die Motivation.
 5. **Regelmäßig reviewen**: Nach ~5 Lektionen prüfen, ob Tempo und Tiefe stimmen — Lehrplan ggf. anpassen.
+6. **Code-Digest ist optional**: Nur aktivieren wenn das Modell ≤ 32k Kontext hat. Bei Cloud-Modellen (200k) ist es unnötig und erzeugt Overhead.
 
 ## Vorlage
 
@@ -104,6 +105,7 @@ src/                    -- Code des Schülers (nur vom Schüler bearbeitet)
 wiki/
   lehrplan.md           -- Generierter Lehrplan (Lektionen, Ziele, Zeitplan)
   fortschritt.md        -- Aktueller Stand, abgeschlossene Lektionen
+  code-stand.md         -- Kompakte Codebasis-Übersicht (optional, für 32k-Modelle)
   sitzungen/            -- Kurze Notiz nach jeder Sitzung
     YYYY-MM-DD.md
 ```
@@ -131,7 +133,7 @@ Jede Sitzung folgt dieser Struktur:
 4. **Der Schüler baut** (~15 Min): Aufgabe stellen — der Schüler tippt selbst. Keine Copy-Paste. Du begleitest, gibst Hinweise, aber keine Lösungen.
 5. **Review & Erweiterung** (~5 Min): Was funktioniert? Was könnte man noch hinzufügen?
 6. **Abschluss** (verpflichtend): Das Ergebnis muss laufen und sichtbar sein. Kurz feiern. Vorschau auf die nächste Sitzung.
-7. **Fortschritt** aktualisieren: `wiki/fortschritt.md` und `wiki/sitzungen/YYYY-MM-DD.md`
+7. **Fortschritt** aktualisieren: `wiki/fortschritt.md`, `wiki/sitzungen/YYYY-MM-DD.md` — und wenn Code-Digest aktiv: `wiki/code-stand.md`
 
 ## Umgang mit Frustration und Fehlern
 
@@ -149,6 +151,18 @@ Jede Sitzung folgt dieser Struktur:
 | Lösung zeigen, nachdem Schüler es versucht hat | Nach Ermessen |
 | Projektcode des Schülers schreiben | ❌ |
 | Fehler im Projektcode direkt korrigieren | ❌ — stattdessen: Hinweis geben |
+
+## Code-Digest (optional — für Modelle mit ≤ 32k Kontext)
+
+Aktivieren wenn das Modell ein kleines Kontextfenster hat. Ersetzt den vollständigen `src/`-Ordner als Kontextquelle durch eine kompakte Zusammenfassung — hält den Kontext dauerhaft unter 10k Token.
+
+**Zu Sitzungsbeginn laden** (statt `src/`):
+- `wiki/code-stand.md` — kompakte Übersicht der gesamten Codebasis
+- Nur die aktuell relevante Datei aus `src/`
+
+**Nach jeder Sitzung** (Schritt 7): `wiki/code-stand.md` aktualisieren — max. 200 Zeilen.
+
+**Nicht aktivieren** bei Cloud-Modellen (200k Kontext) — dort unnötig.
 
 ## Seitenformate
 
@@ -211,6 +225,28 @@ Jede Sitzung folgt dieser Struktur:
 ## Wie es lief
 
 ## Für die nächste Sitzung
+```
+
+### Code-Digest (`wiki/code-stand.md`) — optional
+
+```markdown
+# Code-Stand
+
+**Zuletzt aktualisiert**: YYYY-MM-DD
+**Aktive Datei**: {{Welche src/-Datei gerade bearbeitet wird}}
+
+---
+
+## Module
+
+| Datei | Zweck | Wichtige Klassen / Funktionen |
+|---|---|---|
+| `src/main.py` | Gameloop, Initialisierung | `main()`, `game_loop()` |
+| `src/player.py` | Spielerklasse | `Player`, `move()`, `draw()` |
+
+## Offene Punkte
+
+- {{Was in der nächsten Sitzung weitergeht}}
 ```
 
 ## Regeln

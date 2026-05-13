@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-11 (Ingest ralph-claude-code-llm-wiki_metrik)
+**Zuletzt aktualisiert**: 2026-05-13 (Code-Digest-Option in KI-Lehrer-Vorlage)
 
 ---
 

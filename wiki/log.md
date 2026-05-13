@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-13 00:00] query | Code-Digest-Option in KI-Lehrer-Vorlage ergänzt
+
+- `wiki/vorlagen/claude-md-lehrer.md`: Code-Digest für lokale 32k-Modelle eingebaut
+- Neuer Abschnitt `## Code-Digest` im Vorlagen-Fence: Aktivierung, Ladestrategie, Regel
+- Ordnerstruktur: `wiki/code-stand.md` ergänzt
+- Phase 2 Schritt 7: code-stand.md-Update bei aktivem Digest
+- Neues Seitenformat `code-stand.md` mit Modul-Tabelle und Offene-Punkte-Sektion
+- Designhinweis 6: Code-Digest nur bei ≤ 32k, nicht bei Cloud-Modellen
+
 ## [2026-05-11 02:00] query | Kostenhinweis in erste-schritte.md ergänzt
 
 - Neuer Abschnitt `## Was kostet das?` in `wiki/anleitungen/erste-schritte.md`
