@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Erkenntnisse aus der Praxis — wie man eine effektive Instruktionsdatei für ein LLM-gesteuertes Wiki gestaltet und welche Fehler man vermeiden sollte.
 **Quellen**: Eigene Erfahrung aus der Pflege eines YouTube-Verlauf-Wikis; übertragbar auf alle LLM-Wiki-Projekte
-**Zuletzt aktualisiert**: 2026-04-23
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -69,6 +69,27 @@ Eine CLAUDE.md ist kein statisches Dokument. Sie sollte regelmäßig überprüft
 
 Im YouTube-Verlauf-Projekt wuchs die CLAUDE.md von ~100 Zeilen (initiales Setup) auf ~190 Zeilen (nach Integration aller Verbesserungen) über 7 Aufnahme-Zyklen.
 
+## Designprinzip 7: Platzhalter-Interview beim ersten Start
+
+Jede Vorlage mit `{{PLATZHALTER}}`-Feldern muss im ersten Start explizit anweisen, alle noch offenen Platzhalter durch ein Interview zu ermitteln — bevor irgendein anderer Workflow startet.
+
+**Problem ohne dieses Prinzip**: Das Modell liest `{{Name}}` in der CLAUDE.md und ignoriert es stillschweigend, erfindet einen Wert, oder arbeitet mit dem Platzhaltertext weiter.
+
+**Lösung**: Der erste Schritt jedes Aufnahme-Workflows prüft explizit auf `{{PLATZHALTER}}` und fragt jeden offenen Wert einzeln nach — nicht als Liste, sondern als natürliches Gespräch:
+
+```
+1. Prüfe [Abschnitt mit Platzhaltern] auf noch nicht ausgefüllte {{PLATZHALTER}}.
+   Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen:
+   - {{Name}} → „Wie heißt du?"
+   - {{Ziel}} → „Was soll am Ende entstehen?"
+   - ...
+   Trage die Antworten als Kontext ein — der Nutzer ändert die CLAUDE.md nicht selbst.
+```
+
+**Warum einzeln, nicht als Liste**: Eine Fragenliste wirkt wie ein Formular. Einzelne Fragen fühlen sich wie ein Gespräch an — das ist besonders bei Lern- und Kreativprojekten wichtig.
+
+**Für zukünftige Vorlagen**: Jede neue Vorlage muss diesen Schritt als erstes Element ihres Initialisierungs-Workflows enthalten.
+
 ## Zusammenfassung der Lessons Learned
 
 1. **Operative Regeln auf Top-Level** — nie in Code-Fences oder Template-Wrapper
@@ -77,6 +98,7 @@ Im YouTube-Verlauf-Projekt wuchs die CLAUDE.md von ~100 Zeilen (initiales Setup)
 4. **Frontmatter-Konsistenz** — wenn die Wiki-Seiten Frontmatter haben, hat die CLAUDE.md auch welches; wenn nicht, dann nicht
 5. **Wertvolle Sektionen auf Top-Level** — Tiefe-Auswahl, Abfragetypen, Kontaminierungsregeln direkt als Prosa
 6. **Regelmäßig reviewen** — die CLAUDE.md altert mit dem Projekt
+7. **Platzhalter-Interview** — beim ersten Start alle `{{PLATZHALTER}}` durch Einzelfragen ermitteln, nie stumm übernehmen
 
 ## Verwandte Seiten
 
