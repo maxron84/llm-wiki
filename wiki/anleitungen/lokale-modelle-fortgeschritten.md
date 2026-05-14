@@ -33,7 +33,7 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 
 > **Mac mit Apple Silicon (M2 Pro / M3 / M4)**: Unified Memory wird besonders effizient genutzt — mit 32 GB läuft `qwen3:30b` flüssig, mit 16 GB `qwen3:14b`.
 
-**Community-Modelle**: Reasoning-Distillate (z.B. `Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled`) können eine gute Alternative sein, wenn sie in die VRAM-Lücke zwischen 14B und 30B fallen. Qualität variiert je nach Distillationsprozess — vor dem Einsatz kurz testen.
+**Community-Modelle**: Reasoning-Distillate (z.B. `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M`) klingen vielversprechend, passen aber auf einer RTX 5080 (16 GB) nicht vollständig ins VRAM — trotz Q3_K_M-Quantisierung. Weights + KV-Cache übersteigen 16 GB, Ollama fällt auf CPU-Offload zurück: Antworten werden extrem langsam. Für 16 GB VRAM nicht empfohlen.
 
 ### Software
 

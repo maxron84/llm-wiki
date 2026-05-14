@@ -12,6 +12,11 @@ status: active
 
 ---
 
+## [2026-05-13 00:04] query | RTX-5080-Praxistest: 27B-Distillat auf 16 GB VRAM zu langsam
+
+- Community-Modell-Hinweis in Hardware-Sektion präzisiert: Qwen3.5-27B Q3_K_M übersteigt 16 GB VRAM (Weights + KV-Cache), CPU-Offload macht es unbrauchbar
+- Praxistest: RTX 5080 / Ryzen 7 9800X3D / 64 GB RAM — bestätigt nicht empfohlen für 16 GB VRAM
+
 ## [2026-05-13 00:03] query | lokale-modelle-fortgeschritten auf offizielle Ollama-Modelle aktualisiert
 
 - Hardware-Tabelle: ersetzt durch tatsächliche Ollama-Modelle mit Größe, Kontext und VRAM
