@@ -35,12 +35,18 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 
 **Community-Modelle (Praxistest RTX 5080)**: `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M` belegt 18 GB und läuft mit 78% GPU / 22% CPU — die Geschwindigkeit ist akzeptabel. **Kritische Einschränkung**: Ollama begrenzt den Kontext automatisch auf 4096 Token, weil kein VRAM-Puffer für einen größeren KV-Cache bleibt. Für den KI-Lehrer (CLAUDE.md + Lehrplan + Fortschritt + Gesprächsverlauf = 6–11K Token) reicht das nicht. Empfehlung erst ab 32 GB VRAM (RTX 5090).
 
-| | 27B Distillat (RTX 5080) | qwen3:14b (RTX 5080) |
-|---|---|---|
-| Modellgröße | 18 GB | 9,3 GB |
-| CPU-Anteil | 22% | 0% |
-| Verfügbarer Kontext | **4K** | **40K** |
-| KI-Lehrer geeignet | ❌ Kontext zu klein | ✅ |
+| | 27B Distillat | nemotron3:33b | qwen3:14b |
+|---|---|---|---|
+| Modellgröße | 18 GB | 30 GB | 9,3 GB |
+| CPU/GPU-Split | 22%/78% | 50%/50% | 0%/100% |
+| Verfügbarer Kontext | 4K | 4K | **40K** |
+| KI-Lehrer geeignet | ❌ | ❌ | ✅ |
+
+> Alle Modelle über ~10 GB landen auf einer RTX 5080 im CPU-Offload und bekommen den Kontext automatisch auf 4096 gedeckelt — egal wie schnell sie sich anfühlen. 4K reicht für den KI-Lehrer nicht (CLAUDE.md + Lehrplan + Fortschritt + Verlauf = 6–11K).
+
+**Empfohlener Stack für RTX 5080:**
+- **Lokal / alltäglich**: `qwen3:14b` — volle GPU, 40K Kontext
+- **Backup / anspruchsvolle Sitzungen**: Claude Sonnet via Claude Code
 
 ### Software
 

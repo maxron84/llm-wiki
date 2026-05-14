@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-13 00:07] query | nemotron3:33b-Test + finale Stack-Empfehlung RTX 5080
+
+- nemotron3:33b Messdaten ergänzt: 30 GB, 50%/50% CPU/GPU, Kontext 4096 — für KI-Lehrer ungeeignet
+- Vergleichstabelle auf drei Modelle erweitert (27B Distillat / nemotron3:33b / qwen3:14b)
+- Erklärender Hinweis: alle Modelle >10 GB auf RTX 5080 → CPU-Offload → Kontext auf 4096 gedeckelt
+- Empfohlener Stack dokumentiert: qwen3:14b lokal + Claude Sonnet als Backup
+
 ## [2026-05-13 00:06] query | ollama-ps-Messdaten: 27B-Distillat auf RTX 5080 — Kontext auf 4096 gedeckelt
 
 - Praxismessung: 18 GB Modellgröße, 78% GPU / 22% CPU, Kontext automatisch auf 4096 begrenzt
