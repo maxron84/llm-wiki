@@ -12,6 +12,19 @@ status: active
 
 ---
 
+## [2026-05-14 00:00] query | Platzhalter-Interview in alle 8 Vorlagen eingebaut
+
+- claude-md-software.md: `## Initialisierung` eingefügt (PROJEKTNAME, Beschreibung, Sprache, Framework, Paketmanager)
+- claude-md-software-begleiter.md: `## Initialisierung` eingefügt (PROJEKTNAME, Beschreibung, Sprache, Framework)
+- claude-md-nachhilfe.md: `## Initialisierung` eingefügt (Fach, Klasse, Schulform, Name, Bundesland)
+- claude-md-laienlehrer.md: `## Initialisierung` eingefügt (Fach, Klasse, Schulform, Kindname, Unterrichtender, Fachkenntnisse, Bundesland)
+- claude-md-team.md: `## Initialisierung` eingefügt (Projektname, Beschreibung, Teammitglieder)
+- claude-md-legacy-forensik.md: `### Initialisierung` eingefügt (Systemname, Organisation, Alter, Sprachen, Frameworks, Ziel)
+- claude-md-youtube-verlauf.md: `## Initialisierung` eingefügt (Thematischer Fokus)
+- claude-md-rezepte-ernaehrung.md: `## Initialisierung` eingefügt (Thematischer Fokus)
+- Muster: claude-md-lehrer.md war bereits fertig und diente als Referenz
+- Jeder Initialisierungsschritt: freundliche Einzelfragen pro Platzhalter, keine Listen
+
 ## [2026-05-13 00:14] query | KI-Lehrer-Vorlage: Platzhalter-Interview in Phase 1 explizit gemacht
 
 - Phase 1 Schritt 1: explizite {{PLATZHALTER}}-Prüfung mit konkreten Fragen pro Feld

@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für KI-gestützte Nachhilfe in einem Schulfach — reaktiv, aufgabengetrieben, ohne Lösungsbeschränkungen. Ein Projekt pro Fach, jahrgangübergreifend von der Startklasse bis zum Abschluss.
 **Quellen**: Abgeleitet aus [claude-md-lehrer](claude-md-lehrer.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-04-29
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -191,6 +191,20 @@ wiki/
   konzepte/             -- Jahrgangübergreifende Konzepte (eine Seite pro Thema)
   fortschritt.md        -- Gesamtfortschritt, nach Klassen gegliedert
 ```
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Fach & Schüler`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Fach}}` → „In welchem Fach braucht ihr Unterstützung (z.B. Mathematik, Deutsch, Biologie)?"
+   - `{{Aktuelle Klasse}}` → „In welcher Klasse ist der Schüler gerade?"
+   - `{{Schulform}}` → „Welche Schulform besucht er oder sie (z.B. Gymnasium, Realschule)?"
+   - `{{Name}}` → „Wie heißt der Schüler?"
+   - `{{Bundesland}}` → „In welchem Bundesland befindet ihr euch? (Optional — hilft bei der Lehrplan-Orientierung)"
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Begrüße kurz und erkläre: Aufgaben kommen in `raw/` oder `clippings/`, oder direkt im Chat
+3. Warte auf das erste Material
 
 ## Aufgaben-Workflow
 

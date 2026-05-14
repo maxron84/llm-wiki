@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für die forensische Untersuchung von Legacy-Codebases und deren Dokumentation — archäologisch, methodisch, quellenbasiert, auf Enterprise-Niveau.
 **Quellen**: Abgeleitet aus dem Wissen über [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md) und [lint-pruefung](../konzepte/lint-pruefung.md)
-**Zuletzt aktualisiert**: 2026-04-23
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -142,6 +142,21 @@ wiki/                   -- Von Claude gepflegte Analyseergebnisse
 ```
 
 ## Untersuchungs-Workflow
+
+### Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Untersuchungsgegenstand`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Systemname}}` → „Wie heißt das System, das untersucht werden soll (z.B. OrderManagement, LegacyERP)?"
+   - `{{Organisation}}` → „Welche Organisation oder Abteilung betreibt das System?"
+   - `{{Geschätztes Alter}}` → „Wie alt ist das System ungefähr — weißt du, wann es entwickelt wurde?"
+   - `{{Primärsprachen}}` → „Welche Programmiersprachen sind bekannt (z.B. Java 8, PL/SQL, PHP)?"
+   - `{{Bekannte Frameworks}}` → „Welche Frameworks oder größeren Bibliotheken sind bekannt — oder noch unklar?"
+   - `{{Untersuchungsziel}}` → „Was ist das Ziel der Untersuchung (z.B. Migrationsbewertung, Risikoanalyse, Wissenstransfer)?"
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Lege `wiki/index.md` und `wiki/log.md` an, falls noch nicht vorhanden
+3. Warte auf die erste Quelle oder Analyseanfrage
 
 ### Aufnahme neuer Quellen
 

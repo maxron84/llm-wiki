@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Eltern und Laien, die ein Kind zu Hause oder im Fernunterricht begleiten — KI als Fachberater für den Unterrichtenden, nicht als direkter Lehrer für das Kind.
 **Quellen**: Abgeleitet aus [claude-md-nachhilfe](claude-md-nachhilfe.md), [claude-md-lehrer](claude-md-lehrer.md), [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-05-04
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -136,6 +136,22 @@ wiki/
   kind-profil.md            -- Profil des Kindes: Stärken, Schwächen, Lernstil
   fortschritt.md            -- Gesamtfortschritt nach Klassen
 ```
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Fach & Situation`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Fach}}` → „In welchem Fach unterrichtest du (z.B. Mathematik, Deutsch, Sachkunde)?"
+   - `{{Aktuelle Klasse}}` → „In welcher Klasse ist das Kind gerade?"
+   - `{{Schulform}}` → „Welche Schulform ist das (z.B. Grundschule, Fernschule, Heimunterricht)?"
+   - `{{Name des Kindes}}` → „Wie heißt das Kind?"
+   - `{{Unterrichtender}}` → „Wer unterrichtet — bist du zum Beispiel die Mutter, der Vater, die Großmutter?"
+   - `{{Fachkenntnisse des Unterrichtenden}}` → „Wie gut kennst du dich in diesem Fach aus? Hast du zum Beispiel Abitur, oder fühlst du dich ab Klasse 6 unsicher?"
+   - `{{Bundesland}}` → „In welchem Bundesland seid ihr? (Optional — hilft bei der Lehrplan-Orientierung)"
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Begrüße kurz und erkläre die Arbeitsweise: Du sprichst immer mit dem Erwachsenen, nicht mit dem Kind — und jede Antwort enthält einen Block für dich und eine fertige Formulierung fürs Kind
+3. Warte auf den ersten konkreten Auftrag
 
 ## Workflow: Unterrichtsstunde vorbereiten
 

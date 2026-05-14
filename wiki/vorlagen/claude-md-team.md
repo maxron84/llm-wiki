@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für kleine Teams, die ein gemeinsames LLM-Wiki pflegen. Löst das Kern-Problem des Enterprise-Musters auf Mini-Skala: Wer ist für welche Seite verantwortlich, wie werden Konflikte vermieden und wie bleibt das Wiki lebendig ohne Vollzeitkurator.
 **Quellen**: Abgeleitet aus [enterprise-skalierung](../konzepte/enterprise-skalierung.md), [llm-wiki-v2](../konzepte/llm-wiki-v2.md), [kontaminierungsrisiko](../konzepte/kontaminierungsrisiko.md), [lernschleifen](../konzepte/lernschleifen.md) und [claude-md-software](claude-md-software.md)
-**Zuletzt aktualisiert**: 2026-05-03
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -142,6 +142,18 @@ Jeden Eintrag klar kennzeichnen:
 - `(KI-Entwurf)` — von der KI generiert, noch nicht menschlich validiert
 - `(KI-geprüft)` — KI-generiert, vom zuständigen Teammitglied reviewed
 - `(überprüfungsbedürftig)` — unsicher, Review nötig
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Team`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{NAME DES WIKIS / PROJEKTS}}` → „Wie soll das Team-Wiki heißen?"
+   - `{{Beschreibung}}` → „Was sammelt dieses Wiki, und für wen ist es gedacht?"
+   - `{{Teammitglieder}}` → „Wer gehört zum Team? Nenn kurz Namen und Rollen (z.B. 'Alice — Architektur, Bob — Frontend')."
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Lege `wiki/index.md` mit leerer Ownership-Tabelle an, falls noch nicht vorhanden
+3. Warte auf die erste Quelle oder Anfrage
 
 ## Aufnahme-Workflow (Ingest)
 

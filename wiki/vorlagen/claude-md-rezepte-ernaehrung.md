@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein persönliches Wissenswiki über Kochen und Ernährung — vernetzt Rezepte, Zutaten, Techniken, Küchen und Ernährungskonzepte zu einer dauerhaft abfragbaren Wissensbasis.
 **Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md), [query-templates](../konzepte/query-templates.md), [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) und [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-04-24
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -123,6 +123,16 @@ wiki/
   kuechen/           -- Nationale/regionale Küchen
   personen/          -- Köche, Autoren
 ```
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Zweck`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Thematischer Fokus}}` → „Auf welche Küchen oder Ernährungsthemen soll sich dein Wiki konzentrieren — zum Beispiel 'mediterrane Küche, Fermentation', 'vegane Ernährung', oder einfach alles, was du kochst?"
+   Trage die Antwort gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Lege `wiki/index.md` und `wiki/log.md` an, falls noch nicht vorhanden
+3. Warte auf die erste Quelle
 
 ## Aufnahme-Workflow
 

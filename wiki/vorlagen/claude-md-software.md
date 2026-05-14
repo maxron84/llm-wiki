@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Software-Projekte in zwei Modi: **Lean** (reines Coding-Tool) und **Dokumentiert** (Coding + fortlaufendes Projekt-Wiki nach dem LLM-Wiki-Muster).
 **Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [claude-code](../werkzeuge/claude-code.md), [claude-md-design](../konzepte/claude-md-design.md) und [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md)
-**Zuletzt aktualisiert**: 2026-04-25
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -265,6 +265,20 @@ die PostgreSQL-Datenbank zu."}}
 - {{z.B. Testdatei-Naming: `*.test.ts` / `test_*.py` / `*_test.go`}}
 - {{z.B. Arrange-Act-Assert Muster verwenden}}
 - {{z.B. Mocks nur für externe Services, nie für eigene Module}}
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Projekt`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{PROJEKTNAME}}` → „Wie soll das Projekt heißen?"
+   - `{{Beschreibung}}` → „Beschreibe kurz, was dieses Projekt tut."
+   - `{{Sprache}}` → „Welche Programmiersprache verwendest du (z.B. TypeScript, Python, Rust)?"
+   - `{{Framework}}` → „Welches Framework setzt du ein — oder keins?"
+   - `{{Paketmanager}}` → „Welchen Paketmanager nutzt du (z.B. npm, pip, cargo)?"
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Analysiere die vorhandene Projektstruktur (falls vorhanden) und fülle weitere Abschnitte (Schnelleinstieg, Architektur, Abhängigkeiten) aus dem Code ab
+3. Starte mit der eigentlichen Arbeit
 
 ## Regeln für Claude
 

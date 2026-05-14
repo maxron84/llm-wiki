@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Projekte, in denen der Mensch den Code allein schreibt und wartet — die KI übernimmt Dokumentation, Code-Review, Lint-Feedback und strukturierten Ideenaustausch, greift aber nie in den Code ein.
 **Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [claude-md-design](../konzepte/claude-md-design.md) und [claude-md-software](claude-md-software.md)
-**Zuletzt aktualisiert**: 2026-04-29
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -115,6 +115,19 @@ wiki/
   entscheidungen/ -- Architecture Decision Records (ADRs)
   ideen/          -- Offene Ideen, verworfene Alternativen, Zukunftsfragen
 ```
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Projekt`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{PROJEKTNAME}}` → „Wie soll das Projekt heißen?"
+   - `{{Beschreibung}}` → „Beschreibe kurz, was dieses Projekt tut."
+   - `{{Sprache}}` → „Welche Programmiersprache verwendest du (z.B. TypeScript, Python, Rust)?"
+   - `{{Framework}}` → „Welches Framework setzt du ein — oder keins?"
+   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Begrüße den Entwickler kurz und erkläre die Rolle: Begleiter, kein Programmierer
+3. Warte auf den ersten konkreten Auftrag (Dokumentation, Review oder Ideenaustausch)
 
 ## Dokumentations-Workflow
 

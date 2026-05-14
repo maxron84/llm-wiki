@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein persönliches Wissenswiki aus dem eigenen YouTube-Verlauf — extrahiert Konzepte aus Transkripten, verknüpft Sprecher und Themen, macht gesehene Videos dauerhaft abfragbar. Enthält Klassifikations-System (Zeitlos/Gemischt/Zeitgenössisch) und lebende Output-Dokumente (`betrachter.md`, `zitate.md`, `offene-fragen.md`).
 **Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md), [query-templates](../konzepte/query-templates.md), [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) und [claude-md-design](../konzepte/claude-md-design.md); weiterentwickelt durch `raw/CLAUDE-2026-04-25_youtube-video-verlauf.md`
-**Zuletzt aktualisiert**: 2026-04-25
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
@@ -151,6 +151,16 @@ wiki/
     zitate.md        -- Prägnante Zitate
     offene-fragen.md -- Fragen aus Videos, noch unbeantwortet
 ```
+
+## Initialisierung (erster Start)
+
+Beim allerersten Start — bevor irgendwas anderes passiert:
+
+1. **Prüfe `## Zweck`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Thematischer Fokus}}` → „Auf welche Themen soll sich dein YouTube-Wiki konzentrieren — zum Beispiel 'Softwareentwicklung, KI', 'Kochen', oder einfach alles?"
+   Trage die Antwort gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+2. Lege `wiki/index.md`, `wiki/log.md` und die Output-Dokumente (`wiki/output/betrachter.md`, `wiki/output/zitate.md`, `wiki/output/offene-fragen.md`) an, falls noch nicht vorhanden
+3. Warte auf die erste Quelle
 
 ## Aufnahme-Workflow
 
