@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-13 00:12] query | qwen3:14b-40k Praxismessung — 16 GB, 100% GPU, 40K Kontext
+
+- Vergleichstabelle aktualisiert: qwen3:14b-40k als finale Spalte ergänzt
+- Messdaten: 16 GB VRAM (9,3 GB Gewichte + 6,7 GB KV-Cache), 100% GPU, 40960 Kontext
+- Erklärung: optimale VRAM-Ausnutzung auf RTX 5080
+
 ## [2026-05-13 00:11] query | Modelfile-Workflow für qwen3:14b-40k dokumentiert
 
 - 40K-Kontext-Setup via Modelfile: Befehle für Docker und Direkt-Installation

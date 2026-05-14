@@ -35,15 +35,14 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 
 **Community-Modelle (Praxistest RTX 5080)**: `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M` belegt 18 GB und läuft mit 78% GPU / 22% CPU — die Geschwindigkeit ist akzeptabel. **Kritische Einschränkung**: Ollama begrenzt den Kontext automatisch auf 4096 Token, weil kein VRAM-Puffer für einen größeren KV-Cache bleibt. Für den KI-Lehrer (CLAUDE.md + Lehrplan + Fortschritt + Gesprächsverlauf = 6–11K Token) reicht das nicht. Empfehlung erst ab 32 GB VRAM (RTX 5090).
 
-| | 27B Distillat | nemotron3:33b | qwen3:14b |
-|---|---|---|---|
-| Modellgröße | 18 GB | 30 GB | **10 GB** |
-| CPU/GPU-Split | 22%/78% | 50%/50% | **100% GPU** |
-| Kontext (Default) | 4K | 4K | 4K |
-| Kontext (konfiguriert) | gedeckelt | gedeckelt | **40K** |
-| KI-Lehrer geeignet | ❌ | ❌ | ✅ |
+| | 27B Distillat | nemotron3:33b | qwen3:14b (default) | **qwen3:14b-40k** |
+|---|---|---|---|---|
+| VRAM belegt | 18 GB | 30 GB | 10 GB | **16 GB** |
+| CPU/GPU-Split | 22%/78% | 50%/50% | 100% GPU | **100% GPU** |
+| Kontext | 4K | 4K | 4K | **40K** |
+| KI-Lehrer geeignet | ❌ | ❌ | ❌ | ✅ |
 
-> Ollama setzt den Kontext standardmäßig auf 4096 — auch bei `qwen3:14b`. Mit 6 GB VRAM-Puffer lässt sich der Kontext auf 40K hochsetzen (s. unten). Alle Modelle über ~10 GB bekommen hingegen keinen Puffer mehr und bleiben bei 4K gedeckelt.
+> `qwen3:14b-40k` nutzt die vollen 16 GB VRAM optimal: ~9,3 GB Modellgewichte + ~6,7 GB KV-Cache für 40K Kontext — alles auf der GPU, kein CPU-Anteil. Das ist das Optimum für eine RTX 5080.
 
 **Empfohlener Stack für RTX 5080:**
 - **Lokal / alltäglich**: `qwen3:14b` — volle GPU, 40K Kontext
