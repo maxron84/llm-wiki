@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Erkenntnisse aus der Praxis — wie man eine effektive Instruktionsdatei für ein LLM-gesteuertes Wiki gestaltet und welche Fehler man vermeiden sollte.
 **Quellen**: Eigene Erfahrung aus der Pflege eines YouTube-Verlauf-Wikis; übertragbar auf alle LLM-Wiki-Projekte
-**Zuletzt aktualisiert**: 2026-05-14
+**Zuletzt aktualisiert**: 2026-05-14 (Designprinzip 8: Git-Setup hinzugefügt)
 
 ---
 
@@ -90,6 +90,34 @@ Jede Vorlage mit `{{PLATZHALTER}}`-Feldern muss im ersten Start explizit anweise
 
 **Für zukünftige Vorlagen**: Jede neue Vorlage muss diesen Schritt als erstes Element ihres Initialisierungs-Workflows enthalten.
 
+## Designprinzip 8: Git-Repository beim ersten Start einrichten
+
+Jede Vorlage soll beim ersten Start prüfen, ob Git verfügbar ist, und — wenn ja — automatisch ein Repository anlegen und den ersten Commit erstellen. Ist Git nicht installiert, wird der Nutzer freundlich informiert und gefragt, ob er es installieren möchte oder ohne Git weitermachen will.
+
+**Problem ohne dieses Prinzip**: Fortschritte, Lernstände und generierte Dateien gehen verloren, wenn das Modell versehentlich Dateien überschreibt oder der Nutzer eine frühere Version zurückbraucht.
+
+**Lösung**: Der zweite Schritt jeder Initialisierung (nach dem Platzhalter-Interview) richtet Git ein:
+
+```
+2. Git-Setup:
+   Prüfe ob Git verfügbar ist (git --version):
+   - Verfügbar und kein Repo vorhanden: git init ausführen, .gitignore anlegen
+     (typische Einträge: *.pyc, __pycache__/, .env, node_modules/, dist/),
+     ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun, kurz bestätigen
+   - Nicht gefunden: freundlich mitteilen:
+     „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch.
+      (j) Git installieren: https://git-scm.com — danach neu starten
+      (n) Ohne Git weitermachen"
+     Warte auf Antwort bevor du fortfährst.
+```
+
+**Warum .gitignore anlegen**: Ohne .gitignore landen Build-Artefakte, virtuelle Umgebungen und Secrets versehentlich im Repo — das ist bei Lern- und Kreativprojekten besonders häufig.
+
+**Commit-Rhythmus**: Nach der Initialisierung soll das Modell am Ende jeder Sitzung oder nach bedeutenden Änderungen automatisch einen kurzen Commit erstellen (`git add -A && git commit -m "Kurzbeschreibung"`).
+
+**Für zukünftige Vorlagen**: Jede neue Vorlage muss diesen Schritt als zweites Element ihres Initialisierungs-Workflows enthalten — direkt nach dem Platzhalter-Interview (Designprinzip 7).
+
 ## Zusammenfassung der Lessons Learned
 
 1. **Operative Regeln auf Top-Level** — nie in Code-Fences oder Template-Wrapper
@@ -99,6 +127,7 @@ Jede Vorlage mit `{{PLATZHALTER}}`-Feldern muss im ersten Start explizit anweise
 5. **Wertvolle Sektionen auf Top-Level** — Tiefe-Auswahl, Abfragetypen, Kontaminierungsregeln direkt als Prosa
 6. **Regelmäßig reviewen** — die CLAUDE.md altert mit dem Projekt
 7. **Platzhalter-Interview** — beim ersten Start alle `{{PLATZHALTER}}` durch Einzelfragen ermitteln, nie stumm übernehmen
+8. **Git-Setup** — beim ersten Start Repo anlegen (oder auf fehlendes Git hinweisen), danach regelmäßig committen
 
 ## Verwandte Seiten
 

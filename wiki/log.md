@@ -8,13 +8,17 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-04-25
+**Zuletzt aktualisiert**: 2026-05-14
 
 ---
 
-## [2026-05-14 00:02] query | Git-Setup-Schritt in alle 9 Vorlagen eingefügt
+## [2026-05-14 00:03] query | Designprinzip 8 (Git-Setup) dokumentiert + alle Vorlagen aktualisiert
 
-- Git-Setup als Schritt 2 in allen 9 Vorlagen eingebaut (direkt nach Platzhalter-Interview)
+- `wiki/konzepte/claude-md-design.md` — Designprinzip 8 hinzugefügt: Git-Repo beim ersten Start einrichten
+  - Muster: git init + .gitignore + Erst-Commit wenn verfügbar; freundlicher Hinweis mit j/n-Wahl wenn nicht installiert
+  - Commit-Rhythmus: am Ende jeder Sitzung `git add -A && git commit -m "..."`
+- Zusammenfassung auf 8 Items erweitert
+- Git-Setup als Schritt 2 in alle 9 Vorlagen eingebaut (direkt nach Platzhalter-Interview)
 - Nachfolgende Schritte in allen Vorlagen um 1 hochgezählt
 - Betroffene Vorlagen: laienlehrer, legacy-forensik, lehrer, nachhilfe, rezepte-ernaehrung, software-begleiter, software, team, youtube-verlauf
 
