@@ -144,6 +144,39 @@ Zum Testen im Continue-Chat `Hallo` eingeben — das Modell sollte innerhalb wen
 
 ---
 
+## Alternative zu Continue: Roocode (agentischer Betrieb)
+
+Continue ist ein Chat-Assistent — Dateien schreibt immer noch der Mensch. **Roocode** ist agentischer: es kann Dateien selbst lesen und schreiben, ähnlich wie Claude Code. Für den KI-Lehrer-Betrieb bedeutet das, dass `wiki/fortschritt.md`, Sitzungsnotizen und `wiki/code-stand.md` automatisch aktualisiert werden — ohne manuelles Kopieren.
+
+| | Continue | Roocode |
+|---|---|---|
+| Wiki-Dateien schreiben | ❌ manuell | ✅ automatisch |
+| Sitzungsnotizen | ❌ manuell | ✅ automatisch |
+| Nähe zu Claude Code | Chat-Assistent | Agent |
+| Tool-Use-Stabilität bei 14B | nicht nötig | ⚠️ testen |
+
+### Roocode installieren
+
+1. VS Codium öffnen → `Ctrl+Shift+X`
+2. Nach `Roo Code` suchen → Extension von `RooVetGit` installieren
+3. Roocode-Icon erscheint in der linken Leiste
+
+### Roocode mit Ollama verbinden
+
+Roocode-Panel öffnen → Zahnrad → Provider: **Ollama** → Model: `qwen3:14b` → Base URL: `http://localhost:11434`
+
+Kontextfenster in den Roocode-Einstellungen auf `40960` setzen.
+
+### CLAUDE.md als Systemprompt
+
+Roocode unterstützt projektspezifische Anweisungen über `.roo/system-prompt-[mode]`-Dateien oder über das Feld „Custom Instructions" in den Einstellungen. Den Inhalt der `CLAUDE.md` dort eintragen — Roocode liest ihn bei jeder Sitzung automatisch.
+
+### Vorbehalt
+
+Tool Use bei lokalen 14B-Modellen ist nicht so zuverlässig wie bei Cloud-Modellen. `qwen3:14b` hat Tool-Support (Ollama `tools`-Tag), ob die Dateioperationen stabil genug laufen zeigt ein kurzer Praxistest. Bei Problemen: Continue als Fallback, Roocode mit Claude Sonnet als Cloud-Backend.
+
+---
+
 ## Schritt 3: Projektordner anlegen
 
 ```bash

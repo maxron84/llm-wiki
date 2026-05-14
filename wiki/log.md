@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-13 00:10] query | Roocode als agentische Alternative zu Continue dokumentiert
+
+- Neuer Abschnitt „Alternative zu Continue: Roocode" in lokale-modelle-fortgeschritten.md
+- Vergleichstabelle Continue vs. Roocode: Dateischreiben, Wiki-Automatisierung
+- Setup: Installation, Ollama-Verbindung, CLAUDE.md als Systemprompt
+- Vorbehalt: Tool-Use-Stabilität bei 14B-Modellen — Praxistest empfohlen
+
 ## [2026-05-13 00:09] query | qwen3:14b Inferenzgeschwindigkeit + Kontext-Korrektur
 
 - Praxismessung: 87,56 Token/s eval rate auf RTX 5080 — sehr schnell für 14B
