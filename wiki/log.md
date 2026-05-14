@@ -12,6 +12,11 @@ status: active
 
 ---
 
+## [2026-05-13 00:09] query | qwen3:14b Inferenzgeschwindigkeit + Kontext-Korrektur
+
+- Praxismessung: 87,56 Token/s eval rate auf RTX 5080 — sehr schnell für 14B
+- Kontexthinweis präzisiert: contextLength in Continue-Config reicht, kein manueller REPL-Befehl nötig
+
 ## [2026-05-13 00:08] query | qwen3:14b-Test: 100% GPU, Kontext-Default 4096 — Konfiguration nötig
 
 - qwen3:14b Messdaten: 10 GB, 100% GPU ✅, Kontext default 4096

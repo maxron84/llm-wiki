@@ -138,7 +138,7 @@ Grundkonfiguration für Qwen3 (Beispiel RTX 5080):
 
 > **Größeres VRAM**: `"model": "qwen3:32b"`, `"contextLength": 40960`. Mac mit 32 GB: `"model": "qwen3:30b"`, `"contextLength": 262144`.
 
-> **Wichtig**: Ollama setzt den Kontext defaultmäßig auf 4096 — `"contextLength": 40960` in der Continue-Config übergibt `num_ctx` an Ollama und aktiviert das volle Kontextfenster. Prüfen mit `ollama ps` — unter Context sollte `40960` stehen.
+> **Wichtig**: Ollama setzt den Kontext defaultmäßig auf 4096 — `"contextLength": 40960` in der Continue-Config übergibt `num_ctx` automatisch an Ollama und aktiviert das volle Kontextfenster. Kein manueller Befehl nötig. Prüfen mit `ollama ps` nach dem ersten Chat — unter Context sollte `40960` stehen.
 
 Zum Testen im Continue-Chat `Hallo` eingeben — das Modell sollte innerhalb weniger Sekunden antworten.
 
