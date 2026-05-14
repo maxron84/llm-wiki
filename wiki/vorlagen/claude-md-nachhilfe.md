@@ -202,7 +202,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Schulform}}` → „Welche Schulform besucht er oder sie (z.B. Gymnasium, Realschule)?"
    - `{{Name}}` → „Wie heißt der Schüler?"
    - `{{Bundesland}}` → „In welchem Bundesland befindet ihr euch? (Optional — hilft bei der Lehrplan-Orientierung)"
-   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelten Antworten anschließend in `## Fach & Schüler` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

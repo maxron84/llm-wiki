@@ -125,7 +125,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Beschreibung}}` → „Beschreibe kurz, was dieses Projekt tut."
    - `{{Sprache}}` → „Welche Programmiersprache verwendest du (z.B. TypeScript, Python, Rust)?"
    - `{{Framework}}` → „Welches Framework setzt du ein — oder keins?"
-   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelten Antworten anschließend in `## Projekt` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

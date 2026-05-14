@@ -151,7 +151,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{NAME DES WIKIS / PROJEKTS}}` → „Wie soll das Team-Wiki heißen?"
    - `{{Beschreibung}}` → „Was sammelt dieses Wiki, und für wen ist es gedacht?"
    - `{{Teammitglieder}}` → „Wer gehört zum Team? Nenn kurz Namen und Rollen (z.B. 'Alice — Architektur, Bob — Frontend')."
-   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelten Antworten anschließend in `## Team` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

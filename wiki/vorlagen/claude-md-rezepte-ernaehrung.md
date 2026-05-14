@@ -130,7 +130,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
 
 1. **Prüfe `## Zweck`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
    - `{{Thematischer Fokus}}` → „Auf welche Küchen oder Ernährungsthemen soll sich dein Wiki konzentrieren — zum Beispiel 'mediterrane Küche, Fermentation', 'vegane Ernährung', oder einfach alles, was du kochst?"
-   Trage die Antwort gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelte Antwort anschließend in `## Zweck` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

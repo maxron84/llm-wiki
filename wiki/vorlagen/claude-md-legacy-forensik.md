@@ -154,7 +154,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Primärsprachen}}` → „Welche Programmiersprachen sind bekannt (z.B. Java 8, PL/SQL, PHP)?"
    - `{{Bekannte Frameworks}}` → „Welche Frameworks oder größeren Bibliotheken sind bekannt — oder noch unklar?"
    - `{{Untersuchungsziel}}` → „Was ist das Ziel der Untersuchung (z.B. Migrationsbewertung, Risikoanalyse, Wissenstransfer)?"
-   Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelten Antworten anschließend in `## Untersuchungsgegenstand` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

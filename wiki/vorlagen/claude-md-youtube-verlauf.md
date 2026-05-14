@@ -158,7 +158,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
 
 1. **Prüfe `## Zweck`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
    - `{{Thematischer Fokus}}` → „Auf welche Themen soll sich dein YouTube-Wiki konzentrieren — zum Beispiel 'Softwareentwicklung, KI', 'Kochen', oder einfach alles?"
-   Trage die Antwort gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelte Antwort anschließend in `## Zweck` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

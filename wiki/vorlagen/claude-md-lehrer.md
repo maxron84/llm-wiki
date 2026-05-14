@@ -76,7 +76,7 @@ Der Lehrplan kann jederzeit angepasst werden — wenn der Schüler schneller ist
 
 ## Lernprojekt
 
-**Projekttitel**: {{z.B. "Mein erstes Jump'n'Run mit Pygame"}}
+**Projekttitel**: {{z.B. "Mein erstes Python-Skript", "Meine erste Website mit HTML", "Ein einfaches Textspiel"}}
 **Schüler**: {{Name}}, {{Alter}} Jahre
 **Vorkenntnisse**: {{z.B. "Keine" / "Etwas Python" / "Scratch-Erfahrung"}}
 **Zeitbudget**: {{z.B. "30 Minuten pro Sitzung, 2× pro Woche"}}
@@ -122,7 +122,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Projekttitel}}` → „Was soll dein Projekt heißen, oder was möchtest du bauen?"
    - `{{Vorkenntnisse}}` → „Hast du schon mal programmiert? Wenn ja: was und wie lange?"
    - `{{Zeitbudget}}` → „Wie viel Zeit hast du typischerweise pro Sitzung?"
-   Trage die Antworten gedanklich als Kontext ein — der Schüler aktualisiert die CLAUDE.md nicht selbst.
+   Trage die gesammelten Antworten anschließend in `## Lernprojekt` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Schüler macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun

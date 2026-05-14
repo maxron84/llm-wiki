@@ -12,6 +12,11 @@ status: active
 
 ---
 
+## [2026-05-14 10:00] query | Zwei Bugs in allen Vorlagen behoben: CLAUDE.md-Rückschreiben + Pygame-Bias
+
+- **Bug 1 (alle 7 Vorlagen)**: `gedanklich als Kontext eintragen` → KI schreibt Antworten aus dem Interview jetzt explizit zurück in CLAUDE.md (jeweils in den richtigen Abschnitt). Ohne diesen Fix gingen alle Interview-Antworten nach einem Neustart verloren.
+- **Bug 2 (Lehrer-Vorlage)**: Platzhalter `{{z.B. "Mein erstes Jump'n'Run mit Pygame"}}` durch neutrale Beispiele ersetzt — verhindert, dass das Modell Pygame als Standard-Vorschlag gibt, bevor der Nutzer eine Richtung angegeben hat.
+
 ## [2026-05-14 00:03] query | Designprinzip 8 (Git-Setup) dokumentiert + alle Vorlagen aktualisiert
 
 - `wiki/konzepte/claude-md-design.md` — Designprinzip 8 hinzugefügt: Git-Repo beim ersten Start einrichten
