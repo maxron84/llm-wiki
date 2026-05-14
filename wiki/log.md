@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-13 00:05] query | Korrektur: 27B-Distillat funktioniert auf RTX 5080 — Docker-GPU-Setup war das Problem
+
+- Community-Modell-Hinweis korrigiert: Modell ist geeignet, wenn Docker mit --gpus=all gestartet wird
+- Prominenter Docker-GPU-Warnhinweis nach Schritt 1 ergänzt (--gpus=all, --restart=always, nvidia-smi-Check)
+- Vorheriger Eintrag war falsch: Ursache war fehlendes GPU-Passthrough, nicht VRAM-Limit
+
 ## [2026-05-13 00:04] query | RTX-5080-Praxistest: 27B-Distillat auf 16 GB VRAM zu langsam
 
 - Community-Modell-Hinweis in Hardware-Sektion präzisiert: Qwen3.5-27B Q3_K_M übersteigt 16 GB VRAM (Weights + KV-Cache), CPU-Offload macht es unbrauchbar

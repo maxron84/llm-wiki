@@ -33,7 +33,7 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 
 > **Mac mit Apple Silicon (M2 Pro / M3 / M4)**: Unified Memory wird besonders effizient genutzt — mit 32 GB läuft `qwen3:30b` flüssig, mit 16 GB `qwen3:14b`.
 
-**Community-Modelle**: Reasoning-Distillate (z.B. `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M`) klingen vielversprechend, passen aber auf einer RTX 5080 (16 GB) nicht vollständig ins VRAM — trotz Q3_K_M-Quantisierung. Weights + KV-Cache übersteigen 16 GB, Ollama fällt auf CPU-Offload zurück: Antworten werden extrem langsam. Für 16 GB VRAM nicht empfohlen.
+**Community-Modelle**: Reasoning-Distillate (z.B. `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M`) sind auf der RTX 5080 eine gute Alternative zu `qwen3:14b` — wenn Docker korrekt mit `--gpus=all` gestartet wird. Ohne GPU-Freigabe fällt Ollama auf CPU-Offload zurück und das Modell wird unbrauchbar langsam. Mit GPU läuft es flüssig. Qualität variiert je nach Distillationsprozess — vor dauerhaftem Einsatz kurz testen.
 
 ### Software
 
@@ -78,6 +78,14 @@ ollama run qwen3:14b   # Direkttest im Terminal, mit /bye beenden
 ```
 
 Nach der Installation läuft Ollama dauerhaft als lokaler Server auf `http://localhost:11434`.
+
+> **Wichtig für Docker-Nutzer**: Ollama muss zwingend mit `--gpus=all` gestartet werden, sonst läuft Inferenz auf der CPU — auch wenn eine GPU vorhanden ist. Für Autostart bei Systemboot `--restart=always` ergänzen:
+> ```bash
+> docker stop ollama && docker rm ollama
+> docker run -d --gpus=all --restart=always \
+>   -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+> ```
+> GPU-Nutzung prüfen: `docker exec ollama nvidia-smi`
 
 ---
 
