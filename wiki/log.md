@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-13 00:14] query | KI-Lehrer-Vorlage: Platzhalter-Interview in Phase 1 explizit gemacht
+
+- Phase 1 Schritt 1: explizite {{PLATZHALTER}}-Prüfung mit konkreten Fragen pro Feld
+- Reihenfolge: erst Interview, dann Begrüßung (war vorher umgekehrt)
+- Abdeckung vollständig: Name, Alter, Projekttitel, Vorkenntnisse, Zeitbudget
+
 ## [2026-05-13 00:13] query | KI-Lehrer-Vorlage: 14B-Tier und Designhinweise aktualisiert
 
 - Modell-Kompatibilitätstabelle: 14B-Spalte ergänzt (qwen3:14b-40k, RTX 5080)

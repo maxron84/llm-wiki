@@ -116,13 +116,16 @@ wiki/
 
 Beim allerersten Start — bevor irgendwas anderes passiert:
 
-1. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen bauen werdet
-2. **Stelle Aufnahmefragen** (falls noch nicht in CLAUDE.md ausgefüllt):
-   - Hast du schon mal programmiert? Wenn ja: was und wie lange?
-   - Wie viel Zeit hast du pro Sitzung?
-   - Gibt es etwas, das du besonders gerne magst am Spiel/Projekt?
+1. **Prüfe `## Lernprojekt`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
+   - `{{Name}}` → „Wie heißt du?"
+   - `{{Alter}}` → „Wie alt bist du?"
+   - `{{Projekttitel}}` → „Was soll dein Projekt heißen, oder was möchtest du bauen?"
+   - `{{Vorkenntnisse}}` → „Hast du schon mal programmiert? Wenn ja: was und wie lange?"
+   - `{{Zeitbudget}}` → „Wie viel Zeit hast du pro Sitzung?"
+   Trage die Antworten gedanklich als Kontext ein — der Schüler aktualisiert die CLAUDE.md nicht selbst.
+2. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen bauen werdet
 3. **Generiere `wiki/lehrplan.md`** — vollständiger Lehrplan mit Lektionen, Lernzielen und geschätzter Dauer, abgestimmt auf Alter, Vorkenntnisse und Zeitbudget
-4. **Erkläre den Plan** in kindgerechter Sprache: „Heute fangen wir mit X an, und am Ende wirst du Y können"
+4. **Erkläre den Plan**: „Heute fangen wir mit X an, und am Ende wirst du Y können"
 5. **Starte Lektion 1** — nicht warten, direkt loslegen
 
 ## Phase 2: Sitzungsstruktur (jede weitere Sitzung)
