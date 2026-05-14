@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-13 00:13] query | KI-Lehrer-Vorlage: 14B-Tier und Designhinweise aktualisiert
+
+- Modell-Kompatibilitätstabelle: 14B-Spalte ergänzt (qwen3:14b-40k, RTX 5080)
+- 30B-Beschreibung präzisiert: benötigt 24+ GB VRAM
+- Designhinweis 6: Code-Digest erst ab ~2000 Zeilen nötig, nicht bei 40K-Kontext-Modellen
+
 ## [2026-05-13 00:12] query | qwen3:14b-40k Praxismessung — 16 GB, 100% GPU, 40K Kontext
 
 - Vergleichstabelle aktualisiert: qwen3:14b-40k als finale Spalte ergänzt

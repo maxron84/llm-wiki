@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für einen KI-gestützten Lehrbegleiter — variabel einsetzbar für jedes Lernprojekt und jeden Schüler. Die KI generiert beim ersten Start einen maßgeschneiderten Lehrplan, lehrt Schritt für Schritt, und passt sich an Tempo und Frustrationsgrad an. Der Schüler schreibt eigenen Code — die KI zeigt Konzept-Beispiele, schreibt aber nie den Projektcode.
 **Quellen**: Abgeleitet aus [claude-md-software-begleiter](claude-md-software-begleiter.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-04-29
+**Zuletzt aktualisiert**: 2026-05-13
 
 ---
 
@@ -28,19 +28,21 @@ Kein allgemeiner Coding-Assistent. Die KI führt — sie hat ein Programm, weiß
 
 ## Modell-Kompatibilität
 
-| Funktion | 7B | 30B | Cloud (Sonnet/Opus) |
-|---|---|---|---|
-| Lehrplan generieren | ❌ | ⚠️ einfach | ✅ |
-| Altersgerechte Erklärungen | ❌ | ⚠️ | ✅ |
-| Adaptives Lehren (Tempo, Frustration) | ❌ | ⚠️ | ✅ |
-| Konzept-Beispiele zeigen | ❌ | ✅ | ✅ |
-| Fortschritt sinnvoll tracken | ❌ | ⚠️ | ✅ |
+| Funktion | 7B | 14B | 30B | Cloud (Sonnet/Opus) |
+|---|---|---|---|---|
+| Lehrplan generieren | ❌ | ⚠️ | ⚠️ einfach | ✅ |
+| Erklärungen, Analogien | ❌ | ⚠️ | ⚠️ | ✅ |
+| Adaptives Lehren (Tempo, Frustration) | ❌ | ⚠️ | ⚠️ | ✅ |
+| Konzept-Beispiele zeigen | ❌ | ✅ | ✅ | ✅ |
+| Fortschritt sinnvoll tracken | ❌ | ✅ | ⚠️ | ✅ |
 
 **7B**: Nicht geeignet — kann keinen konsistenten pädagogischen Ton halten und nicht sinnvoll adaptieren.
 
-**30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Für einfache Projekte und ältere / erfahrenere Schüler ausreichend. Für Kinder ohne Vorkenntnisse grenzwertig.
+**14B** (z.B. `qwen3:14b-40k`): Für erfahrene Lernende mit Vorkenntnissen ausreichend — technische Themen, API-Einarbeitung, Pygame. Für Kinder oder Einsteiger ohne Vorkenntnisse grenzwertig. Auf RTX 5080 (16 GB VRAM): volle GPU, 40K Kontext via [Modelfile-Setup](../anleitungen/lokale-modelle-fortgeschritten.md).
 
-**Cloud** (Claude Sonnet/Opus): Empfohlen — vor allem für junge oder unerfahrene Schüler, wo Ton und Anpassungsfähigkeit entscheidend sind.
+**30B** (z.B. Qwen3.6:35b, benötigt 24+ GB VRAM): Für anspruchsvollere Erklärungen und jüngere Schüler besser geeignet als 14B.
+
+**Cloud** (Claude Sonnet/Opus): Empfohlen — vor allem für Kinder oder unerfahrene Schüler, wo Ton und Anpassungsfähigkeit entscheidend sind.
 
 ## Benutzung
 
@@ -58,7 +60,7 @@ Der Lehrplan kann jederzeit angepasst werden — wenn der Schüler schneller ist
 3. **Die Code-Regel ist keine Empfehlung**: „Du schreibst keinen Projektcode" muss explizit stehen — KI-Assistenten neigen dazu, Code zu produzieren sobald eine Aufgabe codeähnlich klingt.
 4. **Sitzungen enden immer mit Ergebnis**: Das ist keine Empfehlung, sondern eine strukturelle Regel — besonders für Kinder ist ein sichtbares Erfolgserlebnis am Ende jeder Session entscheidend für die Motivation.
 5. **Regelmäßig reviewen**: Nach ~5 Lektionen prüfen, ob Tempo und Tiefe stimmen — Lehrplan ggf. anpassen.
-6. **Code-Digest ist optional**: Nur aktivieren wenn das Modell ≤ 32k Kontext hat. Bei Cloud-Modellen (200k) ist es unnötig und erzeugt Overhead.
+6. **Code-Digest ist optional**: Erst ab ~2000 Zeilen Code sinnvoll. `qwen3:14b-40k` hat mit Modelfile-Setup 40K Kontext — kein Code-Digest nötig solange das Projekt klein bleibt. Bei Cloud-Modellen (200k) generell unnötig.
 
 ## Vorlage
 
