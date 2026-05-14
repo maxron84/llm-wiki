@@ -37,12 +37,13 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 
 | | 27B Distillat | nemotron3:33b | qwen3:14b |
 |---|---|---|---|
-| Modellgröße | 18 GB | 30 GB | 9,3 GB |
-| CPU/GPU-Split | 22%/78% | 50%/50% | 0%/100% |
-| Verfügbarer Kontext | 4K | 4K | **40K** |
+| Modellgröße | 18 GB | 30 GB | **10 GB** |
+| CPU/GPU-Split | 22%/78% | 50%/50% | **100% GPU** |
+| Kontext (Default) | 4K | 4K | 4K |
+| Kontext (konfiguriert) | gedeckelt | gedeckelt | **40K** |
 | KI-Lehrer geeignet | ❌ | ❌ | ✅ |
 
-> Alle Modelle über ~10 GB landen auf einer RTX 5080 im CPU-Offload und bekommen den Kontext automatisch auf 4096 gedeckelt — egal wie schnell sie sich anfühlen. 4K reicht für den KI-Lehrer nicht (CLAUDE.md + Lehrplan + Fortschritt + Verlauf = 6–11K).
+> Ollama setzt den Kontext standardmäßig auf 4096 — auch bei `qwen3:14b`. Mit 6 GB VRAM-Puffer lässt sich der Kontext auf 40K hochsetzen (s. unten). Alle Modelle über ~10 GB bekommen hingegen keinen Puffer mehr und bleiben bei 4K gedeckelt.
 
 **Empfohlener Stack für RTX 5080:**
 - **Lokal / alltäglich**: `qwen3:14b` — volle GPU, 40K Kontext
@@ -136,6 +137,8 @@ Grundkonfiguration für Qwen3 (Beispiel RTX 5080):
 ```
 
 > **Größeres VRAM**: `"model": "qwen3:32b"`, `"contextLength": 40960`. Mac mit 32 GB: `"model": "qwen3:30b"`, `"contextLength": 262144`.
+
+> **Wichtig**: Ollama setzt den Kontext defaultmäßig auf 4096 — `"contextLength": 40960` in der Continue-Config übergibt `num_ctx` an Ollama und aktiviert das volle Kontextfenster. Prüfen mit `ollama ps` — unter Context sollte `40960` stehen.
 
 Zum Testen im Continue-Chat `Hallo` eingeben — das Modell sollte innerhalb weniger Sekunden antworten.
 

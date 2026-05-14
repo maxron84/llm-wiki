@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-13 00:08] query | qwen3:14b-Test: 100% GPU, Kontext-Default 4096 — Konfiguration nötig
+
+- qwen3:14b Messdaten: 10 GB, 100% GPU ✅, Kontext default 4096
+- Vergleichstabelle: Kontext-Spalte aufgeteilt in Default vs. konfiguriert
+- Hinweis ergänzt: contextLength in Continue-Config übergibt num_ctx an Ollama → 40K aktivieren
+- Erklärung: Modelle >10 GB haben keinen VRAM-Puffer mehr für größeren KV-Cache → bleiben bei 4K
+
 ## [2026-05-13 00:07] query | nemotron3:33b-Test + finale Stack-Empfehlung RTX 5080
 
 - nemotron3:33b Messdaten ergänzt: 30 GB, 50%/50% CPU/GPU, Kontext 4096 — für KI-Lehrer ungeeignet
