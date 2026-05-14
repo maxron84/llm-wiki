@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-13 00:11] query | Modelfile-Workflow für qwen3:14b-40k dokumentiert
+
+- 40K-Kontext-Setup via Modelfile: Befehle für Docker und Direkt-Installation
+- Continue-Config auf qwen3:14b-40k aktualisiert
+- Hinweis: Doppelpunkt statt Bindestrich in ollama run
+
 ## [2026-05-13 00:10] query | Roocode als agentische Alternative zu Continue dokumentiert
 
 - Neuer Abschnitt „Alternative zu Continue: Roocode" in lokale-modelle-fortgeschritten.md

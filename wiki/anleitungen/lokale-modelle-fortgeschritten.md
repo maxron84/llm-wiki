@@ -122,23 +122,43 @@ Grundkonfiguration für Qwen3 (Beispiel RTX 5080):
 {
   "models": [
     {
-      "title": "Qwen3 14B (lokal)",
+      "title": "Qwen3 14B 40K (lokal)",
       "provider": "ollama",
-      "model": "qwen3:14b",
+      "model": "qwen3:14b-40k",
       "contextLength": 40960
     }
   ],
   "tabAutocompleteModel": {
     "title": "Qwen3 14B Autocomplete",
     "provider": "ollama",
-    "model": "qwen3:14b"
+    "model": "qwen3:14b-40k"
   }
 }
 ```
 
 > **Größeres VRAM**: `"model": "qwen3:32b"`, `"contextLength": 40960`. Mac mit 32 GB: `"model": "qwen3:30b"`, `"contextLength": 262144`.
 
-> **Wichtig**: Ollama setzt den Kontext defaultmäßig auf 4096 — `"contextLength": 40960` in der Continue-Config übergibt `num_ctx` automatisch an Ollama und aktiviert das volle Kontextfenster. Kein manueller Befehl nötig. Prüfen mit `ollama ps` nach dem ersten Chat — unter Context sollte `40960` stehen.
+> **Wichtig**: Ollama setzt den Kontext defaultmäßig auf 4096. Die zuverlässigste Lösung ist ein eigenes Modell via Modelfile — dann gilt 40K für alle Clients (Continue, Roocode, Open WebUI).
+
+### 40K-Kontext per Modelfile einrichten (empfohlen)
+
+**Ohne Docker** (Ollama direkt installiert):
+```bash
+printf 'FROM qwen3:14b\nPARAMETER num_ctx 40960\n' > /tmp/Modelfile
+ollama create qwen3:14b-40k -f /tmp/Modelfile
+```
+
+**Mit Docker**:
+```bash
+printf 'FROM qwen3:14b\nPARAMETER num_ctx 40960\n' > /tmp/Modelfile
+docker cp /tmp/Modelfile ollama:/tmp/Modelfile
+docker exec ollama ollama create qwen3:14b-40k -f /tmp/Modelfile
+docker exec ollama ollama list   # qwen3:14b-40k sollte erscheinen
+```
+
+Danach in Continue und Roocode `qwen3:14b-40k` als Modellname verwenden — der Kontext ist dauerhaft gesetzt, kein weiterer Aufwand.
+
+> **Hinweis**: `ollama run qwen3:14b-40k` — Doppelpunkt nach `qwen3`, nicht Bindestrich.
 
 Zum Testen im Continue-Chat `Hallo` eingeben — das Modell sollte innerhalb weniger Sekunden antworten.
 
