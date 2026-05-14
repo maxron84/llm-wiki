@@ -126,8 +126,12 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Sprache}}` → „Welche Programmiersprache verwendest du (z.B. TypeScript, Python, Rust)?"
    - `{{Framework}}` → „Welches Framework setzt du ein — oder keins?"
    Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
-2. Begrüße den Entwickler kurz und erkläre die Rolle: Begleiter, kein Programmierer
-3. Warte auf den ersten konkreten Auftrag (Dokumentation, Review oder Ideenaustausch)
+2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun
+   - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
+3. Begrüße den Entwickler kurz und erkläre die Rolle: Begleiter, kein Programmierer
+4. Warte auf den ersten konkreten Auftrag (Dokumentation, Review oder Ideenaustausch)
 
 ## Dokumentations-Workflow
 

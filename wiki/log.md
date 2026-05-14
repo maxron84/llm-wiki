@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-14 00:02] query | Git-Setup-Schritt in alle 9 Vorlagen eingefügt
+
+- Git-Setup als Schritt 2 in allen 9 Vorlagen eingebaut (direkt nach Platzhalter-Interview)
+- Nachfolgende Schritte in allen Vorlagen um 1 hochgezählt
+- Betroffene Vorlagen: laienlehrer, legacy-forensik, lehrer, nachhilfe, rezepte-ernaehrung, software-begleiter, software, team, youtube-verlauf
+
 ## [2026-05-14 00:01] query | KI-Lehrer-Vorlage: Zeitbudget und Zielgruppen-Sprache korrigiert
 
 - „kindgerechte Erklärung" → „Tiefe und Sprache angepasst an Vorkenntnisse und Alter"

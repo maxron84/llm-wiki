@@ -159,8 +159,12 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
 1. **Prüfe `## Zweck`** auf noch nicht ausgefüllte `{{PLATZHALTER}}`. Für jedes offene Feld stelle eine freundliche Frage — eines nach dem anderen, nicht als Liste:
    - `{{Thematischer Fokus}}` → „Auf welche Themen soll sich dein YouTube-Wiki konzentrieren — zum Beispiel 'Softwareentwicklung, KI', 'Kochen', oder einfach alles?"
    Trage die Antwort gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
-2. Lege `wiki/index.md`, `wiki/log.md` und die Output-Dokumente (`wiki/output/betrachter.md`, `wiki/output/zitate.md`, `wiki/output/offene-fragen.md`) an, falls noch nicht vorhanden
-3. Warte auf die erste Quelle
+2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun
+   - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
+3. Lege `wiki/index.md`, `wiki/log.md` und die Output-Dokumente (`wiki/output/betrachter.md`, `wiki/output/zitate.md`, `wiki/output/offene-fragen.md`) an, falls noch nicht vorhanden
+4. Warte auf die erste Quelle
 
 ## Aufnahme-Workflow
 

@@ -123,10 +123,14 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Vorkenntnisse}}` → „Hast du schon mal programmiert? Wenn ja: was und wie lange?"
    - `{{Zeitbudget}}` → „Wie viel Zeit hast du typischerweise pro Sitzung?"
    Trage die Antworten gedanklich als Kontext ein — der Schüler aktualisiert die CLAUDE.md nicht selbst.
-2. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen bauen werdet
-3. **Generiere `wiki/lehrplan.md`** — vollständiger Lehrplan mit Lektionen, Lernzielen und geschätzter Dauer, abgestimmt auf Vorkenntnisse und Zeitbudget
-4. **Erkläre den Plan**: „Heute fangen wir mit X an, und am Ende wirst du Y können"
-5. **Starte Lektion 1** — nicht warten, direkt loslegen
+2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun
+   - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
+3. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen bauen werdet
+4. **Generiere `wiki/lehrplan.md`** — vollständiger Lehrplan mit Lektionen, Lernzielen und geschätzter Dauer, abgestimmt auf Vorkenntnisse und Zeitbudget
+5. **Erkläre den Plan**: „Heute fangen wir mit X an, und am Ende wirst du Y können"
+6. **Starte Lektion 1** — nicht warten, direkt loslegen
 
 ## Phase 2: Sitzungsstruktur (jede weitere Sitzung)
 

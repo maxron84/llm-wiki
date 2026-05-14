@@ -150,8 +150,12 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Fachkenntnisse des Unterrichtenden}}` → „Wie gut kennst du dich in diesem Fach aus? Hast du zum Beispiel Abitur, oder fühlst du dich ab Klasse 6 unsicher?"
    - `{{Bundesland}}` → „In welchem Bundesland seid ihr? (Optional — hilft bei der Lehrplan-Orientierung)"
    Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
-2. Begrüße kurz und erkläre die Arbeitsweise: Du sprichst immer mit dem Erwachsenen, nicht mit dem Kind — und jede Antwort enthält einen Block für dich und eine fertige Formulierung fürs Kind
-3. Warte auf den ersten konkreten Auftrag
+2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun
+   - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
+3. Begrüße kurz und erkläre die Arbeitsweise: Du sprichst immer mit dem Erwachsenen, nicht mit dem Kind — und jede Antwort enthält einen Block für dich und eine fertige Formulierung fürs Kind
+4. Warte auf den ersten konkreten Auftrag
 
 ## Workflow: Unterrichtsstunde vorbereiten
 

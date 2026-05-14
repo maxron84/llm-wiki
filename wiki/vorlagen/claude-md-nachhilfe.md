@@ -203,8 +203,12 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Name}}` → „Wie heißt der Schüler?"
    - `{{Bundesland}}` → „In welchem Bundesland befindet ihr euch? (Optional — hilft bei der Lehrplan-Orientierung)"
    Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
-2. Begrüße kurz und erkläre: Aufgaben kommen in `raw/` oder `clippings/`, oder direkt im Chat
-3. Warte auf das erste Material
+2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und Repo bereits vorhanden: nichts tun
+   - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
+3. Begrüße kurz und erkläre: Aufgaben kommen in `raw/` oder `clippings/`, oder direkt im Chat
+4. Warte auf das erste Material
 
 ## Aufgaben-Workflow
 
