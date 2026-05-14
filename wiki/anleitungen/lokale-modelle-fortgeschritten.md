@@ -29,11 +29,18 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 | qwen3:30b | 19 GB | 256K | ~20 GB | Übersteigt 16 GB → CPU-Offload |
 | qwen3:32b | 20 GB | 40K | ~21 GB | Für 24+ GB VRAM |
 
-> **RTX 5080 (16 GB VRAM)**: `qwen3:14b` ist die saubere Wahl — passt mit ~6 GB Puffer ins VRAM, GDDR7-Bandbreite sorgt für schnelle Inferenz. `qwen3:30b` übersteigt das VRAM um ~3 GB und fällt auf CPU-Offload zurück (deutlich langsamer).
+> **RTX 5080 (16 GB VRAM)**: `qwen3:14b` ist die saubere Wahl — passt vollständig ins VRAM, 40K Kontext, kein CPU-Anteil. Für den KI-Lehrer-Betrieb empfohlen.
 
 > **Mac mit Apple Silicon (M2 Pro / M3 / M4)**: Unified Memory wird besonders effizient genutzt — mit 32 GB läuft `qwen3:30b` flüssig, mit 16 GB `qwen3:14b`.
 
-**Community-Modelle**: Reasoning-Distillate (z.B. `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M`) sind auf der RTX 5080 eine gute Alternative zu `qwen3:14b` — wenn Docker korrekt mit `--gpus=all` gestartet wird. Ohne GPU-Freigabe fällt Ollama auf CPU-Offload zurück und das Modell wird unbrauchbar langsam. Mit GPU läuft es flüssig. Qualität variiert je nach Distillationsprozess — vor dauerhaftem Einsatz kurz testen.
+**Community-Modelle (Praxistest RTX 5080)**: `yolo0perris/Qwen3.5-27B-Claude-4.6-Opus-Reasoning-Distilled-GGUF_Q3_K_M` belegt 18 GB und läuft mit 78% GPU / 22% CPU — die Geschwindigkeit ist akzeptabel. **Kritische Einschränkung**: Ollama begrenzt den Kontext automatisch auf 4096 Token, weil kein VRAM-Puffer für einen größeren KV-Cache bleibt. Für den KI-Lehrer (CLAUDE.md + Lehrplan + Fortschritt + Gesprächsverlauf = 6–11K Token) reicht das nicht. Empfehlung erst ab 32 GB VRAM (RTX 5090).
+
+| | 27B Distillat (RTX 5080) | qwen3:14b (RTX 5080) |
+|---|---|---|
+| Modellgröße | 18 GB | 9,3 GB |
+| CPU-Anteil | 22% | 0% |
+| Verfügbarer Kontext | **4K** | **40K** |
+| KI-Lehrer geeignet | ❌ Kontext zu klein | ✅ |
 
 ### Software
 
