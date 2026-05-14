@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-14 00:01] query | KI-Lehrer-Vorlage: Zeitbudget und Zielgruppen-Sprache korrigiert
+
+- „kindgerechte Erklärung" → „Tiefe und Sprache angepasst an Vorkenntnisse und Alter"
+- Zeitbudget-Frage präzisiert: „typischerweise pro Sitzung"
+- Phase 2: neuer Schritt 1 „Zeitcheck" — Claude fragt zu Sitzungsbeginn nach verfügbarer Zeit, weist auf Timer hin
+- Ehrlicher Hinweis: Claude hat keine Uhr, kann Zeit nicht selbst messen
+- Phase-2-Schritte umnummeriert (8 statt 7)
+- Phase 1: „Alter" aus Lehrplan-Generierung entfernt (nicht relevant für Erwachsene)
+
 ## [2026-05-14 00:00] query | Platzhalter-Interview in alle 8 Vorlagen eingebaut
 
 - claude-md-software.md: `## Initialisierung` eingefügt (PROJEKTNAME, Beschreibung, Sprache, Framework, Paketmanager)
