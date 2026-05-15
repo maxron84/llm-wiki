@@ -13,7 +13,7 @@ status: active
 
 ---
 
-Diese Anleitung geht davon aus, dass ein Wiki bereits auf GitHub liegt (wie dieses hier). Die zweite Person — nennen wir sie Ralph — soll gleichberechtigt mitarbeiten können, mit eigenem Claude Code Zugang.
+Diese Anleitung geht davon aus, dass ein Wiki bereits auf GitHub liegt (wie dieses hier). Die zweite Person — nennen wir sie Alex — soll gleichberechtigt mitarbeiten können, mit eigenem Claude Code Zugang.
 
 ---
 
@@ -28,50 +28,50 @@ Beide Personen brauchen:
 
 ---
 
-## Schritt 1: Ralph als GitHub-Mitarbeiter einladen
+## Schritt 1: Alex als GitHub-Mitarbeiter einladen
 
 Als Repo-Inhaber:
 
 1. Öffne das Repo auf GitHub (z.B. `github.com/maxron84/llm-wiki`)
 2. → **Settings** → **Collaborators** → **Add people**
-3. Trage Ralphs GitHub-Username oder E-Mail-Adresse ein
-4. Ralph bekommt eine E-Mail und muss die Einladung annehmen
+3. Trage Alexs GitHub-Username oder E-Mail-Adresse ein
+4. Alex bekommt eine E-Mail und muss die Einladung annehmen
 
-Ralph hat danach **Push-Rechte** — er kann direkt in das Repo pushen, ohne Pull Request. Das ist für kleine Teams (2–3 Personen) praktisch; für mehr Kontrolle → [Branch-Schutz weiter unten](#optional-branch-schutz).
+Alex hat danach **Push-Rechte** — er kann direkt in das Repo pushen, ohne Pull Request. Das ist für kleine Teams (2–3 Personen) praktisch; für mehr Kontrolle → [Branch-Schutz weiter unten](#optional-branch-schutz).
 
 ---
 
-## Schritt 2: Repo auf Ralphs Seite klonen
+## Schritt 2: Repo auf Alexs Seite klonen
 
-Ralph führt einmalig in einem Terminal aus:
+Alex führt einmalig in einem Terminal aus:
 
 ```bash
 git clone https://github.com/maxron84/llm-wiki.git
 cd llm-wiki
 ```
 
-Das lädt das gesamte Wiki herunter — inklusive `CLAUDE.md`, aller Seiten und der Git-Historie. Ralph hat damit sofort denselben Stand wie du.
+Das lädt das gesamte Wiki herunter — inklusive `CLAUDE.md`, aller Seiten und der Git-Historie. Alex hat damit sofort denselben Stand wie du.
 
 Danach Git-Identität einrichten (falls noch nicht global konfiguriert):
 
 ```bash
-git config user.name "Ralph Mustermann"
+git config user.name "Alex Mustermann"
 git config user.email "ralph@beispiel.de"
 ```
 
 ---
 
-## Schritt 3: Claude Code auf Ralphs Seite einrichten
+## Schritt 3: Claude Code auf Alexs Seite einrichten
 
 ### Projektinstruktionen — kein Aufwand
 
-Das `CLAUDE.md` im Repo-Root wird von Claude Code automatisch gelesen. Ralph muss nichts extra konfigurieren — er bekommt sofort dieselben Regeln (Ordnerstruktur, Aufnahme-Workflow, Seitenformat usw.).
+Das `CLAUDE.md` im Repo-Root wird von Claude Code automatisch gelesen. Alex muss nichts extra konfigurieren — er bekommt sofort dieselben Regeln (Ordnerstruktur, Aufnahme-Workflow, Seitenformat usw.).
 
 ### Globale Instruktionen — optional aber empfohlen
 
 Jeder pflegt seine eigene `~/.claude/CLAUDE.md` für globale Gewohnheiten (z.B. „Nach jedem Schritt committen"). Das ist persönliche Präferenz und wird nicht ins Repo eingecheckt.
 
-Ralph öffnet oder erstellt `~/.claude/CLAUDE.md` und trägt dort ein, was er wiki-übergreifend möchte:
+Alex öffnet oder erstellt `~/.claude/CLAUDE.md` und trägt dort ein, was er wiki-übergreifend möchte:
 
 ```markdown
 ## Git-Commits
@@ -117,7 +117,7 @@ Für alle außer sehr kleinen Einzel-Änderungen lohnt sich ein Feature-Branch. 
 ### Branch erstellen und arbeiten
 
 ```bash
-# Ralph erstellt einen Branch für seine Quelle
+# Alex erstellt einen Branch für seine Quelle
 git checkout -b ralph/retrieval-studie
 
 # Arbeit mit Claude Code...
@@ -228,7 +228,7 @@ Danach müssen alle Änderungen über PRs rein — auch deine eigenen. Das koste
 
 ## Optional: GitHub Notifications einschalten
 
-Damit Ralph sofort sieht, wenn du neue Seiten pushst (und umgekehrt):
+Damit Alex sofort sieht, wenn du neue Seiten pushst (und umgekehrt):
 
 1. GitHub → das Repo → **Watch** → **All activity**
 
