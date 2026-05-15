@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15 00:02] ingest | AMD Radeon AI PRO R9700 — zwei AMD-Clippings verarbeitet
+
+- Specs korrigiert: FP16 Vector 47,8 TFLOPS (war 95 — Geizhals-Fehler), Bandbreite 640 GB/s, Infinity Cache 64 MB ergänzt
+- Windows 10/11 offiziell unterstützt (war als experimentell eingetragen)
+- AMD-Benchmark-Tabelle ergänzt: R9700 vs. RTX 5080 für 24–32B Modelle (3,6–5× schneller, da 5080 CPU-Offloading benötigt)
+
 ## [2026-05-15 00:01] query | Radeon AI Pro R9700 dokumentiert
 
 - Neue Seite `wiki/werkzeuge/radeon-ai-pro-r9700.md` — Specs, Vergleich mit RTX 5080, Eignung für LLM-Inferenz
