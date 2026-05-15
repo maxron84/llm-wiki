@@ -45,15 +45,16 @@ Schritt-für-Schritt-Guides für den Einstieg und Betrieb:
 
 | Skript | Zweck | Aufruf |
 |---|---|---|
-| `wiki_lint.py` | Prüft auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler | `python3 wiki_lint.py` (aus dem Projekt-Root) |
+| `~/.claude/scripts/wiki_lint.py` | Prüft auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler | `python3 ~/.claude/scripts/wiki_lint.py` (aus dem Projekt-Root) |
 
-Das Skript liegt im Projekt-Root und braucht keine zusätzlichen Abhängigkeiten.
+Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlichen Abhängigkeiten.
 
 ## Aktuelle Zahlen
 
-- **78 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
-- **18 Quelldokumente** (Clippings + Raw)
-- Keine toten Links, keine verwaisten Seiten (geprüft mit `wiki_lint.py`)
+- **80 Wiki-Seiten** in 7 Bereichen (Konzepte, Quellen, Vorlagen, Anleitungen, Werkzeuge, Personen, Projekte)
+- **27 Quelldokumente** (Clippings + Raw)
+- **16 aufgenommene Quellen** mit eigener Zusammenfassungsseite
+- Keine toten Links, keine verwaisten Seiten (geprüft 2026-05-15 mit `wiki_lint.py`)
 
 ---
 
