@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-13 (lokale-modelle-fortgeschritten auf Ollama-Modelle 2026 aktualisiert)
+**Zuletzt aktualisiert**: 2026-05-15 (phi-4 Werkzeugseite hinzugefügt)
 
 ---
 
@@ -57,6 +57,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [qmd](werkzeuge/qmd.md) — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
 - [wiki-ralph-sh](werkzeuge/wiki-ralph-sh.md) — Bash-Skript: Ralph-Schleife für autonomen LLM-Wiki-Ingest aus inbox/
 - [radeon-ai-pro-r9700](werkzeuge/radeon-ai-pro-r9700.md) — 32 GB GDDR6 KI-Karte: mehr VRAM als RTX 5080, aber Blower-Kühler macht sie für Desktop-Einsatz problematisch
+- [phi-4](werkzeuge/phi-4.md) — Microsofts Phi-4-Familie (14B/3.8B): stark bei Math und Code, 16K Kontext ein Limit für Wiki-Betrieb
 
 ## Personen
 

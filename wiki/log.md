@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15] query | Phi-4 für lokalen Einsatz
+
+- Neue Werkzeugseite `werkzeuge/phi-4.md` angelegt: Phi-4-Familie (14B, mini, reasoning, mini-reasoning, multimodal), VRAM-Bedarf, Vergleich mit Qwen3 14B, Ollama-Einrichtung
+- `anleitungen/lokale-modelle.md`: Modellübersicht um Phi-4 14B und aktualisierte Phi-4-mini-Zeile erweitert
+- `wiki/index.md` aktualisiert
+
 ## [2026-05-15 00:03] ingest | Radeon AI Pro R9700 — Geizhals-Clippings aller Dritthersteller verarbeitet
 
 - Variantenübersicht ergänzt: ASRock (€1.410), PowerColor (€1.419), GIGABYTE (€1.427), Sapphire (€1.475), ASUS Turbo (€1.486), XFX (€1.575)

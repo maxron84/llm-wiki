@@ -246,16 +246,18 @@ So kann das lokale Modell die Wiki-Seiten lesen und Inhalte vorschlagen — manu
 | **Qwen3:27b / 35b** | Bestes Allround-Modell, starkes Deutsch | Software, komplexe Aufgaben, Klasse 9–10 |
 | **Qwen3:14b** | Gutes Gleichgewicht aus Qualität und Geschwindigkeit | Nachhilfe Klasse 7–10, allgemeine Nutzung |
 | **Llama 3.3** | Stark bei Reasoning, gutes Englisch | Software-Projekte, englischsprachige Quellen |
-| **Mistral Small 3** | Schnell, kompakt, gut für Europäische Sprachen | Nachhilfe, Rezepte, YouTube-Vorlagen |
-| **Phi-4-mini** | Sehr klein, läuft auf schwacher Hardware | Einfachste Aufgaben, 8-GB-Rechner |
+| **Mistral Small 3** | Schnell, kompakt, gut für europäische Sprachen | Nachhilfe, Rezepte, YouTube-Vorlagen |
+| **[Phi-4](../werkzeuge/phi-4.md) 14B** | Sehr stark bei Mathematik und Code | Englischsprachige Code-Aufgaben, strukturierte Analysen |
+| **[Phi-4-mini](../werkzeuge/phi-4.md)** | Sehr klein (3.8B), 128K Kontext | Schnelles Autocomplete, 8-GB-Rechner |
 
-> **Für Deutsch**: Qwen3-Modelle sind aktuell die stärksten lokal verfügbaren Modelle für deutschsprachige Aufgaben.
+> **Für Deutsch**: Qwen3-Modelle sind aktuell die stärksten lokal verfügbaren Modelle für deutschsprachige Aufgaben. Phi-4 (14B) ist eine gute Ergänzung für Mathematik und Code, hat aber nur 16K Kontext.
 
 ---
 
 ## Verwandte Seiten
 
 - [lokale-modelle-fortgeschritten](lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B: Ollama + Continue in VS Codium, für erfahrene Programmierer
+- [phi-4](../werkzeuge/phi-4.md) — Phi-4-Modellfamilie im Detail: Varianten, Vergleich, Einrichtung
 - [erste-schritte](erste-schritte.md) — Einrichtung mit Claude Code Desktop (Cloud-Pfad)
 - [claude-code](../werkzeuge/claude-code.md) — Claude Code im Detail
 - [obsidian](../werkzeuge/obsidian.md) — Wiki-Oberfläche
