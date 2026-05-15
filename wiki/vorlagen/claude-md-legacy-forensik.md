@@ -156,7 +156,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Untersuchungsziel}}` → „Was ist das Ziel der Untersuchung (z.B. Migrationsbewertung, Risikoanalyse, Wissenstransfer)?"
    Trage die gesammelten Antworten anschließend in `## Untersuchungsgegenstand` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Nutzer macht das nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
-   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen (mindestens `.claude/` eintragen), ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun
    - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
 3. Lege `wiki/index.md` und `wiki/log.md` an, falls noch nicht vorhanden

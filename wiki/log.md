@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15 14:00] query | Lehrer-Vorlage überarbeitet
+
+- `vorlagen/claude-md-lehrer.md`: Vorlage fachunabhängig gemacht — Coding-spezifische Abschnitte (Code-Regeln, Code-Digest, Skalierung) in optionalen Block verschoben
+- `vorlagen/claude-md-lehrer.md`: Sitzungsstruktur von zeitbasiert auf kriterienbasiert umgestellt — Phasen enden wenn das Lernziel erreicht ist, nicht wenn eine Zeitspanne abläuft
+- Alle 9 Vorlagen: `.gitignore`-Anweisung um `.claude/` ergänzt
+
 ## [2026-05-15 12:30] lint | Nachbesserungen aus Wiki-Prüfung
 
 - `CLAUDE.md`: Wiki-Link-Syntax von `[[…]]` auf Standard-Markdown `[text](pfad.md)` korrigiert (Seitenformat + Workflow-Schritt)

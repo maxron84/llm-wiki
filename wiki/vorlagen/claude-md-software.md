@@ -278,7 +278,7 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Paketmanager}}` → „Welchen Paketmanager nutzt du (z.B. npm, pip, cargo)?"
    Trage die Antworten gedanklich als Kontext ein — der Nutzer aktualisiert die CLAUDE.md nicht selbst.
 2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
-   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen, ersten Commit erstellen: „Projekt initialisiert"
+   - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen (mindestens `.claude/` eintragen), ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun
    - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
 3. Analysiere die vorhandene Projektstruktur (falls vorhanden) und fülle weitere Abschnitte (Schnelleinstieg, Architektur, Abhängigkeiten) aus dem Code ab
