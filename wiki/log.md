@@ -650,4 +650,12 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 
 ---
 
+## [2026-05-15 10:00] query | Wiki-Zusammenarbeit mit Git und Claude Code
+
+- Neue Anleitungsseite `wiki/anleitungen/zusammenarbeit-git.md` erstellt
+- Thema: zwei Personen (GitHub Collaborators), Branch-Workflow, Konflikte in index.md und log.md, Ownership-Konzept
+- `wiki/index.md` aktualisiert
+
+---
+
 [Zurück zum Index](index.md)
