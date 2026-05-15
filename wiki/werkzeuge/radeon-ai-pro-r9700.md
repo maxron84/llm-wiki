@@ -8,7 +8,7 @@ status: active
 # AMD Radeon AI Pro R9700
 
 **Zusammenfassung**: Professionelle KI-Grafikkarte mit 32 GB GDDR6 und Blower-Kühler. Vergleich zur RTX 5080 im Kontext lokaler LLM-Inferenz.
-**Quellen**: AMD Produktseite R9700, AMD Radeon AI PRO Übersichtsseite (beide 2026-05-15)
+**Quellen**: AMD Produktseite R9700, AMD Radeon AI PRO Übersichtsseite, Geizhals Produktseiten (alle 2026-05-15)
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---
@@ -29,7 +29,7 @@ status: active
 | INT8 | 383 TOPS (766 mit Structured Sparsity) |
 | TDP | 300 W |
 | Empf. Netzteil | 750 W |
-| Kühlung | Aktiv (Blower) |
+| Kühlung | Aktiv (Blower) — alle Varianten |
 | PCIe | 5.0 x16 |
 | ECC | Ja (nur Linux) |
 | OS-Support | Windows 10/11 (64-bit), Linux x86 64-bit |
@@ -62,9 +62,22 @@ Für Modelle die nicht in den VRAM der RTX 5080 passen und daher CPU-Offloading 
 
 Die Gewinne entstehen weil die RTX 5080 diese Modelle nur mit CPU-Offloading ausführen kann — kein reiner GPU-gegen-GPU-Vergleich.
 
+## Verfügbare Varianten (Österreich, Mai 2026)
+
+| Hersteller | Modell | Kühlung | Preis ab |
+|---|---|---|---|
+| ASRock | R9700 Creator 32GB | Radial 75mm | € 1.410,76 |
+| PowerColor | R9700 | Radial 80mm | € 1.419,01 |
+| GIGABYTE | R9700 AI TOP 32G | Radial 75mm | € 1.427,60 |
+| Sapphire | R9700 | Radial 80mm | € 1.475,35 |
+| ASUS Turbo | R9700 | Radial 75mm | € 1.486,81 |
+| XFX | R9700 | Radial 80mm | € 1.575,59 |
+
+Alle Varianten verwenden Blower-Kühler — das ist eine Klassen-Entscheidung für professionelle AI-Karten, keine Einschränkung einzelner Hersteller. Eine Axial-gekühlte Variante existiert nicht.
+
 ## Hinweise
 
-**Kühlung**: Der Blower-Lüfter ist für Rack- und Servereinsatz ausgelegt. Unter Dauerlast (wie LLM-Inferenz) deutlich lauter als Axial-Kühler — relevant für Desktop-Einsatz direkt am Schreibtisch.
+**Kühlung**: Der Blower-Lüfter (Radial) ist für Rack- und Servereinsatz ausgelegt. Unter Dauerlast (wie LLM-Inferenz) deutlich lauter als Axial-Kühler — relevant für Desktop-Einsatz direkt am Schreibtisch. Gilt für alle Hersteller-Varianten ohne Ausnahme.
 
 **Backend**: ROCm wird offiziell für Windows 10/11 und Linux unterstützt. ECC-Speicher nur unter Linux verfügbar.
 

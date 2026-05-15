@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-15 00:03] ingest | Radeon AI Pro R9700 — Geizhals-Clippings aller Dritthersteller verarbeitet
+
+- Variantenübersicht ergänzt: ASRock (€1.410), PowerColor (€1.419), GIGABYTE (€1.427), Sapphire (€1.475), ASUS Turbo (€1.486), XFX (€1.575)
+- Alle Varianten verwenden Blower-Kühler — Klassen-Design, keine Ausnahme
+- Verfügbarkeit aktualisiert: Karten sind in Österreich lieferbar
+- Hinweis präzisiert: kein axial-gekühltes Modell existiert
+
 ## [2026-05-15 00:02] ingest | AMD Radeon AI PRO R9700 — zwei AMD-Clippings verarbeitet
 
 - Specs korrigiert: FP16 Vector 47,8 TFLOPS (war 95 — Geizhals-Fehler), Bandbreite 640 GB/s, Infinity Cache 64 MB ergänzt
