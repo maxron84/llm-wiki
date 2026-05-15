@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15 14:30] query | Lehrer-Vorlage: Domain-Erweiterung dynamisch
+
+- Optionaler Coding-Block aus der Vorlage entfernt
+- Phase 1 um Schritt „Domain-Erweiterung" ergänzt: Claude generiert domänenspezifische CLAUDE.md-Abschnitte nach dem Aufnahmegespräch, bevor der erste Commit entsteht
+- Designhinweis 6 entsprechend aktualisiert
+
 ## [2026-05-15 14:00] query | Lehrer-Vorlage überarbeitet
 
 - `vorlagen/claude-md-lehrer.md`: Vorlage fachunabhängig gemacht — Coding-spezifische Abschnitte (Code-Regeln, Code-Digest, Skalierung) in optionalen Block verschoben

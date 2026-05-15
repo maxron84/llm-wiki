@@ -60,7 +60,7 @@ Der Lehrplan kann jederzeit angepasst werden — wenn der Schüler schneller ist
 3. **Die Aufgaben-Regel ist keine Empfehlung**: „Du löst keine Aufgaben stellvertretend" muss explizit stehen — KI-Assistenten neigen dazu, bei jeder Aufgabe sofort die Lösung zu liefern.
 4. **Sitzungen enden immer mit Ergebnis**: Das ist keine Empfehlung, sondern eine strukturelle Regel — besonders für Kinder ist ein sichtbares Erfolgserlebnis am Ende jeder Session entscheidend für die Motivation.
 5. **Regelmäßig reviewen**: Nach ~5 Lektionen prüfen, ob Tempo und Tiefe stimmen — Lehrplan ggf. anpassen.
-6. **Optionale Coding-Erweiterungen**: Die Vorlage ist fachunabhängig. Für Coding-Projekte den optionalen Block am Ende der CLAUDE.md aktivieren.
+6. **Domain-Erweiterungen werden im Interview generiert**: Die Vorlage enthält keinen vordefinierten Coding-Block mehr. Claude ergänzt domänenspezifische Abschnitte in Phase 1, Schritt 2 — nachdem das Fach bekannt ist. Das gilt für jede Domain: Coding, Musik, Sprache, Mathe. Konkrete Beispiele stehen direkt im Phase-1-Schritt.
 
 ## Vorlage
 
@@ -124,14 +124,20 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - `{{Vorkenntnisse}}` → „Kennst du dich damit schon ein bisschen aus? Wenn ja: wie?"
    - `{{Zeitbudget}}` → „Wie viel Zeit hast du typischerweise pro Sitzung?"
    Trage die gesammelten Antworten anschließend in `## Lernprojekt` ein — ersetze die Platzhalter und speichere CLAUDE.md. Der Schüler macht das nicht selbst.
-2. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
+2. **Domain-Erweiterung**: Prüfe ob `{{Fach / Thema}}` besondere Regeln erfordert. Wenn ja, ergänze einen passenden Abschnitt direkt in dieser CLAUDE.md — vor dem Abschnitt `## Regeln`. Beispiele:
+   - *Coding*: Ordner `src/` in der Ordnerstruktur ergänzen; Abschnitt „Code-Regeln" hinzufügen (kein Projektcode schreiben, keine direkte Fehlerkorrektur — nur Hinweise geben); ggf. Code-Digest-Abschnitt für Modelle mit ≤ 32k Kontext
+   - *Musik*: Abschnitt „Spielpraxis" — Schüler spielt selbst vor, KI korrigiert nicht live, sondern gibt Hinweise zwischen den Durchgängen
+   - *Sprache*: Abschnitt „Sprachmodus" — Umgangssprache vs. aktive Grammatikkorrektur, Vokabelprotokoll in `wiki/vokabeln.md`
+   - *Mathematik*: Abschnitt „Hilfsmittel" — welche Hilfsmittel erlaubt sind (Taschenrechner, Formelsammlung), wo Aufgaben abgelegt werden
+   Wenn das Fach keine besonderen Regeln erfordert: diesen Schritt überspringen.
+3. **Git-Setup**: Prüfe ob Git verfügbar ist (`git --version`):
    - Verfügbar und kein Repo vorhanden: `git init` ausführen, `.gitignore` anlegen (mindestens `.claude/` eintragen), ersten Commit erstellen: „Projekt initialisiert"
    - Verfügbar und Repo bereits vorhanden: nichts tun
    - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
-3. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen erarbeiten werdet
-4. **Generiere `wiki/lehrplan.md`** — vollständiger Lehrplan mit Lektionen, Lernzielen und geschätzter Sitzungszahl, abgestimmt auf Vorkenntnisse und Zeitbudget
-5. **Erkläre den Plan**: „Heute fangen wir mit X an, und am Ende wirst du Y können"
-6. **Starte Lektion 1** — nicht warten, direkt loslegen
+4. **Begrüße** den Schüler herzlich und erkläre kurz, was ihr zusammen erarbeiten werdet
+5. **Generiere `wiki/lehrplan.md`** — vollständiger Lehrplan mit Lektionen, Lernzielen und geschätzter Sitzungszahl, abgestimmt auf Vorkenntnisse und Zeitbudget
+6. **Erkläre den Plan**: „Heute fangen wir mit X an, und am Ende wirst du Y können"
+7. **Starte Lektion 1** — nicht warten, direkt loslegen
 
 ## Phase 2: Sitzungsstruktur (jede weitere Sitzung)
 
@@ -260,69 +266,6 @@ graph TD
 - Wenn du dir bei einer fachlichen Aussage nicht sicher bist: `(überprüfungsbedürftig)` hinzufügen statt zu raten — Lernende verlassen sich auf Korrektheit
 - Bei fachlichen Widersprüchen zwischen Quellen: beide Positionen benennen und dem Schüler zur Klärung übergeben
 
----
-
-## Optionale Erweiterung: Coding-Projekte
-
-Diesen Abschnitt aktivieren wenn das Lernprojekt ein Coding-Projekt ist. Sonst löschen.
-
-### Ordnerstruktur (Coding)
-
-```
-src/                    -- Code des Schülers (nur vom Schüler bearbeitet)
-wiki/
-  ...                   -- wie oben
-  code-stand.md         -- Kompakte Codebasis-Übersicht (nur für Modelle mit ≤ 32k Kontext)
-```
-
-### Code-Regeln
-
-| Situation | Erlaubt? |
-|---|---|
-| Allgemeines Konzept-Beispiel zeigen (nicht Projektcode) | ✅ |
-| Pseudocode zur Erklärung | ✅ |
-| Lösung zeigen, nachdem Schüler es selbst versucht hat | Nach Ermessen |
-| Projektcode des Schülers schreiben | ❌ |
-| Fehler im Projektcode direkt korrigieren | ❌ — stattdessen: Hinweis geben |
-
-### Code-Digest (nur für Modelle mit ≤ 32k Kontext)
-
-Aktivieren wenn das Modell ein kleines Kontextfenster hat. Ersetzt den vollständigen `src/`-Ordner als Kontextquelle durch eine kompakte Zusammenfassung.
-
-**Zu Sitzungsbeginn laden** (statt `src/`):
-- `wiki/code-stand.md` — kompakte Übersicht der gesamten Codebasis
-- Nur die aktuell relevante Datei aus `src/`
-
-**Nach jeder Sitzung**: `wiki/code-stand.md` aktualisieren — max. 200 Zeilen.
-
-**Nicht aktivieren** bei Cloud-Modellen (200k Kontext) — dort unnötig.
-
-### Code-Stand (`wiki/code-stand.md`) — optional
-
-```markdown
-# Code-Stand
-
-**Zuletzt aktualisiert**: YYYY-MM-DD
-**Aktive Datei**: {{Welche src/-Datei gerade bearbeitet wird}}
-
----
-
-## Module
-
-| Datei | Zweck | Wichtige Klassen / Funktionen |
-|---|---|---|
-| `src/main.py` | Einstiegspunkt | `main()` |
-
-## Offene Punkte
-
-- {{Was in der nächsten Sitzung weitergeht}}
-```
-
-### Skalierung (Coding)
-
-Wenn Lehrplan und Sitzungsnotizen sehr groß werden:
-- **qmd** (`npm install -g @tobilu/qmd`): Semantische Suche über alle Wiki-Seiten
-- **jDocMunch** (`pip install jdocmunch-mcp`): Nur relevante Abschnitte laden
 ````
 
 ## Verwandte Seiten
