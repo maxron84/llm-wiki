@@ -71,6 +71,7 @@ Menschen geben Wikis auf, weil der **Pflegeaufwand schneller wächst als der Nut
 - [modellunabhaengigkeit](modellunabhaengigkeit.md) — Strategischer Vorteil
 - [mece-prinzip](mece-prinzip.md) — Alternative Ordnerstruktur
 - [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
+- [llm-wiki-v2](llm-wiki-v2.md) — Community-Erweiterung des Grundmusters
 
 ---
 

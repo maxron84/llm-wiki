@@ -39,7 +39,7 @@ Wenn der Benutzer eine neue Quelle zu **raw/** oder **clippings/** hinzufügt un
    - **Vollständig** — Alles inkl. einzelner Entitäten, Personen, Werkzeuge
 4. Erstelle eine Zusammenfassungsseite in `wiki/quellen/`, benannt nach der Quelle
 5. Erstelle oder aktualisiere Konzeptseiten für jede wichtige Idee oder Entität
-6. Füge Wiki-Links `[[seitenname]]` hinzu, um verwandte Seiten zu verknüpfen
+6. Füge Standard-Markdown-Links `[seitenname](../kategorie/seitenname.md)` hinzu, um verwandte Seiten zu verknüpfen
 7. Gruppiere Wiki-Seiten thematisch in Unterordner
 8. Aktualisiere `wiki/index.md` mit neuen Seiten und einzeiligen Beschreibungen
 9. Hänge einen Eintrag an `wiki/log.md` an (Format siehe unten)
@@ -69,19 +69,27 @@ status: active | draft | archived
 
 Hauptinhalt mit klaren Überschriften und kurzen Absätzen.
 
-Verlinke verwandte Konzepte mithilfe von [[wiki-links]] im gesamten Text.
+Verlinke verwandte Konzepte mit Standard-Markdown `[seitenname](../kategorie/seitenname.md)` im Text.
 
 ## Verwandte Seiten
 
-- [[verwandtes-konzept-1]]
-- [[verwandtes-konzept-2]]
+- [verwandtes-konzept-1](../kategorie/verwandtes-konzept-1.md)
+- [verwandtes-konzept-2](../kategorie/verwandtes-konzept-2.md)
 
 ---
 
 [Wiki-Index](../index.md)
 ```
 
-Tags konsistent halten — erlaubte Werte: `konzept`, `quelle`, `person`, `werkzeug`, `vergleich`.
+Tags folgen einem Zweistufen-System:
+
+- **Erster Tag = Seitentyp** (muss mit `type:` übereinstimmen):
+  `konzept`, `quelle`, `person`, `werkzeug`, `vergleich`, `vorlage`, `anleitung`, `projekt`
+- **Weitere Tags = Themen** (beliebig viele, aus diesem Vokabular wählen oder erweitern):
+  `produktion`, `enterprise`, `skalierung`, `automatisierung`, `metrik`, `kosten`,
+  `community`, `lokale-modelle`, `hardware`, `setup`, `schema`
+
+Neue Themen-Tags anlegen, wenn kein bestehender Begriff passt — Konsistenz über den gesamten Vault wichtiger als Vollständigkeit dieser Liste.
 
 ## Log-Format
 

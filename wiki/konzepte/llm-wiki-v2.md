@@ -113,6 +113,7 @@ llm-wiki/
 
 ## Verwandte Seiten
 
+- [llm-wiki-muster](llm-wiki-muster.md) — Das Grundmuster, das v2 erweitert
 - [llm-wiki-v2-tamiltech](../quellen/llm-wiki-v2-tamiltech.md) — Quellartikel
 - [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Grundmuster
 - [yaml-frontmatter](yaml-frontmatter.md) — Metadatenstruktur

@@ -103,6 +103,7 @@ Die [technischen Skalierungsgrenzen](skalierungsgrenzen.md) des LLM-Wikis (index
 
 - [llm-wiki-enterprise-falconer](../quellen/llm-wiki-enterprise-falconer.md) — Quellartikel
 - [skalierungsgrenzen](skalierungsgrenzen.md) — Technische Grenzen
+- [kompilierungs-metapher](kompilierungs-metapher.md) — Warum Wartungsschleifen wichtiger sind als Retrieval
 - [fortgeschrittene-architektur](fortgeschrittene-architektur.md) — MCP-Integration
 - [lint-pruefung](lint-pruefung.md) — Grundlage der Drift-Erkennung
 - [llm-wiki-v2](llm-wiki-v2.md) — Schritt zwischen persönlich und Enterprise

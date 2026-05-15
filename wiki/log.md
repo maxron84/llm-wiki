@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-15 12:30] lint | Nachbesserungen aus Wiki-Prüfung
+
+- `CLAUDE.md`: Wiki-Link-Syntax von `[[…]]` auf Standard-Markdown `[text](pfad.md)` korrigiert (Seitenformat + Workflow-Schritt)
+- `CLAUDE.md`: Tag-Regel von starrer Liste auf Zweistufen-System erweitert (Typ-Tag + Themen-Tags)
+- `konzepte/llm-wiki-muster.md` ↔ `konzepte/llm-wiki-v2.md`: gegenseitige Querverlinkung hinzugefügt
+- `konzepte/enterprise-skalierung.md`: Link zu `kompilierungs-metapher.md` ergänzt
+
 ## [2026-05-15 12:00] lint | Wiki-Prüfung
 
 - `werkzeuge/phi-4.md`: fehlendes `**Quellen**`-Feld hinzugefügt
