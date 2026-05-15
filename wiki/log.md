@@ -650,6 +650,14 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 
 ---
 
+## [2026-05-15 10:15] query | Ralph Wiggum Plugin für Claude Code
+
+- Neue Werkzeugseite `wiki/werkzeuge/ralph-wiggum-plugin.md` erstellt
+- Thema: offizielles Plugin für autonome Iterationsschleifen; Installation, /ralph-loop-Befehle, Wiki-Ingest-Anwendungsfall, Kostentabelle
+- `wiki/index.md` aktualisiert
+
+---
+
 ## [2026-05-15 10:00] query | Wiki-Zusammenarbeit mit Git und Claude Code
 
 - Neue Anleitungsseite `wiki/anleitungen/zusammenarbeit-git.md` erstellt
