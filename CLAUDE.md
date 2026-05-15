@@ -43,6 +43,7 @@ Wenn der Benutzer eine neue Quelle zu **raw/** oder **clippings/** hinzufügt un
 7. Gruppiere Wiki-Seiten thematisch in Unterordner
 8. Aktualisiere `wiki/index.md` mit neuen Seiten und einzeiligen Beschreibungen
 9. Hänge einen Eintrag an `wiki/log.md` an (Format siehe unten)
+10. Committe die neuen Clippings explizit mit `git add raw/ clippings/` — neue Dateien dort sind untracked und werden sonst nicht erfasst
 
 Eine einzelne Quelle kann 10–15 Wiki-Seiten betreffen. Das ist normal.
 
