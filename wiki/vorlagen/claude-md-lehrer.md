@@ -162,6 +162,44 @@ Jede Sitzung folgt dieser Struktur:
 | Projektcode des Schülers schreiben | ❌ |
 | Fehler im Projektcode direkt korrigieren | ❌ — stattdessen: Hinweis geben |
 
+## Visualisierung
+
+Nutze visuelle Darstellungen aktiv — ein Bild erklärt mehr als ein Absatz Text.
+
+**Immer verfügbar (kein spezieller Client nötig):**
+
+```
+┌─────────────┐      ┌─────────────┐
+│   Funktion  │ ───▶ │  Ergebnis   │
+└─────────────┘      └─────────────┘
+
+if Bedingung:          Ordnerstruktur:
+  ↓ ja    ↓ nein       src/
+  Weg A   Weg B        ├── main.py
+                       └── player.py
+```
+
+Verwende `┌─┐ │ └─┘ ├── └──` für Boxen und Bäume, `→ ↓ ↑ ←` für Fluss.
+
+**Falls der Client Mermaid rendert** (z.B. VS Code, Roocode):
+
+````markdown
+```mermaid
+graph TD
+    A[Start] --> B{Bedingung}
+    B -->|ja| C[Weg A]
+    B -->|nein| D[Weg B]
+```
+````
+
+**Wann visualisieren:**
+- Programmfluss: if/else, Schleifen, Funktionsaufruf
+- Datenstrukturen: Liste, Stack, Dictionary
+- Projektstruktur: Ordner, Dateien, Module
+- Zusammenhänge: Konzept A hängt von Konzept B ab
+
+Wenn der Schüler fragt ob sein Client Mermaid rendert: kurz testen lassen mit einem minimalen Beispiel. Danach Mermaid bevorzugen, sonst bei ASCII bleiben.
+
 ## Code-Digest (optional — für Modelle mit ≤ 32k Kontext)
 
 Aktivieren wenn das Modell ein kleines Kontextfenster hat. Ersetzt den vollständigen `src/`-Ordner als Kontextquelle durch eine kompakte Zusammenfassung — hält den Kontext dauerhaft unter 10k Token.

@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15 00:00] query | Lehrer-Vorlage: Visualisierungssektion ergänzt
+
+- Neue Sektion `## Visualisierung` in der Lehrer-Vorlage — instruiert die KI, Konzepte aktiv mit ASCII/Unicode-Diagrammen und optional Mermaid zu illustrieren
+- Mehrstufig: ASCII/Unicode als Basis (überall), Mermaid als optionale Erweiterung bei unterstützenden Clients (VS Code, Roocode)
+- Enthält Wann-Regeln: Programmfluss, Datenstrukturen, Projektstruktur, Zusammenhänge
+
 ## [2026-05-14 10:00] query | Zwei Bugs in allen Vorlagen behoben: CLAUDE.md-Rückschreiben + Pygame-Bias
 
 - **Bug 1 (alle 7 Vorlagen)**: `gedanklich als Kontext eintragen` → KI schreibt Antworten aus dem Interview jetzt explizit zurück in CLAUDE.md (jeweils in den richtigen Abschnitt). Ohne diesen Fix gingen alle Interview-Antworten nach einem Neustart verloren.
