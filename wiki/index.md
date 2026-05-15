@@ -56,6 +56,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [jdocmunch](werkzeuge/jdocmunch.md) — MCP-Server für sektionsbasierte Abfrage; ~95% Token-Reduktion
 - [qmd](werkzeuge/qmd.md) — Lokale semantische Suchmaschine (BM25/Vektor/Hybrid) von Tobi Lütke
 - [wiki-ralph-sh](werkzeuge/wiki-ralph-sh.md) — Bash-Skript: Ralph-Schleife für autonomen LLM-Wiki-Ingest aus inbox/
+- [radeon-ai-pro-r9700](werkzeuge/radeon-ai-pro-r9700.md) — 32 GB GDDR6 KI-Karte: mehr VRAM als RTX 5080, aber Blower-Kühler macht sie für Desktop-Einsatz problematisch
 
 ## Personen
 

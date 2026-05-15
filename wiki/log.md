@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-15 00:01] query | Radeon AI Pro R9700 dokumentiert
+
+- Neue Seite `wiki/werkzeuge/radeon-ai-pro-r9700.md` — Specs, Vergleich mit RTX 5080, Eignung für LLM-Inferenz
+- Hauptwarnung: Blower-Kühler ungeeignet für Desktop direkt am Schreibtisch
+- Fazit: technisch interessant für 33B-Modelle, aber Axial-Variante abwarten
+
 ## [2026-05-15 00:00] query | Lehrer-Vorlage: Visualisierungssektion ergänzt
 
 - Neue Sektion `## Visualisierung` in der Lehrer-Vorlage — instruiert die KI, Konzepte aktiv mit ASCII/Unicode-Diagrammen und optional Mermaid zu illustrieren
