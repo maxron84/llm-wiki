@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-15 12:00] lint | Wiki-Prüfung
+
+- `werkzeuge/phi-4.md`: fehlendes `**Quellen**`-Feld hinzugefügt
+- `werkzeuge/phi-4.md`: Obsidian-Link `[[radeon-ai-pro-r9700]]` → Standard-Markdown `[Radeon AI PRO R9700](radeon-ai-pro-r9700.md)` korrigiert
+- Systembefund (nicht auto-behoben): Tags in vielen Dateien weichen von den erlaubten Werten (`konzept, quelle, person, werkzeug, vergleich`) ab — Klärung ausstehend
+- Systembefund: CLAUDE.md-Instruktion empfiehlt `[[wiki-links]]`, alle Seiten verwenden aber Standard-Markdown — minimale Inkonsistenz
+
 ## [2026-05-15] query | Phi-4 für lokalen Einsatz
 
 - Neue Werkzeugseite `werkzeuge/phi-4.md` angelegt: Phi-4-Familie (14B, mini, reasoning, mini-reasoning, multimodal), VRAM-Bedarf, Vergleich mit Qwen3 14B, Ollama-Einrichtung

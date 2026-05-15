@@ -8,6 +8,7 @@ status: active
 # Microsoft Phi-4
 
 **Zusammenfassung**: Kleine, leistungsstarke Modellfamilie von Microsoft — besonders stark bei Mathematik, Code und strukturiertem Denken. Trotz 14B Parameter oft auf Augenhöhe mit größeren Modellen.
+**Quellen**: Allgemeines Modellwissen; Microsoft Phi-4 Release Notes (Hugging Face / Microsoft Research)
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---
@@ -28,7 +29,7 @@ Alle Varianten sind über Ollama, LM Studio und Hugging Face verfügbar.
 
 ## Hardware-Anforderungen
 
-Phi-4 (14B) belegt im Q4-Format ca. 8–9 GB VRAM — etwas weniger als Qwen3 14B (~10 GB). Auf einer [[radeon-ai-pro-r9700]] mit 32 GB GDDR6 bleibt viel Puffer für einen großen KV-Cache.
+Phi-4 (14B) belegt im Q4-Format ca. 8–9 GB VRAM — etwas weniger als Qwen3 14B (~10 GB). Auf einer [Radeon AI PRO R9700](radeon-ai-pro-r9700.md) mit 32 GB GDDR6 bleibt viel Puffer für einen großen KV-Cache.
 
 | Modell | VRAM (Q4) | R9700 (32 GB) | RTX 5080 (16 GB) |
 |---|---|---|---|
