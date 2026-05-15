@@ -254,9 +254,23 @@ So kann das lokale Modell die Wiki-Seiten lesen und Inhalte vorschlagen — manu
 
 ---
 
+---
+
+## Lokale Modelle als Coding-Agent (Roo Code)
+
+Die oben beschriebenen Pfade (LM Studio, Ollama + Open WebUI, Continue) eignen sich für den **Gesprächsbetrieb** — Fragen beantworten, Erklärungen, Chat.
+
+Wer lokale Modelle als **autonomen Coding-Agenten** nutzen möchte (Dateien schreiben, Code refactoren, Aufgaben abarbeiten), sollte [Roo Code](../werkzeuge/roo-code.md) anschauen. Das bringt eigene Herausforderungen mit:
+
+- **Kontextfenster**: Ollamas Standard (2K Token) ist zu klein für Roo Codes System-Prompt — Modelfile mit `num_ctx` erforderlich → [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md)
+- **Tool-Nutzung**: Lokale Modelle müssen XML-Werkzeugaufrufe exakt formatieren — Fine-tuned Modelle helfen → [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md)
+- **VRAM-Planung**: Modell + Kontext teilen sich den VRAM → [quantisierung](../konzepte/quantisierung.md)
+
 ## Verwandte Seiten
 
 - [lokale-modelle-fortgeschritten](lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B: Ollama + Continue in VS Codium, für erfahrene Programmierer
+- [roo-code](../werkzeuge/roo-code.md) — Roo Code: autonomer Coding-Agent mit lokalen Modellen
+- [lm-studio](../werkzeuge/lm-studio.md) — LM Studio im Detail: Setup, Kontextfenster, Vergleich zu Ollama
 - [phi-4](../werkzeuge/phi-4.md) — Phi-4-Modellfamilie im Detail: Varianten, Vergleich, Einrichtung
 - [erste-schritte](erste-schritte.md) — Einrichtung mit Claude Code Desktop (Cloud-Pfad)
 - [claude-code](../werkzeuge/claude-code.md) — Claude Code im Detail

@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-15 (Ralph Wiggum Plugin-Seite hinzugefügt)
+**Zuletzt aktualisiert**: 2026-05-15 (Roo Code + Lokale Modelle: 10 Seiten aufgenommen)
 
 ---
 
@@ -36,6 +36,10 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [mece-prinzip](konzepte/mece-prinzip.md) — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
 - [taeglicher-workflow](konzepte/taeglicher-workflow.md) — Sitzungseröffnung und -abschluss als tägliches Protokoll
 - [modellunabhaengigkeit](konzepte/modellunabhaengigkeit.md) — Markdown = Unabhängigkeit vom KI-Anbieter
+- [ollama-kontextfenster](konzepte/ollama-kontextfenster.md) — Ollamas 2K-Standard-Kontextlimit: Ursache, Symptome und Modelfile-Lösung für Roo Code
+- [tool-use-lokale-modelle](konzepte/tool-use-lokale-modelle.md) — Warum lokale Modelle mit Roo Code-Werkzeugaufrufen kämpfen und welche Fine-tuned-Modelle helfen
+- [quantisierung](konzepte/quantisierung.md) — Q4/Q5/Q8: VRAM-Kalkulation, Präzisionsverlust und Empfehlungen für lokale Coding-Setups
+- [roocode-system-prompt-optimierung](konzepte/roocode-system-prompt-optimierung.md) — MCP deaktivieren, Foot Gun System Prompt: drei Stufen zur Kontext-Reduktion bei lokalen Setups
 - [yaml-frontmatter](konzepte/yaml-frontmatter.md) — Standardisierte Metadaten für Wiki-Seiten
 - [memex](konzepte/memex.md) — Vannevar Bushs Memex (1945) als geistiger Vorläufer
 - [community-projekte](konzepte/community-projekte.md) — Swarm Vault, BrainDB, Menmo Vault: drei herausragende Implementierungen
@@ -48,6 +52,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 
 ## Werkzeuge
 
+- [roo-code](werkzeuge/roo-code.md) — Open-Source VS-Code-Extension für autonomes Coding mit lokalen oder Cloud-Modellen
+- [lm-studio](werkzeuge/lm-studio.md) — Desktop-App zum Herunterladen und Ausführen lokaler GGUF-Modelle mit eingebautem Inferenz-Server
 - [obsidian](werkzeuge/obsidian.md) — Kostenlose Markdown-basierte Notizen-App, dient als Wiki-Viewer/IDE
 - [claude-code](werkzeuge/claude-code.md) — Anthropics KI-Agent, der das Wiki schreibt und pflegt
 - [obsidian-web-clipper](werkzeuge/obsidian-web-clipper.md) — Browser-Erweiterung zum schnellen Quellen-Sammeln
@@ -88,6 +94,10 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
 - [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
 - [ralph-claude-code-llm-wiki-metrik](quellen/ralph-claude-code-llm-wiki-metrik.md) — Ökonomische Analyse: Ralph + Karpathy, US$/WP-Metrik, drei Kostenszenarien
+- [roocode-lokale-doku](quellen/roocode-lokale-doku.md) — Offizielle Roo Code Docs: Einrichtung mit Ollama und LM Studio, Kontextfenster, Troubleshooting
+- [roocode-lokale-community-reddit](quellen/roocode-lokale-community-reddit.md) — Reddit r/RooCode: Praxiserfahrungen, Kontextfenster-Bug, Fine-tuned Modelle
+- [roocode-local-evaluation-olilanz](quellen/roocode-local-evaluation-olilanz.md) — olilanz GitHub: technische Evaluation auf 36 GB VRAM, Modelfile-Konfigurationen, System-Prompt-Optimierung
+- [roocode-lokale-mychen76](quellen/roocode-lokale-mychen76.md) — mychen76's quantisierte Tool-Use-Modelle (GLM-4-32B, OpenHands-32B) und Evaluations-Artikel
 
 ## Vorlagen
 

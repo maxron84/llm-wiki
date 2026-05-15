@@ -12,6 +12,22 @@ status: active
 
 ---
 
+## [2026-05-15 18:00] ingest | Roo Code + Lokale Modelle (10 Clippings)
+
+10 neue Clippings aufgenommen — alle zum Thema Roo Code mit lokalen Modellen via Ollama / LM Studio.
+
+**Neue Seiten (10):**
+- `werkzeuge/roo-code.md` — Roo Code: Modi, Tool-Nutzung, lokale Optimierungen
+- `werkzeuge/lm-studio.md` — LM Studio: GGUF-Modelle, Inferenz-Server, Vergleich zu Ollama
+- `konzepte/ollama-kontextfenster.md` — 2K-Standardlimit, Modelfile-Lösung, num_ctx/num_predict
+- `konzepte/tool-use-lokale-modelle.md` — XML-Werkzeugaufrufe, Fine-tuned Modelle, Ehrliche Einschätzung
+- `konzepte/quantisierung.md` — Q4/Q8, VRAM-Kalkulation, Parameter vs. Präzision
+- `konzepte/roocode-system-prompt-optimierung.md` — MCP, Foot Gun Prompt, drei Optimierungsstufen
+- `quellen/roocode-lokale-doku.md` — Offizielle Roo Code Docs (3 Clippings)
+- `quellen/roocode-lokale-community-reddit.md` — Reddit r/RooCode (2 Threads)
+- `quellen/roocode-local-evaluation-olilanz.md` — GitHub-Evaluation olilanz (1 Clipping)
+- `quellen/roocode-lokale-mychen76.md` — mychen76 Modelle + Artikel (4 Clippings)
+
 ## [2026-05-15 14:30] query | Lehrer-Vorlage: Domain-Erweiterung dynamisch
 
 - Optionaler Coding-Block aus der Vorlage entfernt
