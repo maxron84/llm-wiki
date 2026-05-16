@@ -12,6 +12,18 @@ status: active
 
 ---
 
+## [2026-05-16 20:00] query | Hardware-Vergleich Sonnet 4.6 vs. lokale Modelle
+
+Neue Konzeptseite: welche GPU-Tiers für vergleichbare Wiki-Qualität nötig sind. Vier Tiers (16 GB bis 192 GB), Aufgaben-Qualitätsmatrix, Empfehlungen.
+
+**Neue Seiten:**
+- `konzepte/hardware-vergleich-sonnet-vs-lokal.md`
+
+**Aktualisierte Seiten:**
+- `index.md`: Neue Seite eingetragen
+
+---
+
 ## [2026-05-16 19:00] query | RTX 5090 in Hardware-Vergleiche aufgenommen
 
 32 GB GDDR7, ~1.792 GB/s Bandbreite, CUDA — gleiche VRAM-Kapazität wie R9700 aber ~2,8× höhere Bandbreite. Marktpreise Mai 2026 massiv überhöht. In drei Seiten ergänzt.

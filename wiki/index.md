@@ -39,6 +39,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [ollama-kontextfenster](konzepte/ollama-kontextfenster.md) — Ollamas 2K-Standard-Kontextlimit: Ursache, Symptome und Modelfile-Lösung für Roo Code
 - [tool-use-lokale-modelle](konzepte/tool-use-lokale-modelle.md) — Warum lokale Modelle mit Roo Code-Werkzeugaufrufen kämpfen und welche Fine-tuned-Modelle helfen
 - [quantisierung](konzepte/quantisierung.md) — Q4/Q5/Q8: VRAM-Kalkulation, Präzisionsverlust und Empfehlungen für lokale Coding-Setups
+- [hardware-vergleich-sonnet-vs-lokal](konzepte/hardware-vergleich-sonnet-vs-lokal.md) — Welche Hardware nötig ist, um lokal an Sonnet 4.6-Qualität für Wiki-Aufgaben heranzukommen
 - [roocode-system-prompt-optimierung](konzepte/roocode-system-prompt-optimierung.md) — MCP deaktivieren, Foot Gun System Prompt: drei Stufen zur Kontext-Reduktion bei lokalen Setups
 - [yaml-frontmatter](konzepte/yaml-frontmatter.md) — Standardisierte Metadaten für Wiki-Seiten
 - [memex](konzepte/memex.md) — Vannevar Bushs Memex (1945) als geistiger Vorläufer
