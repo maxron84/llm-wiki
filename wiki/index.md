@@ -110,6 +110,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
 - [claude-md-laienlehrer](vorlagen/claude-md-laienlehrer.md) — CLAUDE.md-Vorlage: KI als Unterrichtscoach für Eltern und Laien — zweistufige Erklärungen, Stundenvorbereitung, Korrektur
 - [claude-md-team](vorlagen/claude-md-team.md) — CLAUDE.md-Vorlage: Team-Wiki für 2–8 Personen mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone
+- [roocode-llm-wiki-lokal](vorlagen/roocode-llm-wiki-lokal.md) — System-Prompt-Vorlage: LLM-Wiki mit Roo Code + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt
 
 ## Anleitungen
 

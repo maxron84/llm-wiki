@@ -23,6 +23,18 @@ status: active
 
 ---
 
+## [2026-05-16 19:30] ingest | Vorlage: LLM-Wiki mit Roo Code + qwen3:14b-40k
+
+System-Prompt-Vorlage für lokalen LLM-Wiki-Betrieb erstellt. Auf 40K-Kontextlimit abgestimmt: max. 1 Quelle pro Session, max. 3–5 neue Seiten, kein Lint. Enthält Provider-Setup, Token-Budget-Tabelle und kompakte Workflow-Anleitung (~800–1.000 Tokens).
+
+**Neue Seiten:**
+- `vorlagen/roocode-llm-wiki-lokal.md`: Vorlage mit Einrichtungsanleitung und Template-Block
+
+**Aktualisierte Seiten:**
+- `wiki/index.md`: Neue Vorlage eingetragen
+
+---
+
 ## [2026-05-16 18:30] query | Hypothetisches R9700-Setup: 32B + Roo Code analysiert
 
 32B Q4_K_M + 40K passt knapp in 32 GB VRAM (~29 GB), 32K ist komfortabler. Qualitäts-Kompromiss (Q4) und ROCm-Reife (RDNA 4, Stand Mai 2026) als offene Fragen. Kein klarer Vorteil gegenüber RTX 5080 + qwen3:14b-40k.
