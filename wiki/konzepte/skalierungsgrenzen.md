@@ -77,6 +77,23 @@ Das Skalierungsproblem hat nicht nur eine technische, sondern auch eine ökonomi
 
 **Context-Window-Klippe bei ~200.000 Wörtern**: Karpathys Muster setzt voraus, dass das LLM den gesamten Index in einem Rutsch lesen kann. Jenseits von ~200K Wörtern passt das nicht mehr — hybride Retrieval-Strategien (BM25 + Vektor + Graph) werden nötig, was die Stückkosten nicht-linear erhöht. Das ist eine härtere Grenze als die graduellen Token-Schwellenwerte. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
 
+## Session-Limits bei lokalen Modellen
+
+Die oben beschriebenen Schwellenwerte gelten für Claude mit großem Kontextfenster (200k+). Lokale 14B-Modelle treffen eine andere, härtere Grenze: nicht die Wiki-Größe, sondern das **Session-Fenster pro Ingest**.
+
+Ein typischer Ingest (System-Prompt + Clipping + Gesprächsverlauf) braucht 18–42k Tokens. Bei `qwen3:14b-40k` (40k Kontextfenster) beginnt die Antwortzeit schon ab ~20k Tokens quadratisch zu steigen — die praktische Nutzungsgrenze liegt weit vor dem nominellen Limit.
+
+| Aufgabe | Lokales 14B-Modell |
+|---|---|
+| Einfache Query auf bestehender Seite | ✅ |
+| Ingest kleines Clipping | ⚠️ knapp |
+| Ingest großes Clipping | ❌ |
+| Lint-Lauf | ❌ |
+
+Das ist keine Skalierungsgrenze des Wikis, sondern eine Grenze der *Session-Kapazität*. Auch ein kleines Wiki (30 Seiten) überfordert lokale Modelle beim Ingest. → [lokale-modelle](../anleitungen/lokale-modelle.md), [ollama-kontextfenster](ollama-kontextfenster.md)
+
+---
+
 ## Das mentale Modell (J. Gravelle)
 
 > "Your wiki is not a document. It's a database. Stop loading it. Start querying it."

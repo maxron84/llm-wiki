@@ -51,6 +51,12 @@ Diese Auswahl gibt dem Menschen die Kontrolle über den Detailgrad und verhinder
 
 Karpathy bevorzugt es, Quellen **einzeln** aufzunehmen und dabei involviert zu bleiben — er liest die Zusammenfassungen, prüft die Aktualisierungen und leitet die KI an, was betont werden soll. Man kann aber auch mehrere Quellen im Batch mit weniger Aufsicht aufnehmen. Den eigenen Workflow zu finden und im Schema zu dokumentieren, ist Teil des Prozesses. (Quelle: clippings/llm-wiki.md)
 
+### Lokale Modelle und Ingest
+
+Der Ingest ist die Token-intensivste Operation im Wiki. System-Prompt, CLAUDE.md, das Clipping selbst und die gelesenen Verweisseiten summieren sich auf 18–42k Tokens — noch bevor die neuen Seiten geschrieben sind. Bei lokalen 14B-Modellen mit 40k Kontextfenster (z.B. `qwen3:14b-40k`) liegt die praktische Grenze bereits bei ~20–25k Tokens, ab der die Latenz quadratisch steigt.
+
+**Fazit**: Ingest mit lokalen Modellen ist nur für kleine Clippings möglich und selbst dort knapp. Für den regulären Ingest-Betrieb wird Claude via API empfohlen. → [lokale-modelle](../anleitungen/lokale-modelle.md), [ollama-kontextfenster](ollama-kontextfenster.md)
+
 ## Routing-Schritt (Kostenkontrolle bei großen Wikis)
 
 Bei größeren Wikis (viele Seiten) würde ein naiver Ingest alle Seiten berühren — teuer. Ein effizienter Ingest-Workflow trennt daher **Routing** von **Synthese**:

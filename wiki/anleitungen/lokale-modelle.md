@@ -267,6 +267,35 @@ Wer lokale Modelle als **autonomen Coding-Agenten** nutzen möchte (Dateien schr
 - **Modellwahl**: Natives Function Calling erforderlich (Roo Code 3.54.0+) — `qwen3:14b-40k` ist bestätigt funktionsfähig → [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md)
 - **VRAM-Planung**: Modell + Kontext teilen sich den VRAM → [quantisierung](../konzepte/quantisierung.md)
 
+### LLM-Wiki-Ingest mit lokalen Modellen: nicht empfohlen
+
+Der [Ingest-Workflow](../konzepte/ingest-workflow.md) ist die Token-intensivste Operation im LLM-Wiki. Eine typische Session verbraucht:
+
+| Komponente | Tokens (ca.) |
+|---|---|
+| Roo Code System-Prompt | 8–13k |
+| CLAUDE.md (global + projekt) | 2–3k |
+| Clipping lesen | 3–15k |
+| Bestehende Wiki-Seiten für Verlinkung | 2–5k |
+| Gesprächsverlauf nach 3–4 Runden | 3–6k |
+| **Summe** | **18–42k** |
+
+Beim `qwen3:14b-40k` (40k Kontextfenster) beginnt die Antwortzeit bereits ab ~20k Tokens quadratisch zu steigen — gemessen: 7,5s bei 14k Tokens, 23,9s bei 20k Tokens. Die praktische Nutzungsgrenze liegt damit weit vor dem nominellen Limit. (→ [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md))
+
+**Empfehlung:**
+
+| Aufgabe | Lokales Modell | Claude API |
+|---|---|---|
+| Einzelne Wiki-Seite lesen und kommentieren | ✅ | ✅ |
+| Schnelle Frage zu bekanntem Inhalt | ✅ | ✅ |
+| Kleine Änderung an einer Seite | ✅ | ✅ |
+| Ingest eines Clippings (auch klein) | ⚠️ knapp | ✅ |
+| Ingest eines großen Clippings | ❌ | ✅ |
+| Lint-Lauf (viele Seiten gleichzeitig) | ❌ | ✅ |
+| Mehrere Quellen in einer Session | ❌ | ✅ |
+
+Für den vollständigen Wiki-Betrieb (Ingest, Lint, Multi-Quellen-Sessions) bleibt Claude via API die richtige Wahl. Lokale Modelle sind sinnvoll als schneller Lookup-Assistent für einfache Fragen auf Basis bekannter Wiki-Inhalte.
+
 ## Verwandte Seiten
 
 - [lokale-modelle-fortgeschritten](lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B: Ollama + Continue in VS Codium, für erfahrene Programmierer

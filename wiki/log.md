@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-16 17:30] query | Lokale Modelle für LLM-Wiki-Ingest: Session-Limits dokumentiert
+
+Praktische Grenze für lokale 14B-Modelle beim LLM-Wiki-Ingest: Session-Kontext (System-Prompt + Clipping + Gesprächsverlauf) summiert sich auf 18–42k Tokens — zu viel für qwen3:14b-40k im regulären Betrieb. Lokale Modelle nur für einfache Queries geeignet, nicht für Ingest oder Lint.
+
+**Aktualisierte Seiten:**
+- `anleitungen/lokale-modelle.md`: Neuer Abschnitt „LLM-Wiki-Ingest mit lokalen Modellen" mit Token-Aufschlüsselung und Empfehlungstabelle
+- `konzepte/ingest-workflow.md`: Hinweis auf lokale Modell-Limits im Abschnitt „Arbeitsweise"
+- `konzepte/skalierungsgrenzen.md`: Neuer Abschnitt „Session-Limits bei lokalen Modellen"
+
+---
+
 ## [2026-05-16 17:00] query | qwen3:14b-40k: Latenzdegradation bei wachsendem Kontext
 
 Beobachtung aus Ollama-Debug-Logs: Antwortzeit steigt quadratisch mit wachsendem Gesprächsverlauf, lange vor dem 40k-Token-Limit. Bei ~19,6k Tokens dauerte Request 3 bereits 23,9s (vs. 7,5s bei ~13,9k Tokens). Praktische Nutzungsgrenze: ~20–25k Tokens.
