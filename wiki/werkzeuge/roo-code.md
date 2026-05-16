@@ -62,14 +62,15 @@ RooCode: Embed Ergebnis in Kontext
 
 ## Tool-Nutzung
 
-Roo Code definiert im System-Prompt eine Reihe von XML-basierten Werkzeugen, die das Modell aufrufen kann:
+Roo Code nutzt **natives Function Calling** über die API — das Modell gibt Tool-Calls als strukturierte Daten zurück, nicht als Text. Das Modell sieht eine Liste von Werkzeugen und ruft sie über den API-Mechanismus auf.
 
+Verfügbare Werkzeuge:
 - `read_file` — Dateiinhalt lesen
 - `write_file` — Datei schreiben (gesamter Inhalt)
 - `apply_diff` — Datei partiell bearbeiten (effizienter bei großen Dateien)
 - Weitere: Ordner erstellen, Terminal-Befehle ausführen, Browser-Screenshots, u.a.
 
-Das Modell muss diese XML-Struktur korrekt ausgeben — kleinere Modelle scheitern oft daran. Symptom: das Modell gibt Antworten nur als Text im Chat aus, anstatt Werkzeuge zu nutzen.
+**Ab Roo Code 3.54.0**: Kein XML-Fallback mehr. Das Modell muss echte `tool_calls` zurückliefern — Modelle, die stattdessen JSON als Text ausgeben, werden mit „Model Response Incomplete" abgewiesen.
 
 → Mehr dazu: [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md)
 
@@ -77,11 +78,40 @@ Das Modell muss diese XML-Struktur korrekt ausgeben — kleinere Modelle scheite
 
 ## Unterstützte lokale Anbieter
 
-| Anbieter | Schnittstelle | Standard-Port | Roo-Code-Provider |
+| Anbieter | Schnittstelle | Endpoint | Roo-Code-Provider |
 |---|---|---|---|
-| [Ollama](ollama-kontextfenster.md) | Native API | 11434 | `ollama` |
-| LM Studio | OpenAI-kompatibel | 1234 | `lmstudio` |
+| Ollama (empfohlen) | OpenAI-kompatibel | `http://host:11434/v1` | `openai-compatible` |
+| LM Studio | OpenAI-kompatibel | `http://localhost:1234/v1` | `lmstudio` |
 | Open WebUI + Ollama | OpenAI-kompatibel | variabel | `openai-compatible` |
+
+> **Wichtig für Ollama ab Roo Code 3.54.0**: Den nativen `ollama`-Provider **nicht** verwenden — er liefert ein vereinfachtes JSON-Format, das Roo Code nicht parsen kann. Stattdessen den `/v1`-Endpoint mit Provider `openai-compatible` nutzen. Das liefert das korrekte OpenAI-`tool_calls`-Format.
+
+---
+
+## Bestätigte Konfiguration: Ollama + RTX 5080 (2026-05-16)
+
+Getestete und funktionierende Konfiguration mit einer Zwei-Maschinen-Setup (Client: VS Codium + Roo Code 3.54.0, Server: Ollama in Docker):
+
+| Einstellung | Wert |
+|---|---|
+| Provider | OpenAI Compatible |
+| Base URL | `http://<servername>:11434/v1` |
+| Modell | `qwen3:14b-40k` |
+| Context Window (in Roo Code) | 32768 |
+| GPU-Auslastung | ~93% (RTX 5080, 16 GB VRAM) |
+| CPU-Offload | ~7% |
+| Geschwindigkeit | ~2 Min. für vollständige Projektinspektion |
+
+Das `qwen3:14b-40k`-Modell hat den 40K-Kontext bereits im Ollama-Modelfile eingebaut — kein separates Custom-Modelfile nötig. Roo Code nutzte erfolgreich `list_files`, `read_file` und `update_todo_list` ohne Fehler.
+
+**Modelle, die nicht funktioniert haben (Roo Code 3.54.0):**
+
+| Modell | Problem |
+|---|---|
+| `qwen2.5-coder:14b` | Gibt JSON als Text aus statt `tool_calls` |
+| `deepseek-r1` (14B) | `<think>`-Tags wrappen die Ausgabe; Tool-Calls als Prosa |
+| `devstral:24b` | OpenHands-Format, inkompatibel mit Roo Code XML |
+| Jedes Modell via `ollama`-Provider | Vereinfachtes API-Format, kein `tool_calls` |
 
 ---
 

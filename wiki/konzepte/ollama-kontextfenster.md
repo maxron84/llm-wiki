@@ -122,13 +122,30 @@ Ollama lädt das Modell bei der ersten Anfrage von Roo Code — inklusive eines 
 
 ---
 
+## Modelle mit bereits eingebautem Kontext
+
+Manche Modelle auf Ollama haben den großen Kontext bereits im Modelfile eingebaut — kein eigenes Custom-Modelfile nötig. Erkennbar am Namen:
+
+| Modell | Kontext (num_ctx) | Anmerkung |
+|---|---|---|
+| `qwen3:14b-40k` | 40.960 | Bestätigt funktionsfähig mit Roo Code 3.54.0 |
+| `qwen3:30b-a3b-40k` | 40.960 | Größeres Modell, gleicher Trick |
+
+Beim Verwenden solcher Modelle prüfen, ob der große Kontext wirklich aktiv ist:
+```bash
+ollama ps  # CONTEXT-Spalte zeigt den tatsächlichen Wert
+```
+
+---
+
 ## Checkliste für lokales Ollama + Roo Code
 
-- [ ] `num_ctx` im Modelfile gesetzt (mindestens 16.384, besser 32.768+)
+- [ ] `num_ctx` im Modelfile gesetzt (mindestens 16.384, besser 32.768+) — oder Modell mit eingebautem Kontext nutzen
 - [ ] `num_predict` gesetzt (≥ 8.000 für Coding)
 - [ ] Modell vor Roo-Code-Nutzung manuell gestartet (`ollama run`)
-- [ ] `ollama ps` zeigt Modell vollständig im GPU-Speicher
+- [ ] `ollama ps` zeigt Modell vollständig im GPU-Speicher, CONTEXT-Spalte stimmt
 - [ ] n_ctx_train aus den Logs geprüft (nicht mehr als 2× überschreiten)
+- [ ] In Roo Code: Provider `openai-compatible` + `/v1`-Endpoint (nicht nativer `ollama`-Provider)
 
 ---
 

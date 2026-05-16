@@ -12,6 +12,22 @@ status: active
 
 ---
 
+## [2026-05-16 16:00] query | Roo Code 3.54.0 + Ollama: bestätigte Konfiguration
+
+Roo Code 3.54.0 mit lokalem Modell via Ollama auf Zwei-Maschinen-Setup in Betrieb genommen (RTX 5080, 16 GB VRAM).
+
+**Bestätigte Konfiguration:**
+- Modell: `qwen3:14b-40k` (40K Kontext eingebaut)
+- Provider in Roo Code: OpenAI Compatible
+- Endpoint: `http://<server>:11434/v1` (nicht `/api/chat`)
+- GPU-Auslastung: 93%, CPU-Offload: 7%
+
+**Warum der native `ollama`-Provider nicht funktioniert:** Ollamas `/api/chat`-Endpoint gibt vereinfachtes JSON zurück (`{"name": ..., "arguments": ...}`), das Roo Code 3.54.0 nicht parsen kann. Der `/v1`-Endpoint liefert das korrekte OpenAI-`tool_calls`-Format.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/roo-code.md`: Tool-Calling-Abschnitt von XML auf natives Function Calling korrigiert; Anbieter-Tabelle überarbeitet; bestätigte Konfiguration + Negativliste ergänzt
+- `konzepte/ollama-kontextfenster.md`: Checkliste um Provider-Hinweis erweitert; Tabelle mit Modellen mit eingebautem Kontext (qwen3:14b-40k) ergänzt
+
 ## [2026-05-15 18:00] ingest | Roo Code + Lokale Modelle (10 Clippings)
 
 10 neue Clippings aufgenommen — alle zum Thema Roo Code mit lokalen Modellen via Ollama / LM Studio.
