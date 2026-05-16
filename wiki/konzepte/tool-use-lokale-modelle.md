@@ -7,15 +7,36 @@ status: active
 
 # Tool-Nutzung mit lokalen Modellen
 
-**Zusammenfassung**: Roo Code und Cline verlassen sich auf XML-basierte Werkzeugaufrufe, die das Modell präzise ausgeben muss. Kleinere lokale Modelle scheitern daran häufig — entweder wegen zu kleinem Kontextfenster oder mangels Training auf dieses spezifische Format. Spezielle Fine-Tuned-Modelle lösen dieses Problem.
+**Zusammenfassung**: Lokale Modelle scheitern bei Roo Code häufig daran, Werkzeugaufrufe korrekt auszuführen — entweder wegen zu kleinem Kontextfenster oder weil das Modell das erwartete Format nicht zuverlässig produziert. Ab Roo Code 3.54.0 ist natives Function Calling Pflicht; der XML-Fallback wurde entfernt.
 **Quellen**: `Local model for coding.md`, `Roo Code not using tools properly in offline setup.md`, `olilanzRooCode-Local-Evaluation.md`, `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Vibe Coding 'Locally' with ClineRooCode and Ollama.md`
-**Zuletzt aktualisiert**: 2026-05-15
+**Zuletzt aktualisiert**: 2026-05-16
 
 ---
 
 ## Wie Roo Code Werkzeuge nutzt
 
-Roo Code definiert im System-Prompt eine Reihe von XML-Werkzeugen. Das Modell muss, wenn es eine Aktion ausführen möchte, genau dieses XML-Format ausgeben:
+### Ab Version 3.54.0: Natives Function Calling (aktuell)
+
+Roo Code nutzt den nativen `tool_calls`-Mechanismus der OpenAI-API. Das Modell gibt keine XML-Tags im Text aus — stattdessen liefert es strukturierte Daten über den API-Response:
+
+```json
+"tool_calls": [{
+  "id": "call_abc123",
+  "type": "function",
+  "function": {
+    "name": "write_file",
+    "arguments": "{\"path\": \"src/main.py\", \"content\": \"print('Hello')\"}"
+  }
+}]
+```
+
+Roo Code parst diese `tool_calls`-Struktur, führt die Aktion aus, und schickt das Ergebnis im nächsten Request zurück.
+
+**Voraussetzung für Ollama**: Den `/v1`-Endpoint (OpenAI-kompatibel) nutzen, nicht den nativen `/api/chat`. Nur `/v1` liefert das `tool_calls`-Format — der native Endpoint gibt vereinfachtes JSON zurück, das Roo Code nicht parsen kann.
+
+### Vor Version 3.54.0: XML-Fallback (veraltet)
+
+In älteren Versionen konnte Roo Code auch XML-Tags im Modellantwort parsen:
 
 ```xml
 <write_file>
@@ -24,13 +45,13 @@ Roo Code definiert im System-Prompt eine Reihe von XML-Werkzeugen. Das Modell mu
 </write_file>
 ```
 
-Roo Code parst diese Antwort, führt die Aktion aus (Datei schreiben), und schickt das Ergebnis im nächsten Prompt zurück. Gibt das Modell das XML nicht korrekt aus — oder antwortet es stattdessen mit normalem Text — erscheint:
+Dieser Fallback wurde in 3.54.0 entfernt. Fine-tuned Modelle, die speziell auf dieses XML-Format trainiert wurden (z.B. `tom_himanen/deepseek-r1-roo-cline-tools`), funktionieren daher mit aktuellen Roo-Code-Versionen möglicherweise nicht mehr zuverlässig.
+
+Gibt das Modell kein korrektes `tool_calls` zurück — oder antwortet es mit normalem Text —, erscheint:
 
 ```
-[ERROR] You did not use a tool in your previous response! Please retry with a tool use.
+Model Response Incomplete: The model failed to use any tools in its response.
 ```
-
-Roo Code schickt dann eine Korrektur-Aufforderung, was den Kontext weiter aufbläht und oft in einem Endloskreis endet.
 
 ---
 
@@ -54,22 +75,43 @@ Auch wenn Tool-Use prinzipiell funktioniert, kann das Modell bei komplexeren Auf
 
 ---
 
-## Lösung: Fine-tuned Tool-Use-Modelle
+## Modelle die funktionieren (Roo Code 3.54.0+)
 
-Einige Modelle wurden speziell auf Cline/Roo Code-Werkzeugnutzung feinabgestimmt. Sie verstehen das XML-Format zuverlässig:
+### Standard-Modelle mit nativem Function Calling
 
-| Modell | Ollama-Name | Größe | Besonderheit |
+Modelle mit eingebautem Function-Calling-Support in Ollama funktionieren ohne spezielle Fine-Tuning:
+
+| Modell | Ollama-Name | VRAM | Bestätigt |
 |---|---|---|---|
-| DeepSeek R1 (Roo/Cline) | `tom_himanen/deepseek-r1-roo-cline-tools:14b` | 14B | Reasoning-Modell, gut für komplexe Aufgaben |
-| DeepSeek R1 (Roo/Cline) | `tom_himanen/deepseek-r1-roo-cline-tools:70b` | 70B | Benötigt viel VRAM; Reasoning füllt Kontext |
-| Qwen2.5-Coder-Tools | `hhao/qwen2.5-coder-tools:32b` | 32B | Bestes lokales Allround-Modell für Roo Code |
-| Qwen2.5-Coder-Cline | `maryasov/qwen2.5-coder-cline:32b` | 32B | Alternative, etwas langsamer |
-| GLM-4-32B (Cline/RooCode) | `mychen76/GLM-4-32B-cline-roocode:Q4` | 32B, Q4 = 20 GB | THUDM-Basis, optimiert für komplexes Problemlösen |
-| OpenHands-32B (Cline/RooCode) | `mychen76/openhands_32b-cline-roocode:Q4` | 32B, Q4 = 20 GB | OpenHands-lm-Basis |
+| Qwen3 14B (40K Kontext) | `qwen3:14b-40k` | ~16 GB | ✅ Bestätigt 2026-05-16 |
+| Qwen3 8B | `qwen3:8b` | ~6 GB | Erwartet ja (natives Function Calling) |
+| Llama 3.1 8B | `llama3.1:8b` | ~5 GB | Natives Function Calling bekannt |
+
+**Wichtig**: Auch bei diesen Modellen muss `num_ctx` groß genug sein (≥ 16K), damit der System-Prompt vollständig gelesen wird. `qwen3:14b-40k` hat den Kontext bereits eingebaut.
+
+### Fine-tuned Modelle (für ältere Roo Code-Versionen / XML-Format)
+
+Diese Modelle wurden speziell auf das XML-Format von Cline/Roo Code (vor 3.54.0) trainiert. **Kompatibilität mit Roo Code 3.54.0+ unklar** — sie könnten nach wie vor funktionieren, wenn Ollama ihre Ausgabe korrekt in `tool_calls` übersetzt:
+
+| Modell | Ollama-Name | Größe | Anmerkung |
+|---|---|---|---|
+| Qwen2.5-Coder-Tools | `hhao/qwen2.5-coder-tools:32b` | 32B | Breiter Community-Support |
+| Qwen2.5-Coder-Cline | `maryasov/qwen2.5-coder-cline:32b` | 32B | Alternative |
+| GLM-4-32B (Cline/RooCode) | `mychen76/GLM-4-32B-cline-roocode:Q4` | 32B, Q4 = 20 GB | 32K Kontext |
+| OpenHands-32B (Cline/RooCode) | `mychen76/openhands_32b-cline-roocode:Q4` | 32B, Q4 = 20 GB | 32K Kontext |
 
 (Quellen: `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Local model for coding.md`)
 
-> **Achtung bei Reasoning-Modellen** (z.B. DeepSeek R1): Die internen Denkprozesse (`<thinking>`-Blöcke) füllen den Kontext schnell auf und können bei kleinem Kontextfenster die Ausgabe-Qualität verschlechtern.
+### Modelle die nicht funktionieren
+
+| Modell | Problem |
+|---|---|
+| `deepseek-r1` (alle Varianten) | `<think>`-Tags wrappen die Ausgabe; Roo Code kann Tool-Calls nicht extrahieren |
+| `devstral` | Für OpenHands-Format trainiert, inkompatibel mit Roo Code |
+| `qwen2.5-coder:14b` (Standard) | Gibt JSON als Text aus statt echte `tool_calls` |
+| Jedes Modell via `ollama`-Provider | Falsches API-Format (kein `tool_calls`) |
+
+> **Achtung bei Reasoning-Modellen** (z.B. DeepSeek R1): Die internen Denkprozesse (`<think>`-Blöcke) füllen den Kontext schnell auf — und Roo Code 3.54.0 kann keine Tool-Calls aus `<think>`-gewrappten Antworten extrahieren.
 
 ---
 
@@ -101,6 +143,7 @@ Mit zunehmendem Kontext (mehr Iterationen) steigt die Wahrscheinlichkeit, dass T
 - [quantisierung](quantisierung.md) — VRAM-Kalkulation und Quantisierungsstufen
 - [roo-code](../werkzeuge/roo-code.md) — Roo Code: interne Funktionsweise und Modi
 - [roocode-system-prompt-optimierung](roocode-system-prompt-optimierung.md) — System-Prompt verkleinern
+- [roocode-lokale-mychen76](../quellen/roocode-lokale-mychen76.md) — mychen76's fine-tuned Modelle im Detail
 
 ---
 

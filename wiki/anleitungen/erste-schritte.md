@@ -265,6 +265,8 @@ git commit -m "Erstes Commit"
 
 **Für Cloud-Backup** (optional): Kostenloses Repository auf [github.com](https://github.com) oder [gitlab.com](https://gitlab.com) anlegen und mit dem lokalen Ordner verbinden.
 
+Wenn mehrere Personen gemeinsam am Wiki arbeiten → [zusammenarbeit-git](zusammenarbeit-git.md)
+
 ---
 
 ## Verwandte Seiten

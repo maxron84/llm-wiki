@@ -126,6 +126,7 @@ Für gelegentliche Einzelquellen ist manuelles Anstoßen ausreichend.
 ## Verwandte Seiten
 
 - [ralph-schleife](../konzepte/ralph-schleife.md) — Das zugrunde liegende Muster
+- [ralph-wiggum-plugin](ralph-wiggum-plugin.md) — Plugin-Alternative: kein externes Skript nötig
 - [usd-pro-wiki-seite](../konzepte/usd-pro-wiki-seite.md) — Kostenmetrik aus den Logs
 - [ingest-workflow](../konzepte/ingest-workflow.md) — Was das Skript automatisiert
 - [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md) — Einbettung in größere Systeme

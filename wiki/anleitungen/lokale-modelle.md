@@ -262,8 +262,9 @@ Die oben beschriebenen Pfade (LM Studio, Ollama + Open WebUI, Continue) eignen s
 
 Wer lokale Modelle als **autonomen Coding-Agenten** nutzen möchte (Dateien schreiben, Code refactoren, Aufgaben abarbeiten), sollte [Roo Code](../werkzeuge/roo-code.md) anschauen. Das bringt eigene Herausforderungen mit:
 
-- **Kontextfenster**: Ollamas Standard (2K Token) ist zu klein für Roo Codes System-Prompt — Modelfile mit `num_ctx` erforderlich → [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md)
-- **Tool-Nutzung**: Lokale Modelle müssen XML-Werkzeugaufrufe exakt formatieren — Fine-tuned Modelle helfen → [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md)
+- **Kontextfenster**: Ollamas Standard (2K Token) ist zu klein für Roo Codes System-Prompt — Modelfile mit `num_ctx` oder ein Modell mit eingebautem Kontext (z.B. `qwen3:14b-40k`) → [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md)
+- **Provider-Einstellung**: In Roo Code den Provider **OpenAI Compatible** mit Endpoint `http://<server>:11434/v1` wählen — nicht den nativen `ollama`-Provider, der ein inkompatibles Format zurückgibt → [roo-code](../werkzeuge/roo-code.md)
+- **Modellwahl**: Natives Function Calling erforderlich (Roo Code 3.54.0+) — `qwen3:14b-40k` ist bestätigt funktionsfähig → [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md)
 - **VRAM-Planung**: Modell + Kontext teilen sich den VRAM → [quantisierung](../konzepte/quantisierung.md)
 
 ## Verwandte Seiten

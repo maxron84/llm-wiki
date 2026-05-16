@@ -17,7 +17,7 @@ status: active
 
 Roo Code (früher Roo Cline) ist ein Fork von [Cline](https://github.com/cline/cline) — einem VS-Code-Plugin, das einen LLM als autonomen Coding-Agenten nutzt. Im Gegensatz zu Coding-Assistenten wie GitHub Copilot, die primär Autocomplete anbieten, ist Roo Code ein **Auto-Coder**: Es formuliert eigenständig einen Plan, liest Dateien, führt Code aus und schreibt Änderungen — bis die gestellte Aufgabe erledigt ist.
 
-Roo Code ist Open Source und kann mit lokalen Modellen über [Ollama](ollama.md) oder LM Studio betrieben werden, aber auch mit Cloud-Modellen (Claude, GPT-4o, Gemini) über API.
+Roo Code ist Open Source und kann mit lokalen Modellen über Ollama oder LM Studio betrieben werden, aber auch mit Cloud-Modellen (Claude, GPT-4o, Gemini) über API.
 
 ---
 
