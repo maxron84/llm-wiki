@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-16 18:00] query | 32B-Modelle mit 40K Kontext auf RTX 5080: nicht realisierbar
+
+KV-Cache für 32B bei 40K Kontext beträgt ~10-11 GB unabhängig von Gewichts-Quantisierung. Selbst Q2_K (~8 GB Gewichte) übersteigt 16 GB VRAM. Optimum für RTX 5080 bleibt qwen3:14b-40k.
+
+**Aktualisierte Seiten:**
+- `konzepte/quantisierung.md`: Neuer Unterabschnitt mit Tabelle und Erklärung
+
+---
+
 ## [2026-05-16 17:30] query | Lokale Modelle für LLM-Wiki-Ingest: Session-Limits dokumentiert
 
 Praktische Grenze für lokale 14B-Modelle beim LLM-Wiki-Ingest: Session-Kontext (System-Prompt + Clipping + Gesprächsverlauf) summiert sich auf 18–42k Tokens — zu viel für qwen3:14b-40k im regulären Betrieb. Lokale Modelle nur für einfache Queries geeignet, nicht für Ingest oder Lint.

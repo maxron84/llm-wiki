@@ -111,6 +111,20 @@ Modell-VRAM und Kontext-VRAM teilen sich den gleichen Speicher. Wer ein 14B-Mode
 
 Bei 24 GB VRAM (eine RTX 3090) ist das knapp. Lösung: Kontext auf 32K reduzieren oder auf Q6 wechseln.
 
+### Grenze: 32B-Modelle mit 40K Kontext auf RTX 5080 (16 GB)
+
+Auf einer RTX 5080 (16 GB VRAM) ist 32B + 40K Kontext unter keiner praxistauglichen Quantisierung möglich:
+
+| Quantisierung | Modell-VRAM | KV-Cache 40K (32B) | Gesamt | Passt in 16 GB? |
+|---|---|---|---|---|
+| Q4_K_M | ~18 GB | ~11 GB | ~29 GB | ❌ |
+| Q3_K_M | ~12 GB | ~11 GB | ~23 GB | ❌ |
+| Q2_K | ~8 GB | ~11 GB | ~19 GB | ❌ |
+
+Der KV-Cache bei 40K Kontext ist für 32B-Modelle (~64 Layer, 8 KV-Heads) mit ~10–11 GB unabhängig von der Gewichts-Quantisierung — er liegt immer in fp16. Das bedeutet: selbst die aggressivste Quantisierung der Gewichte reicht nicht aus.
+
+**Fazit für RTX 5080**: Das Optimum bleibt `qwen3:14b-40k` — ~9,3 GB Gewichte + ~6,7 GB KV-Cache = ~16 GB, alles auf der GPU. 32B mit reduziertem Kontext (≤ 8K) ist möglich, aber dann entfällt der 40K-Vorteil. → [ollama-kontextfenster](ollama-kontextfenster.md), [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md)
+
 ---
 
 ## Verwandte Seiten
