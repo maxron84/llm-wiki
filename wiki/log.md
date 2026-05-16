@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-16 17:00] query | qwen3:14b-40k: Latenzdegradation bei wachsendem Kontext
+
+Beobachtung aus Ollama-Debug-Logs: Antwortzeit steigt quadratisch mit wachsendem Gesprächsverlauf, lange vor dem 40k-Token-Limit. Bei ~19,6k Tokens dauerte Request 3 bereits 23,9s (vs. 7,5s bei ~13,9k Tokens). Praktische Nutzungsgrenze: ~20–25k Tokens.
+
+**Aktualisierte Seiten:**
+- `konzepte/ollama-kontextfenster.md`: Abschnitt „Latenzdegradation bei wachsendem Kontext" mit Messtabelle und Empfehlung ergänzt
+
+---
+
 ## [2026-05-16 16:00] query | Roo Code 3.54.0 + Ollama: bestätigte Konfiguration
 
 Roo Code 3.54.0 mit lokalem Modell via Ollama auf Zwei-Maschinen-Setup in Betrieb genommen (RTX 5080, 16 GB VRAM).

@@ -112,6 +112,24 @@ PARAMETER num_predict 12000
 
 ---
 
+## Latenzdegradation bei wachsendem Kontext
+
+Auch wenn das Kontextlimit nicht erreicht wird, verschlechtert sich die Antwortzeit mit wachsendem Gesprächsverlauf spürbar. Der Grund: Transformer-Attention ist quadratisch — neue Tokens müssen gegen alle gecachten Tokens berechnet werden.
+
+Beobachtung mit `qwen3:14b-40k` (num_ctx=40.960, 15,1 GiB VRAM), gemessen an Ollama-Debug-Logs:
+
+| Request | Prompt-Tokens | Neue Tokens (KV-Cache-Miss) | Dauer |
+|---|---|---|---|
+| 1 | ~13.9k | 1.235 | 7,5s |
+| 2 | ~16.1k | 2.213 | 6,9s |
+| 3 | ~19.6k | 3.500 | 23,9s |
+
+Der Sprung von Request 2 auf 3 zeigt das Muster deutlich: mehr neue Tokens × größerer Cache = quadratisch mehr Rechenaufwand.
+
+**Praktische Nutzungsgrenze**: Bei ~20–25k Tokens (halbes 40k-Fenster) wird die Latenz für interaktive Nutzung mit Roo Code inakzeptabel — lange vor dem eigentlichen Kontextlimit. Lange Coding-Sessions sollten daher regelmäßig mit `/new task` neu gestartet werden.
+
+---
+
 ## Out-of-Memory beim ersten Request (OOM)
 
 Ollama lädt das Modell bei der ersten Anfrage von Roo Code — inklusive eines möglicherweise sehr großen Kontextfensters. Fixes:
