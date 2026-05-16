@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-16 18:30] query | Hypothetisches R9700-Setup: 32B + Roo Code analysiert
+
+32B Q4_K_M + 40K passt knapp in 32 GB VRAM (~29 GB), 32K ist komfortabler. Qualitäts-Kompromiss (Q4) und ROCm-Reife (RDNA 4, Stand Mai 2026) als offene Fragen. Kein klarer Vorteil gegenüber RTX 5080 + qwen3:14b-40k.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/radeon-ai-pro-r9700.md`: Neuer Abschnitt mit VRAM-Tabelle, Qualitäts- und ROCm-Analyse, Empfehlung
+
+---
+
 ## [2026-05-16 18:00] query | 32B-Modelle mit 40K Kontext auf RTX 5080: nicht realisierbar
 
 KV-Cache für 32B bei 40K Kontext beträgt ~10-11 GB unabhängig von Gewichts-Quantisierung. Selbst Q2_K (~8 GB Gewichte) übersteigt 16 GB VRAM. Optimum für RTX 5080 bleibt qwen3:14b-40k.

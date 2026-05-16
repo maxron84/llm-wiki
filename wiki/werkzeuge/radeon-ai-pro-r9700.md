@@ -75,6 +75,47 @@ Die Gewinne entstehen weil die RTX 5080 diese Modelle nur mit CPU-Offloading aus
 
 Alle Varianten verwenden Blower-Kühler — das ist eine Klassen-Entscheidung für professionelle AI-Karten, keine Einschränkung einzelner Hersteller. Eine Axial-gekühlte Variante existiert nicht.
 
+## Hypothetisches Setup: 32B-Modell + Roo Code auf R9700
+
+Die 32 GB VRAM ermöglichen, was auf der RTX 5080 (16 GB) nicht geht: ein 32B-Modell vollständig auf der GPU mit nutzbarem Kontextfenster. Ob das für Roo Code tatsächlich funktioniert, hängt von drei Faktoren ab.
+
+### VRAM-Kalkulation
+
+| Modell | Quantisierung | Gewichte | KV-Cache 40K | Gesamt | Headroom |
+|---|---|---|---|---|---|
+| Qwen3 32B | Q4_K_M | ~18 GB | ~11 GB | ~29 GB | ~3 GB |
+| Qwen3 32B | Q5_K_M | ~22 GB | ~11 GB | ~33 GB | ❌ |
+| Qwen3 32B | Q4_K_M | ~18 GB | ~8,5 GB (32K) | ~26,5 GB | ~5,5 GB |
+| Qwen3 32B | Q5_K_M | ~22 GB | ~8,5 GB (32K) | ~30,5 GB | ~1,5 GB |
+
+**Fazit VRAM**: 32B + 40K passt nur in Q4_K_M, mit ~3 GB Headroom — riskant. Komfortabler: Q4_K_M oder Q5_K_M bei 32K Kontext.
+
+### Qualität: Q4 vs. mehr Parameter
+
+Q4_K_M ist die einzige Quantisierung, die 32B + 40K in 32 GB ermöglicht. Das ist ein Kompromiss — Q4 zeigt bei komplexen Coding-Aufgaben merkliche Qualitätseinbußen. Ob 32B@Q4 besser ist als 14B@Q8 (passt entspannt in die RTX 5080), ist aufgabenabhängig. Für Roo Code (Tool-Calling, Präzision wichtiger als Parameteranzahl): nicht selbstverständlich besser. → [quantisierung](../konzepte/quantisierung.md)
+
+### ROCm: der unbekannte Faktor
+
+Der R9700 läuft über ROCm, nicht CUDA. Für Ollama + Roo Code bedeutet das:
+
+- Ollama unterstützt ROCm offiziell, aber weniger reif als CUDA
+- RDNA 4 (Navi 48) ist eine neue Architektur — ROCm-Support für RDNA 4 noch im Aufbau (Stand: Mai 2026)
+- Die bestätigte Roo-Code-Konfiguration (→ [roo-code](roo-code.md)) basiert auf CUDA; ROCm-Äquivalent ungetestet
+- Auf Windows: ROCm-Support eingeschränkter als auf Linux
+
+### Empfehlung für hypothetisches R9700-Setup
+
+```
+Modell:    qwen3:32b (Q4_K_M)
+Kontext:   32K (komfortabler als 40K)
+Anbieter:  OpenAI Compatible, http://<server>:11434/v1
+System:    Linux (besserer ROCm-Support als Windows)
+```
+
+Gegenüber RTX 5080 + qwen3:14b-40k: größere Parameterzahl, aber Q4 statt Q8, und ROCm-Risiko. Kein klarer Gewinn — eher ein anderes Kompromiss-Profil.
+
+---
+
 ## Hinweise
 
 **Kühlung**: Der Blower-Lüfter (Radial) ist für Rack- und Servereinsatz ausgelegt. Unter Dauerlast (wie LLM-Inferenz) deutlich lauter als Axial-Kühler — relevant für Desktop-Einsatz direkt am Schreibtisch. Gilt für alle Hersteller-Varianten ohne Ausnahme.
@@ -84,6 +125,9 @@ Alle Varianten verwenden Blower-Kühler — das ist eine Klassen-Entscheidung f�
 ## Verwandte Seiten
 
 - [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md) — RTX 5080 Setup, Modellvergleich, Qwen3-Stack
+- [quantisierung](../konzepte/quantisierung.md) — VRAM-Kalkulation, Q4 vs. Q8 Qualitätsvergleich
+- [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md) — KV-Cache-Berechnung, Latenzdegradation
+- [roo-code](roo-code.md) — Bestätigte Konfiguration (CUDA/RTX 5080)
 
 ---
 
