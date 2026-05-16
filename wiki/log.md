@@ -23,6 +23,20 @@ status: active
 
 ---
 
+## [2026-05-16 20:00] ingest | Anleitung: LLM-Wiki mit Roo Code + lokalem Modell einrichten
+
+Vollständige Schritt-für-Schritt-Anleitung für bestätigtes Setup (RTX 5080, qwen3:14b-40k, Ollama, Roo Code 3.54.0). Deckt Ein- und Zwei-Maschinen-Setup ab, Modelfile-Einrichtung, Provider-Konfiguration, Projektstruktur, ersten Start, laufenden Betrieb und Troubleshooting.
+
+**Neue Seiten:**
+- `anleitungen/roocode-llm-wiki-einrichten.md`
+
+**Aktualisierte Seiten:**
+- `wiki/index.md`: Neue Anleitung eingetragen
+- `anleitungen/erste-schritte.md`: Link auf neue Anleitung ergänzt
+- `anleitungen/lokale-modelle.md`: Link auf neue Anleitung ergänzt
+
+---
+
 ## [2026-05-16 19:30] ingest | Vorlage: LLM-Wiki mit Roo Code + qwen3:14b-40k
 
 System-Prompt-Vorlage für lokalen LLM-Wiki-Betrieb erstellt. Auf 40K-Kontextlimit abgestimmt: max. 1 Quelle pro Session, max. 3–5 neue Seiten, kein Lint. Enthält Provider-Setup, Token-Budget-Tabelle und kompakte Workflow-Anleitung (~800–1.000 Tokens).

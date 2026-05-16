@@ -271,6 +271,7 @@ Wenn mehrere Personen gemeinsam am Wiki arbeiten → [zusammenarbeit-git](zusamm
 
 ## Verwandte Seiten
 
+- [roocode-llm-wiki-einrichten](roocode-llm-wiki-einrichten.md) — Alternativer Pfad: LLM-Wiki mit Roo Code + lokalem Modell (offline, kostenlos)
 - [claude-code](../werkzeuge/claude-code.md) — Claude Code im Detail
 - [obsidian](../werkzeuge/obsidian.md) — Obsidian-Funktionen und Plugins
 - [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das Konzept hinter diesem Wiki-Ansatz

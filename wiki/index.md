@@ -119,6 +119,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [vorlage-einrichten](anleitungen/vorlage-einrichten.md) — Schritt für Schritt: Vorlage kopieren, Platzhalter füllen, Projekt starten (Beispiel: Pygame-Lernprojekt)
 - [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B lokal: Ollama, Continue in VS Codium, halbautomatischer Wiki-Betrieb
 - [beratungs-crm-einrichtung](anleitungen/beratungs-crm-einrichtung.md) — Beratungs-CRM auf Linux einrichten: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil
+- [roocode-llm-wiki-einrichten](anleitungen/roocode-llm-wiki-einrichten.md) — Schritt-für-Schritt: LLM-Wiki mit Roo Code + Ollama + qwen3:14b-40k einrichten (bestätigt RTX 5080, Mai 2026)
 - [token-sparen](anleitungen/token-sparen.md) — Token sparen mit Claude Code: 4-stufige Strategie von Sofortmaßnahmen bis fortgeschrittener Architektur
 - [zusammenarbeit-git](anleitungen/zusammenarbeit-git.md) — Gemeinsam am Wiki arbeiten: GitHub Collaborators, Branch-Workflow, Konflikte lösen
 

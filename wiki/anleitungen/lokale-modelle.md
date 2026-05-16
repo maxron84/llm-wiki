@@ -298,6 +298,7 @@ Für den vollständigen Wiki-Betrieb (Ingest, Lint, Multi-Quellen-Sessions) blei
 
 ## Verwandte Seiten
 
+- [roocode-llm-wiki-einrichten](roocode-llm-wiki-einrichten.md) — Schritt-für-Schritt-Anleitung: LLM-Wiki mit Roo Code + qwen3:14b-40k einrichten
 - [lokale-modelle-fortgeschritten](lokale-modelle-fortgeschritten.md) — Pygame-Projekt mit Qwen3 27B/35B: Ollama + Continue in VS Codium, für erfahrene Programmierer
 - [roo-code](../werkzeuge/roo-code.md) — Roo Code: autonomer Coding-Agent mit lokalen Modellen
 - [lm-studio](../werkzeuge/lm-studio.md) — LM Studio im Detail: Setup, Kontextfenster, Vergleich zu Ollama
