@@ -125,6 +125,8 @@ Der KV-Cache bei 40K Kontext ist für 32B-Modelle (~64 Layer, 8 KV-Heads) mit ~1
 
 **Fazit für RTX 5080**: Das Optimum bleibt `qwen3:14b-40k` — ~9,3 GB Gewichte + ~6,7 GB KV-Cache = ~16 GB, alles auf der GPU. 32B mit reduziertem Kontext (≤ 8K) ist möglich, aber dann entfällt der 40K-Vorteil. → [ollama-kontextfenster](ollama-kontextfenster.md), [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md)
 
+**Für 32 GB VRAM (RTX 5090 oder Radeon AI Pro R9700)**: 32B Q4_K_M + 40K passt knapp (~29 GB). Komfortabler: Q4_K_M bei 32K (~26,5 GB) oder Q5_K_M bei 32K (~30,5 GB). RTX 5090 bietet dabei ~2,8× höhere Speicherbandbreite als R9700 → deutlich mehr Token/s; dafür CUDA statt ROCm und in Mai 2026 massiv überhöhte Marktpreise. → [radeon-ai-pro-r9700](../werkzeuge/radeon-ai-pro-r9700.md)
+
 ---
 
 ## Verwandte Seiten

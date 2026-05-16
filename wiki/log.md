@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-16 19:00] query | RTX 5090 in Hardware-Vergleiche aufgenommen
+
+32 GB GDDR7, ~1.792 GB/s Bandbreite, CUDA — gleiche VRAM-Kapazität wie R9700 aber ~2,8× höhere Bandbreite. Marktpreise Mai 2026 massiv überhöht. In drei Seiten ergänzt.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/radeon-ai-pro-r9700.md`: Vergleichstabelle um RTX 5090 erweitert
+- `konzepte/quantisierung.md`: 32-GB-Fazit um 5090 ergänzt
+- `anleitungen/lokale-modelle-fortgeschritten.md`: Kommentar bei 32B-Empfehlung aktualisiert
+
+---
+
 ## [2026-05-16 18:30] query | Hypothetisches R9700-Setup: 32B + Roo Code analysiert
 
 32B Q4_K_M + 40K passt knapp in 32 GB VRAM (~29 GB), 32K ist komfortabler. Qualitäts-Kompromiss (Q4) und ROCm-Reife (RDNA 4, Stand Mai 2026) als offene Fragen. Kein klarer Vorteil gegenüber RTX 5080 + qwen3:14b-40k.

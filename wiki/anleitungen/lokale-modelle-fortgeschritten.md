@@ -76,7 +76,9 @@ Modell herunterladen — je nach verfügbarer Hardware:
 # 16 GB VRAM (z.B. RTX 5080) — Empfehlung
 ollama pull qwen3:14b
 
-# 24+ GB VRAM (z.B. RTX 4090, RTX 5090)
+# 32 GB VRAM (z.B. RTX 5090, Radeon AI Pro R9700)
+# RTX 5090: CUDA, ~1.792 GB/s Bandbreite — schnellste Option, aber Mai 2026 Wucherpreise
+# R9700: ROCm, 640 GB/s — günstiger, aber weniger ausgereifte Toolchain
 ollama pull qwen3:32b
 
 # Mac mit Apple Silicon, 32 GB Unified Memory

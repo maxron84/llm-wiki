@@ -35,18 +35,21 @@ status: active
 | OS-Support | Windows 10/11 (64-bit), Linux x86 64-bit |
 | Erscheinung | Mai 2025 |
 
-## Vergleich mit RTX 5080
+## Vergleich mit RTX 5080 und RTX 5090
 
-| | RTX 5080 | Radeon AI Pro R9700 |
-|---|---|---|
-| VRAM | 16 GB GDDR7 | **32 GB GDDR6** |
-| Speicherbandbreite | ~960 GB/s | 640 GB/s |
-| FP16 Matrix | ~200 TFLOPS | 191 TFLOPS |
-| TDP | ~350 W | 300 W |
-| Kühlung | Axial | **Blower** |
-| Backend | CUDA | ROCm |
-| LLM ≤ 14B bei 40k | ✅ | ✅ |
-| LLM 33B bei 40k | ❌ | ✅ (~28 GB) |
+| | RTX 5080 | Radeon AI Pro R9700 | RTX 5090 |
+|---|---|---|---|
+| VRAM | 16 GB GDDR7 | **32 GB GDDR6** | **32 GB GDDR7** |
+| Speicherbandbreite | ~960 GB/s | 640 GB/s | **~1.792 GB/s** |
+| FP16 Matrix | ~200 TFLOPS | 191 TFLOPS | ~210 TFLOPS |
+| TDP | ~350 W | 300 W | ~575 W |
+| Kühlung | Axial | Blower | Axial |
+| Backend | CUDA | ROCm | **CUDA** |
+| LLM ≤ 14B bei 40k | ✅ | ✅ | ✅ |
+| LLM 32B bei 40k | ❌ | ✅ (knapp, ~29 GB) | ✅ (knapp, ~29 GB) |
+| Preis (Österreich, Mai 2026) | ~€1.000–1.200 | ~€1.400–1.600 | ⚠️ ~€3.500–5.000+ |
+
+> **RTX 5090 vs. R9700**: Gleiche VRAM-Kapazität, aber ~2,8× höhere Speicherbandbreite (1.792 vs. 640 GB/s) — bei LLM-Inferenz (bandbreitengebunden) bedeutet das direkt mehr Token/s. Dazu CUDA statt ROCm. Der Aufpreis gegenüber der R9700 ist jedoch in Mai 2026 durch Marktknappheit massiv — die Karte ist für normale Kaufentscheidungen derzeit nicht sinnvoll. (überprüfungsbedürftig für aktuelle Preise)
 
 ## AMD-Benchmarks: Große Modelle (Quelle: AMD)
 
