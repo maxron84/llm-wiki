@@ -797,4 +797,17 @@ Tiefe: **Mittel** — Quelltextzusammenfassungen + Konzeptseiten für wichtigste
 
 ---
 
+## [2026-05-17 00:00] query | Docs-Ordner-Feature für Lehr-Vorlage
+
+Feature-Erweiterung der KI-Lehrer-Vorlage: optionaler `docs/`-Ordner für Referenzdokumente (PDFs, gescrapte Dokumentationen, Bücher).
+
+- Phase 1 bekommt neuen Schritt 3 (Dok-Ingest): Claude liest Dokumente beim ersten Start und erstellt `docs/index.md` als Navigationsindex
+- „Was du tust" ergänzt: Faktenfragen gegen docs/ nachschlagen statt halluzinieren
+- Neues Seitenformat für `docs/index.md` (Typ, Umfang, Abschnittsliste)
+- Neue Regeln: docs/ unveränderlich, Zitierformat `(Quelle: dateiname, Kap. X / S. Y)`
+- Neuer Designhinweis 7 erklärt Zweck und Optionalität des Docs-Ordners
+- `wiki/vorlagen/claude-md-lehrer.md` aktualisiert
+
+---
+
 [Zurück zum Index](index.md)
