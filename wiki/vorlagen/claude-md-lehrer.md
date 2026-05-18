@@ -337,6 +337,7 @@ Eine Datei pro Konzept. Der Schüler fügt neue Abschnitte unten an. Git-Histori
 - [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien für CLAUDE.md-Dateien
 - [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) — Die Vorlage implementiert Ebene 3 (Schema)
 - [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Wiki-Muster
+- [heft-muster](../konzepte/heft-muster.md) — Das Konzept hinter heft/: Git-Commits als implizite Lernhistorie
 - [kompilierungs-metapher](../konzepte/kompilierungs-metapher.md) — Lektionen = Rohquellen; Fortschritt-Wiki = kompiliertes Verständnis
 - [skalierungsgrenzen](../konzepte/skalierungsgrenzen.md) — Wenn Lehrplan und Sitzungsnotizen wachsen
 - [qmd](../werkzeuge/qmd.md) — Semantische Suche für größere Lernprojekte

@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-15 (Roo Code + Lokale Modelle: 10 Seiten aufgenommen)
+**Zuletzt aktualisiert**: 2026-05-18 (Heft-Muster: zeitliche Dimension für KI-Lehrer)
 
 ---
 
@@ -48,6 +48,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [enterprise-skalierung](konzepte/enterprise-skalierung.md) — Warum das persönliche Muster bei Unternehmen bricht und wie Enterprise-Wikis anders arbeiten müssen
 - [exokortex](konzepte/exokortex.md) — Aaron Fulkersons „Exo" als externes kognitives Betriebssystem: 26 Skills, 14 MCP-Server, Auto-Enrichment
 - [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
+- [heft-muster](konzepte/heft-muster.md) — Schülerarbeit in lebenden .md-Dateien; Git-Commits als implizite Lernhistorie ohne Tracking-Overhead
 - [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 

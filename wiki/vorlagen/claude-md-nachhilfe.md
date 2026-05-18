@@ -386,6 +386,7 @@ Wenn das Wiki wächst und die Suche über viele Aufgaben- und Konzeptseiten nöt
 
 ## Verwandte Seiten
 
+- [heft-muster](../konzepte/heft-muster.md) — Das Konzept hinter heft/: Git-Commits als implizite Lernhistorie
 - [claude-md-lehrer](claude-md-lehrer.md) — Schwester-Vorlage: proaktiver KI-Lehrer mit generiertem Lehrplan (Coding-Projekte)
 - [claude-md-laienlehrer](claude-md-laienlehrer.md) — Schwester-Vorlage: KI coacht den Erwachsenen, nicht das Kind
 - [claude-md-design](../konzepte/claude-md-design.md) — 6 Designprinzipien für CLAUDE.md-Dateien
