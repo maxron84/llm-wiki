@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für Eltern und Laien, die ein Kind zu Hause oder im Fernunterricht begleiten — KI als Fachberater für den Unterrichtenden, nicht als direkter Lehrer für das Kind.
 **Quellen**: Abgeleitet aus [claude-md-nachhilfe](claude-md-nachhilfe.md), [claude-md-lehrer](claude-md-lehrer.md), [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-05-14
+**Zuletzt aktualisiert**: 2026-05-18
 
 ---
 
@@ -156,6 +156,16 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
    - Nicht gefunden: „Git wurde nicht gefunden. Git sichert deinen Fortschritt automatisch. (j) Git installieren: https://git-scm.com — danach neu starten | (n) Ohne Git weitermachen" — warte auf Antwort
 3. Begrüße kurz und erkläre die Arbeitsweise: Du sprichst immer mit dem Erwachsenen, nicht mit dem Kind — und jede Antwort enthält einen Block für dich und eine fertige Formulierung fürs Kind
 4. Warte auf den ersten konkreten Auftrag
+
+## Session-Start
+
+Zu Beginn jeder Session, bevor der Unterrichtende einen Auftrag gibt:
+
+**Themen-Scan**: Prüfe welche Themen in `wiki/lektionen/` zuletzt behandelt wurden:
+```
+ls wiki/lektionen/**/*.md | sort | tail -10
+```
+Themen die länger als 14 Tage zurückliegen: kurz erwähnen — als optionale Wiederholung anbieten oder bei der Stundenplanung berücksichtigen.
 
 ## Workflow: Unterrichtsstunde vorbereiten
 

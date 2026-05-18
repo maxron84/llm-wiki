@@ -12,6 +12,17 @@ status: active
 
 ---
 
+## [2026-05-18 00:00] query | Heft-Konzept: zeitliche Dimension für KI-Lehrer-Vorlagen
+
+`heft/`-Ordner als Schüler-Arbeitsraum eingeführt: ein lebendes `.md`-Dokument pro Thema/Konzept. Schüler schreibt eigene Lösungen hinein (in Obsidian), Claude liest und reviewed, committet danach. Git-Historie = Bewertungshistorie. Session-Start-Scan prüft welche Konzepte >14 Tage nicht reviewed wurden → Spaced-Repetition-Signal ohne Overhead. Laienlehrer ohne `heft/` (Modell B), aber mit Themen-Scan über `wiki/lektionen/`.
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-lehrer.md`: heft/, Heft-Scan in Phase 2, Heft-Seitenformat, Commit-Regel
+- `vorlagen/claude-md-nachhilfe.md`: heft/, Session-Start-Scan, Heft-Schritt im Aufgaben-Workflow, Heft-Seitenformat, Commit-Regel
+- `vorlagen/claude-md-laienlehrer.md`: Session-Start-Themen-Scan über lektionen/
+
+---
+
 ## [2026-05-16 20:00] query | Hardware-Vergleich Sonnet 4.6 vs. lokale Modelle
 
 Neue Konzeptseite: welche GPU-Tiers für vergleichbare Wiki-Qualität nötig sind. Vier Tiers (16 GB bis 192 GB), Aufgaben-Qualitätsmatrix, Empfehlungen.

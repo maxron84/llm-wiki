@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für KI-gestützte Nachhilfe in einem Schulfach — reaktiv, aufgabengetrieben, ohne Lösungsbeschränkungen. Ein Projekt pro Fach, jahrgangübergreifend von der Startklasse bis zum Abschluss.
 **Quellen**: Abgeleitet aus [claude-md-lehrer](claude-md-lehrer.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-05-14
+**Zuletzt aktualisiert**: 2026-05-18
 
 ---
 
@@ -182,15 +182,29 @@ Falls `../profil.md` existiert: Lies es zu Beginn jeder Session. Es enthält fac
 ```
 raw/                    -- Fotos und Scans von Aufgaben (unveränderlich)
 clippings/              -- Webseiten und digitales Lernmaterial (unveränderlich)
+heft/                   -- Schülerarbeit (nur vom Schüler bearbeitet — niemals bearbeiten)
+  thema.md              -- Ein lebendes Dokument pro Thema/Konzept
 wiki/
   aufgaben/
-    klasse-5/           -- Aufgaben aus Klasse 5
+    klasse-5/           -- Aufgaben aus Klasse 5 (Claude-Dokumentation)
       YYYY-MM-DD-thema.md
-    klasse-6/           -- Aufgaben aus Klasse 6
+    klasse-6/
     ...
-  konzepte/             -- Jahrgangübergreifende Konzepte (eine Seite pro Thema)
+  konzepte/             -- Jahrgangübergreifende Konzepte (verlinkt aus heft/)
   fortschritt.md        -- Gesamtfortschritt, nach Klassen gegliedert
 ```
+
+`heft/` ist der Arbeitsraum des Schülers — eine Datei pro Konzept, wächst über alle Klassen hinweg. `wiki/aufgaben/` ist Claudes Dokumentation der Aufgaben aus raw/clippings.
+
+## Session-Start
+
+Zu Beginn jeder Session (nach dem ersten Start):
+
+**Heft-Scan**: Prüfe welche Konzepte im `heft/` länger als 14 Tage nicht reviewed wurden:
+```
+git log --format="%ci %s" -- heft/*.md
+```
+Konzepte die länger brach liegen kurz erwähnen — als optionale Wiederholung anbieten, bevor neue Aufgaben kommen.
 
 ## Initialisierung (erster Start)
 
@@ -222,10 +236,13 @@ Wenn neues Material in `raw/` oder `clippings/` liegt, oder der Schüler eine Au
 4. **Erkläre** das zugrundeliegende Konzept kurz — mit Alltagsbeispiel wenn möglich
 5. **Arbeite** die Aufgabe Schritt für Schritt durch
 6. **Zeige** die vollständige Lösung mit allen Zwischenschritten
-7. **Frage** am Ende: „Hast du noch Fragen dazu?"
-8. **Dokumentiere** in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md`
-9. **Aktualisiere** `wiki/fortschritt.md` (Abschnitt der aktuellen Klasse) und ggf. eine Konzeptseite
-10. **Aktualisiere** `../profil.md`, falls vorhanden und neue Beobachtungen aufgefallen sind — nur bei echten Neuigkeiten, nicht mechanisch
+7. **Schüler ins Heft**: „Schreib jetzt deinen eigenen Lösungsweg in `heft/thema.md` — auch wenn er von meiner Lösung abweicht. Neuer Abschnitt mit dem heutigen Datum. Sag mir Bescheid wenn du fertig bist." Warte.
+8. **Heft lesen & reviewen**: Lies `heft/thema.md`. Gib kurzes Feedback im Chat — was stimmt, was weicht ab, warum.
+9. **Heft committen**: `git add heft/thema.md && git commit -m "heft: thema — Review YYYY-MM-DD"`
+10. **Frage** am Ende: „Hast du noch Fragen dazu?"
+11. **Dokumentiere** in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md`
+12. **Aktualisiere** `wiki/fortschritt.md` (Abschnitt der aktuellen Klasse) und ggf. eine Konzeptseite
+13. **Aktualisiere** `../profil.md`, falls vorhanden und neue Beobachtungen aufgefallen sind — nur bei echten Neuigkeiten, nicht mechanisch
 
 ## Konzept-Workflow
 
@@ -236,6 +253,26 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 3. **Erstelle oder aktualisiere** `wiki/konzepte/thema.md` — Konzeptseiten sind jahrgangübergreifend. Eine Seite bleibt über alle Klassen hinweg bestehen und wird tiefer, wenn das Thema in späteren Klassen erneut auftaucht.
 
 ## Seitenformate
+
+### Heft-Seite (`heft/thema.md`)
+
+```markdown
+# {{Thema}}
+
+**Fach**: {{FACH}}
+**Eingeführt**: Klasse {{N}}
+**Verwandtes Konzept**: [thema](wiki/konzepte/thema.md)
+
+---
+
+<!-- Neue Einträge unten anfügen -->
+
+### {{YYYY-MM-DD}} — Klasse {{N}}
+
+{{Schüler schreibt hier: eigener Lösungsweg, Gedanken, Herangehensweise — in eigenen Worten}}
+```
+
+Eine Datei pro Konzept, jahrgangübergreifend. Git-Historie zeigt wann und wie oft das Thema bearbeitet wurde.
 
 ### Aufgaben-Seite (`wiki/aufgaben/klasse-N/YYYY-MM-DD-thema.md`)
 
@@ -336,6 +373,9 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 - `../profil.md` nur aktualisieren wenn wirklich neue Beobachtungen vorliegen — nicht nach jeder Aufgabe mechanisch schreiben
 - Wenn du dir bei einer fachlichen Aussage nicht sicher bist: `(überprüfungsbedürftig)` hinzufügen — Schüler verlassen sich auf Korrektheit
 - Wiki-Seiten mit Standard-Markdown-Links verlinken: `[Seitenname](../kategorie/seitenname.md)` — keine Obsidian-`[[wiki-links]]`
+- `heft/`-Dateien gehören dem Schüler — nie bearbeiten, nur lesen
+- Nach jeder Heft-Review committen: `git add heft/thema.md && git commit -m "heft: thema — Review YYYY-MM-DD"`
+- Heft-Seiten verlinken auf ihre Konzeptseite in `wiki/konzepte/`; Konzeptseiten verlinken zurück auf die Heft-Datei
 
 ## Skalierung
 

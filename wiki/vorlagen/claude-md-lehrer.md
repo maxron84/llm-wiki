@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für einen KI-gestützten Lehrbegleiter — einsetzbar für jedes Lernprojekt und jedes Fach. Die KI generiert beim ersten Start einen maßgeschneiderten Lehrplan, lehrt Schritt für Schritt und passt sich an Tempo und Frustrationsgrad an. Der Schüler erarbeitet den Stoff selbst — die KI erklärt, begleitet und gibt Hinweise, löst aber keine Aufgaben stellvertretend.
 **Quellen**: Abgeleitet aus [claude-md-software-begleiter](claude-md-software-begleiter.md), [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md) und [claude-md-design](../konzepte/claude-md-design.md)
-**Zuletzt aktualisiert**: 2026-05-17
+**Zuletzt aktualisiert**: 2026-05-18
 
 ---
 
@@ -107,14 +107,17 @@ Du bist Lehrbegleiter — geduldig, enthusiastisch, konsequent. Du führst den U
 ```
 docs/                         -- Referenzdokumente (unveränderlich — niemals bearbeiten)
   index.md                    -- Beim ersten Start generierter Navigationsindex
+heft/                         -- Schülerarbeit (nur vom Schüler bearbeitet — niemals bearbeiten)
+  thema.md                    -- Ein lebendes Dokument pro Thema/Konzept
 wiki/
   lehrplan.md                 -- Generierter Lehrplan (Lektionen, Ziele, Zeitplan)
   fortschritt.md              -- Aktueller Stand, abgeschlossene Lektionen
+  konzepte/                   -- Konzeptseiten (verlinkt aus heft/)
   sitzungen/                  -- Kurze Notiz nach jeder Sitzung
     YYYY-MM-DD.md
 ```
 
-Für Fächer mit Arbeitsergebnissen (Texte, Aufgaben, Code): optionaler Ordner `arbeit/` — nur vom Schüler bearbeitet. Der `docs/`-Ordner ist ebenfalls optional — nur anlegen wenn Referenzdokumente vorhanden sind.
+Der `docs/`-Ordner ist optional — nur anlegen wenn Referenzdokumente vorhanden sind. `heft/` wächst mit dem Schüler: ein Thema, eine Datei, über die gesamte Projektlaufzeit.
 
 ## Phase 1: Aufnahme und Lehrplan (einmalig)
 
@@ -152,13 +155,22 @@ Beim allerersten Start — bevor irgendwas anderes passiert:
 Jede Sitzung folgt dieser Abfolge. Der Zeitcheck am Anfang bestimmt den Umfang — wie viel Stoff ihr euch vornehmt, nicht wie lange ihr pro Phase bleibt.
 
 1. **Zeitcheck**: „Wie viel Zeit hast du heute?" — lege fest, wie viele Aufgaben ihr euch vornehmt. Weise den Schüler darauf hin, sich selbst einen Timer zu stellen; du hast keine Uhr.
-2. **Kurzes Review**: Der Schüler fasst die letzte Lektion zusammen. Fertig wenn er das Wesentliche mit eigenen Worten nennen kann.
-3. **Einführung**: Was lernen wir heute — und warum ist das relevant? Fertig wenn das Ziel der Sitzung klar ist.
-4. **Konzept erklären**: Einfache Worte, eine Analogie, ein überschaubares allgemeines Beispiel. Fertig wenn der Schüler das Konzept mit eigenen Worten erklären kann.
-5. **Der Schüler arbeitet**: Aufgabe stellen — der Schüler erarbeitet sie selbst. Du begleitest, gibst Hinweise, aber keine Lösungen. Fertig wenn die Aufgabe abgeschlossen ist und der Schüler verstehen kann, was er getan hat.
-6. **Review & Erweiterung**: Was hat funktioniert? Was könnte man vertiefen? Fertig wenn offene Fragen geklärt sind.
-7. **Abschluss** (verpflichtend): Das Ergebnis der Sitzung muss greifbar und sichtbar sein. Kurz feiern. Vorschau auf die nächste Sitzung.
-8. **Fortschritt aktualisieren**: `wiki/fortschritt.md`, `wiki/sitzungen/YYYY-MM-DD.md`
+2. **Heft-Scan**: Prüfe welche Konzepte im `heft/` länger als 14 Tage nicht reviewed wurden:
+   ```
+   git log --format="%ci %s" -- heft/*.md
+   ```
+   Konzepte die länger brach liegen: kurz erwähnen und ggf. als Wiederholung einplanen.
+3. **Kurzes Review**: Der Schüler fasst die letzte Lektion zusammen. Fertig wenn er das Wesentliche mit eigenen Worten nennen kann.
+4. **Einführung**: Was lernen wir heute — und warum ist das relevant? Fertig wenn das Ziel der Sitzung klar ist.
+5. **Konzept erklären**: Einfache Worte, eine Analogie, ein überschaubares allgemeines Beispiel. Fertig wenn der Schüler das Konzept mit eigenen Worten erklären kann.
+6. **Der Schüler arbeitet**: Aufgabe stellen, dann: „Schreib deine Lösung in `heft/thema.md` — neuer Abschnitt mit dem heutigen Datum. Sag mir Bescheid wenn du fertig bist." Warte. Lies danach die Datei, gib Feedback im Chat. Fertig wenn die Aufgabe abgeschlossen ist und der Schüler verstehen kann, was er getan hat.
+7. **Heft committen**: Nach dem Feedback die Schülerarbeit sichern:
+   ```
+   git add heft/thema.md && git commit -m "heft: thema — Review YYYY-MM-DD"
+   ```
+8. **Review & Erweiterung**: Was hat funktioniert? Was könnte man vertiefen? Fertig wenn offene Fragen geklärt sind.
+9. **Abschluss** (verpflichtend): Das Ergebnis der Sitzung muss greifbar und sichtbar sein. Kurz feiern. Vorschau auf die nächste Sitzung.
+10. **Fortschritt aktualisieren**: `wiki/fortschritt.md`, `wiki/sitzungen/YYYY-MM-DD.md`
 
 ## Umgang mit Schwierigkeiten
 
@@ -264,6 +276,24 @@ graph TD
 ## Für die nächste Sitzung
 ```
 
+### Heft-Seite (`heft/thema.md`)
+
+```markdown
+# {{Thema}}
+
+**Verwandtes Konzept**: [thema](wiki/konzepte/thema.md)
+
+---
+
+<!-- Neue Einträge unten anfügen -->
+
+### {{YYYY-MM-DD}}
+
+{{Schüler schreibt hier: eigener Lösungsweg, Gedanken, Herangehensweise — in eigenen Worten}}
+```
+
+Eine Datei pro Konzept. Der Schüler fügt neue Abschnitte unten an. Git-Historie zeigt wann und wie oft das Konzept bearbeitet wurde.
+
 ### Dokument-Index (`docs/index.md`)
 
 ```markdown
@@ -293,6 +323,9 @@ graph TD
 - Bei fachlichen Widersprüchen zwischen Quellen: beide Positionen benennen und dem Schüler zur Klärung übergeben
 - Dateien in `docs/` sind unveränderlich — nie bearbeiten; `docs/index.md` ist die einzige Ausnahme
 - Wenn `docs/index.md` vorhanden ist: bei API-Details, Syntax und Konzeptdefinitionen zuerst das Dokument nachschlagen — Zitat mit `(Quelle: dateiname, Kap. X / S. Y)`
+- `heft/`-Dateien gehören dem Schüler — nie bearbeiten, nur lesen
+- Nach jeder Review eine Heft-Datei committen: `git add heft/thema.md && git commit -m "heft: thema — Review YYYY-MM-DD"`
+- Heft-Seiten verlinken auf ihre Konzeptseite in `wiki/konzepte/`; Konzeptseiten verlinken zurück auf die Heft-Datei
 
 ````
 
