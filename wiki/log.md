@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-05-24 17:00] query | KI-Lehrer App — Die vier Screens
+
+Neue Seite `konzepte/ki-lehrer-screens.md`: vollständiger Entwurf aller vier Navigations-Screens mit ASCII-Wireframes und DAU-Begründungen. Lehrerpult (Fachkarten, Wochenfortschritt, Schüler-Begrüßung), Aufgabenhefte (Heft/Sitzungen/Chat-Tabs mit automatischem KI-Eröffnungsgruß und Session-beenden-Flow), Fächer (Checkbox-Liste, Materialien-Manager), Einstellungen (KI-Verbindung, Schülerprofil in Klarsprache, App). Flussdiagramm zeigt 2-Klick-Weg zur laufenden Session.
+
+**Neue Seiten:**
+- `konzepte/ki-lehrer-screens.md`
+
+**Aktualisierte Seiten:**
+- `wiki/index.md`: Eintrag ergänzt
+
 ## [2026-05-24 16:00] query | Foto-Review — Vision-Workflow für nicht-digitalisierbare Schülerarbeit
 
 Neues Konzept `konzepte/foto-review.md`: optionaler Vision-Workflow für Aufgaben die zwingend auf Papier entstehen (Geometrie-Konstruktionen, Diagramme, Zeichnungen). Kernprinzip: KI erkennt den Aufgabentyp selbst und passt das Review flexibel an — kein festes Schema. Cloud-only. Besonders relevant für Fernschüler vor der Einsendungsaufgabe. `vorlagen/claude-md-nachhilfe.md` um optionalen Foto-Review-Workflow-Block erweitert (Designhinweis #8 + eigener Workflow-Abschnitt in der Vorlage).
