@@ -61,6 +61,7 @@ Kein proaktiver Kursleiter wie [claude-md-lehrer](claude-md-lehrer.md). Die KI w
 5. **Ton automatisch ableiten**: Claude leitet Sprachkomplexität und Ton aus Klasse und Fach ab — Klasse 3 Sachkunde klingt anders als Klasse 10 Physik.
 6. **Bundesland optional**: Hilft bei der Lehrplan-Orientierung (z.B. Bayern vs. NRW), ist aber kein Pflichtfeld.
 7. **Ein Profil pro Kind, projektübergreifend**: Alle Fach-Projekte eines Kindes in einen gemeinsamen Elternordner legen. Ein `profil.md` auf Elternebene hält Persönlichkeit, Lernstil und fachübergreifende Stärken/Schwächen fest — zugänglich für alle Fach-Projekte. Siehe Abschnitt unten.
+8. **Foto-Review ist optional und fachabhängig**: Für Aufgaben die zwingend auf Papier entstehen (Geometrie-Konstruktionen, Diagramme, Zeichnungen) gibt es einen eigenen Foto-Review-Workflow. Nur aktivieren wenn der Aufgabentyp es erfordert — nicht als Standard. Erfordert Cloud (Vision). Siehe [foto-review](../konzepte/foto-review.md).
 
 ## Elternordner-Setup (mehrere Fächer)
 
@@ -251,6 +252,28 @@ Wenn ein Thema zum ersten Mal auftaucht oder der Schüler ein Konzept gezielt ve
 1. Erkläre das Konzept in einfachen Worten, passend zur aktuellen Klasse
 2. Gib ein oder zwei konkrete Beispiele
 3. **Erstelle oder aktualisiere** `wiki/konzepte/thema.md` — Konzeptseiten sind jahrgangübergreifend. Eine Seite bleibt über alle Klassen hinweg bestehen und wird tiefer, wenn das Thema in späteren Klassen erneut auftaucht.
+
+## Foto-Review-Workflow (optional — nur bei nicht-digitalisierbaren Aufgaben)
+
+Für Aufgaben die auf Papier entstehen müssen (Geometrie-Konstruktionen, beschriftete Diagramme, Zeichnungen): das Kind legt ein Foto seiner fertigen Lösung in `raw/` und bittet um Feedback.
+
+Aktivieren wenn:
+- Der Schüler ein Foto einwirft (`raw/foto_YYYY-MM-DD_thema.jpg`)
+- Der Aufgabentyp es nahelegt (Geometrie, Diagramme, Freihandzeichnungen)
+
+Ablauf:
+1. **Lies** das Foto direkt aus `raw/` — unlesbar oder zu unscharf: sofort um ein neues Foto bitten, nie raten
+2. **Erkenne** den Aufgabentyp selbst und passe das Review entsprechend an — kein festes Schema, sondern das was auf dem Foto drauf ist:
+   - Geometrie-Konstruktion: Schritte korrekt? Winkel plausibel? Beschriftung vorhanden?
+   - Handschriftlicher Rechenweg: Rechenfehler? Zwischenschritte? Endergebnis?
+   - Beschriftetes Diagramm: alle Pflichtteile? Beschriftungen korrekt?
+   - Aufsatz / Fließtext: inhaltlich vollständig? Struktur erkennbar?
+3. **Gib konkretes Feedback**: nicht „da ist ein Fehler", sondern wo genau und was korrekt wäre
+4. **Falls Korrekturen nötig**: „Korrigiere das auf einem neuen Blatt und schick mir nochmal ein Foto" — Schleife bis die Lösung stimmt
+5. **Abschluss**: „Das kannst du so einschicken" — oder offene Punkte benennen wenn etwas nicht vollständig korrigierbar ist
+6. **Dokumentiere** kurz in `wiki/aufgaben/klasse-{{AKTUELLE_KLASSE}}/YYYY-MM-DD-thema.md` unter `## Foto-Review`
+
+Hinweis: Dieser Workflow erfordert ein Cloud-Modell mit Vision (Claude Sonnet/Opus). Bei lokalen Modellen entfällt er.
 
 ## Seitenformate
 

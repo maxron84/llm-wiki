@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-05-24 16:00] query | Foto-Review — Vision-Workflow für nicht-digitalisierbare Schülerarbeit
+
+Neues Konzept `konzepte/foto-review.md`: optionaler Vision-Workflow für Aufgaben die zwingend auf Papier entstehen (Geometrie-Konstruktionen, Diagramme, Zeichnungen). Kernprinzip: KI erkennt den Aufgabentyp selbst und passt das Review flexibel an — kein festes Schema. Cloud-only. Besonders relevant für Fernschüler vor der Einsendungsaufgabe. `vorlagen/claude-md-nachhilfe.md` um optionalen Foto-Review-Workflow-Block erweitert (Designhinweis #8 + eigener Workflow-Abschnitt in der Vorlage).
+
+**Aktualisierte Seiten:**
+- `konzepte/foto-review.md`: neu angelegt
+- `vorlagen/claude-md-nachhilfe.md`: Designhinweis #8 + Foto-Review-Workflow-Block
+- `index.md`: neuer Eintrag
+
 ## [2026-05-24 15:00] query | KI-Lehrer App — Datenmodell & Ordnerstruktur
 
 Neue Seite `konzepte/ki-lehrer-datenmodell.md`: vollständige Ordnerstruktur unter `~/KI-Lehrer/`, JSON-Schemas für `config.json` und `profil.json`, Git-Strategie (ein Repo pro Schüler), Kontext-Ladestrategie (4 Quellen pro Session), Dateiformat für Heft und Sitzungs-Logs, Backup-Empfehlung für DAUs. Vorwärts-Link auf `ki-lehrer-screens.md` als nächste geplante Seite.
