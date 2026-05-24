@@ -50,6 +50,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
 - [heft-muster](konzepte/heft-muster.md) — Schülerarbeit in lebenden .md-Dateien; Git-Commits als implizite Lernhistorie ohne Tracking-Overhead
 - [ki-lehrer-app](konzepte/ki-lehrer-app.md) — Tkinter-Desktop-App: KI-Lehrer für alle zugänglich — DAU-Prinzip, GUI als Zugangslösung, Komplexität im Hintergrund
+- [ki-lehrer-datenmodell](konzepte/ki-lehrer-datenmodell.md) — Ordnerstruktur, JSON-Schemas, Git-Strategie und Kontext-Ladestrategie der KI-Lehrer App
 - [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 

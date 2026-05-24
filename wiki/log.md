@@ -12,6 +12,10 @@ status: active
 
 ---
 
+## [2026-05-24 15:00] query | KI-Lehrer App — Datenmodell & Ordnerstruktur
+
+Neue Seite `konzepte/ki-lehrer-datenmodell.md`: vollständige Ordnerstruktur unter `~/KI-Lehrer/`, JSON-Schemas für `config.json` und `profil.json`, Git-Strategie (ein Repo pro Schüler), Kontext-Ladestrategie (4 Quellen pro Session), Dateiformat für Heft und Sitzungs-Logs, Backup-Empfehlung für DAUs. Vorwärts-Link auf `ki-lehrer-screens.md` als nächste geplante Seite.
+
 ## [2026-05-24 14:00] lint | Wartung — verwaiste Seite verlinkt
 
 Wiki-Lint: 0 tote Links, 0 Format-Fehler, 97 Seiten. Eine verwaiste Seite behoben: `konzepte/ki-lehrer-app.md` hatte keine eingehenden Links. Rück-Links in `vorlagen/claude-md-lehrer.md` und `konzepte/heft-muster.md` ergänzt.
