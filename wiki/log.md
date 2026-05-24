@@ -12,6 +12,16 @@ status: active
 
 ---
 
+## [2026-05-24 18:00] query | KI-Lehrer App — Setup-Wizard
+
+Neue Seite `konzepte/ki-lehrer-setup-wizard.md`: vollständiger Wizard-Entwurf mit 9 Schritten (Willkommen, Name, Klasse, Fächer, Anrede, Erklärtiefe, KI-Verbindung, API-Key/lokale URL + Verbindungstest, Fertig-Zusammenfassung). Jeder Dialog als ASCII-Wireframe mit konkreten Formulierungen und DAU-Begründungen. Fehlerbehandlung für Verbindungstest in Klartext. Tabelle der bewussten Weglassungen. Verkürzter Wizard für zweite Schülerprofile dokumentiert.
+
+**Neue Seiten:**
+- `konzepte/ki-lehrer-setup-wizard.md`
+
+**Aktualisierte Seiten:**
+- `wiki/index.md`: Eintrag ergänzt
+
 ## [2026-05-24 17:00] query | KI-Lehrer App — Die vier Screens
 
 Neue Seite `konzepte/ki-lehrer-screens.md`: vollständiger Entwurf aller vier Navigations-Screens mit ASCII-Wireframes und DAU-Begründungen. Lehrerpult (Fachkarten, Wochenfortschritt, Schüler-Begrüßung), Aufgabenhefte (Heft/Sitzungen/Chat-Tabs mit automatischem KI-Eröffnungsgruß und Session-beenden-Flow), Fächer (Checkbox-Liste, Materialien-Manager), Einstellungen (KI-Verbindung, Schülerprofil in Klarsprache, App). Flussdiagramm zeigt 2-Klick-Weg zur laufenden Session.
