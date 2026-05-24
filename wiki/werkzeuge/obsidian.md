@@ -7,7 +7,7 @@ status: active
 
 # Obsidian
 
-**Zusammenfassung**: Obsidian ist eine kostenlose Notizen-App auf Basis lokaler Markdown-Dateien, die im LLM-Wiki-Muster als Viewer und IDE für das Wiki dient.
+**Zusammenfassung**: Obsidian ist eine kostenlose Notizen-App auf Basis lokaler Markdown-Dateien — der gemeinsame Backbone für das LLM-Wiki und alle CLAUDE.md-Vorlagen in diesem System.
 **Quellen**: clippings/llm-wiki.md, clippings/LLM Wiki Tutorial - So baut KI dir eine Wissensbasis.md, clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md
 **Zuletzt aktualisiert**: 2026-04-22
 
@@ -57,6 +57,33 @@ Ein Markdown-basiertes Slide-Deck-Format. Nützlich, um Präsentationen direkt a
 
 ### Dataview (Plugin)
 Führt Abfragen über [YAML-Frontmatter](../konzepte/yaml-frontmatter.md) von Seiten aus. Wenn die KI Frontmatter (Tags, Daten, Quellenzähler) zu Wiki-Seiten hinzufügt, kann [Dataview](dataview.md) dynamische Tabellen und Listen generieren. (Quelle: clippings/llm-wiki.md)
+
+## Obsidian als Backbone aller Vorlagen
+
+Über das LLM-Wiki hinaus ist Obsidian die gemeinsame Grundlage für alle CLAUDE.md-Vorlagen in diesem System. Das Muster ist überall dasselbe: Der Mensch kuratiert im Vault (clippt, strukturiert, entscheidet). Die KI verarbeitet Vault-Inhalte und schreibt Ergebnisse zurück.
+
+- **[KI-Lehrer-Vorlagen](../vorlagen/claude-md-lehrer.md)**: Lernhefte, Fächerordner, Clippings von Unterrichtsmaterial — alles Obsidian-Notizen im Vault
+- **[KI-Nachhilfe](../vorlagen/claude-md-nachhilfe.md)**: Aufgaben und Lösungen wachsen als Markdown-Dateien direkt im Vault
+- **[Software-Begleiter](../vorlagen/claude-md-software.md)**: Anforderungen, Entscheidungen, Changelog — im Vault versioniert
+- **[Rezepte & Ernährung](../vorlagen/claude-md-rezepte-ernaehrung.md)**: Geclippte Rezepte, Mahlzeitplanung, Zutaten — Obsidian als Kochbuch-Vault
+
+Der [Obsidian Web Clipper](obsidian-web-clipper.md) ist dabei das Sammelwerkzeug für alle Vorlagen: Ein Klick im Browser, und die Quelle landet als Markdown im richtigen Vault-Ordner.
+
+## Obsidian in der KI-Lehrer App
+
+In der [KI-Lehrer App](../konzepte/ki-lehrer-app.md) nimmt Obsidian die Rolle des Admin-Layers ein:
+
+```
+Obsidian Vault     ←→    KI-Lehrer App    ←→    Schüler
+(Lehrer/Admin)           (Vermittler)           (DAU-Layer)
+```
+
+- **Lehrer clippt** Unterrichtsmaterial über den Web Clipper in den Vault
+- **App liest** Vault-Inhalte als Kontext für die KI-Session
+- **App schreibt** Schülerhefte als Markdown zurück in den Vault
+- **Lehrer sieht** Schülerfortschritt in Obsidian — Dateiänderungen, Graphansicht, Git-History
+
+Der Vault ist Drehscheibe für beide Seiten: Eingangskanal für Quellen und Ausgabekanal für Schülerarbeit. Die App macht ihn für Kinder zugänglich, ohne dass sie Obsidian kennen müssen.
 
 ## Vault-Trennung (Empfehlung von Steph Ango)
 

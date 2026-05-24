@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-05-24 12:00] query | Obsidian als Backbone aller Vorlagen dokumentiert
+
+Grundsatzentscheidung festgehalten: Obsidian ist nicht nur LLM-Wiki-Viewer, sondern gemeinsamer Backbone für alle CLAUDE.md-Vorlagen. `obsidian.md` um zwei neue Abschnitte erweitert: "Backbone aller Vorlagen" (Rolle in KI-Lehrer, Nachhilfe, Software, Rezepte) und "Obsidian in der KI-Lehrer App" (Zweischichten-Architektur). `ki-lehrer-app.md` aktualisiert: Vault und Web Clipper explizit in "Was darunter läuft" aufgeführt, Obsidian in Verwandte Seiten verlinkt.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/obsidian.md`: Breitere Rolle dokumentiert, KI-Lehrer-Architektur
+- `konzepte/ki-lehrer-app.md`: Vault-Backbone, Web-Clipper-Workflow, Links
+
 ## [2026-05-24 00:00] ingest | KI-Lehrer App — GUI-Wireframe als Konzeptseite
 
 Bild `raw/ki-lehrer_gui-entwurf_sehr-abstrakt.png` aufgenommen. Kern: Tkinter-Desktop-App die den KI-Lehrer-Ansatz für technisch unaffine Nutzer (DAU-Prinzip) zugänglich macht. GUI als Zugangslösung — Komplexität (Git, Markdown, Heft-Muster) läuft im Hintergrund, unsichtbar. Flexible Interview-Logik bleibt erhalten. Projektstatus: Konzeptphase, wird ausgelagert.
