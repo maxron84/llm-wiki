@@ -91,6 +91,7 @@ Das Heft-Muster ist kein Ersatz für Spaced Repetition — es ist eine einfacher
 
 ## Verwandte Seiten
 
+- [ki-lehrer-app](ki-lehrer-app.md) — Desktop-App die das Heft-Muster automatisch im Hintergrund ausführt (Git-Commits, Markdown — unsichtbar für den Nutzer)
 - [claude-md-lehrer](../vorlagen/claude-md-lehrer.md) — Vorlage die heft/ implementiert (Phase 2: Schüler arbeitet)
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Vorlage die heft/ implementiert (Aufgaben-Workflow)
 - [lernschleifen](lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, graduieren

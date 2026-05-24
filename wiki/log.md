@@ -12,6 +12,10 @@ status: active
 
 ---
 
+## [2026-05-24 14:00] lint | Wartung — verwaiste Seite verlinkt
+
+Wiki-Lint: 0 tote Links, 0 Format-Fehler, 97 Seiten. Eine verwaiste Seite behoben: `konzepte/ki-lehrer-app.md` hatte keine eingehenden Links. Rück-Links in `vorlagen/claude-md-lehrer.md` und `konzepte/heft-muster.md` ergänzt.
+
 ## [2026-05-24 12:00] query | Web Clipper als Clipping-Werkzeug in KI-Lehrer-App verankert
 
 Klärung: Obsidian selbst ist kein Pflicht-Bestandteil der Vorlagen — der praktische Mehrwert liegt im Obsidian Web Clipper (Browser-Plugin → clippings/ → Ingest). `obsidian.md` wieder auf ursprüngliche Rolle als Viewer gestutzt. `ki-lehrer-app.md`: Web Clipper als Quellkanal für Unterrichtsmaterial dokumentiert.

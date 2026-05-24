@@ -331,6 +331,7 @@ Eine Datei pro Konzept. Der Schüler fügt neue Abschnitte unten an. Git-Histori
 
 ## Verwandte Seiten
 
+- [ki-lehrer-app](../konzepte/ki-lehrer-app.md) — Desktop-App die diese Vorlage für technisch unerfahrene Nutzer (Kinder, Eltern) zugänglich macht — kein Terminal nötig
 - [claude-md-nachhilfe](claude-md-nachhilfe.md) — Schwester-Vorlage: reaktiv, aufgabengetrieben, Kind sitzt selbst am Gerät
 - [claude-md-laienlehrer](claude-md-laienlehrer.md) — Schwester-Vorlage: Elternteil unterrichtet, KI coacht den Erwachsenen
 - [claude-md-software-begleiter](claude-md-software-begleiter.md) — Schwester-Vorlage: KI als Begleiter für erfahrene Entwickler
