@@ -137,11 +137,13 @@ Das senkt die Hardware-Latte gegenüber der Wiki-Pflege — etwas.
 | Stufe | Hardware | Modell | Für wen geeignet |
 |---|---|---|---|
 | Minimum | 16 GB VRAM (z.B. RTX 5080) | `qwen3:14b@Q8` | Ältere Schüler mit Vorkenntnissen, einfache Fächer |
-| Empfohlen | 24 GB VRAM (z.B. RTX 4090) | `qwen3:32b@Q4` | Die meisten Lernszenarien, inkl. jüngere Schüler |
-| Komfortabel | 32 GB+ VRAM oder Apple Silicon | `qwen3:32b@Q8` oder 70B | Kinder, Erstlerner, anspruchsvolle Fächer |
+| Empfohlen | 32 GB VRAM (z.B. R9700) | `qwen3:32b@Q4` | Die meisten Lernszenarien, inkl. jüngere Schüler |
+| Komfortabel | 32 GB VRAM + Apple Silicon | `qwen3:32b@Q8` oder 70B | Kinder, Erstlerner, anspruchsvolle Fächer |
 
 **Warum 14B das Limit ist:**
 14B-Modelle halten bei einfachen Aufgaben guten Ton und klares Deutsch. Bei jüngeren Kindern, Einsteigern ohne Vorkenntnisse oder Frustrationsmomenten (wo adaptive Reaktion wichtig wird) sind sie grenzwertig. Für Kinder unter 12 oder Fächer mit komplexen Erklärungen ist 32B die ehrliche Mindestempfehlung.
+
+**Zur RTX 4090 (Stand Mai 2026):** Gebraucht auf eBay.de typisch €2.100–2.500 — damit teurer als eine neue R9700 (€1.410–1.575) bei weniger VRAM (24 GB statt 32 GB). Die RTX 4090 bleibt technisch attraktiver (CUDA, Axial-Kühler), aber der Preisunterschied rechtfertigt sie für diesen Anwendungsfall nicht mehr automatisch. (Quelle: `clippings/Geforce Rtx 4090 online kaufen.md`, 2026-05-24)
 
 **Vorteile:**
 - Keine Kosten pro Gespräch
@@ -149,24 +151,27 @@ Das senkt die Hardware-Latte gegenüber der Wiki-Pflege — etwas.
 - Datenschutz: nichts verlässt den Rechner
 
 **Nachteile:**
-- Hardware kostet einmalig €800–1.400 (24 GB, gebraucht möglich)
+- Hardware kostet einmalig ~€1.400–1.600 (32 GB, neu)
 - Einrichtung (Ollama + Modell-Download) ist nichts für DAU — einmalig durch technische Person nötig
 - Antwortgeschwindigkeit langsamer als Cloud, spürbar bei längeren Ausgaben
+- R9700: ROCm-Stack für RDNA 4 noch nicht vollständig ausgereift (Stand Mai 2026)
 
 ---
 
 ### Empfehlung für den Entwurf
 
-Beide Optionen in der App vorsehen, wählbar im Setup. Standard-Pfad ist Cloud — weil er auf jedem Rechner funktioniert und die Qualität für Kinder entscheidend besser ist. Lokale Option für datenschutzbewusste Nutzer oder Offline-Einsatz — aber mit klarem Hinweis auf Hardware-Voraussetzungen im Setup-Dialog.
+Beide Optionen in der App vorsehen, wählbar im Setup. Standard-Pfad ist Cloud — weil er auf jedem Rechner funktioniert und die Qualität für Kinder entscheidend besser ist. Lokale Option für datenschutzbewusste Nutzer oder Offline-Einsatz — mit klarem Hinweis auf Hardware-Voraussetzungen im Setup-Dialog.
 
 | | Cloud | Lokal (Minimum) | Lokal (Empfohlen) |
 |---|---|---|---|
-| Hardware | Beliebig | RTX 5080 / 16 GB VRAM | RTX 4090 / 24 GB VRAM |
+| Hardware | Beliebig | RTX 5080 / 16 GB VRAM | R9700 / 32 GB VRAM |
+| Preis Hardware | — | ~€1.000 (neu) | ~€1.400–1.600 (neu) |
 | Einrichtung | API-Key (einmalig) | Ollama + Modell-Download | Ollama + Modell-Download |
-| Kosten | Laufend (API) | Hardware einmalig | Hardware einmalig |
+| Kosten laufend | Ja (API) | Nein | Nein |
 | Qualität für Kinder | ✅✅ | ⚠️ grenzwertig | ✅ |
 | Offline | ❌ | ✅ | ✅ |
 | Datenschutz | Anthropic-Server | Lokal | Lokal |
+| Backend-Risiko | — | CUDA (stabil) | ROCm/RDNA 4 (⚠️ reift noch) |
 
 ---
 
