@@ -143,7 +143,15 @@ Das senkt die Hardware-Latte gegenüber der Wiki-Pflege — etwas.
 **Warum 14B das Limit ist:**
 14B-Modelle halten bei einfachen Aufgaben guten Ton und klares Deutsch. Bei jüngeren Kindern, Einsteigern ohne Vorkenntnisse oder Frustrationsmomenten (wo adaptive Reaktion wichtig wird) sind sie grenzwertig. Für Kinder unter 12 oder Fächer mit komplexen Erklärungen ist 32B die ehrliche Mindestempfehlung.
 
-**Zur RTX 4090 (Stand Mai 2026):** Gebraucht auf eBay.de typisch €2.100–2.500 — damit teurer als eine neue R9700 (€1.410–1.575) bei weniger VRAM (24 GB statt 32 GB). Die RTX 4090 bleibt technisch attraktiver (CUDA, Axial-Kühler), aber der Preisunterschied rechtfertigt sie für diesen Anwendungsfall nicht mehr automatisch. (Quelle: `clippings/Geforce Rtx 4090 online kaufen.md`, 2026-05-24)
+**Preisvergleich gebraucht (eBay.de, Mai 2026):**
+
+| Karte | VRAM | Preis | Backend | Kühler |
+|---|---|---|---|---|
+| RTX 3090 gebraucht | 24 GB | ~€900–1.100 | CUDA (stabil) | Axial |
+| R9700 neu | 32 GB | ~€1.410–1.575 | ROCm (⚠️ reift) | Blower |
+| RTX 4090 gebraucht | 24 GB | ~€2.100–2.500 | CUDA (stabil) | Axial |
+
+Die RTX 3090 ist damit der günstigste Einstieg in 24 GB VRAM mit stabilem CUDA-Stack. Die R9700 bietet mehr VRAM für ~€300–500 Aufpreis, hat aber das ROCm-Risiko und den lauteren Blower-Kühler. Die RTX 4090 ist für diesen Anwendungsfall preislich nicht attraktiv. (Quellen: `clippings/Geforce Rtx 4090 online kaufen.md` und `clippings/Nvidia Geforce Rtx 3090 online kaufen.md`, 2026-05-24)
 
 **Vorteile:**
 - Keine Kosten pro Gespräch

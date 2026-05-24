@@ -46,7 +46,7 @@ Für ~60–70% der alltäglichen Wiki-Aufgaben ausreichend. Sonnet 4.6 ist bei a
 
 ### Tier 2 — Deutlicher Sprung (RTX 4090 / RTX 3090, 24 GB VRAM)
 
-Preis: ca. €2.100–2.500 gebraucht (eBay.de, Mai 2026) — RTX 3090 günstiger, ca. €400–700
+Preis: ca. €2.100–2.500 gebraucht (eBay.de, Mai 2026) — RTX 3090 günstiger, ca. €900–1.100
 
 | Modell | Quantisierung | VRAM | Qualität |
 |---|---|---|---|
@@ -109,9 +109,9 @@ Der **Mac Studio** hat dabei praktische Vorteile:
 
 **Ziel: 80% der Wiki-Aufgaben, bestes Preis-Qualitäts-Verhältnis**
 → RTX 3090 (24 GB) mit `qwen3:14b@Q8` oder `qwen3:32b@Q4`
-→ Preis: ca. €400–700 gebraucht (Mai 2026)
-→ Alternative: R9700 (32 GB, neu ~€1.400) — mehr VRAM, aber ROCm/RDNA 4 noch reifend
-→ RTX 4090 gebraucht: €2.100–2.500 — kein gutes Preis-Leistungs-Verhältnis mehr (Stand Mai 2026, Quelle: eBay.de)
+→ Preis: ca. €900–1.100 gebraucht (eBay.de, Mai 2026)
+→ Alternative: R9700 (32 GB, neu ~€1.410–1.575) — mehr VRAM, aber ROCm/RDNA 4 noch reifend; teurer als RTX 3090
+→ RTX 4090 gebraucht: €2.100–2.500 — kein gutes Preis-Leistungs-Verhältnis (Stand Mai 2026, Quelle: eBay.de)
 
 **Ziel: Wirklich vergleichbar mit Sonnet 4.6**
 → Mac Studio M4 Ultra (192 GB) oder 2× RTX 3090 für 70B-Modelle
