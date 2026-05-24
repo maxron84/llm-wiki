@@ -12,13 +12,13 @@ status: active
 
 ---
 
-## [2026-05-24 12:00] query | Obsidian als Backbone aller Vorlagen dokumentiert
+## [2026-05-24 12:00] query | Web Clipper als Clipping-Werkzeug in KI-Lehrer-App verankert
 
-Grundsatzentscheidung festgehalten: Obsidian ist nicht nur LLM-Wiki-Viewer, sondern gemeinsamer Backbone für alle CLAUDE.md-Vorlagen. `obsidian.md` um zwei neue Abschnitte erweitert: "Backbone aller Vorlagen" (Rolle in KI-Lehrer, Nachhilfe, Software, Rezepte) und "Obsidian in der KI-Lehrer App" (Zweischichten-Architektur). `ki-lehrer-app.md` aktualisiert: Vault und Web Clipper explizit in "Was darunter läuft" aufgeführt, Obsidian in Verwandte Seiten verlinkt.
+Klärung: Obsidian selbst ist kein Pflicht-Bestandteil der Vorlagen — der praktische Mehrwert liegt im Obsidian Web Clipper (Browser-Plugin → clippings/ → Ingest). `obsidian.md` wieder auf ursprüngliche Rolle als Viewer gestutzt. `ki-lehrer-app.md`: Web Clipper als Quellkanal für Unterrichtsmaterial dokumentiert.
 
 **Aktualisierte Seiten:**
-- `werkzeuge/obsidian.md`: Breitere Rolle dokumentiert, KI-Lehrer-Architektur
-- `konzepte/ki-lehrer-app.md`: Vault-Backbone, Web-Clipper-Workflow, Links
+- `werkzeuge/obsidian.md`: Übertriebene Backbone-Abschnitte entfernt
+- `konzepte/ki-lehrer-app.md`: Web Clipper → clippings/ als Kernworkflow
 
 ## [2026-05-24 00:00] ingest | KI-Lehrer App — GUI-Wireframe als Konzeptseite
 

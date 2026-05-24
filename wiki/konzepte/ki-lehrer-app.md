@@ -66,14 +66,13 @@ Der erste abstrakte Entwurf zeigt eine klassische Zweiteilung:
 
 Die GUI verbirgt Komplexität — sie entfernt sie nicht. Im Hintergrund laufen weiterhin:
 
-- Ein **[Obsidian](../werkzeuge/obsidian.md)-Vault** — die gemeinsame Datenbasis für Lehrer und App. Lehrplan, Clippings, Fächerstruktur und Schülerhefte leben alle dort als Markdown-Dateien.
-- Der **[Obsidian Web Clipper](../werkzeuge/obsidian-web-clipper.md)** — der Lehrer sammelt Unterrichtsmaterial mit einem Klick im Browser, die App liest es als Kontext
+- Der **[Obsidian Web Clipper](../werkzeuge/obsidian-web-clipper.md)** — der Lehrer sammelt Unterrichtsmaterial mit einem Klick im Browser, landet als Markdown in `clippings/`, die App liest es als Kontext
 - Das Interview-basierte Setup aus den [KI-Lehrer-Vorlagen](../vorlagen/claude-md-lehrer.md) — adaptiert das System an Fach, Alter und Vorkenntnisse
 - Das [Heft-Muster](heft-muster.md) — Schülerarbeit in lebenden Markdown-Dateien, Git als implizite Lernhistorie
 - Git-Commits nach jeder Session — automatisch im Hintergrund, unsichtbar für den Nutzer
 - Die [drei-Ebenen-Architektur](drei-ebenen-architektur.md) — Rohquellen, Wiki, Schema
 
-Der Nutzer sieht: „Aufgabe bearbeiten", „Mit Lehrer chatten". Was tatsächlich passiert: Der Vault wird gelesen, Markdown wird geschrieben, git committet, Kontext geladen. Der Lehrer sieht das Ergebnis danach in Obsidian — als gewöhnliche Notizen.
+Der Nutzer sieht: „Aufgabe bearbeiten", „Mit Lehrer chatten". Was tatsächlich passiert: Markdown wird gelesen und geschrieben, git committet, Kontext geladen.
 
 ## Zielgruppe
 
@@ -193,8 +192,7 @@ Das Projekt wird als eigenständiges Projekt ausgelagert — mit einer eigenen V
 
 ## Verwandte Seiten
 
-- [obsidian](../werkzeuge/obsidian.md) — Der Vault-Backbone: Lehrer-Layer, Clippings, Schülerhefte
-- [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md) — Unterrichtsmaterial mit einem Klick sammeln
+- [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md) — Unterrichtsmaterial mit einem Klick in clippings/ sammeln
 - [claude-md-lehrer](../vorlagen/claude-md-lehrer.md) — Die inhaltliche Basis: Lehrstruktur, Interview, Phasen
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Schwester-Vorlage: aufgabengetrieben, Kind sitzt selbst am Gerät
 - [heft-muster](heft-muster.md) — Git-Commits als implizite Lernhistorie — läuft im Hintergrund der App
