@@ -99,6 +99,77 @@ Die KI-Lehrer App ist ein eigenständiges Programm: sie *ruft* die KI auf, verwa
 | Git | Manuell oder Claude | Automatisch im Hintergrund |
 | Erweiterbarkeit | CLAUDE.md editieren | Einstellungsmenü |
 
+## Architektur: Cloud oder Lokal?
+
+Die App kommuniziert über eine API — entweder mit Anthropic (Cloud) oder mit einem lokalen Modell über eine OpenAI-kompatible Schnittstelle (Ollama, LM Studio). Die GUI selbst merkt keinen Unterschied — nur die Einstellungen zeigen, was hinten dran hängt.
+
+### Option A: Cloud (Anthropic API)
+
+Der technisch einfachste Weg für die App selbst. Der Nutzer trägt einmalig einen API-Key ein, danach läuft alles.
+
+**Vorteile:**
+- Beste Qualität: Erklärungen, Ton, adaptives Lehren — Sonnet/Opus sind hier klar überlegen
+- Kein Hardware-Aufwand, läuft auf jedem Rechner
+- Kurze Antwortzeiten
+
+**Nachteile:**
+- API-Key = Registrierung bei Anthropic, Kreditkarte, laufende Kosten
+- Internetverbindung zwingend nötig
+- Datenschutz: Gespräche gehen über Anthropic-Server
+
+**Realistisch für DAU-Setup:** Der Elternteil oder Administrator richtet den Key einmalig über das geführte Setup ein. Das Kind sieht danach nichts davon. Machbar, aber nicht kostenfrei.
+
+---
+
+### Option B: Lokal (Ollama / LM Studio)
+
+Kein API-Key, kein Internet, volle Datenkontrolle. Dafür: Hardware-Voraussetzungen und einmalige technische Einrichtung durch jemanden der weiß was er tut.
+
+**Was die App vom Modell verlangt (anders als Wiki-Pflege):**
+- Kein Multi-File-Tool-Use — die App übernimmt Dateizugriffe selbst
+- Gesprächslänge: überschaubar (eine Lektion, kein 200K-Kontext)
+- Dafür: pädagogischer Ton, klares Deutsch, adaptives Reagieren auf Schülerantworten
+
+Das senkt die Hardware-Latte gegenüber der Wiki-Pflege — etwas.
+
+**Mindestvoraussetzungen lokal (realistisch):**
+
+| Stufe | Hardware | Modell | Für wen geeignet |
+|---|---|---|---|
+| Minimum | 16 GB VRAM (z.B. RTX 5080) | `qwen3:14b@Q8` | Ältere Schüler mit Vorkenntnissen, einfache Fächer |
+| Empfohlen | 24 GB VRAM (z.B. RTX 4090) | `qwen3:32b@Q4` | Die meisten Lernszenarien, inkl. jüngere Schüler |
+| Komfortabel | 32 GB+ VRAM oder Apple Silicon | `qwen3:32b@Q8` oder 70B | Kinder, Erstlerner, anspruchsvolle Fächer |
+
+**Warum 14B das Limit ist:**
+14B-Modelle halten bei einfachen Aufgaben guten Ton und klares Deutsch. Bei jüngeren Kindern, Einsteigern ohne Vorkenntnisse oder Frustrationsmomenten (wo adaptive Reaktion wichtig wird) sind sie grenzwertig. Für Kinder unter 12 oder Fächer mit komplexen Erklärungen ist 32B die ehrliche Mindestempfehlung.
+
+**Vorteile:**
+- Keine Kosten pro Gespräch
+- Offline-fähig
+- Datenschutz: nichts verlässt den Rechner
+
+**Nachteile:**
+- Hardware kostet einmalig €800–1.400 (24 GB, gebraucht möglich)
+- Einrichtung (Ollama + Modell-Download) ist nichts für DAU — einmalig durch technische Person nötig
+- Antwortgeschwindigkeit langsamer als Cloud, spürbar bei längeren Ausgaben
+
+---
+
+### Empfehlung für den Entwurf
+
+Beide Optionen in der App vorsehen, wählbar im Setup. Standard-Pfad ist Cloud — weil er auf jedem Rechner funktioniert und die Qualität für Kinder entscheidend besser ist. Lokale Option für datenschutzbewusste Nutzer oder Offline-Einsatz — aber mit klarem Hinweis auf Hardware-Voraussetzungen im Setup-Dialog.
+
+| | Cloud | Lokal (Minimum) | Lokal (Empfohlen) |
+|---|---|---|---|
+| Hardware | Beliebig | RTX 5080 / 16 GB VRAM | RTX 4090 / 24 GB VRAM |
+| Einrichtung | API-Key (einmalig) | Ollama + Modell-Download | Ollama + Modell-Download |
+| Kosten | Laufend (API) | Hardware einmalig | Hardware einmalig |
+| Qualität für Kinder | ✅✅ | ⚠️ grenzwertig | ✅ |
+| Offline | ❌ | ✅ | ✅ |
+| Datenschutz | Anthropic-Server | Lokal | Lokal |
+
+---
+
 ## Projektstatus
 
 **Konzeptphase.** Dieses Dokument hält die Idee und das Designmotiv fest.
@@ -111,6 +182,8 @@ Das Projekt wird als eigenständiges Projekt ausgelagert — mit einer eigenen V
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Schwester-Vorlage: aufgabengetrieben, Kind sitzt selbst am Gerät
 - [heft-muster](heft-muster.md) — Git-Commits als implizite Lernhistorie — läuft im Hintergrund der App
 - [drei-ebenen-architektur](drei-ebenen-architektur.md) — Die Architektur die die App kapselt
+- [hardware-vergleich-sonnet-vs-lokal](hardware-vergleich-sonnet-vs-lokal.md) — VRAM-Tiers, Modellempfehlungen, Qualitätsvergleich
+- [quantisierung](quantisierung.md) — Q4 vs. Q8: Qualitätsverlust und VRAM-Kalkulation
 - [multimodale-quellen](multimodale-quellen.md) — Bild als Quelle: dieser Entwurf stammt aus einem PNG
 
 ---
