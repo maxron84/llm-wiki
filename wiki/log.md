@@ -12,6 +12,18 @@ status: active
 
 ---
 
+## [2026-05-24 19:00] query | KI-Lehrer App — Prototyp-Konzept
+
+Neue Seite `konzepte/ki-lehrer-prototyp.md`: Tech-Stack-Entscheidungen (Tkinter, anthropic SDK, openai-compat. für lokal, gitpython), vollständige Projektstruktur mit Modulaufteilung (gui/ + core/), 8-stufige Build-Reihenfolge von Grundgerüst bis vollständiger App. Architektur-Prinzipien: Screens als eigenständige Frame-Klassen, zentraler AppState, core/ ohne Tkinter, Streaming im Thread via root.after().
+
+**Neue Seiten:**
+- `wiki/konzepte/ki-lehrer-prototyp.md`
+
+**Geänderte Seiten:**
+- `wiki/index.md` aktualisiert
+
+---
+
 ## [2026-05-24 18:00] query | KI-Lehrer App — Setup-Wizard
 
 Neue Seite `konzepte/ki-lehrer-setup-wizard.md`: vollständiger Wizard-Entwurf mit 9 Schritten (Willkommen, Name, Klasse, Fächer, Anrede, Erklärtiefe, KI-Verbindung, API-Key/lokale URL + Verbindungstest, Fertig-Zusammenfassung). Jeder Dialog als ASCII-Wireframe mit konkreten Formulierungen und DAU-Begründungen. Fehlerbehandlung für Verbindungstest in Klartext. Tabelle der bewussten Weglassungen. Verkürzter Wizard für zweite Schülerprofile dokumentiert.

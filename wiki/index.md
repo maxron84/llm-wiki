@@ -54,6 +54,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [ki-lehrer-datenmodell](konzepte/ki-lehrer-datenmodell.md) — Ordnerstruktur, JSON-Schemas, Git-Strategie und Kontext-Ladestrategie der KI-Lehrer App
 - [ki-lehrer-screens](konzepte/ki-lehrer-screens.md) — Detailierter Entwurf der vier Screens: Lehrerpult, Aufgabenhefte, Fächer, Einstellungen
 - [ki-lehrer-setup-wizard](konzepte/ki-lehrer-setup-wizard.md) — Einrichtungs-Wizard: 9 Schritte, jeder Dialog eine Frage, vollständig eingerichtet ohne Terminal oder Fachjargon
+- [ki-lehrer-prototyp](konzepte/ki-lehrer-prototyp.md) — Tech-Stack, Projektstruktur, Abhängigkeiten und 8-stufige Build-Reihenfolge für die Umsetzung der KI-Lehrer App
 - [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 
