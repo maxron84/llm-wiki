@@ -12,6 +12,13 @@ status: active
 
 ---
 
+## [2026-05-24 00:00] ingest | KI-Lehrer App — GUI-Wireframe als Konzeptseite
+
+Bild `raw/ki-lehrer_gui-entwurf_sehr-abstrakt.png` aufgenommen. Kern: Tkinter-Desktop-App die den KI-Lehrer-Ansatz für technisch unaffine Nutzer (DAU-Prinzip) zugänglich macht. GUI als Zugangslösung — Komplexität (Git, Markdown, Heft-Muster) läuft im Hintergrund, unsichtbar. Flexible Interview-Logik bleibt erhalten. Projektstatus: Konzeptphase, wird ausgelagert.
+
+**Neue Seiten:**
+- `konzepte/ki-lehrer-app.md`: Konzept, DAU-Prinzip, Wireframe-Beschreibung, Abgrenzung zu Vorlagen
+
 ## [2026-05-18 00:00] query | Heft-Konzept: zeitliche Dimension für KI-Lehrer-Vorlagen
 
 `heft/`-Ordner als Schüler-Arbeitsraum eingeführt: ein lebendes `.md`-Dokument pro Thema/Konzept. Schüler schreibt eigene Lösungen hinein (in Obsidian), Claude liest und reviewed, committet danach. Git-Historie = Bewertungshistorie. Session-Start-Scan prüft welche Konzepte >14 Tage nicht reviewed wurden → Spaced-Repetition-Signal ohne Overhead. Laienlehrer ohne `heft/` (Modell B), aber mit Themen-Scan über `wiki/lektionen/`.
