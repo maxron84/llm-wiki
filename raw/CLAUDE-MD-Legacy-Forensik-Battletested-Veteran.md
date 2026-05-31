@@ -2,11 +2,11 @@
 
 ## Untersuchungsgegenstand
 
-**Systemname**: AP20 Schnittstelle (JobRouter, Oracle EBS Kreditoren)
-**Geschätztes Alter**: ~9 Jahre (Fachkonzept Nov 2016, GoLive ~2018)
-**Primärsprachen**: PHP (JobRouter RuleExecutionFunctions), PL/SQL (Oracle EBS Packages), SQL (Views, Staging)
-**Bekannte Frameworks**: JobRouter 2023.1.26, Oracle E-Business Suite, MDB2 (PHP DB-Abstraction), DocuWare DMS
-**Untersuchungsziel**: Forensische Analyse / P2P-Modernisierung / BANF-Ablösung / Wissenstransfer
+**Systemname**: {{z.B. Rechnungsschnittstelle, OrderManagement, LegacyERP}}
+**Geschätztes Alter**: {{z.B. ~9 Jahre, erste Commits ca. 2016}}
+**Primärsprachen**: {{z.B. PHP, PL/SQL, SQL}}
+**Bekannte Frameworks**: {{z.B. Workflow-Engine, ERP-System, DMS-System}}
+**Untersuchungsziel**: {{z.B. Forensische Analyse / Modernisierung / Wissenstransfer}}
 
 ## Zweck
 
@@ -34,17 +34,17 @@ scripts/                -- PowerShell-Skripte (.ps1) für wiederkehrende Aufgabe
 wiki/                   -- Vom Assistenten gepflegte Analyseergebnisse
   index.md              -- Inhaltsverzeichnis aller Befunde
   log.md                -- Chronologisches Untersuchungsprotokoll
-  chronologie.md        -- Zeitstrahl der AP20-Entwicklung
-  ap20-schnittstelle/   -- Schnittstellenanalyse (Architektur, Fehlercodes, Transfer, Order Match)
-  prozesse/             -- Prozessanalysen (RG_Rechnungen, BANF, PHP/JS-Funktionen, Rollen)
-  datenbank/            -- Staging, Interface, Views, EBS-Objekte, DMS-Verbindungen
+  chronologie.md        -- Zeitstrahl der Systementwicklung
+  schnittstellen/       -- Schnittstellenanalyse (Architektur, Fehlercodes, Protokolle)
+  prozesse/             -- Prozessanalysen (Abläufe, Funktionen, Rollen)
+  datenbank/            -- Staging, Interface, Views, DB-Objekte, DMS-Verbindungen
   umgebungen/           -- PROD/TEST-Umgebungslandschaft
   quellen/              -- Zusammenfassungen aller aufgenommenen Quelldokumente
   arbeit/               -- Arbeitsergebnisse, thematisch gruppiert
     journal.md          -- Chronologische Übersicht aller Arbeitspakete
-    ap20-betrieb/       -- Laufender Betrieb, Features, Blocker
-    banf-abloesung/     -- BANF-Entfernung: Analyse, Umsetzung, Mapping
-    kostenstelle/       -- Kostenstelle und Genehmigungsrichtlinie
+    betrieb/            -- Laufender Betrieb, Features, Blocker
+    abloesung/          -- Ablösung: Analyse, Umsetzung, Mapping
+    genehmigung/        -- Genehmigungsregeln und -richtlinien
 ```
 
 ## Untersuchungs-Workflow
@@ -155,7 +155,7 @@ Wenn sich das Konfidenzniveau ändert (z.B. eine Hypothese wird durch Code best�
 ## Zitierregeln
 
 - Jeder Befund **muss** seine Quelle referenzieren: `(Quelle: raw/code/funktion.php:142)`
-- Bei Confluence-Clippings: `(Quelle: clippings/AP20-Technische-Doku.md)`
+- Bei Confluence-Clippings: `(Quelle: clippings/system-technische-doku.md)`
 - Bei Interviews: `(Quelle: raw/interviews/2026-04-15-rolle.md)`
 - Wenn zwei Quellen sich widersprechen: **Beide** zitieren und den Widerspruch markieren
 - Wenn ein Befund keine Quelle hat: `(⚪ Hypothese, überprüfungsbedürftig)`
@@ -233,13 +233,13 @@ Wenn der Benutzer das Wiki prüfen lassen will:
 
 ### Wirkbereich (Scope)
 
-> **WICHTIG**: Der Assistent hat **keinen Zugriff** auf das laufende JobRouter-System, die Oracle-EBS-Datenbank, DocuWare, die Testumgebung JRTEST oder irgendein anderes produktives oder testseitiges Fremdsystem. Diese Systeme laufen vollständig außerhalb des Scopes.
+> **WICHTIG**: Der Assistent hat **keinen Zugriff** auf das laufende Zielsystem, die Produktivdatenbank, externe Dienste oder die Testumgebung. Diese Systeme laufen vollständig außerhalb des Scopes.
 
-- **Keine Fixes anwenden**: Der Assistent kann **keine** Änderungen an JR-Prozessen, PHP-Funktionen im JR, JS-Skripten im JR, EBS-Packages, DB-Objekten oder Konfigurationen produktiver/testseitiger Systeme direkt durchführen.
+- **Keine Fixes anwenden**: Der Assistent kann **keine** Änderungen an Prozessen, Funktionen, Skripten, DB-Objekten oder Konfigurationen produktiver/testseitiger Systeme direkt durchführen.
 - **Was der Assistent kann**: analysieren, dokumentieren, Anweisungen niederschreiben, How-Tos und Schritt-für-Schritt-Anleitungen erstellen, Hypothesen prüfen, Wiki pflegen, Skripte für lokale Aufgaben in `scripts/` schreiben.
-- **Was der Assistent nicht kann**: Code im JR deployen, Prozessversionen aktivieren, DB-Statements gegen EBS oder JR ausführen, Dialoge im Browser testen, Toast-Meldungen reproduzieren, Datei-Uploads im JR vornehmen.
-- **Konsequenz für How-Tos**: Fix-Anleitungen wie `wiki/arbeit/ap20-betrieb/schritt-61-jsfix-howto.md` sind **Vorlagen für den menschlichen Umsetzer**, kein Auftrag zur eigenständigen Durchführung. Verifikationsschritte beschreiben, was der Mensch im JR prüft, nicht was der Assistent prüft.
-- **Konsequenz für Befunde**: Aussagen über das Laufzeitverhalten (z.B. "Toast erscheint nicht mehr") basieren ausschließlich auf Benutzerbericht oder Screenshot, niemals auf eigener Beobachtung. Solche Befunde explizit mit Quellenangabe versehen (z.B. "Quelle: Screenshot Benutzer vom TT.MM.JJJJ").
+- **Was der Assistent nicht kann**: Code deployen, Prozessversionen aktivieren, DB-Statements gegen produktive Systeme ausführen, Dialoge im Browser testen, Laufzeitverhalten reproduzieren, Datei-Uploads im Zielsystem vornehmen.
+- **Konsequenz für How-Tos**: Fix-Anleitungen wie `wiki/arbeit/betrieb/schritt-xx-fix-howto.md` sind **Vorlagen für den menschlichen Umsetzer**, kein Auftrag zur eigenständigen Durchführung. Verifikationsschritte beschreiben, was der Mensch im System prüft, nicht was der Assistent prüft.
+- **Konsequenz für Befunde**: Aussagen über das Laufzeitverhalten basieren ausschließlich auf Benutzerbericht oder Screenshot, niemals auf eigener Beobachtung. Solche Befunde explizit mit Quellenangabe versehen (z.B. "Quelle: Screenshot Benutzer vom TT.MM.JJJJ").
 
 ### Unveränderliche Regeln
 - **Verändere NIEMALS** etwas in `raw/` oder `clippings/` (Originalquellen)
@@ -290,7 +290,7 @@ git add wiki\; git commit -m "Wiki: <kurze Beschreibung der Änderung>"
 - Wenn du dir unsicher bist, sage es. Eine ehrliche ⚪-Markierung ist besser als eine falsche 🟢
 - Bei großen Codebasen: Frage den Benutzer, welches Modul zuerst untersucht werden soll
 - Dokumentiere auch **Abwesenheiten**: Fehlende Tests, fehlende Doku, fehlende Fehlerbehandlung sind Befunde
-- Als definitive Wahrheitsgrundlage gelten die exportierten JR-Prozesse (XML), nicht die Confluence-Doku
+- Als definitive Wahrheitsgrundlage gilt der Quellcode bzw. die exportierten Prozessdefinitionen, nicht die Dokumentation
 
 ### Skripte für wiederkehrende Aufgaben
 
