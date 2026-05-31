@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-24 (Foto-Review: Vision-Workflow für nicht-digitalisierbare Schülerarbeit)
+**Zuletzt aktualisiert**: 2026-05-31 (Ingest: CLAUDE.md Battle-tested Veteran + Rookie — 5 neue Seiten, 3 Updates)
 
 ---
 
@@ -49,7 +49,9 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [exokortex](konzepte/exokortex.md) — Aaron Fulkersons „Exo" als externes kognitives Betriebssystem: 26 Skills, 14 MCP-Server, Auto-Enrichment
 - [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
 - [heft-muster](konzepte/heft-muster.md) — Schülerarbeit in lebenden .md-Dateien; Git-Commits als implizite Lernhistorie ohne Tracking-Overhead
-- [ki-lehrer-app](konzepte/ki-lehrer-app.md) — Tkinter-Desktop-App: KI-Lehrer für alle zugänglich — DAU-Prinzip, GUI als Zugangslösung, Komplexität im Hintergrund
+- [ki-lehrer-app](konzepte/ki-lehrer-app.md) — Tkinter-Desktop-App V1.9 im Feldtest — DAU-Prinzip, GUI als Zugangslösung, Feldtest-Sperre aktiv
+- [feldtest-sperre](konzepte/feldtest-sperre.md) — Release-Freeze während echter Nutzertests: was gesperrt ist, wann die Sperre aufgehoben wird
+- [claude-md-token-sparen](konzepte/claude-md-token-sparen.md) — Verhaltensregeln direkt in der CLAUDE.md: 20-Zeilen-Limit, offset+limit, einmal lesen — ergänzt jDocMunch/qmd auf Gesprächsebene
 - [foto-review](konzepte/foto-review.md) — Optionaler Vision-Workflow: KI prüft Fotos handschriftlicher Schülerarbeit (Geometrie, Diagramme) vor der Abgabe
 - [ki-lehrer-datenmodell](konzepte/ki-lehrer-datenmodell.md) — Ordnerstruktur, JSON-Schemas, Git-Strategie und Kontext-Ladestrategie der KI-Lehrer App
 - [ki-lehrer-screens](konzepte/ki-lehrer-screens.md) — Detailierter Entwurf der vier Screens: Lehrerpult, Aufgabenhefte, Fächer, Einstellungen
@@ -102,6 +104,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
 - [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
 - [ralph-claude-code-llm-wiki-metrik](quellen/ralph-claude-code-llm-wiki-metrik.md) — Ökonomische Analyse: Ralph + Karpathy, US$/WP-Metrik, drei Kostenszenarien
+- [claude-md-legacy-forensik-veteran](quellen/claude-md-legacy-forensik-veteran.md) — Battle-tested Forensik-Vorlage: PowerShell, DSGVO, Session-Protokoll, Token-Sparregeln, Scripting
+- [claude-md-softwareprojekt-rookie](quellen/claude-md-softwareprojekt-rookie.md) — KI-Lehrer App V1.9 CLAUDE.md: FELDTEST-SPERRE, Stufenbau, Regressions-Checks, ralph.sh-Budget
 - [roocode-lokale-doku](quellen/roocode-lokale-doku.md) — Offizielle Roo Code Docs: Einrichtung mit Ollama und LM Studio, Kontextfenster, Troubleshooting
 - [roocode-lokale-community-reddit](quellen/roocode-lokale-community-reddit.md) — Reddit r/RooCode: Praxiserfahrungen, Kontextfenster-Bug, Fine-tuned Modelle
 - [roocode-local-evaluation-olilanz](quellen/roocode-local-evaluation-olilanz.md) — olilanz GitHub: technische Evaluation auf 36 GB VRAM, Modelfile-Konfigurationen, System-Prompt-Optimierung
@@ -112,7 +116,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-software](vorlagen/claude-md-software.md) — CLAUDE.md-Vorlage für Software-Projekte (Lean oder Dokumentiert mit Projekt-Wiki)
 - [claude-md-software-begleiter](vorlagen/claude-md-software-begleiter.md) — CLAUDE.md-Vorlage: KI als Begleiter — Mensch schreibt Code, KI dokumentiert und reviewt
 - [claude-md-lehrer](vorlagen/claude-md-lehrer.md) — CLAUDE.md-Vorlage: KI als Lehrbegleiter — adaptiver Unterricht mit dynamisch generiertem Lehrplan
-- [claude-md-legacy-forensik](vorlagen/claude-md-legacy-forensik.md) — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse
+- [claude-md-legacy-forensik](vorlagen/claude-md-legacy-forensik.md) — CLAUDE.md-Vorlage für forensische Legacy-Codebase-Analyse (inkl. Battle-tested Erweiterungen)
+- [claude-md-softwareprojekt-rookie](vorlagen/claude-md-softwareprojekt-rookie.md) — CLAUDE.md-Vorlage: Solo-Softwareprojekt mit Ralph-Loop, FELDTEST-SPERRE, Regressions-Checkliste
 - [claude-md-youtube-verlauf](vorlagen/claude-md-youtube-verlauf.md) — CLAUDE.md-Vorlage für YouTube-Verlauf-Wikis
 - [claude-md-rezepte-ernaehrung](vorlagen/claude-md-rezepte-ernaehrung.md) — CLAUDE.md-Vorlage für Rezepte- und Ernährungs-Wikis
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10

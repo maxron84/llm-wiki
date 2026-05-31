@@ -8,8 +8,8 @@ status: draft
 # KI-Lehrer App
 
 **Zusammenfassung**: Eine Tkinter-Desktop-Anwendung, die den KI-Lehrer-Ansatz für technisch unaffine Nutzer zugänglich macht — Kinder, Eltern, alle. GUI als Zugangslösung, nicht als Feature: die Komplexität dahinter (Git, Markdown, Heft-Muster) bleibt vollständig erhalten, wird aber unsichtbar.
-**Quellen**: `raw/ki-lehrer_gui-entwurf_sehr-abstrakt.png`
-**Zuletzt aktualisiert**: 2026-05-24
+**Quellen**: `raw/ki-lehrer_gui-entwurf_sehr-abstrakt.png`, `raw/CLAUDE-MD-Softwareprojekt-Battetested-Rookie.md`
+**Zuletzt aktualisiert**: 2026-05-31
 
 ---
 
@@ -186,9 +186,13 @@ Beide Optionen in der App vorsehen, wählbar im Setup. Standard-Pfad ist Cloud �
 
 ## Projektstatus
 
-**Konzeptphase.** Dieses Dokument hält die Idee und das Designmotiv fest.
+**V1.9 im Feldtest (ab 2026-05-31).** Die App hat Stufen 1 bis 78 durchlaufen — Kaskaden 1 bis 10 abgeschlossen — und ist am 2026-05-31 in den ersten echten Feldtest mit einem Kind gegangen.
 
-Das Projekt wird als eigenständiges Projekt ausgelagert — mit einer eigenen Vorlage (kein CLAUDE.md-Format, ein neues Muster das noch definiert werden muss). Die Wissensbasis für das Projekt kommt aus diesem Wiki.
+Aktuelle Features: Lehrerpult mit Chat, Aufgabenhefte, Fächer, Eltern-Cockpit mit PDF-Bericht, Foto-Review, Lehrplan-Modus, Kosten-Transparenz mit Hybrid-Modell-System.
+
+Während des Feldtests gilt eine [Feldtest-Sperre](feldtest-sperre.md): kein neues Feature, kein Refactoring, kein Ralph-Lauf bis zum expliziten Abschluss des Tests. Die Erkenntnisse fließen als Änderungswunschliste in Kaskade 11+.
+
+Das Projekt läuft als eigenständiges Repo mit eigener [CLAUDE.md](../quellen/claude-md-softwareprojekt-rookie.md) und ralph.sh-Loop.
 
 ## Verwandte Seiten
 
@@ -199,6 +203,8 @@ Das Projekt wird als eigenständiges Projekt ausgelagert — mit einer eigenen V
 - [drei-ebenen-architektur](drei-ebenen-architektur.md) — Die Architektur die die App kapselt
 - [hardware-vergleich-sonnet-vs-lokal](hardware-vergleich-sonnet-vs-lokal.md) — VRAM-Tiers, Modellempfehlungen, Qualitätsvergleich
 - [quantisierung](quantisierung.md) — Q4 vs. Q8: Qualitätsverlust und VRAM-Kalkulation
+- [feldtest-sperre](feldtest-sperre.md) — Das Freeze-Muster, das die App gerade schützt
+- [claude-md-softwareprojekt-rookie](../quellen/claude-md-softwareprojekt-rookie.md) — Das CLAUDE.md des Projekts: Muster, Regressions-Checks, ralph.sh-Konfiguration
 - [multimodale-quellen](multimodale-quellen.md) — Bild als Quelle: dieser Entwurf stammt aus einem PNG
 
 ---

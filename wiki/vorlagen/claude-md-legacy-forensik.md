@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für die forensische Untersuchung von Legacy-Codebases und deren Dokumentation — archäologisch, methodisch, quellenbasiert, auf Enterprise-Niveau.
 **Quellen**: Abgeleitet aus dem Wissen über [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [drei-ebenen-architektur](../konzepte/drei-ebenen-architektur.md), [ingest-workflow](../konzepte/ingest-workflow.md) und [lint-pruefung](../konzepte/lint-pruefung.md)
-**Zuletzt aktualisiert**: 2026-05-14
+**Zuletzt aktualisiert**: 2026-05-31
 
 ---
 
@@ -72,6 +72,28 @@ Jeder Befund wird mit einem Konfidenzniveau markiert — inspiriert von der [lin
 **30B** (z.B. Qwen3.6:27b, Qwen3.6:35b): Grundlegende Modul- und Schnittstellenseiten ohne Spezialberichte. Konfidenzmodell vereinfacht (nur 🟢/⚪, keine Zwischenstufen). Moderne 30B-Modelle wie Qwen3.6 haben 256K Kontextfenster — bei sehr großen Codebases dennoch [qmd](../werkzeuge/qmd.md) und [jdocmunch](../werkzeuge/jdocmunch.md) empfohlen.
 
 **Cloud** (Claude Sonnet/Opus, GPT-4o): Voller Funktionsumfang inklusive Konfidenzmodell, Spezialberichte und Cross-Source-Synthese.
+
+## Battle-tested Erweiterungen (Veteran-Variante)
+
+Die Basisvorlage oben deckt die forensische Methodik ab. Im echten Projekteinsatz entstehen weitere Abschnitte, die in der Basisvorlage bewusst fehlen, weil sie projekt- oder umgebungsspezifisch sind.
+
+Eine vollständige Battle-tested-Version enthält zusätzlich:
+
+| Erweiterung | Zweck |
+|---|---|
+| **Windows/PowerShell-Umgebungsregeln** | Shell explizit deklarieren, damit Claude keine bash-Syntax erzeugt |
+| **DSGVO-Abschnitt** | Harte Verbote für personenbezogene und unternehmensinterne Daten in Wiki-Seiten |
+| **Session-Start-Protokoll** | Drei definierte Dateien beim Start, danach 10-Zeilen-Lagemeldung und eine Frage |
+| **[Token-Sparregeln](../konzepte/claude-md-token-sparen.md)** | Konkrete Quoten: 20 Zeilen/Antwort, offset+limit, einmal lesen pro Sitzung |
+| **Scripting-Ökosystem** | Benannte PowerShell-Skripte in `scripts/`, mit DryRun und UTF-8-Konventionen |
+| **KI-Marker-Vermeidungsregel** | Verbot, Hinweise auf KI-Nutzung im Projekt zu hinterlassen |
+| **Wirkbereich-Deklaration** | Explizit: was Claude tun kann (analysieren, dokumentieren) vs. was nicht (deployen, ausführen) |
+| **"Außerordentliche Anfrage"-Muster** | Benanntes Ausnahme-Muster für Antworten ohne Seiteneffekte |
+| **Arbeit-Unterordner** | `wiki/arbeit/` mit Journal trennt laufende Arbeit von dauerhaften Befundseiten |
+
+Die Quell-Datei mit der vollständigen Battle-tested-Version: [claude-md-legacy-forensik-veteran](../quellen/claude-md-legacy-forensik-veteran.md).
+
+---
 
 ## Designhinweise
 
@@ -383,6 +405,8 @@ Beide lassen sich als MCP-Server in Claude Code integrieren.
 - [qmd](../werkzeuge/qmd.md) — Lokale Suchmaschine für große Analyse-Wikis
 - [jdocmunch](../werkzeuge/jdocmunch.md) — Sektionsbasierter Zugriff als Alternative zu vollem Wiki-Laden
 - [seitenklassifikation](../konzepte/seitenklassifikation.md) — Optional ergänzbar als zweite Dimension neben dem Konfidenzmodell
+- [claude-md-legacy-forensik-veteran](../quellen/claude-md-legacy-forensik-veteran.md) — Vollständige Battle-tested-Version mit PowerShell, DSGVO, Token-Sparregeln
+- [claude-md-token-sparen](../konzepte/claude-md-token-sparen.md) — In-CLAUDE.md-Token-Sparregeln als eigenständiges Konzept
 - [claude-md-software](claude-md-software.md) — Schwester-Vorlage für allgemeine Software-Projekte
 - [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
 

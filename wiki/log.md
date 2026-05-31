@@ -12,6 +12,12 @@ status: active
 
 ---
 
+## [2026-05-31 00:00] ingest | CLAUDE.md Battle-tested Veteran + Rookie
+
+5 neue Seiten: `quellen/claude-md-legacy-forensik-veteran`, `quellen/claude-md-softwareprojekt-rookie`, `vorlagen/claude-md-softwareprojekt-rookie`, `konzepte/feldtest-sperre`, `konzepte/claude-md-token-sparen`.
+3 Updates: `vorlagen/claude-md-legacy-forensik` (Battle-tested-Abschnitt), `konzepte/ki-lehrer-app` (V1.9 Feldtest), `index.md`.
+Neue Konzepte: FELDTEST-SPERRE (Release-Freeze während Nutzertests), In-CLAUDE.md-Token-Sparregeln.
+
 ## [2026-05-24 19:00] query | KI-Lehrer App — Prototyp-Konzept
 
 Neue Seite `konzepte/ki-lehrer-prototyp.md`: Tech-Stack-Entscheidungen (Tkinter, anthropic SDK, openai-compat. für lokal, gitpython), vollständige Projektstruktur mit Modulaufteilung (gui/ + core/), 8-stufige Build-Reihenfolge von Grundgerüst bis vollständiger App. Architektur-Prinzipien: Screens als eigenständige Frame-Klassen, zentraler AppState, core/ ohne Tkinter, Streaming im Thread via root.after().
