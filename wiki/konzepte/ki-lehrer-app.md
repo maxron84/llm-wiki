@@ -1,8 +1,8 @@
 ---
 date: 2026-05-24
 type: konzept
-tags: [konzept, ux, desktop, ki-lehrer]
-status: draft
+tags: [konzept, ux, desktop, ki-lehrer, softwareprojekt]
+status: active
 ---
 
 # KI-Lehrer App
@@ -85,6 +85,53 @@ Die Zielgruppe bestimmt Designentscheidungen konkret:
 - Konfigurierbarkeit: vorhanden, aber nicht im Weg
 
 Technisch affine Nutzer können dieselbe App nutzen — sie verlieren nichts.
+
+## Tech-Stack
+
+| Schicht | Technologie |
+|---|---|
+| GUI | Tkinter (Python-Stdlib) |
+| KI Cloud | anthropic Python SDK |
+| KI Lokal | openai SDK (OpenAI-kompatibel) |
+| Git | gitpython (optional — App läuft auch ohne) |
+| Datenhaltung | JSON + Markdown (Stdlib) |
+| PDF-Export | reportlab ≥ 4.0 |
+| Build | pyinstaller ≥ 6.0 (Dev-Tool) |
+
+**Python-Mindestversion**: 3.10. Keine externen UI-Bibliotheken — Tkinter aus der Stdlib hält das Bundle schlank und vermeidet Plattform-Abhängigkeiten.
+
+**Datenverzeichnis**: `~/KI-Lehrer/` — liegt außerhalb des Projekt-Repos. Beim ersten Wizard-Abschluss angelegt, danach erkennt die App `config.json` und überspringt den Wizard.
+
+## Architektur-Regeln
+
+Vier Regeln, die alle Screens und Module durchziehen:
+
+1. **AppState** — zentrales State-Objekt, beim Start instanziiert, an alle Screens übergeben. Keine globalen Variablen.
+2. **core/ kennt kein tkinter** — `data.py`, `api.py`, `git_manager.py`, `context.py` importieren kein Tkinter. Logik und Darstellung bleiben getrennt.
+3. **Streaming im Thread** — API-Calls laufen in eigenem Thread, GUI-Updates via `root.after()`. So friert das Fenster nie ein.
+4. **DAU-Prinzip** — keine Terminal-Begriffe, keine Dateipfade, keine Git-Begriffe in der UI-Sprache.
+
+Über die Spec hinaus gewachsene Konventionen:
+
+- **`AppState.navigate(name)`** — Callback für inter-Screen-Navigation (gesetzt in `app.py`). Lehrerpult nutzt ihn für „Starten" → Aufgabenhefte.
+- **`AppState.active_fach` + `goto_chat_on_show`** — vom Lehrerpult beim „Starten"-Klick gesetzt, vom Aufgabenhefte-Screen in `on_show()` ausgewertet.
+- **Statischer Eröffnungsgruß** — lokal aus `profil.json` + letztem Sitzungs-Log konstruiert, kein API-Call. Erscheint als KI-Nachricht in der Anzeige, fließt aber nicht in die API-Message-Liste ein — spart Token.
+- **JSON-Schema-Versionierung** — `{"version": 1, ...}` in `config.json` und `profil.json` als Vorbereitung für Migrationen.
+
+## Umgebung & Betrieb
+
+**Tkinter im Flatpak-VSCodium nicht verfügbar** — `import tkinter` schlägt in der Sandbox fehl. Die App nur im nativen Terminal testen (GNOME Terminal, Konsole…). Auf Linux muss `python3-tk` (Debian/Ubuntu) bzw. `tk` (Arch) systemweit installiert sein.
+
+**Logs**: Die App schreibt strukturierte Logs nach `~/KI-Lehrer/_log/app.jsonl` (JSON-Lines, eine Zeile = ein Eintrag). Rotation bei 1 MB, 5 Backups. Wichtige Events:
+
+| event | Bedeutung |
+|---|---|
+| `stream_start` | KI-Antwort startet (Felder: `modus`, `modell`) |
+| `stream_done` | KI-Antwort abgeschlossen (`chunks`, `dauer_ms`) |
+| `sync_tick` | Material-Sync-Durchlauf (`neue_dateien`, `fehler`) |
+| `git_commit` | Git-Commit erstellt (`hash`, `dateien`) |
+
+Detailliertes Debug-Logging: `KI_LEHRER_DEBUG=1 python3 main.py`
 
 ## Abgrenzung zu den bestehenden Vorlagen
 
@@ -184,6 +231,24 @@ Beide Optionen in der App vorsehen, wählbar im Setup. Standard-Pfad ist Cloud �
 
 ---
 
+## Kaskaden-Chronik
+
+Die App wächst in Kaskaden — jede bringt eine abgeschlossene Erweiterung. Der Build selbst läuft in Stufen (1–78 und weiter), jede eigenständig lauffähig.
+
+| Kaskade | Version | Inhalt |
+|---|---|---|
+| 1–4 | V1.0–V1.3 | Grundgerüst, Setup-Wizard, Datenmodell, Chat-Kern |
+| 5 | V1.4 | Chat ins Lehrerpult gezogen, Aufgabenhefte → „Mappe", dreistufiges Foto-Tag-System |
+| 6 | V1.5 | Multi-Profil in Nav, Würde-konforme Schüler-Anmerkung im Heft, fachübergreifende Sitzungs-Suche |
+| 7 | V1.6 | Installierbar: PyInstaller-Bundles für Linux/Windows/macOS, CI-Pipeline, Crash-Dialog, Update-Check |
+| 8 | V1.7 | Lehrplan-Modus: `lehrplan.json` pro Fach, Fortschritts-Heuristik, KI-vorgeschlagener Wochenplan, „Heute lernen"-Karte |
+| 9 | V1.8 | Eltern-/Lehrer-Cockpit: Wochenbericht, Heft-Diff, Foto-Übersicht, PDF-Export (reportlab) |
+| 10 | V1.9 | Kosten-Transparenz: Token-Erfassung, Preis-Tabelle, Hybrid-Modell-System, Budget-Hinweis im Cockpit |
+
+**Nächste geplante Themen (nach Feldtest):** Lokal-Token-Tracking, Auto-Switching zwischen Modellen, Klassenarbeit-Modus. Kaskaden 11–13 stehen bereit, sind aber eingefroren.
+
+Den exakten Stand zeigt `git log --grep="feat(stufe"` im Projekt-Repo.
+
 ## Projektstatus
 
 **V1.9 im Feldtest (ab 2026-05-31).** Die App hat Stufen 1 bis 78 durchlaufen — Kaskaden 1 bis 10 abgeschlossen — und ist am 2026-05-31 in den ersten echten Feldtest mit einem Kind gegangen.
@@ -193,6 +258,20 @@ Aktuelle Features: Lehrerpult mit Chat, Aufgabenhefte, Fächer, Eltern-Cockpit m
 Während des Feldtests gilt eine [Feldtest-Sperre](feldtest-sperre.md): kein neues Feature, kein Refactoring, kein Ralph-Lauf bis zum expliziten Abschluss des Tests. Die Erkenntnisse fließen als Änderungswunschliste in Kaskade 11+.
 
 Das Projekt läuft als eigenständiges Repo mit eigener [CLAUDE.md](../quellen/claude-md-softwareprojekt-rookie.md) und ralph.sh-Loop.
+
+## Bekannte Regressions-Checks
+
+Beim Test der App nach größeren Änderungen sind diese Szenarien kritisch:
+
+- **Fach-Fokus**: Im Mathe-Chat eine Geschichtsfrage stellen → KI soll freundlich zum Geschichtsheft verweisen, nicht antworten.
+- **Foto-Tag-Override**: Status manuell auf „verstanden" setzen → KI darf beim nächsten Session-Ende nicht überschreiben (`darf_setzen` prüft `status_quelle == "mensch"`).
+- **Stream-Persistenz**: Stream starten, Bildschirm wechseln und zurück → Antwort vollständig, kein Crash. `chat_view.on_hide()` bricht keinen laufenden Stream ab.
+- **Multi-Profil**: Profil wechseln → eigener Ordner, altes Profil bleibt erhalten.
+- **Heft-Anmerkung**: Anmerkung anlegen → Blockquote sichtbar. Rechtsklick → Entfernen. KI-Blöcke niemals editierbar.
+- **Cockpit-PIN**: Ohne PIN kein Cockpit-Eintrag in der Nav. Mit PIN → sofort navigierbar.
+- **PDF-Export**: Cockpit → „Bericht als PDF" → Dateidialog → PDF enthält korrekte Wochendaten.
+- **Verbrauch-Erfassung**: Lerngespräch führen → `_verbrauch.jsonl` erhält neue Zeile mit Modell, Pfad, Token-Zahlen.
+- **Budget-Hinweis**: Budget auf 0,01 EUR setzen → nach erstem Cloud-Aufruf dezenter Banner. Erscheint nicht ohne PIN-Entsperrung.
 
 ## Verwandte Seiten
 

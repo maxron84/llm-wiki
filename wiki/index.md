@@ -49,7 +49,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [exokortex](konzepte/exokortex.md) — Aaron Fulkersons „Exo" als externes kognitives Betriebssystem: 26 Skills, 14 MCP-Server, Auto-Enrichment
 - [lernschleifen](konzepte/lernschleifen.md) — Drei formale Schleifen: täglich erfassen, wöchentlich reviewen, bewährte Muster in CLAUDE.md-Regeln graduieren
 - [heft-muster](konzepte/heft-muster.md) — Schülerarbeit in lebenden .md-Dateien; Git-Commits als implizite Lernhistorie ohne Tracking-Overhead
-- [ki-lehrer-app](konzepte/ki-lehrer-app.md) — Tkinter-Desktop-App V1.9 im Feldtest — DAU-Prinzip, GUI als Zugangslösung, Feldtest-Sperre aktiv
+- [ki-lehrer-app](konzepte/ki-lehrer-app.md) — Tkinter-Desktop-App V1.9 im Feldtest — Tech-Stack, Kaskaden-Chronik (1–10), Architektur-Regeln, Regressions-Checks
 - [feldtest-sperre](konzepte/feldtest-sperre.md) — Release-Freeze während echter Nutzertests: was gesperrt ist, wann die Sperre aufgehoben wird
 - [claude-md-token-sparen](konzepte/claude-md-token-sparen.md) — Verhaltensregeln direkt in der CLAUDE.md: 20-Zeilen-Limit, offset+limit, einmal lesen — ergänzt jDocMunch/qmd auf Gesprächsebene
 - [foto-review](konzepte/foto-review.md) — Optionaler Vision-Workflow: KI prüft Fotos handschriftlicher Schülerarbeit (Geometrie, Diagramme) vor der Abgabe

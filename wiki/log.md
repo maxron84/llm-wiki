@@ -12,6 +12,10 @@ status: active
 
 ---
 
+## [2026-05-31 12:00] query | KI-Lehrer App erweitert aus Rookie-CLAUDE.md
+
+1 Update: `konzepte/ki-lehrer-app.md` — neue Abschnitte Tech-Stack, Architektur-Regeln, Umgebung & Betrieb, Kaskaden-Chronik (Kaskaden 1–10), Bekannte Regressions-Checks. Status von `draft` auf `active` gesetzt.
+
 ## [2026-05-31 00:00] ingest | CLAUDE.md Battle-tested Veteran + Rookie
 
 5 neue Seiten: `quellen/claude-md-legacy-forensik-veteran`, `quellen/claude-md-softwareprojekt-rookie`, `vorlagen/claude-md-softwareprojekt-rookie`, `konzepte/feldtest-sperre`, `konzepte/claude-md-token-sparen`.
