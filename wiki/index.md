@@ -59,10 +59,12 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [ki-lehrer-prototyp](konzepte/ki-lehrer-prototyp.md) — Tech-Stack, Projektstruktur, Abhängigkeiten und 8-stufige Build-Reihenfolge für die Umsetzung der KI-Lehrer App
 - [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
+- [kostencounter](konzepte/kostencounter.md) — Einheitlicher Kosten-Tracking-Standard für alle CLAUDE.md-Vorlagen: Fortlaufend vs. Abschluss-Pflicht
 
 ## Werkzeuge
 
-- [roo-code](werkzeuge/roo-code.md) — Open-Source VS-Code-Extension für autonomes Coding mit lokalen oder Cloud-Modellen
+- [zoo-code](werkzeuge/zoo-code.md) — Community-Fork von Roo Code: autonomes Coding, aktiv entwickelt (Apache 2.0, v3.64.0)
+- [roo-code](werkzeuge/roo-code.md) — ⚠️ Nicht mehr gepflegt — Nachfolger: Zoo Code
 - [lm-studio](werkzeuge/lm-studio.md) — Desktop-App zum Herunterladen und Ausführen lokaler GGUF-Modelle mit eingebautem Inferenz-Server
 - [obsidian](werkzeuge/obsidian.md) — Kostenlose Markdown-basierte Notizen-App, dient als Wiki-Viewer/IDE
 - [claude-code](werkzeuge/claude-code.md) — Anthropics KI-Agent, der das Wiki schreibt und pflegt
@@ -123,7 +125,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
 - [claude-md-laienlehrer](vorlagen/claude-md-laienlehrer.md) — CLAUDE.md-Vorlage: KI als Unterrichtscoach für Eltern und Laien — zweistufige Erklärungen, Stundenvorbereitung, Korrektur
 - [claude-md-team](vorlagen/claude-md-team.md) — CLAUDE.md-Vorlage: Team-Wiki für 2–8 Personen mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone
-- [roocode-llm-wiki-lokal](vorlagen/roocode-llm-wiki-lokal.md) — System-Prompt-Vorlage: LLM-Wiki mit Roo Code + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt
+- [zoocode-llm-wiki-lokal](vorlagen/zoocode-llm-wiki-lokal.md) — System-Prompt-Vorlage: LLM-Wiki mit Zoo Code + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt
+- [roocode-llm-wiki-lokal](vorlagen/roocode-llm-wiki-lokal.md) — ⚠️ Archiviert — Nachfolger: zoocode-llm-wiki-lokal
 
 ## Anleitungen
 

@@ -288,6 +288,23 @@ Wenn der Mensch das Wiki prüfen lässt:
 Wenn das Wiki wächst und `index.md` unhandlich wird:
 - **qmd** (`npm install -g @tobilu/qmd`): Semantische Suche über alle Wiki-Seiten
 - **jDocMunch** (`pip install jdocmunch-mcp`): Nur relevante Abschnitte laden
+
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code | qwen3:14b via Zoo Code lokal}}
+**Budget-Limit**: {{N}} USD pro Session | {{M}} USD gesamt
+**Warnschwelle**: {{N×0,8}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session eine Zeile anlegen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen der Warnschwelle: Benutzer informieren, bevor weitergemacht wird
+
+**Projektabschluss-Pflicht:**
+Vor dem letzten Commit `wiki/kosten.md` mit vollständiger Gesamtauswertung abschließen (alle Sessions, Gesamtsumme, Kosteneffizienz-Notiz).
 ````
 
 ## Verwandte Seiten

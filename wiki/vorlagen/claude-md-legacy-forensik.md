@@ -389,6 +389,23 @@ Bei sehr großen Enterprise-Codebasen kann das Analyse-Wiki schnell wachsen. Wen
 - **jDocMunch** (`pip install jdocmunch-mcp`): Sektionsbasierter Direktzugriff — lädt nur den relevanten Abschnitt statt die gesamte Befundseite
 
 Beide lassen sich als MCP-Server in Claude Code integrieren.
+
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code | qwen3:14b via Zoo Code lokal}}
+**Budget-Limit**: {{N}} USD pro Session | {{M}} USD gesamt
+**Warnschwelle**: {{N×0,8}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session eine Zeile anlegen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen der Warnschwelle: Benutzer informieren, bevor weitergemacht wird
+
+**Projektabschluss-Pflicht:**
+Vor dem letzten Commit `wiki/kosten.md` mit vollständiger forensischer Kostenaufstellung abschließen: alle Sessions, Gesamtsumme, Kosteneffizienz-Notiz (z.B. Kosten pro analysiertem Modul).
 ````
 
 ## Verwandte Seiten

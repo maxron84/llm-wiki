@@ -151,6 +151,24 @@ Falls der Loop gebraucht wird:
 - **Promise-Match**: `<promise>STUFE_N_COMPLETE</promise>` mit Tags.
 
 Bei Loop-Hängern: zuerst `pgrep -af "claude -p"` und letzten Log-Eintrag prüfen, bevor abgebrochen wird.
+
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code}}
+**Budget-Limit (manuell)**: {{N}} USD pro Session | {{M}} USD gesamt
+**Budget-Limit (ralph.sh)**: `RALPH_BUDGET_USD=3` (je Stufe; Empfehlung: 3 USD)
+**Warnschwelle**: {{N×0,8}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session (manuell oder Ralph-Lauf) eine Zeile anlegen. Ralph-Läufe einzeln aufführen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen der Warnschwelle: Benutzer informieren, bevor weitergemacht wird
+
+**Projektabschluss-Pflicht:**
+Vor dem letzten Commit `wiki/kosten.md` mit vollständiger Gesamtauswertung abschließen (alle Sessions, alle Ralph-Läufe, Gesamtsumme, Kosten pro Stufe/Feature).
 ````
 
 ## Designhinweise

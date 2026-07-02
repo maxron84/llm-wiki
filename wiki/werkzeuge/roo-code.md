@@ -2,14 +2,16 @@
 date: 2026-05-15
 type: werkzeug
 tags: [werkzeug, lokale-modelle, setup, automatisierung]
-status: active
+status: archived
 ---
 
 # Roo Code
 
-**Zusammenfassung**: Roo Code ist eine Open-Source-VS-Code-Extension für autonomes Coding — ein Auto-Coder, der LLMs nutzt um Aufgaben selbstständig abzuarbeiten, Dateien zu lesen und zu schreiben, und schrittweise komplexe Refactorings durchzuführen.
+> ⚠️ **Nicht mehr aktiv gepflegt** (Stand: 2026-07): Das Roo-Team hat die Entwicklung eingestellt und fokussiert sich auf „Roomote". Nachfolger in der Community: **[Zoo Code](zoo-code.md)** — Drop-in-Ersatz, Apache 2.0, aktiv entwickelt.
+
+**Zusammenfassung**: Roo Code war eine Open-Source-VS-Code-Extension für autonomes Coding — ein Auto-Coder, der LLMs nutzt um Aufgaben selbstständig abzuarbeiten, Dateien zu lesen und zu schreiben, und schrittweise komplexe Refactorings durchzuführen. Technisch abgelöst durch [Zoo Code](zoo-code.md).
 **Quellen**: `Using Local Models Roo Code Documentation.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, `No Cost Guide to Local AI Code Assistant Roo Code + Ollama.md`, `Vibe Coding 'Locally' with ClineRooCode and Ollama.md`
-**Zuletzt aktualisiert**: 2026-05-15
+**Zuletzt aktualisiert**: 2026-07-02
 
 ---
 
@@ -162,10 +164,11 @@ Standard-Coding-Modelle scheitern oft an Roo Codes XML-Werkzeug-Format. Diese Mo
 
 ## Verwandte Seiten
 
+- [zoo-code](zoo-code.md) — Community-Nachfolger, aktiv gepflegt (empfohlen)
 - [tool-use-lokale-modelle](../konzepte/tool-use-lokale-modelle.md) — Warum lokale Modelle mit Tool-Nutzung kämpfen
 - [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md) — Das 2K-Standardproblem und Lösungen
 - [quantisierung](../konzepte/quantisierung.md) — VRAM-Tradeoffs bei lokalen Modellen
-- [roocode-system-prompt-optimierung](../konzepte/roocode-system-prompt-optimierung.md) — Kontext-Reduktion für lokale Setups
+- [roocode-system-prompt-optimierung](../konzepte/roocode-system-prompt-optimierung.md) — Kontext-Reduktion für lokale Setups (gilt auch für Zoo Code)
 - [lm-studio](lm-studio.md) — Alternative zu Ollama mit GUI
 - [phi-4](phi-4.md) — Phi-4-Modellfamilie: Evaluation für lokales Coding
 

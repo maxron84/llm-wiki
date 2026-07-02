@@ -12,6 +12,18 @@ status: active
 
 ---
 
+## [2026-07-02 00:00] update | Zoo Code + Kostencounter-Standard
+
+**Zoo Code (Roocode-Nachfolger):**
+- Neu: `werkzeuge/zoo-code.md` — Community-Fork von Roo Code (Apache 2.0, v3.64.0, aktiv entwickelt)
+- Update: `werkzeuge/roo-code.md` — Status auf `archived`, Verweis auf Zoo Code
+- Neu: `vorlagen/zoocode-llm-wiki-lokal.md` — Zoo-Code-Vorlage (portiert von Roocode-Variante)
+- Update: `vorlagen/roocode-llm-wiki-lokal.md` — Status auf `archived`, Verweis auf neue Vorlage
+
+**Kostencounter-Standard:**
+- Neu: `konzepte/kostencounter.md` — Einheitliches Kosten-Tracking: Fortlaufend-Variante (offene Projekte) + Abschluss-Variante (abgeschlossene Projekte)
+- Update: alle 10 Vorlagen in `vorlagen/` — `## Kostenkontrolle`-Block ergänzt (Fortlaufend: Lehrer, Nachhilfe, Laienlehrer, YouTube, Rezepte; Abschluss: Software, Software-Begleiter, Softwareprojekt-Rookie, Legacy-Forensik, Team)
+
 ## [2026-05-31 12:00] query | KI-Lehrer App erweitert aus Rookie-CLAUDE.md
 
 1 Update: `konzepte/ki-lehrer-app.md` — neue Abschnitte Tech-Stack, Architektur-Regeln, Umgebung & Betrieb, Kaskaden-Chronik (Kaskaden 1–10), Bekannte Regressions-Checks. Status von `draft` auf `active` gesetzt.

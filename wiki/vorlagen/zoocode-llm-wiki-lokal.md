@@ -1,27 +1,25 @@
 ---
-date: 2026-05-16
+date: 2026-07-02
 type: vorlage
-tags: [vorlage, lokale-modelle, setup, roo-code]
-status: archived
+tags: [vorlage, lokale-modelle, setup, zoo-code]
+status: active
 ---
 
-# Vorlage: LLM-Wiki mit Roo Code + lokalem Modell (qwen3:14b, RTX 5080)
+# Vorlage: LLM-Wiki mit Zoo Code + lokalem Modell (qwen3:14b, RTX 5080)
 
-> ⚠️ **Archiviert** (Stand: 2026-07): Roo Code wird nicht mehr aktiv entwickelt. Aktuelle Vorlage: **[zoocode-llm-wiki-lokal](zoocode-llm-wiki-lokal.md)** — inhaltlich identisch, auf Zoo Code portiert.
-
-**Zusammenfassung**: System-Prompt-Vorlage für den Betrieb eines LLM-Wikis mit Roo Code und einem lokalen 14B-Modell via Ollama. Archiviert — Nachfolger: [zoocode-llm-wiki-lokal](zoocode-llm-wiki-lokal.md).
-**Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md), [ingest-workflow](../konzepte/ingest-workflow.md), [roo-code](../werkzeuge/roo-code.md)
+**Zusammenfassung**: System-Prompt-Vorlage für den Betrieb eines LLM-Wikis mit Zoo Code und einem lokalen 14B-Modell via Ollama. Auf die Session-Limits des 40K-Kontextfensters abgestimmt. Portiert von der [Roocode-Variante](roocode-llm-wiki-lokal.md).
+**Quellen**: Abgeleitet aus [llm-wiki-muster](../konzepte/llm-wiki-muster.md), [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md), [ingest-workflow](../konzepte/ingest-workflow.md), [zoo-code](../werkzeuge/zoo-code.md)
 **Zuletzt aktualisiert**: 2026-07-02
 
 ---
 
 ## Zweck
 
-Diese Vorlage ermöglicht einen abgespeckten LLM-Wiki-Betrieb mit Roo Code und einem lokalen Modell. Sie ist nicht die volle Erfahrung — sie ist das, was mit 40K Kontext realistisch funktioniert.
+Diese Vorlage ermöglicht einen abgespeckten LLM-Wiki-Betrieb mit Zoo Code und einem lokalen Modell. Sie ist nicht die volle Erfahrung — sie ist das, was mit 40K Kontext realistisch funktioniert.
 
 **Unterschied zur Cloud-Variante** (Claude Code + CLAUDE.md):
 
-| | Cloud (Claude Code) | Lokal (Roo Code + qwen3:14b) |
+| | Cloud (Claude Code) | Lokal (Zoo Code + qwen3:14b) |
 |---|---|---|
 | Kontextfenster | 200K | 40K (effektiv ~20–25K) |
 | Ingest pro Session | Mehrere Quellen möglich | **Eine Quelle max.** |
@@ -34,15 +32,26 @@ Diese Vorlage ermöglicht einen abgespeckten LLM-Wiki-Betrieb mit Roo Code und e
 
 ---
 
-## Einrichtung in Roo Code
+## Migration von Roo Code
+
+Wer bisher die [Roocode-Vorlage](roocode-llm-wiki-lokal.md) genutzt hat:
+
+1. Zoo Code in VS Code / VS Codium installieren (Extension Marketplace)
+2. In Roo Code: Einstellungen → „Export" → Datei speichern
+3. In Zoo Code: „Import Settings" → exportierte Datei auswählen
+4. Konfiguration wird automatisch übernommen — kein manuelles Nachkonfigurieren
+
+---
+
+## Einrichtung in Zoo Code
 
 ### Voraussetzungen
 
 - Ollama läuft als Server (`http://<server>:11434`)
 - Modell geladen: `qwen3:14b-40k` (Modelfile mit `PARAMETER num_ctx 40960`)
-- Roo Code 3.54.0+
+- Zoo Code 3.64.0+
 
-### Provider-Konfiguration in Roo Code
+### Provider-Konfiguration in Zoo Code
 
 ```
 Provider:  OpenAI Compatible
@@ -50,15 +59,13 @@ Base URL:  http://<server>:11434/v1
 Model ID:  qwen3:14b-40k
 ```
 
-Nicht den nativen `ollama`-Provider verwenden — er liefert ein inkompatibles Tool-Calling-Format. → [roo-code](../werkzeuge/roo-code.md), [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md)
+Nicht den nativen `ollama`-Provider verwenden — er liefert ein inkompatibles Tool-Calling-Format. → [zoo-code](../werkzeuge/zoo-code.md), [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md)
 
 ### Template einbinden
 
-Die Vorlage unten als Projektdatei ablegen und in Roo Code als Custom Instructions einbinden:
-
 1. Inhalt des Vorlagenblocks als `llm-wiki-rules.md` ins Projektverzeichnis kopieren
-2. In Roo Code: Settings → Custom Instructions → Datei referenzieren  
-   oder: Inhalt direkt in das Roo-Code-System-Prompt-Feld einfügen
+2. In Zoo Code: Settings → Custom Instructions → Datei referenzieren  
+   oder: Inhalt direkt in das Zoo-Code-System-Prompt-Feld einfügen
 
 **Wichtig**: Der Vorlageninhalt zählt zum Systemkontext und kostet bereits ~800–1.000 Tokens. Das reduziert das effektive Budget für Clippings und Gesprächsverlauf entsprechend.
 
@@ -68,7 +75,7 @@ Die Vorlage unten als Projektdatei ablegen und in Roo Code als Custom Instructio
 
 | Komponente | Tokens (ca.) |
 |---|---|
-| Roo Code eigener System-Prompt | 8–13k |
+| Zoo Code eigener System-Prompt | 8–13k |
 | Diese Vorlage | ~1k |
 | Clipping (kleines Dokument) | 3–8k |
 | Gesprächsverlauf (3–5 Runden) | 2–5k |
@@ -81,11 +88,11 @@ Die Vorlage unten als Projektdatei ablegen und in Roo Code als Custom Instructio
 
 ## Benutzung
 
-1. Vorlageninhalt unten in Roo Code einbinden (ohne den 4-Backtick-Fence)
+1. Vorlageninhalt unten in Zoo Code einbinden (ohne den 4-Backtick-Fence)
 2. `{{PROJEKTNAME}}` ersetzen
 3. Projektstruktur (`wiki/`, `clippings/`) anlegen
-4. Roo Code mit qwen3:14b-40k starten
-5. Eine Quelle in `clippings/` legen → Roo Code anweisen, sie aufzunehmen
+4. Zoo Code mit qwen3:14b-40k starten
+5. Eine Quelle in `clippings/` legen → Zoo Code anweisen, sie aufzunehmen
 6. Bei längerer Session oder nächster Quelle: neue Session starten
 
 ---
@@ -116,6 +123,7 @@ wiki/konzepte/    -- Konzept- und Ideenseiten
 wiki/quellen/     -- Quelldokumentationen
 wiki/werkzeuge/   -- Tools und Technologien
 wiki/personen/    -- Personen und Autoren
+wiki/kosten.md    -- Fortlaufendes Kostenprotokoll
 ```
 
 ## Aufnahme-Workflow (eine Quelle pro Session)
@@ -163,6 +171,23 @@ Inhalt mit klaren Überschriften.
 3. Antwort mit Quellenangabe: `(Quelle: wiki/kategorie/seite.md)`
 4. Wenn Antwort nicht im Wiki: klar sagen — nicht spekulieren
 
+## Kostenkontrolle
+
+**Modell**: qwen3:14b-40k (lokal, keine Token-Kosten)
+**Kontextbudget**: max. ~20K Token pro Session (Limit des Modells)
+
+Am Ende jeder Session einen Eintrag in `wiki/kosten.md` anlegen:
+
+| Datum | Plattform / Modell | Aufgabe | Kontext genutzt (ca.) | Kosten |
+|---|---|---|---|---|
+| YYYY-MM-DD | qwen3:14b-40k (Zoo Code) | Ingest: Quellenname | ~15K Token | kostenlos (lokal) |
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Gesprächsverlauf > 5 Runden neue Session starten
+
 ## Regeln
 
 - `clippings/` niemals bearbeiten
@@ -177,12 +202,14 @@ Inhalt mit klaren Überschriften.
 
 ## Verwandte Seiten
 
-- [roo-code](../werkzeuge/roo-code.md) — Roo Code: bestätigte Konfiguration mit RTX 5080
+- [zoo-code](../werkzeuge/zoo-code.md) — Zoo Code: Features, Konfiguration, Migration
+- [roocode-llm-wiki-lokal](roocode-llm-wiki-lokal.md) — Vorgänger-Vorlage (Roo Code, archiviert)
 - [ollama-kontextfenster](../konzepte/ollama-kontextfenster.md) — Kontextlimits, Latenzdegradation, Modelfile-Setup
 - [ingest-workflow](../konzepte/ingest-workflow.md) — Vollständiger Ingest-Workflow (Cloud-Variante)
 - [lokale-modelle](../anleitungen/lokale-modelle.md) — Einrichtung und Betrieb lokaler Modelle
 - [claude-md-software](claude-md-software.md) — Schwester-Vorlage für Software-Projekte mit Claude Code
 - [llm-wiki-muster](../konzepte/llm-wiki-muster.md) — Das übergeordnete Konzept
+- [kostencounter](../konzepte/kostencounter.md) — Standard für Kosten-Tracking in allen Projekten
 
 ---
 

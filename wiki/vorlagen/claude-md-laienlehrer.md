@@ -332,6 +332,19 @@ Antwort in einem einzigen Block: kurze Hintergrundinformation für den Erwachsen
 Wenn das Wiki mit vielen Lektionen und Korrekturen wächst:
 - **qmd** (`npm install -g @tobilu/qmd`): Semantische Suche über alle Seiten
 - **jDocMunch** (`pip install jdocmunch-mcp`): Nur relevante Abschnitte laden
+
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code | qwen3:14b via Zoo Code lokal}}
+**Budget-Limit**: {{N}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session einen Eintrag anlegen. Monatlich eine Zwischensumme hinzufügen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen des Budget-Limits: Benutzer informieren, bevor weitergemacht wird
 ````
 
 ---

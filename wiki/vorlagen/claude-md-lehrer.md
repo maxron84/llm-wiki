@@ -327,6 +327,19 @@ Eine Datei pro Konzept. Der Schüler fügt neue Abschnitte unten an. Git-Histori
 - Nach jeder Review eine Heft-Datei committen: `git add heft/thema.md && git commit -m "heft: thema — Review YYYY-MM-DD"`
 - Heft-Seiten verlinken auf ihre Konzeptseite in `wiki/konzepte/`; Konzeptseiten verlinken zurück auf die Heft-Datei
 
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code | qwen3:14b via Zoo Code lokal}}
+**Budget-Limit**: {{N}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session einen Eintrag anlegen. Monatlich eine Zwischensumme hinzufügen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen des Budget-Limits: Benutzer informieren, bevor weitergemacht wird
+
 ````
 
 ## Verwandte Seiten

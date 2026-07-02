@@ -414,6 +414,23 @@ Regelmäßig (z.B. nach jedem Sprint oder bei jedem 5. Feature):
 - Einträge ohne Quellenangabe mit faktischen Behauptungen → `(überprüfungsbedürftig)` markieren
 - Bei unlösbaren Widersprüchen zwischen Seiten: To-do-Eintrag erstellen statt raten — der Mensch entscheidet
 - Ergebnisse als nummerierte Liste berichten
+
+## Kostenkontrolle
+
+**Modell / Plattform**: {{z.B. claude-sonnet-4-6 via Claude Code | qwen3:14b via Zoo Code lokal}}
+**Budget-Limit**: {{N}} USD pro Session | {{M}} USD gesamt
+**Warnschwelle**: {{N×0,8}} USD pro Session
+
+Kosten werden in `wiki/kosten.md` protokolliert. Am Ende jeder Session eine Zeile anlegen.
+
+**Token-Sparregeln (stets aktiv):**
+- Dateien nur einmal pro Session lesen
+- `offset` + `limit` bei Dateien > 100 Zeilen (max. 50 Zeilen pro Abruf)
+- Pro Antwort max. 20 Zeilen, wenn nicht mehr gefragt
+- Bei Erreichen der Warnschwelle: Benutzer informieren, bevor weitergemacht wird
+
+**Projektabschluss-Pflicht:**
+Vor dem letzten Commit `wiki/kosten.md` mit vollständiger Gesamtauswertung abschließen (alle Sessions, Gesamtsumme, Kosteneffizienz-Notiz).
 ````
 
 ## Verwandte Seiten
