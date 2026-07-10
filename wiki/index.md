@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-07-10 (Ingest: Guide Flutter-Integration — 2 neue Seiten, 1 Update)
+**Zuletzt aktualisiert**: 2026-07-10 (Ingest: CLAUDE.md T.E.A.M. — 4 neue Seiten, 3 Updates)
 
 ---
 
@@ -60,6 +60,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [ralph-schleife](konzepte/ralph-schleife.md) — Geoffrey Huntleys deterministisches Agentenmuster: while-true-Loop für autonomen Ingest, $10,42/h Sonnet-Benchmark
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 - [kostencounter](konzepte/kostencounter.md) — Einheitlicher Kosten-Tracking-Standard für alle CLAUDE.md-Vorlagen: Fortlaufend vs. Abschluss-Pflicht
+- [finder-fixer-prinzip](konzepte/finder-fixer-prinzip.md) — Wer einen Fehler findet, fixt ihn nicht selbst — Gewaltenteilung für KI-Rollenteams
+- [read-only-guard](konzepte/read-only-guard.md) — 3-Linien-Verteidigung, um KI-Rollen technisch auf Lesezugriff zu beschränken
 
 ## Werkzeuge
 
@@ -109,6 +111,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [guide-flutter-integration](quellen/guide-flutter-integration.md) — Anleitung zur Anpassung der Software-Vorlage für ein Flutter-Projekt über 5 Plattformen
 - [claude-md-legacy-forensik-veteran](quellen/claude-md-legacy-forensik-veteran.md) — Battle-tested Forensik-Vorlage: PowerShell, DSGVO, Session-Protokoll, Token-Sparregeln, Scripting
 - [claude-md-softwareprojekt-rookie](quellen/claude-md-softwareprojekt-rookie.md) — KI-Lehrer App V1.9 CLAUDE.md: FELDTEST-SPERRE, Stufenbau, Regressions-Checks, ralph.sh-Budget
+- [claude-md-ki-team](quellen/claude-md-ki-team.md) — T.E.A.M.-Vorlage: sechs KI-Rollen (Ralph, Architekt, Frank, Harry, Marv, Axel) unter einem Strippenzieher
 - [roocode-lokale-doku](quellen/roocode-lokale-doku.md) — Offizielle Roo Code Docs: Einrichtung mit Ollama und LM Studio, Kontextfenster, Troubleshooting
 - [roocode-lokale-community-reddit](quellen/roocode-lokale-community-reddit.md) — Reddit r/RooCode: Praxiserfahrungen, Kontextfenster-Bug, Fine-tuned Modelle
 - [roocode-local-evaluation-olilanz](quellen/roocode-local-evaluation-olilanz.md) — olilanz GitHub: technische Evaluation auf 36 GB VRAM, Modelfile-Konfigurationen, System-Prompt-Optimierung
@@ -126,6 +129,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [claude-md-nachhilfe](vorlagen/claude-md-nachhilfe.md) — CLAUDE.md-Vorlage: KI als Fachlehrer — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10
 - [claude-md-laienlehrer](vorlagen/claude-md-laienlehrer.md) — CLAUDE.md-Vorlage: KI als Unterrichtscoach für Eltern und Laien — zweistufige Erklärungen, Stundenvorbereitung, Korrektur
 - [claude-md-team](vorlagen/claude-md-team.md) — CLAUDE.md-Vorlage: Team-Wiki für 2–8 Personen mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone
+- [claude-md-ki-team](vorlagen/claude-md-ki-team.md) — CLAUDE.md-Vorlage: KI-Rollenteam (Ralph, Architekt, Frank, Harry, Marv, Axel) unter einem menschlichen Strippenzieher
 - [zoocode-llm-wiki-lokal](vorlagen/zoocode-llm-wiki-lokal.md) — System-Prompt-Vorlage: LLM-Wiki mit Zoo Code + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt
 - [roocode-llm-wiki-lokal](vorlagen/roocode-llm-wiki-lokal.md) — ⚠️ Archiviert — Nachfolger: zoocode-llm-wiki-lokal
 

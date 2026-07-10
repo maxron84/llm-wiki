@@ -285,6 +285,7 @@ Beim Test der App nach größeren Änderungen sind diese Szenarien kritisch:
 - [feldtest-sperre](feldtest-sperre.md) — Das Freeze-Muster, das die App gerade schützt
 - [claude-md-softwareprojekt-rookie](../quellen/claude-md-softwareprojekt-rookie.md) — Das CLAUDE.md des Projekts: Muster, Regressions-Checks, ralph.sh-Konfiguration
 - [multimodale-quellen](multimodale-quellen.md) — Bild als Quelle: dieser Entwurf stammt aus einem PNG
+- [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Verallgemeinerte T.E.A.M.-Vorlage (Ralph/Architekt/Frank/Harry/Marv/Axel), abgeleitet aus diesem Projekt
 
 ---
 

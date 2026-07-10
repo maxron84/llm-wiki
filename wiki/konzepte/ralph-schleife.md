@@ -71,6 +71,7 @@ Die Ralph-Schleife ist **keine** KI-Planung — die Planung liegt im Agenten. Di
 - [fortgeschrittene-architektur](fortgeschrittene-architektur.md) — Einbettung in die Gesamtarchitektur
 - [statelessness](statelessness.md) — Verwandtes Grundproblem
 - [ralph-claude-code-llm-wiki-metrik](../quellen/ralph-claude-code-llm-wiki-metrik.md) — Quellartikel
+- [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Setzt Ralph als eine von sechs KI-Rollen in einem größeren Team-Muster ein
 
 ---
 

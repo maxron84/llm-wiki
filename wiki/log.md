@@ -920,4 +920,18 @@ Feature-Erweiterung der KI-Lehrer-Vorlage: optionaler `docs/`-Ordner für Refere
 
 ---
 
+## [2026-07-10 12:00] ingest | CLAUDE.md T.E.A.M. (KI-Rollenteam)
+
+Neue Quelle `raw/claude-md-team.md`: eine CLAUDE.md-Vorlage für ein Team aus sechs KI-Rollen (Ralph, Der Architekt, Frank, Harry, Marv, Axel) unter einem menschlichen „Strippenzieher", abgeleitet aus dem realen KI-Lehrer-App-Projekt. Tiefe: Vollständig.
+
+- **Namenskonflikt entdeckt und aufgelöst**: Die Quelle heißt intern „claude-md-team", kollidiert aber mit der bestehenden Vorlage `wiki/vorlagen/claude-md-team.md` (Team-Wiki für 2–8 Menschen, anderes Thema). Nutzer entschied: neue Seite als `claude-md-ki-team` aufnehmen, bestehende Seite bleibt unangetastet.
+- `wiki/quellen/claude-md-ki-team.md` — neu: Zusammenfassungsseite mit Einordnung, Namenskonflikt-Historie, Übersicht der sechs Rollen
+- `wiki/vorlagen/claude-md-ki-team.md` — neu: vollständige Vorlage (Rollentabelle, drei Dreisätze, Status-Kette, Kaskaden-Planungsregeln, Auth-Modi, Anhang A Skript-Generierung, Aufnahme-Interview). Kostenkontrolle-Block nach [kostencounter](konzepte/kostencounter.md)-Standard ergänzt (Abschluss-Variante, war in der Quelle nicht enthalten). Externe Links auf Dateien des Ursprungsprojekts (`plans/roadmap-skizzen.md`, `ralph.sh` etc.) auf Klartext umgestellt, da diese Dateien nicht in diesem Wiki-Repo liegen
+- `wiki/konzepte/finder-fixer-prinzip.md` — neu: Gewaltenteilungsregel (wer findet, fixt nicht selbst)
+- `wiki/konzepte/read-only-guard.md` — neu: 3-Linien-Verteidigung (Prompt + Tool-Permissions + Post-Hook) zur technischen Durchsetzung von Read-Only-Rollen
+- `wiki/konzepte/ki-lehrer-app.md`, `wiki/konzepte/ralph-schleife.md`, `wiki/konzepte/kostencounter.md` — Verwandte-Seiten/Tabellen um Rückverweise ergänzt
+- `wiki/index.md` aktualisiert
+
+---
+
 [Zurück zum Index](index.md)
