@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-07-10 16:15] update | T.E.A.M.-Vorlage: Erkenntnisse aus dem ersten scharfen Feldlauf
+
+Dritter Rückfluss aus `website-maxron-de` — diesmal aus dem **ersten echten** Red-Team→Frank-Durchlauf (Harry/Marv/Frank via Abo). Zwei reusable Erkenntnisse in die Vorlage nachgetragen.
+Tiefe: **Mittel**
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — **A.5 Tool-Permission-Format** von „zu verifizieren" auf ✅ **verifiziert** (headless `--permission-mode default` + `--allowedTools` greift real; Sweep ließ Produktivcode unangetastet). **Frank-Variante** korrigiert: Dreisatz-Verifikation darf **nicht** verlangen, dass HEAD selbst der `{{fix-präfix}}`-Commit ist — der Fixer darf einen `docs:`-Folgecommit anhängen; korrekt ist `git log START_HASH..HEAD | grep {{fix-präfix}}`. Der ursprüngliche „letzter Commit"-Check rollte im Feld korrekt gefixte Arbeit fälschlich zurück (Warnbox ergänzt).
+
 ## [2026-07-10 15:30] update | T.E.A.M.-Vorlage: Vollautomatik implementiert + Guard-Härtungs-Lektion
 
 Zweiter Rückfluss aus `website-maxron-de` am selben Tag: Die komplette **Voll-Automatik** (Orchestrator-Wache + `redteam.sh`/`frank.sh`/`axel.sh` + `flock` + Beutebuch-Zustandsmaschine + Monitoring) wurde dort implementiert und ohne LLM-Aufrufe getestet. Dabei **teuer gelernt**: Der Read-Only-Guard darf nur **chirurgisch** zurückrollen — ein blindes `git reset --hard` + `git clean -fd` löschte im Bau die gesamte noch uncommittete Team-Infrastruktur.

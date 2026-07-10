@@ -348,13 +348,15 @@ Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im 
 
 Ausführlich: [read-only-guard](../konzepte/read-only-guard.md)
 
-> **Frank-Variante:** Frank *darf* Produktivcode ändern → statt Guard eine **Dreisatz-Verifikation** (letzter Commit `{{fix-präfix}}`, CHANGELOG ergänzt, Beutebuch-Status gesetzt).
+> **Frank-Variante:** Frank *darf* Produktivcode ändern → statt Guard eine **Dreisatz-Verifikation** (ein `{{fix-präfix}}`-Commit im Bereich `START_HASH..HEAD`, CHANGELOG ergänzt, Beutebuch-Status auf `erledigt`).
+>
+> ⚠️ **Verifikations-Lektion (Feldlauf website-maxron-de, 2026-07-10):** **Nicht** verlangen, dass **HEAD selbst** der `{{fix-präfix}}`-Commit ist — der Fixer darf den CHANGELOG-/Status-Edit legitim in einen `docs:`-**Folgecommit** legen (der Prompt erlaubt das sogar ausdrücklich). Prüfe stattdessen `git log START_HASH..HEAD --pretty=%s | grep {{fix-präfix}}`. Der ursprüngliche „letzter Commit"-Check rollte korrekt gefixte Arbeit fälschlich zurück.
 
 ### A.5 Faktencheck-Pflicht (Spec vor Annahme)
 
 An der **real installierten** CLI verifizieren — **nicht raten**:
 
-- **Tool-Permission-Format** (Settings-Datei vs. Flags; ob `permissions.deny` unterstützt wird). Falls `deny` fehlt: **Post-Hook (Linie 3) ist die Haupt-Garantie** — der Guard ist gegen beide Fälle robust.
+- **Tool-Permission-Format** (Settings-Datei vs. Flags; ob `permissions.deny` unterstützt wird). Falls `deny` fehlt: **Post-Hook (Linie 3) ist die Haupt-Garantie** — der Guard ist gegen beide Fälle robust. ✅ **verifiziert an der Claude-CLI (2026-07-10):** headless `--permission-mode default` + `--allowedTools`-Allowlist greift; ein Red-Team-Sweep mit auf `{{Test-Ordner}}`/`{{Plan-Ordner}}` beschränkter Allowlist ließ Produktivcode unangetastet.
 - **Provider-Timeout-Signal** für den Auth-Fallback — ✅ verifiziert an der Claude-CLI (2026-07-10): Exit-Code ≠ 0 **oder** Feld `is_error` in der `--output-format json`-Ausgabe; die „takes precedence"-Warnung im Text signalisiert zusätzlich, dass eine andere Auth-Quelle das Abo verdrängt.
 
 ### A.6 Parallelität & Reproducer
