@@ -21,9 +21,11 @@ Manche KI-Rollen sollen ausschließlich beobachten, testen und dokumentieren —
 
 1. **Prompt** — Rolleninstruktion, ausschließlich in Test-/Plan-Ordner zu schreiben. Schwächste Linie, aber Grundvoraussetzung.
 2. **Tool-Permissions** — `Write`/`Edit` technisch nur auf Test-/Plan-Ordner-Globs erlauben, Produktivcode-Pfade explizit verbieten; `Read` bleibt überall erlaubt.
-3. **Post-Hook (deterministische Garantie)** — nach jeder Iteration `git status`/`git diff --name-only` gegen die Whitelist prüfen. Bei Verletzung: `git reset --hard <START_HASH>` und Abbruch. Ergänzt durch einen rollenspezifischen `pre-commit`-Hook.
+3. **Post-Hook (deterministische Garantie)** — nach jeder Iteration `git status --porcelain`/`git diff --name-only <START_HASH> HEAD` gegen die Whitelist prüfen. Bei Verletzung **chirurgisch** zurücksetzen: **nur die konkret gelisteten Verletzer-Pfade** (getrackt → `git checkout <START_HASH> -- <pfad>`; neu entstanden → gezielt `rm`/`git rm`), dann Abbruch. Ergänzt durch einen optionalen rollenspezifischen `pre-commit`-Hook.
 
 Die dritte Linie ist die eigentliche Garantie: Sie greift unabhängig davon, ob die eingesetzte CLI ein `permissions.deny`-Format überhaupt unterstützt. Fehlt dieses Feature, trägt der Post-Hook allein die Verantwortung — das Muster ist bewusst so gebaut, dass es in beiden Fällen hält.
+
+> ⚠️ **Chirurgisch, nicht mit dem Vorschlaghammer (Feldtest-Lektion, website-maxron-de 2026-07-10):** Ein früher Entwurf setzte Linie 3 mit **`git reset --hard <START_HASH>` + `git clean -fd`** um — also einem Rollback des **gesamten** Arbeitsbaums. Das ist ein Footgun: Beim Bau der Automatik selbst, als die neuen Rollen-Skripte noch **uncommittet** waren, wertete der Guard sie als „Nicht-Whitelist" und **löschte die komplette Team-Infrastruktur** (`git clean -fd` entfernt alle untracked Dateien, `reset --hard` verwirft alle Modifikationen). Konsequenzen: (a) nur einzelne Verletzer-Pfade zurücksetzen, nie den ganzen Baum; (b) Infrastruktur committen, **bevor** je ein Guard läuft — im Normalbetrieb ist der Baum zwischen den Phasen ohnehin sauber; (c) Guard-Tests ausschließlich in einem **Wegwerf-Repo** ausführen.
 
 ## Ausnahme: die Fixer-Rolle
 

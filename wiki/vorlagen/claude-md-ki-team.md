@@ -38,7 +38,7 @@ Die Vorlage bildet das **komplette Zielbild** ab — auch Teile, die im Ursprung
 | ✅ **erprobt** | Im Ursprungsprojekt produktiv gelaufen. Direkt übernehmbar. |
 | 🟡 **Zielbild** | Konzept vollständig, aber **noch nicht battletested**. Vor produktivem Einsatz an der realen Umgebung verifizieren. |
 
-Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-Default-mit-API-Fallback bei Ralph** (Feldtest im Zweitprojekt website-maxron-de, 2026-07-10 — siehe A.3). **🟡** Voll-Automatik der Rollen als Hintergrund-Loops (`team-lib.sh` + `frank.sh`/`harry.sh`/`marv.sh` + 3-Linien-Guard + `flock` + Polling-Wache) und der Abo-Fallback für die übrigen Loop-Rollen.
+Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen** und die **Voll-Automatik** (Orchestrator-Wache + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring) — Mechanik im Zweitprojekt website-maxron-de am 2026-07-10 implementiert und ohne LLM-Aufrufe getestet. **🟡** Erster echter Ende-zu-Ende-`wache.sh`-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) steht noch aus.
 
 ## Benutzung
 
@@ -330,7 +330,7 @@ Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht al
 
 ### A.3 Auth-Fallback  ✅ bei Ralph erprobt (website-maxron-de, 2026-07-10) · 🟡 übrige Loop-Rollen
 
-Zentral in `team-lib.sh`: Loop-Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **stufen-lokal** auf `api` zurück, danach zurück zu Abo. **Axel/Architekt sind ausgenommen** (kein Loop, immer API). Das erprobte Rezept:
+Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **aufruf-lokal** auf `api` zurück, danach zurück zu Abo. **Nur Der Architekt** (interaktiv, kein Loop) bleibt bewusst API. **Hinweis:** Ob **Axel** ausgenommen bleibt, ist eine **Strippenzieher-Entscheidung** — im Feldprojekt website-maxron-de wurde Axel am 2026-07-10 bewusst **in die Abo-first-Regel aufgenommen** (starkes Modell im Abo ist günstiger; das Budget-Cap pro Fall bleibt als Airbag). Das erprobte Rezept:
 
 - **`team_resolve_auth_mode [rollen-default]`**: löst Env `AUTH_MODE` → `~/.config/claude-team/auth-mode` → Rollen-Default auf. `abo` **entfernt** `ANTHROPIC_API_KEY` aus der Prozess-Umgebung (Verdrängungsfalle, s. o.); `api` lädt den Key notfalls aus `~/.config/claude-team/api-key` (`chmod 600`) — erst diese Key-Datei macht den Fallback möglich, wenn der Loop ohne Key in der Env gestartet wurde.
 - **Stufen-lokal durch frische Auflösung**: Der Loop merkt sich die etwaige Nutzer-Übersteuerung beim Start (`AUTH_MODE_START="${AUTH_MODE:-}"`) und löst **pro Stufe neu** auf — damit endet jeder Fallback automatisch mit der Stufe.
@@ -338,11 +338,13 @@ Zentral in `team-lib.sh`: Loop-Rollen starten im **Abomodus**, fallen bei einem 
 - **Genau ein Retry**: Scheitert der Abo-Aufruf, folgt ein einziger API-Versuch mit eigener Log-Datei (z. B. `stufe-N-api-fallback-….json`); scheitert auch der → harter Abbruch, Mensch schaut in die Logs.
 - **Maschinen-Einrichtung**: `~/.claude/scripts/team-auth-setup.sh` (idempotent; Config anlegen, Key-Migration aus Shell-Profilen mit Backup und Ersatz der Export-Zeile, optionaler headless Abo-Test inkl. Erkennung der „takes precedence"-Warnung).
 
-### A.4 Read-Only-Guard (3 Linien, Defense-in-Depth)  🟡
+### A.4 Read-Only-Guard (3 Linien, Defense-in-Depth)  ✅ erprobt (website-maxron-de, 2026-07-10)
 
 1. **Prompt** — „Du bist Harry/Marv, schreibe ausschließlich `{{Test-Ordner}}` und `{{Plan-Ordner}}`." (notwendig, nicht hinreichend)
-2. **Tool-Permissions** — `Write`/`Edit` nur auf `{{Test-Ordner}}**` + `{{Plan-Ordner}}**` erlauben, `{{Produktivcode-Globs}}` verbieten; `Read` überall.
-3. **Post-Hook** (deterministische Garantie) — nach jeder Iteration `git status`/`git diff --name-only` gegen die Whitelist; bei Verletzung `git reset --hard <START_HASH>` + Abbruch. Zusätzlich ein rollenspezifischer `pre-commit`-Hook (Gürtel + Hosenträger).
+2. **Tool-Permissions** — headless `--permission-mode default` + enge `--allowedTools`-Liste: `Read`/`Grep`/`Glob` überall, `Write`/`Edit` nur auf `{{Test-Ordner}}**` + `{{Plan-Ordner}}**`, **kein** `git commit` in der Allowlist (das Skript committet die Whitelist-Änderungen deterministisch — der Angreifer selbst nicht).
+3. **Post-Hook** (deterministische Garantie) — nach der Iteration `git diff --name-only <START_HASH> HEAD` + `git status --porcelain` gegen die Whitelist.
+
+> ⚠️ **Guard-Härtungs-Lektion (Feldtest 2026-07-10, teuer gelernt):** Der Rollback in Linie 3 muss **chirurgisch** sein — **nur die konkret gelisteten Verletzer-Pfade** zurücksetzen (getrackt → `git checkout <START_HASH> -- <pfad>`; neu → gezielt `rm`/`git rm`). Ein **blindes `git reset --hard` + `git clean -fd`** ist ein Footgun: Im Feldtest löschte es die **gesamte noch uncommittete Team-Infrastruktur**, weil im Testmoment alle neuen Skripte als „Nicht-Whitelist" galten. Zwei Betriebsregeln dazu: (a) **Infrastruktur committen, bevor** je ein Guard läuft — im Normalbetrieb ist der Baum zwischen den Phasen ohnehin sauber (jede Rolle committet); (b) **Guard-Tests nur in einem Wegwerf-Repo**, nie im echten. Ein rollenspezifischer `pre-commit`-Hook bleibt optionaler Zusatz (Gürtel + Hosenträger).
 
 Ausführlich: [read-only-guard](../konzepte/read-only-guard.md)
 

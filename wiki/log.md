@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-07-10 15:30] update | T.E.A.M.-Vorlage: Vollautomatik implementiert + Guard-Härtungs-Lektion
+
+Zweiter Rückfluss aus `website-maxron-de` am selben Tag: Die komplette **Voll-Automatik** (Orchestrator-Wache + `redteam.sh`/`frank.sh`/`axel.sh` + `flock` + Beutebuch-Zustandsmaschine + Monitoring) wurde dort implementiert und ohne LLM-Aufrufe getestet. Dabei **teuer gelernt**: Der Read-Only-Guard darf nur **chirurgisch** zurückrollen — ein blindes `git reset --hard` + `git clean -fd` löschte im Bau die gesamte noch uncommittete Team-Infrastruktur.
+Tiefe: **Mittel**
+
+**Aktualisierte Seiten:**
+- `konzepte/read-only-guard.md` — Linie 3 auf chirurgischen Per-Pfad-Rollback umgestellt; Warnbox mit der Footgun-Lektion (reset --hard/clean -fd) und drei Betriebsregeln (nur Verletzer-Pfade; Infrastruktur vor Guard committen; Guard-Tests nur im Wegwerf-Repo).
+- `vorlagen/claude-md-ki-team.md` — A.4 von 🟡 auf „✅ erprobt" mit chirurgischem Guard + Härtungs-Warnbox; A.3-Auth-Hinweis: Axel-Ausnahme ist Strippenzieher-Entscheidung (im Feldprojekt bewusst in Abo-first aufgenommen); Reifegrad-Zeile: Vollautomatik-Mechanik ✅, erster echter `wache.sh`-Lauf noch 🟡.
+
 ## [2026-07-10 14:30] update | T.E.A.M.-Vorlage: Auth-Mechanik feldgetestet (Abo Prio 1 + API-Fallback)
 
 Rückfluss aus dem Zweitprojekt `website-maxron-de` (erste Anwendung der Vorlage außerhalb des Ursprungsprojekts): Der bisher als 🟡-Zielbild geführte **Abo-Default mit stufen-lokalem API-Fallback** ist dort für Ralph implementiert und verifiziert; zwei offene Fragen aus Anhang A sind beantwortet.
