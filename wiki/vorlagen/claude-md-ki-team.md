@@ -8,7 +8,7 @@ status: active
 # CLAUDE.md-Vorlage: T.E.A.M. (KI-Rollenteam)
 
 **Zusammenfassung**: Eine wiederverwendbare CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines menschlichen Senior-Entwicklers (des „Strippenziehers"). Das Muster stammt aus einem realen Projekt ([KI-Lehrer-App](../konzepte/ki-lehrer-app.md)) und verallgemeinert dessen Rollen-, Prozess- und Automatisierungs-Konzept: ein autonomer Bau-Loop (Ralph), ein planender Architekt, ein Ad-hoc-Fixer (Frank), ein read-only Red Team (Harry & Marv) und ein read-only Forensiker (Axel). Die Vorlage liefert **keine fertigen Skripte**, sondern eine **Bau-Anleitung**, mit der die aufnehmende KI-Instanz die Team-Skripte **kontextabhängig zum Zielprojekt** generiert.
-**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
+**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
 **Zuletzt aktualisiert**: 2026-07-10
 
 ---
@@ -38,7 +38,7 @@ Die Vorlage bildet das **komplette Zielbild** ab — auch Teile, die im Ursprung
 | ✅ **erprobt** | Im Ursprungsprojekt produktiv gelaufen. Direkt übernehmbar. |
 | 🟡 **Zielbild** | Konzept vollständig, aber **noch nicht battletested**. Vor produktivem Einsatz an der realen Umgebung verifizieren. |
 
-Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`. **🟡** Voll-Automatik der Rollen als Hintergrund-Loops (`team-lib.sh` + `frank.sh`/`harry.sh`/`marv.sh` + 3-Linien-Guard + `flock` + Polling-Wache) und Abo-Default-mit-API-Fallback.
+Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-Default-mit-API-Fallback bei Ralph** (Feldtest im Zweitprojekt website-maxron-de, 2026-07-10 — siehe A.3). **🟡** Voll-Automatik der Rollen als Hintergrund-Loops (`team-lib.sh` + `frank.sh`/`harry.sh`/`marv.sh` + 3-Linien-Guard + `flock` + Polling-Wache) und der Abo-Fallback für die übrigen Loop-Rollen.
 
 ## Benutzung
 
@@ -214,14 +214,26 @@ wird so ausgehärtet; alles Fernere bleibt Skizze.
 
 **Auth-Modi** (`{{Auth-Modus}}`):
 
-- **Heute (✅ erprobt):** `AUTH_MODE=api|abo` über eine maschinenlokale Config
-  (Default `api`, Env übersteuert). `api` = Pay-per-Use (`ANTHROPIC_API_KEY`);
-  `abo` = Claude-Abo via `claude login` (nicht token-abgerechnet).
-- **Zielbild (🟡):** Die **Loop-Rollen** (Ralph, Harry, Marv, Frank) laufen
-  standardmäßig im **Abomodus** mit **automatischem Fallback auf `api` bei
-  Provider-Timeout** — nur **bis zum Abschluss der laufenden Stufe**, danach wieder
-  Abo. **Axel und Der Architekt bleiben immer `api`** (starkes/teures Modell, kein
-  Abo-Default, kein Umschalter). Zentral in `team-lib.sh` zu lösen (siehe Anhang A).
+- **Auflösung (✅ erprobt, Prio absteigend):** Env `AUTH_MODE` → maschinenlokale
+  Config `~/.config/claude-team/auth-mode` → Rollen-Default (**Loop-Rollen:
+  `abo`**, starke Rollen Axel/Architekt: `api`).
+- `abo` = Claude-Abo via `claude login` (nicht token-abgerechnet). **Achtung,
+  Verdrängungsfalle (✅ im Feld beobachtet):** Ein exportierter
+  `ANTHROPIC_API_KEY` hat Vorrang vor dem Abo-Login („takes precedence"-Warnung
+  der CLI) — `team-lib.sh` entfernt den Key im Abo-Modus deshalb aktiv aus der
+  Prozess-Umgebung. Der Key gehört **nie** per `export` in `.bashrc` & Co.;
+  bereits offene Terminals/IDE-Prozesse behalten einen geerbten Key außerdem
+  bis `unset` bzw. Neustart (Env-Vererbung!).
+- `api` = Pay-per-Use. Key-Quelle: Env `ANTHROPIC_API_KEY`, sonst
+  `~/.config/claude-team/api-key` (eine Zeile, `chmod 600`).
+- **Abo-Default mit API-Fallback (✅ bei Ralph erprobt, übrige Loop-Rollen 🟡):**
+  Loop-Rollen starten im **Abomodus**; scheitert ein Aufruf (Timeout/Limit),
+  folgt **ein** API-Retry nur **bis zum Abschluss der laufenden Stufe**, danach
+  wieder Abo. **Axel und Der Architekt bleiben immer `api`** (starkes/teures
+  Modell, kein Abo-Default, kein Umschalter). Rezept: Anhang A.3.
+- **Einrichtung pro Maschine:** einmalig `~/.claude/scripts/team-auth-setup.sh`
+  (idempotent: legt Config an, migriert Keys aus Shell-Profilen in die
+  Key-Datei, testet den Abo-Login headless).
 
 ---
 
@@ -316,9 +328,15 @@ Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht al
 6. **Polling-Wache** 🟡 — dünne Schleife, die die Loops sequenziell startet (`inotify`/`post-commit` als späterer Ausbau).
 7. **`.gitignore`** ergänzen um `.{{rolle}}-state`, `.team-loop.lock`.
 
-### A.3 Auth-Fallback (Zielbild)  🟡
+### A.3 Auth-Fallback  ✅ bei Ralph erprobt (website-maxron-de, 2026-07-10) · 🟡 übrige Loop-Rollen
 
-Zentral in `team-lib.sh`: Loop-Rollen starten im **Abomodus**, fallen bei Provider-Timeout **stufen-lokal** auf `api` zurück, danach zurück zu Abo. **Axel/Architekt sind ausgenommen** (kein Loop, immer API).
+Zentral in `team-lib.sh`: Loop-Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **stufen-lokal** auf `api` zurück, danach zurück zu Abo. **Axel/Architekt sind ausgenommen** (kein Loop, immer API). Das erprobte Rezept:
+
+- **`team_resolve_auth_mode [rollen-default]`**: löst Env `AUTH_MODE` → `~/.config/claude-team/auth-mode` → Rollen-Default auf. `abo` **entfernt** `ANTHROPIC_API_KEY` aus der Prozess-Umgebung (Verdrängungsfalle, s. o.); `api` lädt den Key notfalls aus `~/.config/claude-team/api-key` (`chmod 600`) — erst diese Key-Datei macht den Fallback möglich, wenn der Loop ohne Key in der Env gestartet wurde.
+- **Stufen-lokal durch frische Auflösung**: Der Loop merkt sich die etwaige Nutzer-Übersteuerung beim Start (`AUTH_MODE_START="${AUTH_MODE:-}"`) und löst **pro Stufe neu** auf — damit endet jeder Fallback automatisch mit der Stufe.
+- **Fehlersignal** (✅ verifiziert, siehe A.5): Aufruf gilt als gescheitert bei Exit-Code ≠ 0 **oder** `is_error: true` in der `--output-format json`-Antwort (Helfer `team_result_is_error`; unlesbares JSON zählt als Fehler).
+- **Genau ein Retry**: Scheitert der Abo-Aufruf, folgt ein einziger API-Versuch mit eigener Log-Datei (z. B. `stufe-N-api-fallback-….json`); scheitert auch der → harter Abbruch, Mensch schaut in die Logs.
+- **Maschinen-Einrichtung**: `~/.claude/scripts/team-auth-setup.sh` (idempotent; Config anlegen, Key-Migration aus Shell-Profilen mit Backup und Ersatz der Export-Zeile, optionaler headless Abo-Test inkl. Erkennung der „takes precedence"-Warnung).
 
 ### A.4 Read-Only-Guard (3 Linien, Defense-in-Depth)  🟡
 
@@ -335,7 +353,7 @@ Ausführlich: [read-only-guard](../konzepte/read-only-guard.md)
 An der **real installierten** CLI verifizieren — **nicht raten**:
 
 - **Tool-Permission-Format** (Settings-Datei vs. Flags; ob `permissions.deny` unterstützt wird). Falls `deny` fehlt: **Post-Hook (Linie 3) ist die Haupt-Garantie** — der Guard ist gegen beide Fälle robust.
-- **Provider-Timeout-Signal** für den Auth-Fallback (Exit-Code / `is_error` / Meldungstext).
+- **Provider-Timeout-Signal** für den Auth-Fallback — ✅ verifiziert an der Claude-CLI (2026-07-10): Exit-Code ≠ 0 **oder** Feld `is_error` in der `--output-format json`-Ausgabe; die „takes precedence"-Warnung im Text signalisiert zusätzlich, dass eine andere Auth-Quelle das Abo verdrängt.
 
 ### A.6 Parallelität & Reproducer
 

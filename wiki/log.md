@@ -12,6 +12,14 @@ status: active
 
 ---
 
+## [2026-07-10 14:30] update | T.E.A.M.-Vorlage: Auth-Mechanik feldgetestet (Abo Prio 1 + API-Fallback)
+
+Rückfluss aus dem Zweitprojekt `website-maxron-de` (erste Anwendung der Vorlage außerhalb des Ursprungsprojekts): Der bisher als 🟡-Zielbild geführte **Abo-Default mit stufen-lokalem API-Fallback** ist dort für Ralph implementiert und verifiziert; zwei offene Fragen aus Anhang A sind beantwortet.
+Tiefe: **Mittel**
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — Auth-Modi-Block im Vorlagen-Fence neu gefasst (Auflösungskette Env → `~/.config/claude-team/auth-mode` → Rollen-Default; Key-Datei `~/.config/claude-team/api-key` statt `export` in `.bashrc`; **Verdrängungsfalle** dokumentiert: exportierter `ANTHROPIC_API_KEY` hat Vorrang vor dem Abo-Login, geerbte Env in offenen Terminals/IDEs hält sich bis `unset`); A.3 von 🟡 auf „✅ bei Ralph erprobt" mit konkretem Rezept (frische Auflösung pro Stufe, genau ein API-Retry); A.5-Faktencheck beantwortet: Fehlersignal = Exit-Code ≠ 0 oder `is_error` im JSON; Hinweis auf maschinenweites Einrichtungsskript `~/.claude/scripts/team-auth-setup.sh` (neu, liegt außerhalb des Wikis); Reifegrad-Zeile und Quellen entsprechend nachgeführt.
+
 ## [2026-07-10 00:00] ingest | Guide: Flutter-Integration in die CLAUDE.md-Vorlage
 
 Quelle: `raw/guide_flutter_integration.md` — Anleitung, wie die Vorlage `vorlagen/claude-md-software.md` für ein Flutter-Projekt über 5 Plattformen (Linux, Android, macOS, iOS, Windows) angepasst wird. Kein fertiges Template, sondern Anpassungsanleitung für die Produktions-KI.
