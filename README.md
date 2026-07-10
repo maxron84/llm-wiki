@@ -63,14 +63,17 @@ Der eigentliche Output dieses Wikis: kopierbare `CLAUDE.md`-Vorlagen für spezia
 |---|---|
 | [Software-Projekte](wiki/vorlagen/claude-md-software.md) | Codebase-Dokumentation — Lean (nur CLAUDE.md) oder Dokumentiert (+ Projekt-Wiki) |
 | [Software-Begleiter](wiki/vorlagen/claude-md-software-begleiter.md) | Mensch schreibt Code allein — KI übernimmt Dokumentation, Review und Ideenaustausch |
+| [Solo-Softwareprojekt (Rookie)](wiki/vorlagen/claude-md-softwareprojekt-rookie.md) | Solo-Softwareprojekt mit Ralph-Loop, FELDTEST-SPERRE und Regressions-Checkliste |
 | [Team-Wiki](wiki/vorlagen/claude-md-team.md) | Gemeinsames Wiki für 2–8 Personen — mit Ownership, Provenienz-Tags und Entwurfs-Pufferzone |
+| [KI-Rollenteam (T.E.A.M.)](wiki/vorlagen/claude-md-ki-team.md) | Sechs KI-Rollen (Ralph, Architekt, Frank, Harry, Marv, Axel) unter einem menschlichen Strippenzieher |
 | [Legacy-Forensik](wiki/vorlagen/claude-md-legacy-forensik.md) | Analyse und Kartierung gewachsener Codebases |
 | [KI-Lehrer](wiki/vorlagen/claude-md-lehrer.md) | Proaktiver Lehrbegleiter — generiert Lehrplan, lehrt Schritt für Schritt (z.B. Coding-Projekte) |
 | [Nachhilfe](wiki/vorlagen/claude-md-nachhilfe.md) | Fachlehrer für ein Schulfach — reaktiv, aufgabengetrieben, für Schüler bis Klasse 10 |
 | [Laienlehrer](wiki/vorlagen/claude-md-laienlehrer.md) | Elternteil oder Laie unterrichtet — KI coacht den Erwachsenen, zweistufige Erklärungen |
 | [YouTube-Verlauf](wiki/vorlagen/claude-md-youtube-verlauf.md) | Wissensbasis aus dem eigenen Video-Verlauf |
 | [Rezepte & Ernährung](wiki/vorlagen/claude-md-rezepte-ernaehrung.md) | Vernetzte Rezept-, Technik- und Zutaten-Basis |
-| [Roo Code + lokales Modell](wiki/vorlagen/roocode-llm-wiki-lokal.md) | LLM-Wiki mit Roo Code + Ollama + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt |
+| [Zoo Code + lokales Modell](wiki/vorlagen/zoocode-llm-wiki-lokal.md) | LLM-Wiki mit Zoo Code + qwen3:14b-40k (RTX 5080), auf 40K-Kontextlimit abgestimmt |
+| [Roo Code + lokales Modell](wiki/vorlagen/roocode-llm-wiki-lokal.md) | ⚠️ Archiviert — Nachfolger: Zoo Code + lokales Modell |
 
 ---
 
@@ -88,6 +91,7 @@ Schritt-für-Schritt-Guides für Einstieg, Betrieb und Sonderfälle:
 | [Beratungs-CRM einrichten](wiki/anleitungen/beratungs-crm-einrichtung.md) | Lokales CRM auf Linux: Ollama, VS Codium, Python-Skripte, Obsidian, erstes Klientenprofil |
 | [Token sparen](wiki/anleitungen/token-sparen.md) | 4-stufige Strategie zur Token-Reduktion — von Sofortmaßnahmen bis fortgeschrittener Architektur |
 | [Zusammenarbeit & Git](wiki/anleitungen/zusammenarbeit-git.md) | Gemeinsam am Wiki arbeiten: GitHub Collaborators, Branch-Workflow, Konflikte lösen |
+| [Flutter-Anpassung](wiki/anleitungen/flutter-claude-md-anpassung.md) | Software-Vorlage für ein Flutter-Projekt über 5 Plattformen anpassen (Struktur, State-Management, Zielplattformen) |
 
 ---
 
@@ -105,18 +109,18 @@ Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlich
 
 | Bereich | Seiten |
 |---|---|
-| Konzepte | 36 |
-| Quellen | 20 |
-| Werkzeuge | 13 |
-| Vorlagen | 10 |
-| Anleitungen | 8 |
+| Konzepte | 46 |
+| Quellen | 24 |
+| Werkzeuge | 14 |
+| Vorlagen | 13 |
+| Anleitungen | 9 |
 | Personen | 7 |
 | Projekte | 1 |
-| **Gesamt** | **95** |
+| **Gesamt** | **114** |
 
-- **40 Quelldokumente** aufgenommen (37 Clippings + 3 Raw)
-- **20 Quellen** mit eigener Zusammenfassungsseite
-- Keine toten Links, keine verwaisten Seiten (zuletzt geprüft 2026-05-24 mit `wiki_lint.py`)
+- **45 Quelldokumente** aufgenommen (37 Clippings + 8 Raw)
+- **24 Quellen** mit eigener Zusammenfassungsseite
+- Keine toten Links, keine verwaisten Seiten (zuletzt geprüft 2026-07-10 mit `wiki_lint.py`)
 
 ---
 

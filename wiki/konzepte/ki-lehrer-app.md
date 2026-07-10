@@ -275,6 +275,7 @@ Beim Test der App nach größeren Änderungen sind diese Szenarien kritisch:
 
 ## Verwandte Seiten
 
+- [ki-lehrer-prototyp](ki-lehrer-prototyp.md) — Tech-Stack, Projektstruktur und 8-stufige Build-Reihenfolge für die Umsetzung
 - [obsidian-web-clipper](../werkzeuge/obsidian-web-clipper.md) — Unterrichtsmaterial mit einem Klick in clippings/ sammeln
 - [claude-md-lehrer](../vorlagen/claude-md-lehrer.md) — Die inhaltliche Basis: Lehrstruktur, Interview, Phasen
 - [claude-md-nachhilfe](../vorlagen/claude-md-nachhilfe.md) — Schwester-Vorlage: aufgabengetrieben, Kind sitzt selbst am Gerät

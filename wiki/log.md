@@ -12,6 +12,15 @@ status: active
 
 ---
 
+## [2026-07-10 17:00] lint | Wikiwartung + README-Aktualisierung
+
+`wiki_lint.py` gelaufen: 1 verwaiste Seite gefunden (`wiki/konzepte/ki-lehrer-prototyp.md`, keine eingehenden Wiki-Links). Behoben durch Rückverweis in `wiki/konzepte/ki-lehrer-app.md` (Verwandte Seiten). Erneuter Lauf: keine toten Links, keine Waisen, keine fehlenden Index-Einträge, keine Formatfehler (116 Seiten gesamt).
+
+`README.md` war seit 95 Seiten (2026-05-24) nicht mehr aktualisiert:
+- Vorlagen-Tabelle um 3 fehlende Einträge ergänzt (`claude-md-softwareprojekt-rookie`, `claude-md-ki-team`, `zoocode-llm-wiki-lokal`), `roocode-llm-wiki-lokal` als archiviert markiert
+- Anleitungen-Tabelle um `flutter-claude-md-anpassung` ergänzt
+- Zahlen-Tabelle aktualisiert: 46 Konzepte, 24 Quellen, 14 Werkzeuge, 13 Vorlagen, 9 Anleitungen, 7 Personen, 1 Projekt — 114 gesamt; 45 Quelldokumente (37 Clippings + 8 Raw)
+
 ## [2026-07-10 16:15] update | T.E.A.M.-Vorlage: Erkenntnisse aus dem ersten scharfen Feldlauf
 
 Dritter Rückfluss aus `website-maxron-de` — diesmal aus dem **ersten echten** Red-Team→Frank-Durchlauf (Harry/Marv/Frank via Abo). Zwei reusable Erkenntnisse in die Vorlage nachgetragen.
