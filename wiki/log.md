@@ -934,4 +934,17 @@ Neue Quelle `raw/claude-md-team.md`: eine CLAUDE.md-Vorlage für ein Team aus se
 
 ---
 
+## [2026-07-10 12:20] ingest | CLAUDE.md T.E.A.M. v2 (Verfeinerung)
+
+Zweite Fassung `raw/claude-md-team-v2.md` nachgereicht — entstanden in Zusammenarbeit mit dem Architekten des KI-Lehrer-App-Projekts (Modell Opus 4.8). In `wiki/vorlagen/claude-md-ki-team.md` übernommen:
+
+- Kostenkontrolle-Block überarbeitet: Token-Sparregeln jetzt optional/Default AUS (Axel braucht ungekürztes Lesen für Root-Cause-Analysen), neue „Grundregeln (stets aktiv)" trennen Kosten-Cap von Lese-Sparmaßnahmen — bewusste Abweichung vom generischen [kostencounter](konzepte/kostencounter.md)-Standard
+- Designhinweis 8 neu: Kostenkontrolle-Block liegt bewusst innerhalb des kopierbaren Vorlagenblocks
+- Smoke-Test-Hinweis präzisiert (Python-Beispiel als solches kennzeichnen)
+- „R4-Zielbild" → „Zielbild" (Rückbezug auf Ursprungsprojekt-Roadmap entfernt)
+- `wiki/quellen/claude-md-ki-team.md` — Abschnitt „Verfeinerung (v2)" ergänzt, Quellen-Feld erweitert
+- `wiki/konzepte/kostencounter.md` — Ausnahme-Hinweis in der Vorlagen-Zuordnungstabelle ergänzt
+
+---
+
 [Zurück zum Index](index.md)

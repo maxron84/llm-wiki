@@ -8,7 +8,7 @@ status: active
 # CLAUDE.md T.E.A.M. — KI-Rollenteam unter einem Strippenzieher
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines einzelnen menschlichen Senior-Entwicklers. Sechs Rollen — Ralph (Bau-Loop), der Architekt (Planung), Frank (Ad-hoc-Fixer), Harry & Marv (read-only Red Team) und Axel (read-only Forensiker) — arbeiten arbeitsteilig, mit klaren Übergabepunkten über CHANGELOG und Backlog. Abgeleitet aus einem realen Projekt (KI-Lehrer-App) und zur allgemeinen Vorlage verallgemeinert.
-**Quellen**: `raw/claude-md-team.md`
+**Quellen**: `raw/claude-md-team.md`, `raw/claude-md-team-v2.md` (verfeinerte Fassung, entstanden in Zusammenarbeit mit dem Architekten des KI-Lehrer-App-Projekts, Modell Opus 4.8)
 **Zuletzt aktualisiert**: 2026-07-10
 
 ---
@@ -71,6 +71,15 @@ Dreistufig: (1) neue Themen zunächst als lose Skizze ohne Stufennummern, (2) Au
 ### Anhang A — Team-Skripte kontextabhängig generieren
 
 Statt fertige Skripte zu kopieren, generiert die einrichtende KI-Instanz `team-lib.sh`, den Loop, `frank.sh`, den Read-Only-Guard und `harry.sh`/`marv.sh` **angepasst an die real installierte CLI** des Zielprojekts — inklusive Vorbedingungs-Check (Git-Repo? Claude-CLI? existierender Loop? Commit-Konvention?) und expliziter Faktencheck-Pflicht statt Annahme.
+
+## Verfeinerung (v2)
+
+Eine zweite Fassung (`raw/claude-md-team-v2.md`) wurde in Zusammenarbeit mit dem Architekten des KI-Lehrer-App-Projekts (Modell Opus 4.8) nachgereicht und in die Vorlage übernommen. Änderungen gegenüber v1:
+
+- **Kostenkontrolle grundlegend überarbeitet**: Token-Sparregeln sind jetzt **optional, projektabhängig, Default AUS** — nicht mehr „stets aktiv" wie im generischen Kostencounter-Standard. Begründung: Axel (der Forensiker) braucht für Root-Cause-Analysen tiefes, ungekürztes Lesen; Sparregeln würden seine Arbeitsqualität beschneiden. Neue „Grundregeln (stets aktiv)" trennen das Kosten-Cap (immer Pflicht) von den Lese-Sparmaßnahmen (optional). Das ist eine bewusste, begründete Abweichung vom generischen [kostencounter](../konzepte/kostencounter.md)-Standard für diese eine Vorlage.
+- **Designhinweis 8 neu**: Klarstellung, dass der `## Kostenkontrolle`-Block bewusst *innerhalb* des kopierbaren Vorlagenblocks steht (wird mit in die Ziel-CLAUDE.md übernommen), während Designhinweise, Anhang A und „Verwandte Seiten" reine Wiki-Meta bleiben.
+- **Smoke-Test-Hinweis präzisiert**: `py_compile`/`ast.parse` ist Python-spezifisch — Hinweis ergänzt, im Zielprojekt auf die reale Sprache/Toolchain anzupassen.
+- **R4-Referenz entfernt**: „Auth-Fallback (R4-Zielbild)" → „Auth-Fallback (Zielbild)" — der Rückbezug auf die Roadmap-Nummerierung des Ursprungsprojekts (nicht Teil dieses Wikis) wurde entfernt.
 
 ## Bewertung
 

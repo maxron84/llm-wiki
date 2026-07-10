@@ -159,7 +159,7 @@ Am Projektende wird `wiki/kosten.md` um diesen Block ergänzt:
 | claude-md-softwareprojekt-rookie | Abschluss (ergänzt ralph.sh-Budget) |
 | claude-md-legacy-forensik | Abschluss |
 | claude-md-team | Abschluss |
-| claude-md-ki-team | Abschluss (Budget-Cap pro Stufe/Fall, `RALPH_BUDGET_USD`) |
+| claude-md-ki-team | Abschluss (Budget-Cap pro Stufe/Fall, `RALPH_BUDGET_USD`) — Ausnahme: Token-Sparregeln hier optional/Default AUS statt „stets aktiv", siehe [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) |
 | claude-md-lehrer | Fortlaufend |
 | claude-md-nachhilfe | Fortlaufend |
 | claude-md-laienlehrer | Fortlaufend |
