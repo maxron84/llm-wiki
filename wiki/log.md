@@ -8,9 +8,22 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-05-14
+**Zuletzt aktualisiert**: 2026-07-10
 
 ---
+
+## [2026-07-10 00:00] ingest | Guide: Flutter-Integration in die CLAUDE.md-Vorlage
+
+Quelle: `raw/guide_flutter_integration.md` — Anleitung, wie die Vorlage `vorlagen/claude-md-software.md` für ein Flutter-Projekt über 5 Plattformen (Linux, Android, macOS, iOS, Windows) angepasst wird. Kein fertiges Template, sondern Anpassungsanleitung für die Produktions-KI.
+Tiefe: **Mittel**
+
+**Neue Seiten:**
+- `quellen/guide-flutter-integration.md` — Zusammenfassung der 10 Anpassungspunkte
+- `anleitungen/flutter-claude-md-anpassung.md` — vollständige Schritt-für-Schritt-Anleitung (Moduswahl, Platzhalter, Plattform-Build-Befehle, Flutter-Projektstruktur, State-Management-Entscheidung, Zielplattformen-Block, Dart-Konventionen, Tests, `wiki/plattformen/`-Unterordner, Proxy-/VS-Codium-Umgebungshinweise)
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-software.md` — Verwandte Seiten um Verweis auf die neue Flutter-Anleitung ergänzt
+- `index.md` — 2 neue Einträge (Anleitungen, Quellen)
 
 ## [2026-07-02 00:00] update | Zoo Code + Kostencounter-Standard
 

@@ -448,6 +448,7 @@ Vor dem letzten Commit `wiki/kosten.md` mit vollständiger Gesamtauswertung absc
 - [claude-md-team](claude-md-team.md) — Schwester-Vorlage für Teams (2–8 Personen) mit Ownership und Entwurfs-Pufferzone
 - [claude-md-legacy-forensik](claude-md-legacy-forensik.md) — Schwester-Vorlage für Legacy-Analyse (ähnlich wie Modus Dokumentiert, aber nur lesend)
 - [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
+- [flutter-claude-md-anpassung](../anleitungen/flutter-claude-md-anpassung.md) — Konkrete Anpassung dieser Vorlage für ein Flutter-Projekt über 5 Plattformen
 - [claude-md-rezepte-ernaehrung](claude-md-rezepte-ernaehrung.md) — Schwester-Vorlage für Rezepte-Wikis
 
 ---

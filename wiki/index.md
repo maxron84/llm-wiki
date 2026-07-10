@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-05-31 (Ingest: CLAUDE.md Battle-tested Veteran + Rookie — 5 neue Seiten, 3 Updates)
+**Zuletzt aktualisiert**: 2026-07-10 (Ingest: Guide Flutter-Integration — 2 neue Seiten, 1 Update)
 
 ---
 
@@ -106,6 +106,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
 - [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
 - [ralph-claude-code-llm-wiki-metrik](quellen/ralph-claude-code-llm-wiki-metrik.md) — Ökonomische Analyse: Ralph + Karpathy, US$/WP-Metrik, drei Kostenszenarien
+- [guide-flutter-integration](quellen/guide-flutter-integration.md) — Anleitung zur Anpassung der Software-Vorlage für ein Flutter-Projekt über 5 Plattformen
 - [claude-md-legacy-forensik-veteran](quellen/claude-md-legacy-forensik-veteran.md) — Battle-tested Forensik-Vorlage: PowerShell, DSGVO, Session-Protokoll, Token-Sparregeln, Scripting
 - [claude-md-softwareprojekt-rookie](quellen/claude-md-softwareprojekt-rookie.md) — KI-Lehrer App V1.9 CLAUDE.md: FELDTEST-SPERRE, Stufenbau, Regressions-Checks, ralph.sh-Budget
 - [roocode-lokale-doku](quellen/roocode-lokale-doku.md) — Offizielle Roo Code Docs: Einrichtung mit Ollama und LM Studio, Kontextfenster, Troubleshooting
@@ -138,6 +139,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [roocode-llm-wiki-einrichten](anleitungen/roocode-llm-wiki-einrichten.md) — Schritt-für-Schritt: LLM-Wiki mit Roo Code + Ollama + qwen3:14b-40k einrichten (bestätigt RTX 5080, Mai 2026)
 - [token-sparen](anleitungen/token-sparen.md) — Token sparen mit Claude Code: 4-stufige Strategie von Sofortmaßnahmen bis fortgeschrittener Architektur
 - [zusammenarbeit-git](anleitungen/zusammenarbeit-git.md) — Gemeinsam am Wiki arbeiten: GitHub Collaborators, Branch-Workflow, Konflikte lösen
+- [flutter-claude-md-anpassung](anleitungen/flutter-claude-md-anpassung.md) — Software-Vorlage für ein Flutter-Projekt über 5 Plattformen anpassen (Struktur, State-Management, Zielplattformen)
 
 ## Projekte
 
