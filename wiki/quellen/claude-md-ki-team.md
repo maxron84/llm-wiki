@@ -1,5 +1,5 @@
 ---
-date: 2026-07-10
+date: 2026-07-11
 type: quelle
 tags: [quelle, vorlage, software, claude-md, ki-lehrer, automatisierung]
 status: active
@@ -9,7 +9,7 @@ status: active
 
 **Zusammenfassung**: Eine CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines einzelnen menschlichen Senior-Entwicklers. Sechs Rollen — Ralph (Bau-Loop), der Architekt (Planung), Frank (Ad-hoc-Fixer), Harry & Marv (read-only Red Team) und Axel (read-only Forensiker) — arbeiten arbeitsteilig, mit klaren Übergabepunkten über CHANGELOG und Backlog. Abgeleitet aus einem realen Projekt (KI-Lehrer-App) und zur allgemeinen Vorlage verallgemeinert.
 **Quellen**: `raw/claude-md-team.md`, `raw/claude-md-team-v2.md` (verfeinerte Fassung, entstanden in Zusammenarbeit mit dem Architekten des KI-Lehrer-App-Projekts, Modell Opus 4.8)
-**Zuletzt aktualisiert**: 2026-07-10
+**Zuletzt aktualisiert**: 2026-07-11
 
 ---
 
@@ -50,7 +50,7 @@ Für Harry, Marv und Axel muss die Beschränkung auf Test-/Plan-Ordner **technis
 
 ### Reifegrad-Marken (✅/🟡)
 
-Die Vorlage bildet bewusst auch unproduktive Teile ab und kennzeichnet sie ehrlich: ✅ **erprobt** (im Ursprungsprojekt produktiv gelaufen) vs. 🟡 **Zielbild** (Konzept vollständig, aber noch nicht battletested). Konkret ✅: Ralph-Loop, manuell angestoßene Rollen, alle Dreisätze, Status-Ketten, Auth `api|abo`. Konkret 🟡: Voll-Automatik der Rollen als Hintergrund-Loops, Abo-Default mit API-Fallback.
+Die Vorlage bildet bewusst auch unproduktive Teile ab und kennzeichnet sie ehrlich: ✅ **erprobt** (im Ursprungsprojekt produktiv gelaufen) vs. 🟡 **Zielbild** (Konzept vollständig, aber noch nicht battletested). Konkret ✅: Ralph-Loop, manuell angestoßene Rollen, alle Dreisätze, Status-Ketten, Auth `api|abo`. **Update 2026-07-11:** Die zunächst als 🟡 geführte **Voll-Automatik** (Rollen als Hintergrund-Loops, Abo-Default mit API-Fallback) ist inzwischen **✅ erprobt** — im Feldprojekt `website-maxron-de` über sieben Kaskaden scharf gelaufen (reale Red-Team-Funde HM-1…HM-13, Frank-Fixes, wirksamer Read-Only-Guard). Aus Kaskade 6 kamen Budget-Governance-Bausteine und drei Betriebslehren hinzu (Budget-Cap-Timing, kaskaden-spezifischer Red-Team-Fokus, „success ohne Promise"-Behandlung). **Kaskade 7 + Folge-Fixes** haben zwei davon von der bloßen Idee zum **gebauten, erprobten Baustein** gemacht (der kaskaden-abhängige Red-Team-Fokus als Env `TEAM_REDTEAM_FOCUS`; die „success ohne Promise"-Behandlung als Prompt- **und** Logik-Härtung) und **zwei neue Betriebslehren** ergänzt: **Log-Rotation gegen Doppelzählung** der Budget-Ledger und die **A/B-Trennung** von Pro-Lauf-Kosten (Durchsetzung) vs. Gesamt-Kontostand (nur Anzeige). Dazu eine **Guard-Lektion**: datei-genaues Staging statt ordner-weiter Whitelist, weil der interaktive Architekt außerhalb des `flock` gleichzeitig uncommittete Dateien unter derselben Whitelist liegen haben kann (siehe Vorlage, Anhang A.4/A.7 und [read-only-guard](../konzepte/read-only-guard.md)).
 
 Dieses Prinzip — Spec ist Wahrheit vor Annahmen, unfertige Teile werden nicht als produktiv ausgegeben — ist eine direkte Anwendung dessen, was in diesem Wiki bereits an anderer Stelle als Grundhaltung gilt (Faktencheck vor Annahme, siehe Anhang A der Quelle).
 

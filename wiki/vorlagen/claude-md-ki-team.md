@@ -1,5 +1,5 @@
 ---
-date: 2026-07-10
+date: 2026-07-11
 type: vorlage
 tags: [vorlage, schema, softwareprojekt, automatisierung]
 status: active
@@ -8,8 +8,8 @@ status: active
 # CLAUDE.md-Vorlage: T.E.A.M. (KI-Rollenteam)
 
 **Zusammenfassung**: Eine wiederverwendbare CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines menschlichen Senior-Entwicklers (des „Strippenziehers"). Das Muster stammt aus einem realen Projekt ([KI-Lehrer-App](../konzepte/ki-lehrer-app.md)) und verallgemeinert dessen Rollen-, Prozess- und Automatisierungs-Konzept: ein autonomer Bau-Loop (Ralph), ein planender Architekt, ein Ad-hoc-Fixer (Frank), ein read-only Red Team (Harry & Marv) und ein read-only Forensiker (Axel). Die Vorlage liefert **keine fertigen Skripte**, sondern eine **Bau-Anleitung**, mit der die aufnehmende KI-Instanz die Team-Skripte **kontextabhängig zum Zielprojekt** generiert.
-**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
-**Zuletzt aktualisiert**: 2026-07-10
+**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); **Voll-Automatik-Feldtest über sieben Kaskaden** (`website-maxron-de`, 2026-07-10/11): scharfe Vollautomatik-Läufe mit realen Red-Team-Funden (HM-1…HM-13) und Frank-Fixes, plus die Budget-Governance-Bausteine und Betriebslehren aus den Kaskaden 6–7 (siehe Anhang A.7); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
+**Zuletzt aktualisiert**: 2026-07-11
 
 ---
 
@@ -38,7 +38,7 @@ Die Vorlage bildet das **komplette Zielbild** ab — auch Teile, die im Ursprung
 | ✅ **erprobt** | Im Ursprungsprojekt produktiv gelaufen. Direkt übernehmbar. |
 | 🟡 **Zielbild** | Konzept vollständig, aber **noch nicht battletested**. Vor produktivem Einsatz an der realen Umgebung verifizieren. |
 
-Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen** und die **Voll-Automatik** (Orchestrator-Wache + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring) — Mechanik im Zweitprojekt website-maxron-de am 2026-07-10 implementiert und ohne LLM-Aufrufe getestet. **🟡** Erster echter Ende-zu-Ende-`wache.sh`-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) steht noch aus.
+Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen**, die **Voll-Automatik** (Orchestrator + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring), der **kaskaden-abhängige Red-Team-Fokus** (`TEAM_REDTEAM_FOCUS`) und die **„success ohne Promise"-Härtung** (Prompt- + Logik-Härtung). Der erste echte Ende-zu-Ende-Vollautomatik-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) ist **inzwischen mehrfach scharf gelaufen** — im Zweitprojekt website-maxron-de über die Kaskaden 2–7 (2026-07-10/11), mit realen Red-Team-Funden (HM-1…HM-13), die Frank gefixt hat, und wirksamem Read-Only-Guard (`permission_denials` in den Logs belegen die Durchsetzung). Damit ist auch die Voll-Automatik **✅ erprobt** (zuvor 🟡). Die im Feld gewonnenen Betriebslehren (Budget-Cap-Timing, kaskaden-spezifischer Red-Team-Fokus, „success ohne Promise"-Behandlung, Log-Rotation gegen Doppelzählung, A/B-Kennzahlen-Trennung) siehe Anhang A.7.
 
 ## Benutzung
 
@@ -55,7 +55,7 @@ Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel)
 4. **Kosten-Caps sind Pflicht**: Das starke/teure Modell (Axel, Architekt) läuft **nie im Dauer-Loop**; jede Iteration/jeder Fall bekommt ein Budget-Cap. → siehe auch [kostencounter](../konzepte/kostencounter.md)
 5. **Reifegrad ehrlich lassen**: 🟡-Teile nicht als produktiv ausgeben — sonst verliert die Vorlage ihren Wert („Spec ist Wahrheit vor Annahmen").
 6. **Skripte kontextabhängig generieren**: An die real installierte CLI und die Repo-Konvention anpassen (Faktencheck-Pflicht, Anhang A) — nicht raten.
-7. **Namen sind austauschbar**: Die augenzwinkernden Anspielungen (Matrix, *Kevin allein zu Haus*, *Beverly Hills Cop*) sind Kür. Das **Prozess-Skelett** (Rollen, Dreisätze, Status-Ketten) ist Pflicht.
+7. **Namen sind austauschbar — Entrypoint-Namen aber sprechend**: Die augenzwinkernden Rollen-Anspielungen (Matrix, *Kevin allein zu Haus*, *Beverly Hills Cop*) sind Kür; das **Prozess-Skelett** (Rollen, Dreisätze, Status-Ketten) ist Pflicht. **Feld-Lehre (website-maxron-de, 2026-07-11):** Die **Orchestrierungs-Entrypoints** dagegen bewusst **sprechend** benennen — `vollautomatik.sh` / `halbautomatik.sh` statt kryptischer Marken-Namen. Im Feldprojekt wurden `wache.sh`/`pock.sh` genau darum zu `vollautomatik.sh`/`halbautomatik.sh` umbenannt (echtes `git mv`, alle Referenzen + internes Wording nachgezogen): Wer die Skripte tippt, soll aus dem Namen erkennen, was sie tun.
 8. **Kostenkontroll-Block ist Teil des kopierbaren Blocks**: Der Abschnitt `## Kostenkontrolle` steht bewusst **innerhalb** des `## Vorlage`-Fences — er wird also in die Ziel-CLAUDE.md mitkopiert. Nur die Wiki-Meta (diese Designhinweise, Anhang A, „Verwandte Seiten") bleibt außerhalb.
 
 ## Vorlage
@@ -96,11 +96,11 @@ Senior-Entwicklers** (des **{{Strippenzieher}}**). Jede Instanz sollte wissen,
 | Rolle | Wer/Was | Aufgabe | Kern-Prinzip |
 |-------|---------|---------|--------------|
 | **Ralph** | Der headless Bau-Loop ([`{{loop-skript}}`]({{loop-skript}})) | Arbeitet den **aktiven Plan** Stufe für Stufe ab, ein Commit pro Stufe (`{{feat-präfix}}(stufeN): …`). | Nimmt **keine** Features aus späteren Stufen vorweg. Liest vor jeder Stufe den `[Unreleased]`-Block und baut dort gelistete Fixes **nicht erneut**. ✅ erprobt |
-| **Der Architekt** | Planungs-Instanz (interaktiv, Architect-Mode) | **Plant Kaskaden**, schreibt Plan-Dokumente unter [`{{Plan-Ordner}}`]({{Plan-Ordner}}), pflegt Roadmap/Backlog, setzt Caps. Trifft die Struktur-Entscheidungen, die Ralph ausführt. **Committet Plan-/Doku-Änderungen selbständig** (`docs(plan): …`). | Spec ist Wahrheit vor Annahmen. **Pflicht vor jedem Entwurf:** `[Unreleased]` + `Frank-Fix`-Zeilen abgleichen. **Läuft im `{{starkes-modell}}`/API-Modus** — kein Abo-Default. Greift **normalerweise nicht** selbst in Produktivcode ein. ✅ erprobt |
+| **Der Architekt** | Planungs-Instanz (interaktiv, Architect-Mode) | **Plant Kaskaden**, schreibt Plan-Dokumente unter [`{{Plan-Ordner}}`]({{Plan-Ordner}}), pflegt Roadmap/Backlog, setzt Caps. Trifft die Struktur-Entscheidungen, die Ralph ausführt. **Committet je nach Projekt-Entscheid** entweder Plan-/Doku-Änderungen selbständig (`docs(plan): …`) **oder liefert die fertigen Commit-Befehle zum Kopieren** — der Strippenzieher führt sie dann händisch aus (so im Feldprojekt website-maxron-de, Entscheid 2026-07-11). | Spec ist Wahrheit vor Annahmen. **Pflicht vor jedem Entwurf:** `[Unreleased]` + `Frank-Fix`-Zeilen abgleichen. **Läuft im `{{starkes-modell}}`/API-Modus** — kein Abo-Default. Greift **normalerweise nicht** selbst in Produktivcode ein. ✅ erprobt |
 | **Frank der Fixer** | Spontane Out-of-Loop-Bugfixes | Behebt **akut auffallende** Bugs/UX-Reibungen **außerhalb** des Loops, ohne auf die nächste Kaskade zu warten. | Jeder Fix folgt dem **Dreisatz** (Commit `{{fix-präfix}}: …` → CHANGELOG → Backlog). Der **Normalweg** für Ad-hoc-Fixes. ✅ erprobt |
 | **Harry** | Read-Only Red Team — **Security/Pentest** | Versucht die App **bewusst auszuhebeln**: Auth/PINs/Tokens umgehen, Angriffsfläche der Netz-Schnittstellen, Pfad-/Injection-Tricks, Datenlecks in Logs/Exports. | **Rührt keinen Produktivcode an.** Nur lesen, angreifen, dokumentieren — dann Übergabe an Frank. ✅ erprobt (manuell) |
 | **Marv** | Read-Only Red Team — **Chaos/Regression** | Wirft der App Steine in den Weg: kaputte/riesige/leere Inputs (Fuzzing), Race-Conditions, korrupte Dateien, Migrations-Edge-Cases, „DAU klickt dreimal". | **Rührt keinen Produktivcode an.** Nur lesen, brechen, dokumentieren — dann Übergabe an Frank. ✅ erprobt (manuell) |
-| **Axel** | Read-Only **Forensiker** — stärkstes Modell, **auf Abruf** | Knackt **besonders schwierige** Fälle, an denen Frank scheitert: tiefe Root-Cause-Analyse von Heisenbugs, Race-Conditions, subtiler Datenkorruption, verschachtelten Sicherheitslücken. Liefert eine **Ermittlungsakte** (Ursache + Fix-Plan). | **Rührt keinen Produktivcode an.** Läuft **nie im Dauer-Loop** (teuer). **Immer `{{starkes-modell}}`/API.** Übergibt den Fix-Plan zurück an Frank. ✅ erprobt (manuell) |
+| **Axel** | Read-Only **Forensiker** — stärkstes Modell, **auf Abruf** | Knackt **besonders schwierige** Fälle, an denen Frank scheitert: tiefe Root-Cause-Analyse von Heisenbugs, Race-Conditions, subtiler Datenkorruption, verschachtelten Sicherheitslücken. Liefert eine **Ermittlungsakte** (Ursache + Fix-Plan). | **Rührt keinen Produktivcode an.** Läuft **nie im Dauer-Loop** (teuer). **Modell immer stark** (`{{starkes-modell}}`, analog zum Architekten) — **auch im Abomodus**; **Auth** dagegen wie die Loop-Rollen **Abo-first mit API-Fallback** (Modell und Auth sind zwei getrennte Achsen, siehe Axel-Sektion). Übergibt den Fix-Plan zurück an Frank. ✅ erprobt (manuell) |
 
 > **Wer fixt spontan?** Out-of-Loop-Fixes sind **Franks** Aufgabe. Der Architekt
 > greift **nur im Ausnahmefall** selbst zum Produktivcode — hält sich dann aber
@@ -163,8 +163,19 @@ Problem **nicht erneut**.
 **Die eiserne Regel — read-only wie Harry/Marv:** Axel ändert **niemals**
 `{{Produktivcode-Globs}}`. **Axel denkt, Frank tippt.**
 
-**Kostenkontrolle:** Immer `{{starkes-modell}}`/API. **Nie im Dauer-Loop.** Harte
-Budget-Cap pro Fall. Nur bei nachgewiesenem Bedarf.
+**Kostenkontrolle — zwei getrennte Achsen (nicht vermengen):**
+
+- **Modell:** **immer stark** (`{{starkes-modell}}`, Default Opus; z. B. `fable`
+  möglich) — analog zum Architekten, **auch im Abomodus**. Die übrigen Loop-Rollen
+  (Ralph/Harry/Marv/Frank) bleiben beim günstigen Modell.
+- **Auth:** **Abo-first mit aufruf-lokalem API-Fallback** (wie die anderen
+  automatisierten Rollen; Strippenzieher-Entscheid im Feldprojekt
+  website-maxron-de, 2026-07-10 — die frühere „Axel immer API"-Regel ist
+  aufgehoben, weil das starke Modell im Abo schlicht günstiger ist). Nur **Der
+  Architekt** (interaktiv, kein Loop) bleibt bewusst API.
+
+**Nie im Dauer-Loop** (ein Fall pro Aufruf). Harte Budget-Cap pro Fall bleibt als
+Airbag. Nur bei nachgewiesenem Bedarf.
 
 **Der Ermittlungs-Dreisatz:**
 
@@ -294,8 +305,11 @@ Bevor die Platzhalter ersetzt werden, klärt die einrichtende Instanz mit dem
 8. **`{{loop-skript}}`** → „Gibt es schon einen Bau-Loop? (z. B. `ralph.sh`) Sonst
    nach Anhang A generieren."
 9. **`{{Modell-Default}}` / `{{starkes-modell}}` / `{{Auth-Modus}}`** → „Modell- und
-   Kosten-Politik: Loop = günstiges Modell (Sonnet) + Abo-Zielbild; Axel/Architekt =
-   starkes Modell (Opus) + immer API. Budget-Limits siehe `## Kostenkontrolle`."
+   Kosten-Politik (Modell und Auth sind **zwei getrennte Achsen**): Loop-Rollen =
+   günstiges Modell (Sonnet) + Abo-first mit API-Fallback. **Axel** = starkes
+   Modell (Opus/Fable) **auch im Abomodus**, Auth aber ebenfalls Abo-first mit
+   Fallback. **Der Architekt** = starkes Modell + immer API (interaktiv, kein
+   Loop). Budget-Limits siehe `## Kostenkontrolle`."
 
 Trage die Antworten anschließend selbst ein und speichere die `CLAUDE.md`. Der
 {{Strippenzieher}} macht das nicht selbst.
@@ -325,12 +339,12 @@ Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht al
 3. **`frank.sh`** 🟡 — Event-Loop am Beutebuch (einfachster Loop, kein Guard): greift Funde mit Status `an Frank übergeben`, fixt nach Franks Dreisatz, Promise `<promise>FRANK_FIX_COMPLETE</promise>`, Versuchszähler (Default 3) → dann `an Mensch eskaliert`.
 4. **Read-Only-Guard** 🟡 — 3 Linien (A.4) + rollenspezifischer `pre-commit`-Hook (aktiv nur bei `{{ROLE-ENV}}=harry|marv`).
 5. **`harry.sh` / `marv.sh`** 🟡 — State = letzter geprüfter Commit-Hash; Trigger = neue Commits seit State (Angriff auf **stabilen** Code, idealerweise am Kaskaden-Übergang); Promise `<promise>REDTEAM_SWEEP_COMPLETE</promise>`; **Guard Pflicht**.
-6. **Polling-Wache** 🟡 — dünne Schleife, die die Loops sequenziell startet (`inotify`/`post-commit` als späterer Ausbau).
+6. **Polling-Orchestrator (Vollautomatik)** ✅ — dünne Schleife, die die Loops sequenziell startet (`inotify`/`post-commit` als späterer Ausbau). Sprechend benennen (`vollautomatik.sh`; ein schrittweiser Bruder `halbautomatik.sh` mit Halt/Entscheidung durch den {{Strippenzieher}}) statt kryptischer Marken-Namen (Designhinweis 7).
 7. **`.gitignore`** ergänzen um `.{{rolle}}-state`, `.team-loop.lock`.
 
 ### A.3 Auth-Fallback  ✅ bei Ralph erprobt (website-maxron-de, 2026-07-10) · 🟡 übrige Loop-Rollen
 
-Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **aufruf-lokal** auf `api` zurück, danach zurück zu Abo. **Nur Der Architekt** (interaktiv, kein Loop) bleibt bewusst API. **Hinweis:** Ob **Axel** ausgenommen bleibt, ist eine **Strippenzieher-Entscheidung** — im Feldprojekt website-maxron-de wurde Axel am 2026-07-10 bewusst **in die Abo-first-Regel aufgenommen** (starkes Modell im Abo ist günstiger; das Budget-Cap pro Fall bleibt als Airbag). Das erprobte Rezept:
+Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **aufruf-lokal** auf `api` zurück, danach zurück zu Abo. **Nur Der Architekt** (interaktiv, kein Loop) bleibt bewusst API. **Axel** ist bei der **Auth** in die Abo-first-Regel aufgenommen (Feldprojekt website-maxron-de, Strippenzieher-Entscheid 2026-07-10: starkes Modell im Abo ist günstiger, das Budget-Cap pro Fall bleibt als Airbag) — sein **Modell** bleibt davon unberührt **immer stark** (`{{starkes-modell}}`, siehe Axel-Sektion: Modell und Auth sind zwei getrennte Achsen). Das erprobte Rezept:
 
 - **`team_resolve_auth_mode [rollen-default]`**: löst Env `AUTH_MODE` → `~/.config/claude-team/auth-mode` → Rollen-Default auf. `abo` **entfernt** `ANTHROPIC_API_KEY` aus der Prozess-Umgebung (Verdrängungsfalle, s. o.); `api` lädt den Key notfalls aus `~/.config/claude-team/api-key` (`chmod 600`) — erst diese Key-Datei macht den Fallback möglich, wenn der Loop ohne Key in der Env gestartet wurde.
 - **Stufen-lokal durch frische Auflösung**: Der Loop merkt sich die etwaige Nutzer-Übersteuerung beim Start (`AUTH_MODE_START="${AUTH_MODE:-}"`) und löst **pro Stufe neu** auf — damit endet jeder Fallback automatisch mit der Stufe.
@@ -345,6 +359,8 @@ Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im 
 3. **Post-Hook** (deterministische Garantie) — nach der Iteration `git diff --name-only <START_HASH> HEAD` + `git status --porcelain` gegen die Whitelist.
 
 > ⚠️ **Guard-Härtungs-Lektion (Feldtest 2026-07-10, teuer gelernt):** Der Rollback in Linie 3 muss **chirurgisch** sein — **nur die konkret gelisteten Verletzer-Pfade** zurücksetzen (getrackt → `git checkout <START_HASH> -- <pfad>`; neu → gezielt `rm`/`git rm`). Ein **blindes `git reset --hard` + `git clean -fd`** ist ein Footgun: Im Feldtest löschte es die **gesamte noch uncommittete Team-Infrastruktur**, weil im Testmoment alle neuen Skripte als „Nicht-Whitelist" galten. Zwei Betriebsregeln dazu: (a) **Infrastruktur committen, bevor** je ein Guard läuft — im Normalbetrieb ist der Baum zwischen den Phasen ohnehin sauber (jede Rolle committet); (b) **Guard-Tests nur in einem Wegwerf-Repo**, nie im echten. Ein rollenspezifischer `pre-commit`-Hook bleibt optionaler Zusatz (Gürtel + Hosenträger).
+
+> ⚠️ **Staging-Lektion (Feldlauf website-maxron-de, 2026-07-11):** Beim Commit der erlaubten Whitelist-Änderungen **datei-genau stagen**, nicht ordner-weit. Der gemeinsame Red-Team-Sweep-Commit staged zunächst das **ganze Plan-Verzeichnis** (`git add {{Plan-Ordner}}`), obwohl Harry/Marv laut Prompt nur ins Beutebuch (+ `{{Test-Ordner}}`) schreiben. Da **Der Architekt interaktiv außerhalb des `flock`** arbeitet (kein Loop, nicht vom Lock erfasst), kann er gleichzeitig **uncommittete** Plan-Dateien unter derselben Whitelist liegen haben — ein parallel laufender Sweep zog so fremde Architekten-Arbeit in seinen `docs(beute)`-Commit. Eine Ordner-Whitelist (`^({{Test-Ordner}}|{{Plan-Ordner}})`) ist **nicht** dasselbe wie datei-genaues Staging: gezielt nur die eigenen Ausgabepfade stagen (`git add {{Beutebuch-Pfad}} {{Test-Ordner}}`); die Whitelist bleibt als zusätzliche Absicherung. Optional: Vorab-Check auf fremde uncommittete Änderungen außerhalb der eigenen Ausgabepfade.
 
 Ausführlich: [read-only-guard](../konzepte/read-only-guard.md)
 
@@ -363,6 +379,25 @@ An der **real installierten** CLI verifizieren — **nicht raten**:
 
 - **Empfehlung:** sequenziell (Rollen hängen inhaltlich voneinander ab: Ralph → Red Team → Frank) + **`flock`-Airbag** in **alle** Loops, gegen `index.lock`-/`status`-Races. Echte Parallelität (Git-Worktrees) bleibt späterer Ausbau.
 - **Guard-Reproducer:** ein Loop, der absichtlich `{{Produktivcode-Globs}}` anfasst, **muss** vom Post-Hook hart zurückgerollt werden (grüner Regressions-Schutz).
+
+### A.7 Budget-Governance & Feld-Betriebslehren  ✅ erprobt (website-maxron-de, Kaskaden 6–7, 2026-07-11)
+
+**Budget-Governance (optionaler, aber empfohlener Ausbau).** Statt eines starren, wandernden Projekt-Gesamtdeckels bewährt sich das Modell **„Pro-Lauf-Deckel = operative Grenze, Gesamtstand nur dokumentiert"**:
+
+- **Committete `{{ledger-datei}}` (z. B. `.budget-ledger`)** — append-only, tab-/pipe-getrennt (`datum | kaskade | usd | auth | notiz`), **nicht** `.gitignore`-t. Sie ist die maschinenlesbare historische Basis, weil die Log-Ordner (`.{{rolle}}-logs/`) rotiert/`.gitignore`-t sind und den Stand sonst „vergessen".
+- **Log-Rotation/Archivierung (Pflicht, sonst Doppelzählung).** Wer eine committete Ledger-Datei einführt, **muss** die zugrundeliegenden Rohlogs **nach** dem Anhängen der Ledger-Zeile aus dem gezählten Pfad entfernen — **archivieren, nicht löschen** (z. B. Helfer `team_logs_archivieren <dir>`, verschiebt `*.json` nach `<dir>/archiv/`, das vom Kosten-Tool nicht-rekursiv **nicht** mitgezählt wird). Fehlt dieser Schritt, zählt **jede** abgeschlossene Kaskade **doppelt** (Ledger-Zeile **und** die nie gelöschte Rohlog-Datei). Pflicht-Reihenfolge in jeder Kaskaden-Abschluss-Stufe: Ledger-Zeile anhängen → **direkt danach** archivieren.
+- **Kontostand-Tool** (z. B. `./team-status.sh --budget`, Kern in einem kleinen `scripts/kosten.py`): summiert Ledger-Basis **plus** laufende Logs und weist **real via API abgerechnet** und **Abo-Gegenwert (nicht abgerechnet)** getrennt aus — sonst wird der Abo-Gegenwert als reale Ausgabe fehlinterpretiert.
+- **Zwei Kennzahlen sauber trennen — nie vermischen.** **A) Kosten dieses Laufs** (nur Logs seit Lauf-Start, z. B. `kosten.py summe --since EPOCH` + Helfer `team_kosten_seit "$LAUF_START"`) ist die **operative Grenze**, gegen die die Durchsetzung den Pro-Lauf-Deckel prüft. **B) Gesamt-Kontostand** (lebenslang: Ledger-Basis + alle Logs) ist **reine Anzeige** (`--budget`, Abschlussbericht, Notify, Deckel-Anhebungs-Meldung). Wird die Durchsetzung versehentlich auf B umgestellt, stoppt der Lauf **sofort**, sobald die Lebenssumme die Plan-Empfehlung übersteigt — noch bevor der aktuelle Lauf etwas kostet.
+- **`BUDGET_EMPFEHLUNG_USD=…`-Zeile je Kaskaden-Plan** — der Architekt setzt sie analog zu `RALPH_CAP=…`. Die Vollautomatik liest sie und **hebt den Lauf-Deckel automatisch nur an, senkt nie**; eine explizite User-Übersteuerung (`TEAM_BUDGET_USD=…`) hat Vorrang; fehlt die Zeile, gilt der bisherige Default. Die Halbautomatik zeigt Stand + Empfehlung und fragt den User.
+- **CAP/PLAN aus dem aktiven Plan statt Skript-Edit** — der Loop liest `RALPH_CAP` per `grep` aus dem aktiven Plan und den Plan-Pfad aus einer Zeiger-Datei (z. B. `.ralph-plan`). Kaskadenwechsel wird `echo {{Plan-Präfix}}-N-….md > .ralph-plan` statt eines Skript-Edits; nur das *Auslesen* ist automatisiert, das *Weiterschalten* bleibt bewusste Strippenzieher-Aktion. Verhindert den stillen Fehlstart „`RALPH_CAP` vergessen".
+
+**Feld-Betriebslehren (in den Kaskade-6/7-Läufen real erlebt — für jedes Team wertvoll):**
+
+1. **Budget-Cap-Timing.** Der Pro-Stufe-Budget-Check greift typischerweise **nach** dem LLM-Aufruf, aber **vor** dem State-Weiterschalten. Sprengt eine Stufe den Cap, ist ihre Arbeit bereits **committet**, aber die State-Datei bleibt stehen und die Vollautomatik stoppt — **kein Datenverlust**. Der Mensch prüft den Commit, schaltet manuell weiter (`echo N+1 > {{state-Datei}}`) und setzt fort. **Konsequenz:** den Pro-Stufe-Default großzügig genug wählen (Infrastruktur-/Skript-Stufen kosten mehr als reine Content-Stufen — im Feld 1 → 3 USD angehoben).
+2. **Red-Team-Fokus ist kaskaden-abhängig  ✅ gebaut (Kaskade 7).** Ein fest auf den Produktivcode (`{{Produktivcode-Globs}}`) verdrahteter Red-Team-Auftrag zielt bei einer **Infrastruktur-Kaskade** (die nur `*.sh`/Skripte/Doku anfasst) am Bau vorbei. Lösung im Feld: eine Env `TEAM_REDTEAM_FOCUS`, die **beide** festen Verdrahtungen übersteuert — den `AUFTRAG` der Red-Team-Rollen **und** den „Prüfe … unter {{Produktivcode-Globs}}"-Prompt-Scope; ohne Env bleibt alles wortgleich beim Produktivcode-Default (rückwärtskompatibel). Dogfooding: der Red-Team-Schritt der Kaskade, die diese Env baute, war selbst ihr erster Anwendungsfall (Harry/Marv auf die geänderten Skripte statt auf den Produktivcode gelenkt).
+3. **„success ohne Promise" ≠ harter Fehler  ✅ gebaut (Kaskade 7).** Verweigert der Read-Only-Guard einer Red-Team-Rolle korrekt das Ausführen (`permission_denials`), kann sie in eine Rückfrage laufen und **kein Sweep-Promise** ausgeben — obwohl sie einen Fund sauber ins Beutebuch übergeben hat. Wertet die Vollautomatik jedes Nicht-Promise als harten Stopp, hängt ein Neustart an derselben Stelle. Im Feld **beide Hebel gebaut** (Gürtel + Hosenträger): (1) **Prompt-Härtung** — die Red-Team-Rollen stellen **nie** Ausführ-Rückfragen (der Guard erzwingt Read-Only ohnehin) und geben bei sauber übergebenem Fund **immer** das Promise aus; (2) **Logik-Härtung** — ein `success`-Log (kein `is_error`) mit **neuem, sauber übergebenem** Beutebuch-Eintrag zählt **nicht** als harter Fehler. Echte Fehler (`is_error`, Guard-Bruch, Aufruf-Fehlschlag) bleiben harter Stopp. Übergangsweise ließ sich ein solcher Fund gezielt über die Halbautomatik (`halbautomatik.sh frank`) weiterverarbeiten.
+4. **Log-Rotation nicht vergessen (Doppelzählung).** Die committete Ledger-Datei sichert Kosten gegen das Rotieren/Löschen der `.gitignore`-ten Log-Ordner — **aber nur, wenn der Rotationsschritt auch gebaut wird**. Wird er vergessen, zählt jede abgeschlossene Kaskade doppelt (Ledger-Zeile **und** nie gelöschte Rohlog-Datei); im Feld summierte sich das über sieben Kaskaden auf real ~13,7 USD Phantom-Kosten. Gegenmittel: der Pflicht-Archivierungsschritt oben (Ledger-Zeile → **direkt danach** `team_logs_archivieren`).
+5. **Durchsetzung misst Pro-Lauf-Kosten (A), nicht die Lebenssumme (B).** Wird die harte Budget-Durchsetzung versehentlich auf den lebenslangen Gesamtstand (B) statt auf die Kosten des aktuellen Laufs (A) verdrahtet, stoppt die Vollautomatik **sofort**, sobald die kumulierte Lebenssumme die Plan-Empfehlung übersteigt — man müsste bei jeder Kaskade den Pro-Lauf-Deckel hochdrehen, nur um eine Lebenszeit-Summe zu überbieten. Durchsetzung immer gegen A (Logs seit Lauf-Start); B bleibt reine Anzeige (siehe Governance-Punkte oben).
 
 ---
 

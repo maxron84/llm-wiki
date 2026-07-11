@@ -8,9 +8,20 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-07-10
+**Zuletzt aktualisiert**: 2026-07-11
 
 ---
+
+## [2026-07-11 16:30] update | T.E.A.M.-Vorlage: Kaskade-7-Erkenntnisse zurückgespielt
+
+Vierter Rückfluss aus `website-maxron-de` — die verallgemeinerbaren Erkenntnisse aus **Kaskade 7 + den Frank-Fixes BL-14…BL-19** (Vorlage kannte bislang nur bis Kaskade 6). Sechs Deltas: zwei vormalige A.7-*Ideen* sind jetzt **gebaut/erprobt**, zwei teuer gelernte Budget-Bugs und eine Guard-Lektion sind neu, plus die sprechende Entrypoint-Benennung.
+Tiefe: **Mittel**
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — Reifegrad-Zeile + Quellen auf **sieben Kaskaden** (HM-1…HM-13); `TEAM_REDTEAM_FOCUS` und „success ohne Promise"-Härtung als ✅ aufgenommen. **A.7** erweitert: neuer Pflicht-Baustein **Log-Rotation/Archivierung** (sonst Doppelzählung der Budget-Ledger), **A/B-Kennzahlen-Trennung** (Pro-Lauf-Kosten für Durchsetzung vs. Gesamt-Kontostand nur Anzeige); Betriebslehren #2/#3 von *Idee* auf ✅ **gebaut** umgeschrieben, #4 (Log-Rotation) + #5 (A/B-Trennung) neu. **A.4** um Staging-Lektion ergänzt (datei-genau statt ordner-weit, weil der interaktive Architekt außerhalb des `flock` uncommittete Whitelist-Dateien liegen haben kann). **Designhinweis 7** + A.2-Punkt-6 + Wording: sprechende Entrypoint-Namen (`vollautomatik.sh`/`halbautomatik.sh` statt `wache.sh`/`pock.sh`).
+- `konzepte/read-only-guard.md` — zweite ⚠️-Warnbox: Whitelist-Prüfung ≠ datei-genaues Staging; interaktiver Nicht-Loop-Akteur außerhalb des `flock` als Kollisions-Ursache.
+- `quellen/claude-md-ki-team.md` — Reifegrad-Update-Absatz auf sieben Kaskaden + die zwei gebauten Bausteine, zwei neuen Betriebslehren und die Guard-Lektion gehoben.
+- `konzepte/kostencounter.md` — Vorlagen-Zuordnungstabelle: Zeile `claude-md-ki-team` um den neuen Anhang-A.7-Hinweis (optionale Budget-Governance) ergänzt.
 
 ## [2026-07-10 17:00] lint | Wikiwartung + README-Aktualisierung
 
