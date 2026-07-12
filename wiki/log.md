@@ -990,6 +990,20 @@ Zweite Fassung `raw/claude-md-team-v2.md` nachgereicht — entstanden in Zusamme
 - `wiki/quellen/claude-md-ki-team.md` — Abschnitt „Verfeinerung (v2)" ergänzt, Quellen-Feld erweitert
 - `wiki/konzepte/kostencounter.md` — Ausnahme-Hinweis in der Vorlagen-Zuordnungstabelle ergänzt
 
+## [2026-07-12 17:45] ingest | T.E.A.M.-Vorlage — Feldstand Kaskaden 9–15 zurückgespielt
+
+Feldprojekt `website-maxron-de` ist von Kaskade 7 (bisheriger Vorlagenstand) auf Kaskade 15 gewachsen; die relevanten Neuerungen wurden in die Vorlage übernommen.
+
+- `wiki/vorlagen/claude-md-ki-team.md`:
+  - **Planungsregel 4** ergänzt — Scharfschalt-Sequenz als Pflicht-Ausgabe des Architekten (Zeiger umlegen → Konsistenz-Check → Budget → ggf. Red-Team-Fokus → Start)
+  - **Session-Limit (429), Strategie A+B** (`BL-20`/`BL-25`) — dritte Fehlerklasse, Exit-42-Pausen-Mechanik, Auto-Retry mit Deckel, Auslauf-Bremse `TEAM_FIX_MAX_STAGNATION` (neuer Block in „Loop-Mechanik & Auth" + Anhang A.8)
+  - **Aktive Auth-Startwarnung** (`BL-27`) — Warnung bei `ANTHROPIC_API_KEY` in der Env trotz Abo-Modus
+  - **Zwei-Schwellen-Budgetmodell** (`BL-30`) — zentraler Soft-Cap (Hinweis) + Hard-Cap (Abbruch) für Frank/Axel; Auslöser HM-32 (zu tiefer Cap vervielfacht Kosten via Rollback); Axel-Sektion + Kostenkontrolle angepasst
+  - **Interaktive Akteur-Kostenerfassung** (`BL-28`/`BL-29`/`BL-33`) — A2-Live-Schätzung (Architekt-Churn) + rollen-agnostischer A1-Abschluss, domänengetrenntes Ledger-Schema (neuer Block in Kostenkontrolle + Anhang A.9)
+  - **Ablage-Konvention** Top-Level `*.sh` vs. `scripts/` in Anhang A.2 ergänzt; team-lib-Helferliste + Orchestrator-/Kostenwerkzeug-Beschreibung erweitert; Aufnahme-Interview um Budget-/Ledger-Platzhalter (Fragen 10–11) ergänzt
+  - Reifegrad-Legende, Zusammenfassung, Quellen-Feld und Frontmatter auf Feldstand Kaskade 15 aktualisiert
+- `wiki/quellen/claude-md-ki-team.md` — „Update 2026-07-12"-Absatz (Kaskaden 9–15), Planungsregel 4 in der Zusammenfassung, Frontmatter/Tags aktualisiert
+
 ---
 
 [Zurück zum Index](index.md)
