@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-07-10 (Ingest: CLAUDE.md T.E.A.M. — 4 neue Seiten, 3 Updates)
+**Zuletzt aktualisiert**: 2026-07-12 (Konzeptskizze: T.E.A.M.-Forensik — 1 neue Seite)
 
 ---
 
@@ -61,6 +61,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Stückkostenmetrik US$/WP: ~$0,42/Seite Lifetime bei Sonnet 4.6 in einer Ralph-Schleife
 - [kostencounter](konzepte/kostencounter.md) — Einheitlicher Kosten-Tracking-Standard für alle CLAUDE.md-Vorlagen: Fortlaufend vs. Abschluss-Pflicht
 - [finder-fixer-prinzip](konzepte/finder-fixer-prinzip.md) — Wer einen Fehler findet, fixt ihn nicht selbst — Gewaltenteilung für KI-Rollenteams
+- [ki-team-forensik](konzepte/ki-team-forensik.md) — *(Konzeptskizze)* T.E.A.M.-Vorlage für Legacy-Forensik umgebaut: Quartett (Architekt, Ralph, Auditor, Axel) + neuer Lotse
 - [read-only-guard](konzepte/read-only-guard.md) — 3-Linien-Verteidigung, um KI-Rollen technisch auf Lesezugriff zu beschränken
 
 ## Werkzeuge

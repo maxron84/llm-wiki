@@ -575,6 +575,7 @@ Interaktiv arbeitende Rollen (Architekt, Frank-im-Abo) laufen **außerhalb** `te
 - [claude-md-team](claude-md-team.md) — Namensvetter mit anderem Thema (Menschen-Team statt KI-Rollenteam)
 - [claude-md-lehrer](claude-md-lehrer.md) — Format-Vorbild dieser Vorlage
 - [feldtest-sperre](../konzepte/feldtest-sperre.md) — Verwandtes Muster aus demselben Ursprungsprojekt (Freeze statt Rollenteilung)
+- [ki-team-forensik](../konzepte/ki-team-forensik.md) — Konzeptskizze: dieses Rollenteam für Legacy-Forensik umgebaut (Quartett + Lotse)
 
 ---
 

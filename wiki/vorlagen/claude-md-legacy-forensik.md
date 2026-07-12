@@ -424,6 +424,7 @@ Vor dem letzten Commit `wiki/kosten.md` mit vollständiger forensischer Kostenau
 - [seitenklassifikation](../konzepte/seitenklassifikation.md) — Optional ergänzbar als zweite Dimension neben dem Konfidenzmodell
 - [claude-md-legacy-forensik-veteran](../quellen/claude-md-legacy-forensik-veteran.md) — Vollständige Battle-tested-Version mit PowerShell, DSGVO, Token-Sparregeln
 - [claude-md-token-sparen](../konzepte/claude-md-token-sparen.md) — In-CLAUDE.md-Token-Sparregeln als eigenständiges Konzept
+- [ki-team-forensik](../konzepte/ki-team-forensik.md) — Konzeptskizze: diese Forensik-Methodik mit dem T.E.A.M.-Rollenmodell kombiniert (Quartett + Lotse)
 - [claude-md-software](claude-md-software.md) — Schwester-Vorlage für allgemeine Software-Projekte
 - [claude-md-youtube-verlauf](claude-md-youtube-verlauf.md) — Schwester-Vorlage für YouTube-Verlauf-Wikis
 

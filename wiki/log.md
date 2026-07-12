@@ -1004,6 +1004,17 @@ Feldprojekt `website-maxron-de` ist von Kaskade 7 (bisheriger Vorlagenstand) auf
   - Reifegrad-Legende, Zusammenfassung, Quellen-Feld und Frontmatter auf Feldstand Kaskade 15 aktualisiert
 - `wiki/quellen/claude-md-ki-team.md` — „Update 2026-07-12"-Absatz (Kaskaden 9–15), Planungsregel 4 in der Zusammenfassung, Frontmatter/Tags aktualisiert
 
+## [2026-07-12 23:11] query | T.E.A.M.-Forensik-Konzeptskizze
+
+**Anlass**: Brainstorming des Strippenziehers — kann die ausgehärtete T.E.A.M.-Vorlage für Legacy-Forensik angepasst werden? Kandidat: reale Enterprise-Produktionsumgebung.
+
+**Entscheide**: (1) Konzeptskizze statt Vollvorlage (🟡 bis zum Feldlauf), (2) Quartett ohne Frank — Architekt, Ralph, Auditor (Harry⊕Marv), Axel; Auditor findet, Ralph fixt, (3) neuer Spezialist **Der Lotse** (Wissensträger-Interviewer) als strukturierter Mensch-Eskalationspunkt.
+
+**Neue Seite**:
+- `wiki/konzepte/ki-team-forensik.md` — Kern-Inversion (raw/ universell tabu, Wiki = Produkt, wiki_lint als Smoke-Test), Kader-Tabelle, Lotsen-Handwerk, 4 neue Design-Regeln (Konfidenz-Deckel 🟡 für Automatik, Halbautomatik-Default, zurückhaltende Token-Sparregeln, DSGVO-Guard-Linie), offene Fragen vor Aushärtung
+
+**Updates**: Index (+1 Eintrag), Rückverlinkung aus beiden Mutter-Vorlagen (`claude-md-ki-team.md`, `claude-md-legacy-forensik.md`)
+
 ---
 
 [Zurück zum Index](index.md)
