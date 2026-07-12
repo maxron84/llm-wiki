@@ -299,9 +299,8 @@ klar benannte dritte Klasse — sie weicht Guard/Read-Only-Regeln **nicht** auf.
   greift die 429-Sonderbehandlung.
 - **A) Auto-Retry mit hartem Deckel.** Bleibt das finale Ergebnis 429, parst
   `team_claude()` die Reset-Zeit (12h→24h, tageswechselsicher), wartet
-  (Reset + Puffer) und wiederholt. Deckel: `TEAM_429_MAX_RETRIES` (Default 2),
-  `TEAM_429_MAX_WARTEN` (Default 1800 s; `0` schaltet A ab), `TEAM_429_PUFFER`
-  (Default 30 s). Unbekannter/zu ferner Reset → sofort B.
+  (Reset + Puffer) und wiederholt — begrenzt durch `TEAM_429_MAX_RETRIES` /
+  `TEAM_429_MAX_WARTEN` / `TEAM_429_PUFFER`. Unbekannter/zu ferner Reset → sofort B.
 - **B) Sauberer Pausen-Exit.** Sind die Retries erschöpft, gibt `team_claude()`
   **Exit-Code 42** zurück (statt des generischen Fehlers). **Alle** Loop-Rollen
   (`ralph.sh`, `redteam.sh`, `frank.sh`, `axel.sh`) reichen 42 **unverändert als
@@ -315,11 +314,15 @@ klar benannte dritte Klasse — sie weicht Guard/Read-Only-Regeln **nicht** auf.
   Die Frank↔Axel-Fixphase vergleicht pro Runde einen Beutebuch-Snapshot
   vorher/nachher; bleibt **weder** ein Frank-Fix **noch** eine neue Axel-Akte
   **noch** ein Status­wechsel, zählt eine `stagnation`-Kennzahl hoch. Ab
-  `TEAM_FIX_MAX_STAGNATION` (Default 2) Runden in Folge bricht die Phase mit
-  „⛔ Fix-Phase stagniert — Mensch prüfen" ab, statt bis zur groben Obergrenze
-  `TEAM_MAX_RUNDEN` (Default 12) teuer leerzudrehen. Realer Auslöser: ~13,8 USD
-  Leerlauf über 8 Runden am selben Fund. **Kein** Aufweichen echter Fehler — die
-  Bremse misst ausschließlich Fortschritt.
+  `TEAM_FIX_MAX_STAGNATION` Runden in Folge bricht die Phase mit „⛔ Fix-Phase
+  stagniert — Mensch prüfen" ab, statt bis zur groben Obergrenze
+  `TEAM_MAX_RUNDEN` teuer leerzudrehen. Realer Auslöser: ~13,8 USD Leerlauf über
+  8 Runden am selben Fund. **Kein** Aufweichen echter Fehler — die Bremse misst
+  ausschließlich Fortschritt.
+
+> Die numerischen **Default-Deckel** dieser Env-Knöpfe (`TEAM_429_*`,
+> `TEAM_FIX_MAX_STAGNATION`, `TEAM_MAX_RUNDEN`) stehen in **Anhang A.8** — hier
+> zählt der Verhaltens-Vertrag, nicht die Feinabstimmung.
 
 ---
 
@@ -375,37 +378,24 @@ Konsequenz:
 website-maxron-de 2026-07-12):** **Interaktiv** (außerhalb `team_claude`)
 arbeitende Rollen — **Der Architekt** und **Frank-im-Abo** — schreiben **keine**
 `total_cost_usd`-JSONs und fallen sonst durch die automatische Kostenerfassung
-(die nur `.ralph-logs/`/`.team-logs/` liest). Realer Auslöser: eine einzelne
-Architekten-Session kostete laut Konsole **~16 USD** — strukturell unerfasst. Der
-Fix hat drei Bausteine:
+(die nur `.{{rolle}}-logs/` liest). Realer Auslöser: eine einzelne
+Architekten-Session kostete laut Konsole **~16 USD** — strukturell unerfasst.
+Operativer Vertrag (Bau-Details in **Anhang A.9**):
 
-- **A2 — automatische Live-Schätzung (nur Architekt).** `kosten.py
-  architekt-schaetzung --since REF` (Wrapper `team_architekt_schaetzung`) schätzt
-  die laufenden Architekt-Kosten aus dem **Zeilen-Churn** (`git diff --numstat`)
-  in `{{Plan-Ordner}}/**` + `CLAUDE.md` seit dem letzten Ledger-Commit, mal
-  Eichfaktor `{{ARCHITEKT_USD_PRO_CHURN_ZEILE}}` (an einer realen Session geeicht).
-  Bewusst eine **grobe Größenordnung**, nie als exakter Wert getarnt; für
-  `{{Produktivcode-Globs}}`-Fixes (Frank) nicht aussagekräftig, daher
-  architekt-spezifisch.
-- **A1 — echter Wert beim Kaskaden-Abschluss (rollen-agnostisch).** Der
+- **A2 — grobe Live-Schätzung (nur Architekt):** `--budget` zeigt eine aus dem
+  Plan-/Doku-Churn abgeleitete **Größenordnung** der laufenden Architekt-Kosten,
+  klar als „geschätzt" markiert — **nie** persistiert, nie als exakter Wert
+  getarnt.
+- **A1 — echter Wert beim Kaskaden-Abschluss (rollen-agnostisch):** Der
   {{Strippenzieher}} liest den realen Verbrauch aus der Anthropic-Konsole ab und
-  trägt ihn ein: `./team-status.sh --akteur-abschluss <rolle> <auth:abo|api>
-  <USD> <domaene> ["<notiz>"]` (Kern `kosten.py akteur-abschluss`). Das Tool
-  **ersetzt** (statt verdoppelt) eine vorhandene Zeile **derselben Rolle +
-  Kaskade** (Idempotenz; Architekt- und Frank-Zeile überschreiben sich nicht) und
-  validiert den USD-Wert defensiv (endliche, nicht-negative Zahl, **keine** rohe
-  `python3 -c`-Interpolation). Die A2-Schätzung wird **nie** persistiert — Schätzung
-  und echter Wert zählen so nie doppelt. `--architekt-abschluss` bleibt als dünner
-  Alias (`--rolle architekt --auth api`).
-- **Ledger-Schema domänengetrennt (`BL-29`, rückwärtskompatibel).** Die
-  {{ledger-datei}} trägt optional zwei Felder mehr:
-  `datum | kaskade | usd | auth | domaene | rolle | notiz`, mit `domaene` aus dem
-  Kaskaden-**Bezug** abgeleitet (nicht aus dem rohen `{{Plan-Ordner}}/`-Pfad, da
-  Planungs-Commits immer dort liegen). `kosten.py ledger --domaene …
-  [--rolle …] [--kaskade N]` filtert; Altzeilen ohne die Felder zählen bei
-  gesetztem Filter **nie** mit („unzugeordnet", nie stillschweigend zugeschlagen).
-  `--budget` weist die Domänen getrennt aus und markiert die Architekt-Zeile als
-  „geschätzt" oder „echt".
+  trägt ihn ein:
+  `./team-status.sh --akteur-abschluss <rolle> <auth:abo|api> <USD> <domaene> ["<notiz>"]`.
+  Das Tool **ersetzt** (statt verdoppelt) eine vorhandene Zeile **derselben Rolle
+  + Kaskade** — Schätzung und echter Wert zählen so nie doppelt.
+  `--architekt-abschluss` bleibt als dünner Alias.
+- **Ledger domänengetrennt (`BL-29`):** `--budget` weist die Kosten nach Domäne
+  getrennt aus; das Ledger-Schema ist rückwärtskompatibel um `domaene`/`rolle`
+  erweitert (Altzeilen bleiben „unzugeordnet").
 
 **Projektabschluss-Pflicht (Abschluss-Variante — Projekt hat definiertes Ende pro
 Kaskade):** Vor dem letzten Commit `wiki/kosten.md` (oder projekteigenes Pendant)
@@ -555,21 +545,22 @@ An der **real installierten** CLI verifizieren — **nicht raten**:
 
 ### A.8 Session-Limit-Robustheit (429) generieren  ✅ erprobt (`BL-20`/`BL-25`, website-maxron-de 2026-07-11)
 
-Ein Claude-Session-Limit ist eine **dritte Fehlerklasse** neben „sauberer Erfolg" und „echter Fehler" — beim Skript-Bau als solche verdrahten (Details/Env-Deckel siehe „Loop-Mechanik & Auth" im Vorlagenblock):
+Ein Claude-Session-Limit ist eine **dritte Fehlerklasse** neben „sauberer Erfolg" und „echter Fehler" — der **Verhaltens-Vertrag** steht im Vorlagenblock („Loop-Mechanik & Auth"); **hier** liegen die **numerischen Default-Deckel** (die Feinabstimmung), auf die der Block verweist:
 
-- **Zentral in `team_claude()`:** 429-Erkennung (`api_error_status == 429` **oder** Text „session limit"/„resets"), **API-Fallback zuerst** (separates Kontingent), dann Auto-Retry mit Deckel (`TEAM_429_MAX_RETRIES`/`TEAM_429_MAX_WARTEN`/`TEAM_429_PUFFER`), sonst **Exit 42** + `TEAM_LAST_PAUSE`/`TEAM_LAST_RESET`.
+- **Zentral in `team_claude()`:** 429-Erkennung (`api_error_status == 429` **oder** Text „session limit"/„resets"), **API-Fallback zuerst** (separates Kontingent), dann Auto-Retry mit Deckel, sonst **Exit 42** + `TEAM_LAST_PAUSE`/`TEAM_LAST_RESET`.
+- **Env-Deckel (Defaults):** `TEAM_429_MAX_RETRIES` = **2**, `TEAM_429_MAX_WARTEN` = **1800 s** (`0` schaltet den Auto-Retry A komplett ab), `TEAM_429_PUFFER` = **30 s** (Aufschlag auf die geparste Reset-Zeit). Ist der Reset unbekannt oder liegt er jenseits von `TEAM_429_MAX_WARTEN`, entfällt das Warten sofort zugunsten des Pausen-Exits.
 - **Alle Rollen-Skripte** reichen Exit 42 **unverändert** durch (kein State-Fortschritt, kein Fehlversuchs-Zähler); der Read-Only-Guard läuft auf **jedem** Pfad (auch Pause) **vor** der RC-Auswertung.
 - **`vollautomatik.sh`** erkennt Exit 42 in **allen** Phasen (Ralph, Red-Team-Sweeps, Frank↔Axel-Fixphase) und beendet mit einer eigenen Pausen-Meldung statt „ECHTER Fehler".
-- **Auslauf-Bremse** `TEAM_FIX_MAX_STAGNATION` (Default 2): Fixphase bricht ab, wenn N Runden **keinen** Fortschritt zeigen (kein Frank-Fix, keine neue Axel-Akte, kein Beutebuch-Statuswechsel per Snapshot-Vergleich).
+- **Auslauf-Bremse** `TEAM_FIX_MAX_STAGNATION` = **2** (grobe zweite Obergrenze `TEAM_MAX_RUNDEN` = **12**): Fixphase bricht ab, wenn N Runden **keinen** Fortschritt zeigen (kein Frank-Fix, keine neue Axel-Akte, kein Beutebuch-Statuswechsel per Snapshot-Vergleich).
 - **Testbarkeit:** Fixture-Tests netz-/CLI-frei halten (`subprocess`+`bash -c`), Warten über `TEAM_DRY_RUN=1`/`TEAM_429_SKIP_SLEEP=1` überspringbar machen.
 
 ### A.9 Interaktive Akteur-Kosten erfassen  ✅ erprobt (`BL-28`/`BL-29`/`BL-33`, website-maxron-de 2026-07-12)
 
-Interaktiv arbeitende Rollen (Architekt, Frank-im-Abo) laufen **außerhalb** `team_claude` und schreiben keine `total_cost_usd`-JSONs — sonst strukturell unerfasst. Beim Bau des Kosten-Werkzeugs (`kosten.py`) mitdenken (Details siehe „Kostenkontrolle" im Vorlagenblock):
+Interaktiv arbeitende Rollen (Architekt, Frank-im-Abo) laufen **außerhalb** `team_claude` und schreiben keine `total_cost_usd`-JSONs — sonst strukturell unerfasst. Der **operative Vertrag** steht im Vorlagenblock („Kostenkontrolle"); **hier** liegen die **Bau-Details** des Kosten-Werkzeugs (`kosten.py`):
 
-- **A2 (nur Architekt):** Live-Schätzung aus Zeilen-Churn (`git diff --numstat` in `{{Plan-Ordner}}/**` + `CLAUDE.md`) × Eichfaktor — bewusst grob, **nie** persistiert.
-- **A1 (rollen-agnostisch):** `akteur_abschluss(usd, domaene, kaskade, rolle, auth, notiz)` hängt den echten, aus der Konsole abgelesenen Wert an und **ersetzt** (statt verdoppelt) die Zeile derselben **Rolle + Kaskade**. Defensiv validieren (endliche, nicht-negative Zahl, **keine** rohe `python3 -c`-Interpolation — Lehre aus `BL-23`/`HM-17`). `architekt-abschluss` bleibt als dünner Alias.
-- **Ledger-Schema rückwärtskompatibel erweitern:** optionale Felder `domaene`/`rolle`; Altzeilen ohne sie zählen bei gesetztem Filter **nie** mit („unzugeordnet").
+- **A2 (nur Architekt):** Unterkommando `kosten.py architekt-schaetzung --since REF` (Wrapper `team_architekt_schaetzung`) schätzt aus dem Zeilen-Churn (`git diff --numstat` in `{{Plan-Ordner}}/**` + `CLAUDE.md` seit dem letzten Ledger-Commit) × Eichfaktor `{{ARCHITEKT_USD_PRO_CHURN_ZEILE}}` (an einer realen Session eichen, Rechenweg im Code kommentieren) — bewusst grob, **nie** persistiert; für `{{Produktivcode-Globs}}`-Fixes (Frank) nicht aussagekräftig, daher architekt-spezifisch.
+- **A1 (rollen-agnostisch):** Kern `kosten.py akteur-abschluss` mit `akteur_abschluss(usd, domaene, kaskade, rolle, auth, notiz)` hängt den echten, aus der Konsole abgelesenen Wert an und **ersetzt** (statt verdoppelt) die Zeile derselben **Rolle + Kaskade** (Idempotenz; Architekt- und Frank-Zeile überschreiben sich nicht). Defensiv validieren (endliche, nicht-negative Zahl, **keine** rohe `python3 -c`-Interpolation — Lehre aus `BL-23`/`HM-17`). `architekt-abschluss` bleibt als dünner Alias (`--rolle architekt --auth api`).
+- **Ledger-Schema rückwärtskompatibel erweitern:** `datum | kaskade | usd | auth | domaene | rolle | notiz` (bestehende 5-Feld-Zeilen bleiben gültig). `domaene` aus dem Kaskaden-**Bezug** ableiten, **nicht** aus dem rohen `{{Plan-Ordner}}/`-Pfad (Planungs-Commits liegen immer dort). `kosten.py ledger --domaene … [--rolle …] [--kaskade N]` filtert; Altzeilen ohne die Felder zählen bei gesetztem Filter **nie** mit („unzugeordnet", nie stillschweigend zugeschlagen). `--budget` markiert die Architekt-Zeile als „geschätzt" oder „echt".
 
 ---
 
