@@ -39,6 +39,28 @@ Skripte gebaut.
 
 **Statt Skripte zu kopieren**, generiert die aufnehmende Instanz sie passend zum Zielprojekt — **sofern das zum Zeitpunkt des Einspielens möglich ist**.
 
+## A.0 Bootstrap — was vor dem ersten Lauf existieren muss
+
+*(Ergänzt 2026-08-01 aus der Inspektion des Feldprojekts `website-maxron-de`. Diese Liste fehlte bisher: Die Vorlage beschrieb die Skripte, aber nicht die Dateien, auf die sie zugreifen. Im Feldprojekt sind sie über 22 Kaskaden nebenbei entstanden — in einem neuen Projekt müssen sie **vorher** da sein, sonst scheitert der erste Lauf an einer fehlenden Datei statt an einem echten Problem.)*
+
+Die Rollen lesen und schreiben an festen Stellen. Fehlt eine davon, bricht der Lauf ab oder — schlimmer — eine Rolle legt sie in einem geratenen Format neu an.
+
+| Datei | Zweck | Startinhalt |
+|---|---|---|
+| `CLAUDE.md` | Regelquelle (der Vorlagenblock, Platzhalter gefüllt) | Vorlage |
+| `CHANGELOG.md` | Übergabepunkt aller Rollen | Kopf + leerer `## [Unreleased]`-Block |
+| `{{Plan-Ordner}}/roadmap-skizzen.md` | Ungehärtete Stränge | Überschrift + erste Skizze |
+| `{{Plan-Ordner}}/backlog.md` | Aufgaben, die keine Kaskade sind | Überschrift |
+| `{{Plan-Ordner}}/beutebuch.md` | Red-Team-Funde | Überschrift **+ `## Vorlage`-Block mit dem Fund-Format** + leerer `## Funde` |
+| `{{Plan-Ordner}}/ermittlungsakten/` | Axels Ausgaben | leerer Ordner (`.gitkeep`) |
+| `prompts/rolle-*.md` | Rollen-Briefings (A.10) | fünf Dateien, ~20 Zeilen |
+| `{{ledger-datei}}` | Kosten-Basis, **committet** | leer anlegen |
+| `{{Test-Ordner}}/` | Reproducer- und Regressionstests | leerer Ordner |
+
+Der **`## Vorlage`-Block im Beutebuch** ist kein Schmuck: Harry und Marv schreiben ihre Funde direkt darunter und richten sich am Block aus. Ohne ihn divergieren die Fund-Formate ab dem zweiten Sweep, und die Zustandsmaschine (`beutebuch.py`) findet die Status-Zeilen nicht mehr.
+
+**Reihenfolge:** Diese Dateien zuerst, dann A.1–A.2. Ein Skript, das gegen eine fehlende Datei läuft, produziert einen Fehler, der wie ein Skriptfehler aussieht, aber keiner ist.
+
 ## A.1 Vorbedingungs-Check (immer zuerst)
 
 Vor jeder Skript-Generierung prüfen:
@@ -59,7 +81,20 @@ Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht al
 5. **`harry.sh` / `marv.sh`** ✅ — State = letzter geprüfter Commit-Hash; Trigger = neue Commits seit State (Angriff auf **stabilen** Code, idealerweise am Kaskaden-Übergang); Promise `<promise>REDTEAM_SWEEP_COMPLETE</promise>`; **Guard Pflicht**.
 6. **Polling-Orchestrator (Vollautomatik)** ✅ — dünne Schleife, die die Loops sequenziell startet (`inotify`/`post-commit` als späterer Ausbau). Sprechend benennen (`vollautomatik.sh`; ein schrittweiser Bruder `halbautomatik.sh` mit Halt/Entscheidung durch den {{Strippenzieher}}) statt kryptischer Marken-Namen (Designhinweis 7). Erkennt **Exit 42** (Session-Pause, A.8) in **allen** Phasen und die **Stagnations-Bremse** (`TEAM_FIX_MAX_STAGNATION`) in der Fixphase; liest `BUDGET_EMPFEHLUNG_USD` aus dem aktiven Plan und hebt den Lauf-Deckel nur an (nie senken).
 7. **Kosten-/Status-Werkzeug (`kosten.py` + `team-status.sh`)** ✅ — bündelt die Kosten-Summierung an **einer** Stelle (statt doppelt in `vollautomatik.sh`/`team-status.sh`); `--budget` zeigt den domänengetrennten Kontostand, `--akteur-abschluss` trägt echte interaktive Akteur-Kosten ein (A.9).
-8. **`.gitignore`** ergänzen um `.{{rolle}}-state`, `.team-loop.lock`, `.{{rolle}}-logs/` (die committete {{ledger-datei}} bleibt getrackt).
+8. **`.gitignore`** ergänzen — vollständige Liste aus dem Feldprojekt (2026-08-01 nachgetragen, die frühere Kurzfassung war unvollständig):
+
+   ```gitignore
+   # Team-Loop-Laufzeitartefakte
+   .{{rolle}}-logs/          # pro Rolle, z. B. .ralph-logs/ .team-logs/
+   .team-loop.lock
+   .{{rolle}}-state          # z. B. .ralph-state .harry-state .marv-state
+   .ralph-plan               # Zeiger auf den aktiven Plan
+   .frank-attempts           # Versuchszähler des Fixers
+   .budget-ledger.lock       # Lock der Ledger-Datei (Race, HM-48)
+   backups/
+   ```
+
+   **Nicht** ignorieren: die `{{ledger-datei}}` selbst — sie ist die committete Kostenbasis. Die drei zuletzt genannten Einträge fehlten in der bisherigen Anleitung; `.ralph-plan` und `.budget-ledger.lock` sind dabei die wichtigsten, weil sie sonst als Arbeitsverzeichnis-Änderung im Read-Only-Guard auftauchen.
 
 > **Ablage-Konvention (Feld-Lehre website-maxron-de, 2026-07-11):** Die
 > **Orchestrierungs-Entrypoints** (`vollautomatik.sh`, `halbautomatik.sh`,
@@ -170,6 +205,51 @@ Nach ~20 Kaskaden wächst die Wissensbasis zuverlässig zu, ohne sich zu schicht
 - **Der Gurt hat im Feld real gehalten.** Als eine spätere Regeländerung (`BL-55`) eine Regel **bewusst umkehrte**, schlug der Test rot an und zwang dazu, die betroffenen Inventar-Zeilen **benannt** nachzuziehen — statt sie stillschweigend verschwinden zu lassen. Genau dafür ist er da: Er verbietet keine Änderung, er macht sie **sichtbar**.
 - **Fundliste rotieren — mit archiv-bewusster Nummernvergabe.** Abgeschlossene Funde in ein Archiv-Doc verschieben (im Feld **3075 Z → 46 Z**). **Fallstrick:** Die `next-id`-Logik der Zustandsmaschine muss **Archiv und aktive Liste zusammen** betrachten, sonst vergibt sie nach der Rotation **doppelte Fund-Nummern** und zwei verschiedene Funde tragen dieselbe ID.
 - **Diese Kaskade nicht in den Loop geben** — sie ist der Musterfall für A.7/Lehre 7 (Prosa-Arbeit als Architekt-Handarbeit).
+
+### A.10.1 Bauformen im Detail
+
+*(Ergänzt 2026-08-01 aus der Feldinspektion. A.10 beschrieb bisher das Prinzip, aber nicht die Form — ein neues Projekt musste sie erraten.)*
+
+**Der Briefing-Helfer** gehört in `team-lib.sh` und hat einen **Pflicht-Fallback**, sonst legt eine fehlende Briefing-Datei den Lauf lahm:
+
+```bash
+# team_briefing <rolle>: Inhalt von prompts/rolle-<rolle>.md ausgeben.
+# Fallback bei fehlender/leerer Datei: exakt die alte Prompt-Zeile — kein
+# Abbruch, keine Fehlermeldung. Ein Fehler hier darf nie einen Lauf stoppen.
+team_briefing() {
+    local datei="prompts/rolle-$1.md"
+    if [ -s "$datei" ]; then cat "$datei"
+    else echo "Rolle siehe CLAUDE.md — lies sie zuerst."; fi
+}
+```
+
+Aufruf in jedem Rollen-Skript als **erste** Prompt-Zeile: `PROMPT="$(team_briefing ralph) …"`.
+
+**Briefing-Aufbau** — fünf feste Überschriften, ~20 Zeilen, hier gekürzt am Beispiel Harry:
+
+```markdown
+# Briefing — Harry (Read-Only Red Team, Security)
+**Wer ich bin:** …
+**Mein Auftrag:** …
+**Meine eiserne Grenze:** Ich ändere **niemals** Dateien in `{{Produktivcode-Globs}}` …
+**Mein Dreisatz (Beutezug):** 1. Fund ins Beutebuch … 2. Reproducer-Test … 3. Übergabe an Frank …
+**Mein Promise:** `<promise>REDTEAM_SWEEP_COMPLETE</promise>` — **immer**, auch nach
+einem Fund, ohne Ausführ-Rückfragen zu stellen.
+```
+
+Der Nachsatz beim Promise ist die gebaute „success ohne Promise"-Härtung (A.7, Lehre 3) — er gehört **in jedes** Red-Team-Briefing, nicht nur in die Skriptlogik.
+
+**Das Regel-Inventar** ist eine Tabelle mit fortlaufender Nummer, im Feldprojekt 646 Zeilen für eine 859-Zeilen-Regeldatei:
+
+| R-Nr | Klasse | Abschnitt | Zitat |
+|---|---|---|---|
+| R-1 | NORM | Projekt-Spezifika | statisches HTML/CSS/JS, **ohne Build-Schritt** |
+| R-12 | HERLEITUNG | Das Team (Rollen) | Der Mensch delegiert seine Arbeit ans … |
+| R-32 | HISTORIE | Das Team (Rollen) | Strippenzieher-Entscheid 2026-07-13 — die frühere Regel ist aufgehoben |
+
+Die Zitate sind **wörtliche Ausschnitte**, oft nur Halbsätze — genau so ist es richtig: Der Regressionstest prüft wörtliches (whitespace-normalisiertes) Vorkommen, und kurze Zitate überleben Umformatierungen, die einen ganzen Absatz brechen würden.
+
+**Wohin Herleitung und Historie wandern**: in ein Projekt-`wiki/` mit eigenem `index.md`. Im Feldprojekt liegen dort `team-historie.md` (die Baugeschichte der Loop-Infrastruktur, wörtlich aus Anhang A ausgelagert), `kosten.md` (Kostenauswertung je Kaskade) und die Betriebs-Runbooks. Jede Seite verweist im Kopf zurück: „Verbindlich ist allein `CLAUDE.md` — hier steht, **wie es dazu kam**." Diesen Satz mitschreiben; er verhindert, dass das Wiki mit der Zeit als zweite Regelquelle gelesen wird.
 
 
 ---

@@ -15,6 +15,31 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 19:30] update | T.E.A.M.-Vorlage: Erstlauf-Lücken aus Feldinspektion geschlossen
+
+Erste **direkte Inspektion** des Feldprojekts `website-maxron-de` (read-only, keine Änderung dort) statt Rückspielung per Bericht. Anlass: die Frage, ob ein neues Projekt mit der Vorlage genauso läuft wie das Feldprojekt. Antwort: prozessual ja, aber sechs Bausteine fehlten, die im Feld über 22 Kaskaden nebenbei entstanden sind und deshalb in keinem Rückspielbericht auftauchten.
+
+**Was gefunden wurde und wo es jetzt steht:**
+
+| Lücke | Belegt im Feldprojekt durch | Jetzt in |
+|---|---|---|
+| `## Projekt-Spezifika` fehlte im kopierbaren Block | reale `CLAUDE.md` beginnt damit; Regel-Inventar `R-1`…`R-8` | Vorlage, neuer erster Abschnitt + 4 neue Platzhalter |
+| Kein `{{Smoke-Test-Befehl}}` | `prompts/rolle-ralph.md`: „muss grün sein, bevor die Stufe fertig ist" | Vorlage, Interview-Frage 2b als wichtigste Frage markiert |
+| Bootstrap-Dateiliste fehlte ganz | 9 Dateien/Ordner, die die Skripte voraussetzen | Anleitung, neues **A.0** |
+| Beutebuch-Fundformat nur beschrieben | `## Vorlage`-Block in `plans/beutebuch.md` | Vorlage, Harry-&-Marv-Sektion |
+| `.gitignore` unvollständig | `.ralph-plan`, `.frank-attempts`, `.budget-ledger.lock` fehlten | Anleitung A.2, Punkt 8 |
+| Briefing-Helfer ohne Code/Muster | `team_briefing()` in `team-lib.sh` + 5 Briefings | Anleitung, neues **A.10.1** |
+| Abschluss-Protokoll ohne Gliederung | `plans/kaskade-22-abschluss.md`, 7 Abschnitte | Vorlage, Planungsregel 5 |
+
+Dazu die **Test-Namenskonvention** `test_<fundnummer>_<stichwort>.py` (im Feld ~30 Regressionstests eindeutig ihren Funden zugeordnet, ohne Extra-Liste) und der Hinweis, dass Herleitung/Historie in ein Projekt-`wiki/` mit Rückverweis-Satz wandern.
+
+**Methodische Lehre (auf der Quellenseite festgehalten):** Rückspielung per Bericht findet, was der Berichtende für bemerkenswert hält — nicht, was ihm zur Selbstverständlichkeit geworden ist. Für eine Vorlage, die fremde Projekte aufsetzen soll, ist das die gefährlichere Lücke: Der Erstlauf scheitert nicht an den spannenden Regeln, sondern an einer fehlenden leeren Datei.
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — 41,1 → 44,6 KB (Projekt-Spezifika, Fundformat, Test-Konvention, Abschluss-Gliederung, 4 Platzhalter, 3 Interview-Fragen).
+- `anleitungen/team-skripte-generieren.md` — 32,8 → 38,2 KB (A.0 Bootstrap, vollständige `.gitignore`, A.10.1 Bauformen).
+- `quellen/claude-md-ki-team.md` — Nachtrag „Feldinspektion statt Rückspielung" mit allen sechs Lücken.
+
 ## [2026-08-01 18:00] lint | wiki_lint.py um vier Prüfungen erweitert + Typ-Felder korrigiert
 
 Das Skript sah bisher vier Fehlerklassen nicht, die der Wiki-Audit an diesem Tag gefunden hat. Vier neue Prüfungen ergänzt (jetzt acht insgesamt), jede mit einem Negativtest in einer Repo-Kopie verifiziert:

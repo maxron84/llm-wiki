@@ -70,6 +70,29 @@ Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel)
 
 ---
 
+## Projekt-Spezifika
+
+**Muss als erster Abschnitt stehen** — die Rollen brauchen diese Angaben in
+jedem Aufruf, und der Bau-Loop kann ohne den Verifikationsbefehl keine Stufe
+abschließen.
+
+| Was | Wert |
+|---|---|
+| Tech-Stack | {{Tech-Stack}} |
+| Produktivcode (deploybares Root) | [`{{Produktivcode-Globs}}`]({{Produktivcode-Globs}}) |
+| Verifikation / Smoke-Test | `{{Smoke-Test-Befehl}}` |
+| Deploy | {{Deploy-Verfahren}} |
+| Ausnahmen | {{Deploy-Ausnahmen}} — Pfade, die vom normalen Sync abweichen (z. B. Server-Schema, das nicht mitdeployt). Leer lassen, wenn keine. |
+
+> **Warum als Tabelle und ganz oben:** Diese fünf Zeilen sind die Punkte, auf
+> die sich die meisten normativen Aussagen der Datei zurückführen lassen. Im
+> Feldprojekt sind es die Regel-Inventar-Einträge `R-1`…`R-8` — die Basis, gegen
+> die jede Rolle ihre Arbeit prüft. `{{Smoke-Test-Befehl}}` ist dabei der
+> kritischste Wert: Er steht in Ralphs Dreisatz („muss grün sein, bevor die
+> Stufe fertig ist") und im Briefing jeder bauenden Rolle.
+
+---
+
 ## Das Team (Rollen)
 
 Am Projekt arbeiten sechs KI-Rollen — unter der Regie **eines menschlichen
@@ -147,6 +170,27 @@ Problem **nicht erneut**.
 3. **Übergabe an Frank**: Status auf `offen → an Frank übergeben` setzen. Frank
    quittiert nach dem Fix mit `erledigt (Frank-Fix, <commit>)` und trägt den Fix in
    den `[Unreleased]`-Block ein.
+
+**Fund-Format** — steht als `## Vorlage`-Block oben im Beutebuch selbst, damit
+jede Rolle es beim Schreiben vor Augen hat:
+
+```markdown
+### HM-<Nr> — <Kurztitel>
+- **Angreifer**: Harry | Marv
+- **Schweregrad**: kritisch | hoch | mittel | klein
+- **Status**: offen
+- **Reproschritte**:
+  1. …
+- **Erwartung**: …
+- **Realität**: …
+- **Reproducer-Test**: {{Test-Ordner}}/… (optional)
+```
+
+**Reproducer-Tests nach der Fund-Nummer benennen** (`test_hm36_<stichwort>.py`,
+`test_bl55_<stichwort>.py`). Damit ist von jedem Fund aus in einem Schritt
+auffindbar, welcher Test ihn dauerhaft verhindert — und umgekehrt. Im
+Feldprojekt sind auf diese Weise ~30 Regressionstests eindeutig ihren Funden
+zugeordnet, ohne dass es dafür eine Extra-Liste braucht.
 
 ---
 
@@ -273,6 +317,30 @@ fest:
 - **Funde** (Fund-/Akten-/Backlog-Nummern + Status),
 - **Release-Strategie** und **Deploy-Bedarf**,
 - die **offenen operativen Schritte** (Kostenabschluss, Backlog/Roadmap nachziehen).
+
+**Bewährte Gliederung** (Feldprojekt, Kaskaden 16–22 — sieben Abschnitte):
+
+```markdown
+# Kaskade N — Abschluss-Protokoll (<Thema>)
+
+**Lauf:** <skript>, <Datum>, <von>–<bis>. **Plan:** <plan-datei>,
+Stufen X–Y, `RALPH_CAP=Y`, `BUDGET_EMPFEHLUNG_USD=Z`. **Typ:** <Produkt |
+Team-Infrastruktur> — Deploy/SemVer ja/nein.
+
+## 1. Ist-Stand            Bau, State, Qualitäts-Gates, Commit-Tabelle je Stufe
+## 2. Bewertung des Bauwegs War der Loop hier das richtige Werkzeug?
+## 3. Funde des Red Teams   Fund-Nummern + Status
+## 4. Closeout-Funde        Was erst beim Lesen des Berichts auffiel
+## 5. Echte Lauf-Kosten     Gedruckte Zahl vs. Ledger-Basis + Restlogs
+## 6. Release-Strategie     SemVer-Bump, Deploy-Bedarf
+## 7. Offene operative Schritte
+```
+
+Abschnitt **2** ist der, den man am ehesten weglässt und am meisten braucht: Die
+Prosa-Lehre (A.7, Lehre 7) entstand genau hier, aus dem Vergleich der Kosten je
+Stufe gegen die Erwartung. Abschnitt **4** ebenso — `BL-55`, der teuerste Fund
+des Feldprojekts, fiel nicht im Lauf auf, sondern **beim Schreiben dieses
+Abschnitts**.
 
 Wie die Scharfschalt-Sequenz (Regel 4) ist es Architekt-**Ausgabe**; das
 Committen bleibt {{Strippenzieher}}-Handarbeit, sofern das Projekt den
@@ -492,6 +560,15 @@ Bevor die Platzhalter ersetzt werden, klärt die einrichtende Instanz mit dem
 1. **`{{Projektname}}`** → „Wie heißt das Projekt / Repo?"
 2. **`{{Strippenzieher}}`** → „Wie soll die menschliche Regie-Rolle heißen?
    (z. B. „Strippenzieher", „Maintainer", „Lead")"
+2a. **`{{Tech-Stack}}`** → „Womit wird gebaut? Framework, Build-Schritt ja/nein?"
+2b. **`{{Smoke-Test-Befehl}}`** → **Wichtigste Frage des Interviews.** „Mit
+   welchem **einen Befehl** stellt eine Rolle fest, dass das Projekt heil ist?"
+   Ohne diesen Befehl kann Ralph keine Stufe abschließen und Frank keinen Fix
+   verifizieren. Gibt es ihn noch nicht, ist er **Stufe 1 der ersten Kaskade** —
+   vor allem anderen.
+2c. **`{{Deploy-Verfahren}}` / `{{Deploy-Ausnahmen}}`** → „Wie kommt der Stand
+   nach draußen, und welche Pfade laufen dabei **nicht** mit?" (Darf zunächst
+   „noch offen, als Roadmap-Skizze" bleiben.)
 3. **`{{Produktivcode-Globs}}`** → „Welche Pfade sind **Produktivcode** und damit
    für das Red Team + Axel tabu? (z. B. `src/**`, `core/**`, `app.py`)"
 4. **`{{Test-Ordner}}` / `{{Plan-Ordner}}`** → „Wo dürfen Red Team & Architekt
