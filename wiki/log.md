@@ -8,12 +8,31 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-08-01
+**Zuletzt aktualisiert**: 2026-08-02
 
 ---
 
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
+
+## [2026-08-02 11:30] update | Starterkit 2.3.0–2.4.0 — Erntelauf des ersten Feldprojekts zurückgespielt
+
+Das Kit ist seit dem letzten Wiki-Stand (2.2.0) auf **2.4.0** gelaufen. Auslöser war der erste scharfe Einsatz in einem fremden Projekt (`team-kit_project_platformer`, Kaskaden 1–2): zwölf Backlog-Einträge, davon sechs aus dem Feld und zwei selbst verursacht beim Beheben. Zurückgespielt wurde nicht die Fehlerliste, sondern das, was sich verallgemeinern lässt.
+
+**Drei neue Konzeptseiten**, alle aus demselben Erntelauf:
+
+- [gegenprobe-zweite-quelle](konzepte/gegenprobe-zweite-quelle.md) — der tragende Fund. Drei Kit-Fehler (`BL-1`, `BL-4`, `BL-5`) passierten 149 grüne Tests, einen Live-Kontostand und ein committetes Ledger unbemerkt und fielen erst auf, als ein **Mensch zwei Dokumente nebeneinander hielt**. Gemeinsame Ursache: Der Bericht las dieselbe Quelle, die der Fehler bereits verfälscht hatte. Eine fehlende Datei galt als „keine Funde", eine fehlende Ledger-Zeile als „nichts angefallen". Regel: Mindestens eine Prüfung muss ihre Kennzahl aus einer anderen Quelle ziehen als das Geprüfte. Die Seite ordnet das Muster ein und zeigt, dass [lint-pruefung](konzepte/lint-pruefung.md) dieselbe Idee schon umsetzt — Quellenangaben gegen `raw/` prüfen statt gegen sich selbst.
+- [alarmmuedigkeit](konzepte/alarmmuedigkeit.md) — drei Formen desselben Fehlers, in wenigen Stunden nebeneinander aufgetreten: die Domänenzeile, die strukturell immer `0.0000` zeigte (`BL-9`); das Gate, das man regelmäßig umgehen müsste und deshalb bewusst zur mitlaufenden Warnung herabgestuft wurde (Skizze D); der Testlauf, der erwartet rot ist und deshalb niemand mehr fuhr (`BL-6`). Drei Auswege in Rangfolge: wegnehmen, herabstufen, danebenstellen — **nicht**: die Schwelle verschieben, bis es grün wird.
+- [rueckkanal-feld-kit](konzepte/rueckkanal-feld-kit.md) — genau der Vorgang dieses Log-Eintrags, verallgemeinert. Der teure Beleg: `BL-11` (12,00 USD an einem einzigen Befund verbrannt) lag **zwei Kaskaden lang** nur im Feldprojekt, und das erste Update nahm den Fix dann wortlos zurück (`BL-12`). Gelöst als Konvention, nicht als Werkzeug — bei einem Menschen und zwei Repos wäre Automatisierung teurer als das Problem. Neu bewertet ab dem dritten Feldprojekt. Gilt genauso für die CLAUDE.md-Vorlagen dieses Wikis und für `~/.claude/scripts/`.
+
+**Aktualisiert:**
+
+- [team-starter-kit](werkzeuge/team-starter-kit.md) — auf 2.4.0: der Erntelauf mit allen sechs Fehlern, `kit-test.sh` als Selbstverifikation, `install.sh --update` als sicherer Weg nach vorn (bis 2.3.0 war die einzige dokumentierte Update-Option datenvernichtend), die Ledger-Selbstprüfung. 176 Tests statt 127. Frank ist inzwischen scharf gelaufen, Axel weiterhin nicht.
+- [claude-md-ki-team](vorlagen/claude-md-ki-team.md) — die drei geänderten Regeln im kopierbaren Block: Kostenabschluss schreibt zwei Zeilen statt einer (`BL-4`), der Nachlauf überschreibt nicht mehr (`BL-5`), eine Domäne ist der Normalfall (`BL-9`), und der Abschluss wird geprüft statt geglaubt.
+- [kostencounter](konzepte/kostencounter.md) — Abschnitt „Prüfen statt glauben": Eine Log-Quelle ohne Aufrufer und Ersetzen-statt-Addieren bei disjunkten Mengen. Bemerkenswert daran: Aufgefallen ist das Fehlen nur, **weil** Bau- und Sweep-Kosten getrennt ausgewiesen werden. Eine Sammelzeile hätte den Fehler verdeckt — getrennte Zeilen sind nicht nur feineres Reporting, sie sind die Bedingung dafür, ein Fehlen zu bemerken.
+- [read-only-guard](konzepte/read-only-guard.md) — `BL-10` als drittes Feldbeispiel, diesmal ein **positives**: Der Guard rollte ein Installer-Update zurück, das mitten in einen laufenden Betrieb schrieb. Er hatte recht, das Werkzeug hatte unrecht. Zwei Lehren: Ein korrekt anschlagender Guard sieht von außen wie ein Fehler aus — wer ihn dann entschärft, entfernt die Sicherung statt der Ursache. Und: Jedes Werkzeug, das neben dem Loop in dessen Arbeitsbaum schreibt, braucht dieselbe Sperre wie der Loop.
+
+Kein Kosteneintrag: Diese Sitzung ist Wiki-Pflege, der Kit-Bau selbst ist im Feld-Ledger unter `team` verbucht.
 
 ## [2026-08-02 01:45] lint | Abschlussprüfung — Kostenmessung in Vorlage und Kit zurückgespielt
 

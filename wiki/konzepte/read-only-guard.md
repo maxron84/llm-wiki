@@ -8,8 +8,8 @@ status: active
 # Read-Only-Guard (3-Linien-Verteidigung)
 
 **Zusammenfassung**: Defense-in-Depth-Muster, um KI-Rollen technisch auf Lesezugriff zu beschränken — drei unabhängige Linien, weil Prompt-Vertrauen allein nachweislich nicht genügt.
-**Quellen**: `raw/claude-md-team.md`
-**Zuletzt aktualisiert**: 2026-07-11
+**Quellen**: `raw/claude-md-team.md`; Feldlauf `team-kit_project_platformer` über das [T.E.A.M.-Starterkit](../werkzeuge/team-starter-kit.md) (`BL-10`, 2026-08-01)
+**Zuletzt aktualisiert**: 2026-08-02
 
 ---
 
@@ -29,6 +29,8 @@ Die dritte Linie ist die eigentliche Garantie: Sie greift unabhängig davon, ob 
 
 > ⚠️ **Whitelist-Prüfung ≠ datei-genaues Staging (Feldlauf website-maxron-de, 2026-07-11):** Wenn das Guard-Skript die erlaubten Änderungen selbst committet, muss es **datei-genau** stagen — **nicht ordner-weit**. Ein Red-Team-Sweep staged zunächst das ganze Plan-Verzeichnis (`git add plans/`), obwohl die Rolle laut Prompt nur ins Beutebuch (+ Test-Ordner) schreibt. Der Haken: Der interaktive **planende Akteur läuft außerhalb des `flock`-Locks** (kein Loop), kann also gleichzeitig **uncommittete** Dateien unter derselben Whitelist (`plans/`) liegen haben — ein parallel laufender Sweep zieht sie dann in seinen Commit. Die Ordner-Whitelist (`^(tests/|plans/)`) lässt sie formal durch, weil sie darauf passen. Konsequenz: gezielt nur die eigenen Ausgabepfade stagen (`git add plans/beutebuch.md tests/`); die Ordner-Whitelist bleibt als zweite Absicherung. Die beiden Linien haben verschiedene Aufgaben — die Whitelist verhindert **fremde Schreibziele**, das datei-genaue Staging verhindert **fremde Mitnahme innerhalb erlaubter Ordner**.
 
+> ✅ **Der Guard hatte recht, das Werkzeug hatte unrecht (Feldlauf `team-kit_project_platformer`, 2026-08-01):** Ein Installer-Update des [Starterkits](../werkzeuge/team-starter-kit.md) lief **in einen aktiven Lauf hinein** und legte frische, uncommittete Dateien unter `team/` ab. Der unmittelbar folgende read-only-Lauf (Whitelist nur `plans/`) wertete sie korrekt als Verletzung, rollte **nur sie** chirurgisch zurück und buchte seine Runde als Fehlschlag — obwohl er sein Ergebnis geliefert hatte. Das war die dritte Stagnation in Folge und stoppte den Lauf; das Update war spurlos weg. **Die Projektdaten blieben unversehrt.** Der Fix gehörte deshalb nicht in den Guard, sondern in den Installer: Er prüft jetzt per `flock -n`, ob die Loop-Sperre **gehalten** wird — nicht bloß, ob die Lock-Datei existiert —, bricht sonst ab und macht das anschließende Committen zur Pflicht. Zwei allgemeine Lehren: (a) Ein korrekt anschlagender Guard sieht von außen wie ein Fehler aus; wer ihn dann entschärft, entfernt die Sicherung statt der Ursache. (b) Jedes Werkzeug, das **neben** dem Loop in dessen Arbeitsbaum schreibt, braucht dieselbe Sperre wie der Loop selbst.
+
 ## Ausnahme: die Fixer-Rolle
 
 Eine Rolle, die *darf* Produktivcode ändern (z. B. Frank in der [claude-md-ki-team](../vorlagen/claude-md-ki-team.md)-Vorlage), bekommt keinen Guard — stattdessen eine **Dreisatz-Verifikation** nach jedem Fix (Commit mit definiertem Präfix, CHANGELOG ergänzt, Backlog-/Beutebuch-Status gesetzt). Der Guard und die Dreisatz-Verifikation sind zwei Varianten desselben Grundgedankens: eine automatisierbare Nachprüfung statt reinem Vertrauen in die Rolleninstruktion.
@@ -46,6 +48,9 @@ Das Muster passt auf jede Situation, in der eine Automatisierung (nicht nur KI-A
 - [finder-fixer-prinzip](finder-fixer-prinzip.md) — Die Prozess-Regel, die dieser Guard technisch durchsetzt
 - [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Die Vorlage, aus der dieses Muster stammt
 - [claude-md-ki-team](../quellen/claude-md-ki-team.md) — Quellenseite
+- [team-starter-kit](../werkzeuge/team-starter-kit.md) — Das Kit, in dem der Guard scharf verifiziert wurde
+- [alarmmuedigkeit](alarmmuedigkeit.md) — Warum ein hartes Gate hier trotzdem richtig ist
+- [rueckkanal-feld-kit](rueckkanal-feld-kit.md) — Der Update-Pfad, den `BL-10` gehärtet hat
 
 ---
 

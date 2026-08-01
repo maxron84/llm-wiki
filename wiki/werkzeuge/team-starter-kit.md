@@ -8,8 +8,8 @@ status: active
 # T.E.A.M.-Starterkit
 
 **Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 55 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
-**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.2.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
-**Zuletzt aktualisiert**: 2026-08-01
+**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.4.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01); Erntelauf aus dem ersten Feldprojekt `team-kit_project_platformer` (Kaskaden 1–2, 2026-08-01).
+**Zuletzt aktualisiert**: 2026-08-02
 
 ---
 
@@ -117,7 +117,57 @@ Alle vier gehören zur selben Fehlerklasse, die schon die [Feldinspektion](../qu
 
 Damit ist die Kette Konfiguration → Briefing → `team_claude` → Auth → Promise-Auswertung → Budget-Check → State-Fortschritt → Guard → Kostenlog **durchgängig verifiziert**.
 
-**Weiterhin nicht gelaufen**: eine komplette `vollautomatik.sh`-Kaskade über alle vier Phasen inklusive Frank und Axel. Die beiden Rollen sind einzeln geprüft (Exit 3 ohne Arbeitsvorrat), aber nie an einem echten Fund.
+**Stand nach dem ersten Feldeinsatz** (`team-kit_project_platformer`, Kaskaden 1–2): **Frank ist scharf gelaufen** und hat drei echte Funde gefixt — allerdings außerhalb der `vollautomatik.sh`-Fixphase. Für **Axel** gilt die Aussage weiter: nie an einem echten Fund gelaufen. Eine komplette Kaskade über alle vier Phasen in einem Durchlauf hat es damit noch nicht gegeben (`BL-7`).
+
+## Der erste Feldeinsatz — sechs Fehler in einem Erntelauf
+
+Am 2026-08-01 lief das Kit erstmals in einem fremden Projekt über eine volle Kaskade. Das förderte in wenigen Stunden mehr zutage als alle Wegwerf-Repo-Tests zusammen: drei Fehler kamen aus dem Feld zurück, drei fielen beim Aufräumen auf, zwei weitere verursachte die Behebung selbst.
+
+**Die Fixphase war in jeder Installation seit 2.0.0 tot (`BL-1`).** Das Fund-Werkzeug löste die Projektwurzel eine Ebene zu hoch auf und suchte eine Datei, die es nie gibt. Eine fehlende Datei galt als „keine Funde" statt als Fehler — also übersprang die Fixer-Rolle jeden übergebenen Fund, und der Lauf endete **grün**. Drei Releases lang unbemerkt.
+
+**Ralphs Baukosten landeten in keiner Ledger-Zeile (`BL-4`).** Der Kostenabschluss ledgerte per Definition nur die Logs der Sweep- und Fix-Rollen; für die Bau-Logs existierte ein Helfer, den im gesamten Kit **kein Skript aufrief**. Weil der Ordner `.gitignore`t ist, verlor ein frischer Clone die gesamte Bau-Kostenhistorie — genau das, wogegen das Ledger gebaut wurde. Im Feld: 2,1621 von 9,4204 USD.
+
+**Ein zweiter Kostenabschluss löschte den ersten (`BL-5`).** Gezählt werden nur die noch nicht archivierten Logs, und jeder Abschluss archiviert, was er zählte — aufeinanderfolgende Aufrufe sehen also **disjunkte** Mengen. Der kleinere Nachlaufwert **ersetzte** trotzdem den größeren; im Feld verschwanden 1,0969 USD hinter 2,4114 USD. Für disjunkte Mengen ist Addieren richtig, aber automatisch addiert wird trotzdem nicht: Ohne Archivierung zählen zwei Aufrufe dieselben Logs, dann wäre Addieren eine Doppelbuchung. Die Unterscheidung gehört dem Menschen, nicht einer Heuristik — deshalb bricht der zweite Aufruf ab und nennt Alt-, Neu- und Summenwert, mit `--addieren` und `--ersetzen` als ausdrücklichen Wegen.
+
+Alle drei fielen **nicht durch ein Werkzeug** auf, sondern weil ein Mensch den gedruckten Bericht neben das Ledger hielt — siehe [gegenprobe-zweite-quelle](../konzepte/gegenprobe-zweite-quelle.md). Der Fehler war dabei jedes Mal zur Hälfte ein Dokumentationsfehler: Die Closeout-Pflicht nannte Ralph in keinem der drei Dokumente.
+
+## Das Kit prüft sich selbst: `kit-test.sh`
+
+Das Kit hatte keinen eigenen Prüfbefehl (`BL-6`). `pytest team/tests` schlug im Kit-Repo mit 17 von 138 Tests fehl — alle aus einer Ursache: Die Tests setzen die **installierte** Ablage voraus, im Kit liegen die Entrypoints unter `entry/` und `bootstrap/`. Kein echter Regressionsfund, aber der einzige verfügbare Testlauf war damit unbrauchbar, und jeder committete Fix blieb bis zur nächsten Feldinstallation ungeprüft. **Genau so ging `BL-1` durch drei Releases.**
+
+`kit-test.sh` löst das nicht, indem es die 17 Fehlschläge grün macht, sondern indem es daneben einen Lauf stellt, der grün sein **muss**:
+
+1. installiert in ein `mktemp`-Wegwerf-Repo
+2. sucht ungefüllte Platzhalter
+3. committet, wie `TEAM.md` es vorschreibt
+4. fährt dort den vollständigen Testlauf
+5. prüft seit 2.3.0 zusätzlich den Update-Pfad
+
+Gegenprobe gefahren: Ein erzwungener Fehlschlag reicht Exit 5 durch. Die 17 Fehlschläge im Kit-Repo bleiben bestehen und sind ausdrücklich **erwartet** — sie sind nur nicht mehr das Gate. Siehe [alarmmuedigkeit](../konzepte/alarmmuedigkeit.md).
+
+**176 Testfälle in 32 Dateien** (Stand 2.4.0, von 127 bei 2.2.0).
+
+## `install.sh --update` — der fehlende Weg nach vorn
+
+Bis 2.3.0 gab es **keinen sicheren Weg**, ein bestehendes Projekt auf eine neue Kit-Version zu heben (`BL-8`). Ohne Flag übersprang der Installer jede vorhandene Datei, änderte also nichts; mit `--force` überschrieb er auch die **Projektdaten**. Empirisch nachgestellt: Ledger geleert, Bauzeiger von 5 auf 1 zurück, Beutebuch-Fund weg, Smoke-Test-Befehl aus der Konfiguration verschwunden. Die einzige dokumentierte Update-Option war damit datenvernichtend — und das Feldprojekt hätte die `BL-4`/`BL-5`-Fixes gar nicht bekommen können, ohne seine Geschichte zu verlieren.
+
+`--update` fasst nur Infrastruktur an, liest die Projektwerte aus der **installierten** Konfiguration (sonst stünde die falsche Guard-Grenze in den Briefings) und rettet den Commit-Entscheid aus dem alten Briefing.
+
+Der erste echte Einsatz deckte prompt zwei weitere Löcher auf, beide im Update selbst:
+
+**Das Update lief in einen aktiven Lauf hinein (`BL-10`).** Es legte uncommittete Dateien in `team/` ab, während die Vollautomatik lief. Der unmittelbar folgende Axel-Lauf — read-only, Whitelist nur `plans/` — wertete sie als **Guard-Verletzung**, rollte sie chirurgisch zurück und buchte seine Runde als Fehlschlag, obwohl er seine Ermittlungsakte geliefert hatte. Dritte Stagnation in Folge, Lauf gestoppt, Update spurlos weg. **Der [Guard](../konzepte/read-only-guard.md) hat exakt richtig gehandelt**, die Projektdaten blieben unversehrt; gefehlt hat die Sperre im Installer. `--update` prüft jetzt per `flock -n`, ob die Loop-Sperre **gehalten** wird (nicht bloß, ob die Datei existiert), bricht mit Exit 2 ab und macht das anschließende Committen zur Pflicht.
+
+**Das Update löschte projekteigene Tests und nahm lokale Fixes still zurück (`BL-12`).** Ein pauschales `rm team/tests/test_*.py` sollte umbenannte Kit-Tests entfernen — im Feld löschte es einen vom Projekt geschriebenen Infrastruktur-Test, und im selben Lauf wurde ein Werkzeug mit der älteren Kit-Fassung überschrieben, samt einem lokalen Fix, der real **12,00 USD** gekostet hatte. Die Annahme „`team/tests/` gehört exklusiv dem Kit" ist falsch, sobald ein Projekt eine Lücke im Team selbst schließt. Seit 2.3.2 löscht das Update **nichts** mehr: Unbekannte Tests bleiben liegen und werden gemeldet, abweichende Infrastrukturdateien mit `git diff`-Hinweis ausgewiesen. Mehr dazu in [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md).
+
+## Der Abschluss wird geprüft, nicht geglaubt (2.4.0)
+
+`./team-status.sh --ledger-pruefen` beantwortet nach dem Kostenabschluss drei Fragen: Fehlt einer gelaufenen Kaskade eine Zeile je Quelle? Liegen unarchivierte Logs herum, obwohl sie schon gebucht ist? Und **ergeben die archivierten Rohlogs mehr, als das Ledger ausweist?**
+
+Nur die dritte zieht ihre Kennzahl aus einer anderen Quelle als das Geprüfte — und genau das fehlte bei allen drei bisherigen Kit-Fehlern. `BL-4` und `BL-5` sind mit ihren echten Feldzahlen als Regressionstest hinterlegt und schlagen beide an.
+
+Bewusst **kein hartes Gate** im Closeout: Eine Kaskade mit legitim fehlender Zeile könnte sonst nicht abschließen, und ein Gate, das man regelmäßig umgeht, ist wirkungslos. Stattdessen Exit `4` für Warnbefunde (`1` bleibt dem Bedienfehler), zwei Schweregrade, und die Prüfung läuft bei jedem Kontostand-Abruf ungefragt mit.
+
+**Eine Domäne ist jetzt der Normalfall (`BL-9`).** Der Kontostand zeigte eine fest verdrahtete „T.E.A.M."-Domänenzeile — in einem Feldprojekt strukturell `0.0000`, weil dort nicht am Team entwickelt wird. Der Domänenblock erscheint nur noch bei mehreren konfigurierten Domänen und listet dann jede.
 
 ## Erstlauf-Regeln stehen in den Artefakten, nicht im Gespräch
 
@@ -152,7 +202,9 @@ Fünf Regressionstests sichern das ab: Existenz, Guard-Warnung im Kopfbereich, e
 4. Erste Kaskade planen: Claude-Sitzung mit Opus, *„Du bist unser Architekt, lies `team/prompts/rolle-architekt.md`."* Er härtet eine Skizze aus, setzt `RALPH_CAP` und `BUDGET_EMPFEHLUNG_USD` und gibt die Scharfschalt-Sequenz aus. **Die Erstlauf-Regeln stehen in seinem Briefing** — Smoke-Test vor jedem Feature, drei bis fünf Stufen, Budget konservativ aber nicht knauserig
 5. Scharfschalten: `echo plans/ralph-kaskade-1-….md > .ralph-plan`
 6. `./vollautomatik.sh`
-7. **Nach dem Lauf**: `./team-status.sh --rollen-abschluss <N> <domaene>` und `--architekt-abschluss <USD> <domaene>`. Der Architekt läuft interaktiv außerhalb der Kostenlogs — ohne diesen Schritt bleibt seine Sitzung unerfasst (im Feld ~16 USD)
+7. **Nach dem Lauf**: `./team-status.sh --rollen-abschluss <N> <domaene>` und `--architekt-abschluss <USD> <domaene>`. Der eine Aufruf schreibt seit 2.3.0 **zwei** Ledger-Zeilen (`ralph` für den Bau, `roles` für Sweep/Fix). Der Architekt läuft interaktiv außerhalb der Kostenlogs — ohne diesen Schritt bleibt seine Sitzung unerfasst (im Feld ~16 USD)
+8. **Abschluss prüfen**: `./team-status.sh --ledger-pruefen`. Ein stehender Warnbefund gehört samt Begründung ins Abschluss-Doc
+9. **Auf eine neue Kit-Version heben**: `bash ~/Source/team-kit/install.sh --update <zielpfad>` — **nie** `--force`, der überschreibt Projektdaten. Vorher committen, den Lauf beenden, und einen eigenen Fix in einer Infrastrukturdatei erst ins Kit zurückspielen
 
 ## Was das Kit gekostet hat
 
@@ -188,6 +240,9 @@ Vorlegen des Kontexts — 75 % der Kosten waren Cache-Reads.
 ## Verwandte Seiten
 
 - [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Die Vorlage, die das Kit installiert
+- [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md) — Wie Funde aus Feldprojekten zurück ins Kit kommen
+- [gegenprobe-zweite-quelle](../konzepte/gegenprobe-zweite-quelle.md) — Warum drei Kit-Fehler an allen Werkzeugen vorbeikamen
+- [alarmmuedigkeit](../konzepte/alarmmuedigkeit.md) — Warum die Ledger-Prüfung kein hartes Gate ist
 - [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md) — Wie die Herstellungskosten oben gemessen wurden
 - [team-skripte-generieren](../anleitungen/team-skripte-generieren.md) — Anhang A: die Bau-Anleitung, falls doch generiert statt kopiert wird
 - [read-only-guard](../konzepte/read-only-guard.md) — Die 3-Linien-Verteidigung, im Kit verifiziert

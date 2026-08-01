@@ -193,6 +193,37 @@ Die erste so gemessene Sitzung ergab zwei Dinge:
 
 ---
 
+## Prüfen statt glauben (2026-08-02)
+
+Messen allein genügt nicht — ein Kostenlog kann korrekt geführt sein und trotzdem
+unvollständig. Der erste Feldeinsatz des
+[T.E.A.M.-Starterkits](../werkzeuge/team-starter-kit.md) zeigte zwei
+Lücken, die jede automatisierte Kostenerfassung treffen können:
+
+**Eine Log-Quelle ohne Aufrufer.** Der Kostenabschluss buchte nur die Logs der
+Sweep- und Fix-Rollen; die **Baukosten** hatten zwar einen Archivierungs-Helfer,
+aber im gesamten Werkzeug keinen Aufrufer. Weil der Log-Ordner `.gitignore`t war,
+verlor ein frischer Clone die komplette Bauhistorie — 2,1621 von 9,4204 USD.
+Aufgefallen ist das an der **Trennung** Bau ↔ Sweep/Fix: Eine Sammelzeile hätte
+den Fehler verdeckt. Getrennte Zeilen sind nicht nur feineres Reporting, sie sind
+die Bedingung dafür, ein Fehlen zu bemerken.
+
+**Ersetzen statt Addieren bei disjunkten Mengen.** Gezählt wurden die noch nicht
+archivierten Logs, und jeder Abschluss archivierte, was er zählte — zwei Aufrufe
+sehen also disjunkte Mengen. Der zweite, kleinere Wert **ersetzte** trotzdem den
+ersten; 1,0969 USD verschwanden hinter 2,4114 USD. Automatisch addiert wird
+dennoch nicht: Ohne Archivierung zählen zwei Aufrufe **dieselben** Logs, dann
+wäre Addieren eine Doppelbuchung. Die Unterscheidung gehört dem Menschen, das
+Werkzeug bricht ab und nennt Alt-, Neu- und Summenwert.
+
+Beide Fehler fanden Menschen, keine Werkzeuge — beim Vergleich zweier Dokumente.
+Die Konsequenz steht in
+[gegenprobe-zweite-quelle](gegenprobe-zweite-quelle.md): Mindestens eine Prüfung
+muss ihre Kennzahl aus einer **anderen** Quelle ziehen als das Geprüfte. Im Kit
+umgesetzt als Vergleich der archivierten Rohlogs gegen das Ledger.
+
+---
+
 ## Verhältnis zu anderen Kostenkonzepten
 
 - **[sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md)**: Liefert die Messmethode für genau die Lücke, die der Kostencounter offenlässt — interaktive Sitzungen ohne Konsolenwert.
@@ -205,6 +236,8 @@ Die erste so gemessene Sitzung ergab zwei Dinge:
 ## Verwandte Seiten
 
 - [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md) — Interaktive Sitzungen aus dem Transkript messen statt schätzen
+- [gegenprobe-zweite-quelle](gegenprobe-zweite-quelle.md) — Warum ein Kostenbericht seinen eigenen Fehler bestätigt
+- [alarmmuedigkeit](alarmmuedigkeit.md) — Die Domänenzeile, die strukturell immer null war
 - [usd-pro-wiki-seite](usd-pro-wiki-seite.md) — US$/WP-Metrik für Wiki-Seiten
 - [ralph-schleife](ralph-schleife.md) — Agentische Loop: Kostenstruktur und Budget-Kontrolle
 - [claude-md-token-sparen](claude-md-token-sparen.md) — Vollständige Token-Sparstrategie

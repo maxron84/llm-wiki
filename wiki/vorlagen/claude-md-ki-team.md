@@ -8,8 +8,8 @@ status: active
 # CLAUDE.md-Vorlage: T.E.A.M. (KI-Rollenteam)
 
 **Zusammenfassung**: Eine wiederverwendbare CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines menschlichen Senior-Entwicklers (des „Strippenziehers"). Das Muster stammt aus einem realen Projekt ([KI-Lehrer-App](../konzepte/ki-lehrer-app.md)) und verallgemeinert dessen Rollen-, Prozess- und Automatisierungs-Konzept: ein autonomer Bau-Loop (Ralph), ein planender Architekt, ein Ad-hoc-Fixer (Frank), ein read-only Red Team (Harry & Marv) und ein read-only Forensiker (Axel). Die Vorlage liefert **keine fertigen Skripte**, sondern eine **Bau-Anleitung**, mit der die aufnehmende KI-Instanz die Team-Skripte **kontextabhängig zum Zielprojekt** generiert.
-**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); **Voll-Automatik-Feldtest über zweiundzwanzig Kaskaden** (`website-maxron-de`, 2026-07-10 bis 2026-08-01): scharfe Vollautomatik-Läufe mit realen Red-Team-Funden (HM-1…HM-53) und Frank-Fixes, plus die Budget-Governance-Bausteine und Betriebslehren aus den Kaskaden 6–22 (siehe Anhang A.7–A.10): Session-Limit-Robustheit (429, Exit-42-Pausen-Mechanik, `BL-20`/`BL-25`), Auth-Startwarnung (`BL-27`), Zwei-Schwellen-Budgetmodell (`BL-30`), automatische & domänengetrennte Architekt-/Akteur-Kostenerfassung (`BL-28`/`BL-29`/`BL-33`), die Scharfschalt-Sequenz-Pflicht (Planungsregel 4), die Abschluss-Doc-Pflicht (Planungsregel 5), die Reparatur der Kostenmessung (`BL-55`) und die Doku-Konsolidierung samt Regel-Inventar (`BL-54`); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
-**Zuletzt aktualisiert**: 2026-08-01
+**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); **Voll-Automatik-Feldtest über zweiundzwanzig Kaskaden** (`website-maxron-de`, 2026-07-10 bis 2026-08-01): scharfe Vollautomatik-Läufe mit realen Red-Team-Funden (HM-1…HM-53) und Frank-Fixes, plus die Budget-Governance-Bausteine und Betriebslehren aus den Kaskaden 6–22 (siehe Anhang A.7–A.10): Session-Limit-Robustheit (429, Exit-42-Pausen-Mechanik, `BL-20`/`BL-25`), Auth-Startwarnung (`BL-27`), Zwei-Schwellen-Budgetmodell (`BL-30`), automatische & domänengetrennte Architekt-/Akteur-Kostenerfassung (`BL-28`/`BL-29`/`BL-33`), die Scharfschalt-Sequenz-Pflicht (Planungsregel 4), die Abschluss-Doc-Pflicht (Planungsregel 5), die Reparatur der Kostenmessung (`BL-55`) und die Doku-Konsolidierung samt Regel-Inventar (`BL-54`); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md); **Erntelauf des ersten Feldprojekts** (`team-kit_project_platformer`, Kaskaden 1–2, 2026-08-01, über das [Starterkit](../werkzeuge/team-starter-kit.md) 2.3.0–2.4.0 zurückgespielt): Kostenabschluss beider Log-Quellen (`BL-4`), Überschreibschutz beim Nachlauf (`BL-5`), eine Domäne als Normalfall (`BL-9`), Ledger-Selbstprüfung (Skizze D).
+**Zuletzt aktualisiert**: 2026-08-02
 
 ---
 
@@ -554,12 +554,59 @@ Operativer Vertrag (Bau-Details in **Anhang A.9**):
 - **Ledger domänengetrennt (`BL-29`):** `--budget` weist die Kosten nach Domäne
   getrennt aus; das Ledger-Schema ist rückwärtskompatibel um `domaene`/`rolle`
   erweitert (Altzeilen bleiben „unzugeordnet").
+- **Eine Domäne ist der Normalfall (`BL-9`, Kit 2.3.0).** Die Domänenaufstellung
+  erscheint nur, wenn das Projekt **mehrere** Domänen führt. Die frühere feste
+  Trennung `produkt` ↔ `team` stammt aus dem Ursprungsprojekt, in dem die
+  Team-Infrastruktur **im** Projekt gebaut wurde. Seit es das
+  [Starterkit](../werkzeuge/team-starter-kit.md) gibt, gilt das nicht mehr: Am
+  T.E.A.M. wird im Feldprojekt nicht entwickelt, Funde gehen ins Kit zurück
+  (siehe [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md)). Eine
+  „T.E.A.M."-Zeile wäre dort strukturell `0.0000` — und eine Kennzahl, die immer
+  null zeigt, erzieht dazu, den ganzen Block zu überlesen
+  ([alarmmuedigkeit](../konzepte/alarmmuedigkeit.md)). Mehrere Domänen nur für
+  fachlich getrennte Stränge **desselben** Projekts (z. B. `backend frontend`).
 
 **Kaskadenabschluss-Pflicht (✅ erprobt, website-maxron-de bis Kaskade 22):** Pro
 gebauter Kaskade sind **zwei** Dinge Pflicht — das **Abschluss-Doc**
 (Planungsregel 5) **und** der **Kostenabschluss** über das Kontostand-Werkzeug
 (`--rollen-abschluss`, `--akteur-abschluss`), beides **nach** dem Lauf im
 Architekten-Closeout, **nie** in einer Loop-Stufe (siehe A.7, Lehre 8).
+
+> **`BL-4` — warum `--rollen-abschluss` zwei Zeilen schreibt (Kit 2.3.0):** Der
+> Befehl ledgerte ursprünglich nur die Logs der Sweep- und Fix-Rollen. Die
+> **Baukosten der Loop-Rolle** landeten in **keiner** Zeile — sie standen nur im
+> Live-Kontostand, und dieser Log-Ordner ist `.gitignore`t. Ein frischer Clone
+> verlor damit die gesamte Bau-Kostenhistorie (im Feld: 2,1621 von 9,4204 USD).
+> Seit dem Fix bucht **ein** Aufruf beide Quellen als **zwei** getrennte Zeilen
+> (`ralph` und `roles`) und archiviert beide Log-Ordner. Eine Sammelzeile wurde
+> bewusst verworfen: Die Trennung Bau ↔ Sweep/Fix ist die Kennzahl, an der im
+> Feld überhaupt auffiel, dass der Bau fehlte.
+>
+> **`BL-5` — ein zweiter Abschluss überschreibt nicht mehr.** Gezählt werden nur
+> die **noch nicht archivierten** Logs, und jeder Abschluss archiviert, was er
+> zählte — aufeinanderfolgende Aufrufe sehen also **disjunkte** Mengen, und der
+> kleinere Nachlaufwert ersetzte still den größeren (im Feld: 1,0969 USD hinter
+> 2,4114 USD verschwunden). Für disjunkte Mengen ist Addieren die richtige
+> Verknüpfung, aber **automatisch** addiert wird trotzdem nicht: ohne
+> Archivierung zählen zwei Aufrufe dieselben Logs, dann wäre Addieren eine
+> Doppelbuchung. Der erneute Aufruf bricht deshalb ab und nennt Alt-, Neu- und
+> Summenwert; `--addieren` bucht den Nachlauf dazu, `--ersetzen` korrigiert eine
+> falsche Altzeile.
+
+> **Der Abschluss wird geprüft, nicht geglaubt (Kit 2.4.0).**
+> `--ledger-pruefen` beantwortet nach dem Closeout drei Fragen: Fehlt einer
+> Kaskade eine Zeile je Quelle? Liegen unarchivierte Logs herum, obwohl sie
+> schon gebucht ist? Und **ergeben die archivierten Rohlogs mehr, als das Ledger
+> ausweist?** Nur die letzte Frage zieht ihre Kennzahl aus einer **anderen**
+> Quelle als das Geprüfte — und genau das fehlte bei `BL-1`, `BL-4` und `BL-5`,
+> die alle drei ein Mensch beim Vergleich zweier Dokumente fand, nicht ein
+> Werkzeug (siehe
+> [gegenprobe-zweite-quelle](../konzepte/gegenprobe-zweite-quelle.md)). Exit `4`
+> bei Warnbefunden, zwei Schweregrade; bewusst **kein** hartes Gate im Closeout,
+> weil eine Kaskade mit legitim fehlender Zeile sonst nicht abschließen könnte
+> und ein Gate, das man regelmäßig umgeht, wirkungslos ist. Stattdessen läuft
+> die Prüfung bei jedem Kontostand-Abruf ungefragt mit. Ein stehender
+> Warnbefund gehört samt Begründung ins Abschluss-Doc.
 
 > **Feld-Lehre gegen die naheliegende Alternative:** Eine fortgeschriebene
 > Kosten-Prosaseite (`wiki/kosten.md` o. Ä.) als Abschlusspflicht **trägt nicht**
@@ -643,6 +690,8 @@ Zielprojekts beschreibt — hier auf die Vorlage selbst angewandt.
 
 - [team-starter-kit](../werkzeuge/team-starter-kit.md) — **Schnellweg**: dieselbe Vorlage per Konsolenbefehl als lauffähiges Team installieren
 - [team-skripte-generieren](../anleitungen/team-skripte-generieren.md) — Anhang A: die vollständige Bau-Anleitung für die Team-Skripte (A.1–A.10)
+- [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md) — Wie Feld-Erkenntnisse in diese Vorlage zurückfinden
+- [gegenprobe-zweite-quelle](../konzepte/gegenprobe-zweite-quelle.md) — Prinzip hinter der Ledger-Selbstprüfung
 - [claude-md-ki-team](../quellen/claude-md-ki-team.md) — Quellenseite mit Einordnung und Namenskonflikt-Historie
 - [ki-lehrer-app](../konzepte/ki-lehrer-app.md) — Das reale Ursprungsprojekt (KI-Lehrer-App)
 - [finder-fixer-prinzip](../konzepte/finder-fixer-prinzip.md) — Die Gewaltenteilungs-Regel hinter Harry/Marv/Axel vs. Frank
