@@ -80,7 +80,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [wiki-ralph-sh](werkzeuge/wiki-ralph-sh.md) — Bash-Skript: Ralph-Schleife für autonomen LLM-Wiki-Ingest aus inbox/
 - [radeon-ai-pro-r9700](werkzeuge/radeon-ai-pro-r9700.md) — 32 GB GDDR6 KI-Karte: mehr VRAM als RTX 5080, aber Blower-Kühler macht sie für Desktop-Einsatz problematisch
 - [phi-4](werkzeuge/phi-4.md) — Microsofts Phi-4-Familie (14B/3.8B): stark bei Math und Code, 16K Kontext ein Limit für Wiki-Betrieb
-- [team-starter-kit](werkzeuge/team-starter-kit.md) — Das T.E.A.M. per Konsolenbefehl in ein neues Projekt: 51 Dateien, fünf Fragen, 127 Regressionstests
+- [team-starter-kit](werkzeuge/team-starter-kit.md) — Das T.E.A.M. per Konsolenbefehl in jedes neue Projekt: sprach- und stackagnostisch, 53 Dateien, 127 Regressionstests
 - [ralph-wiggum-plugin](werkzeuge/ralph-wiggum-plugin.md) — Offizielles Claude-Code-Plugin für autonome Iterationsschleifen: Stop-Hook, /ralph-loop, Anwendung auf Wiki-Ingest
 
 ## Personen

@@ -15,6 +15,35 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 23:00] update | Starterkit 2.0.0 — sprach- und stackagnostisch
+
+Nachbesserung auf Anforderung: Das Kit soll in **jedem** Projekt laufen, unabhängig von Sprache und Stack. Version 1.0.0 setzte an mehreren Stellen still den Stack des Ursprungsprojekts voraus.
+
+**Zwei Defekte, die ich in 1.0.0 selbst eingebaut bzw. übersehen hatte:**
+
+1. **Die Rollen-Briefings waren nicht parametrisiert.** Ich hatte die vier Rollen-*Skripte* parametrisiert, die fünf *Briefings* aber wörtlich kopiert — obwohl sie selbst Prompts sind und als erstes gelesen werden. In einem Go-Projekt bekam Harry damit `site/**` als Guard-Grenze genannt und Ralph `python3 scripts/smoke_test.py` als Smoke-Test. Falsche Grenze, nicht existenter Befehl.
+2. **`kosten.py` erzwang die Domänen `website` und `team`** an drei Stellen. Meine frühere Aussage „kosten.py ist projektfrei und wurde wörtlich übernommen" war falsch — ich hatte nach `site/` gegrept, nicht nach `website`.
+
+**Umbau:**
+
+| Vorher | Nachher |
+|---|---|
+| Skripte flach in der Wurzel, Werkzeuge in `scripts/`, Briefings in `prompts/`, Tests im `tests/` des Projekts | Entrypoints in der Wurzel, alles Aufgerufene unter `team/` (lib · redteam · tools · prompts · tests) |
+| `.gitignore` brachte `__pycache__/` und `.pytest_cache/` global mit | auf `team/**` eingegrenzt |
+| Team-Tests liefen im Test-Ordner des Projekts | eigener Aufruf `./team-test.sh` |
+| Domänen `website|team` hart validiert | `TEAM_DOMAENEN` projektdefiniert; **Lesepfad validiert nicht mehr**, damit historische Ledger-Zeilen filterbar bleiben |
+| fünf Interview-Fragen | sieben (Domänen, Commit-Regel des Architekten) |
+
+**Neu**: `team/prompts/rolle-architekt.md` — das sechste Briefing fehlte, weil der Architekt interaktiv läuft und `team_briefing` nie braucht. Für den Trigger „Du bist unser Architekt" gab es damit nichts Kompaktes. Dazu `team-test.sh` und der Kostenabschluss-Hinweis in der Abschlussmeldung.
+
+**Verifiziert in drei fremden Stacks** (Go, Rust, PHP), je 15 Prüfungen: keine stack-fremden Dateien in Projektordnern, kein `scripts/`/`prompts/` angelegt, eigene Dateien unangetastet, Briefings mit den **richtigen** Pfaden, eigene Domänen akzeptiert und fremde abgelehnt, **127 Regressionstests grün**, chirurgischer Guard-Rollback, perfekte Idempotenz.
+
+**Eigener Fehler beim Umbau**, hier festgehalten: Beim Umschreiben auf `$TEAM_KOSTEN_TOOL` hatte ich die Variable **in Anführungszeichen** gesetzt — bash suchte dann ein Kommando namens `python3 team/tools/kosten.py`. Die Wort-Trennung ist hier gewollt; 27 Stellen korrigiert. Aufgefallen ist es nur, weil die Regressionstests es gefunden haben.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/team-starter-kit.md` — Layout, sieben Fragen, alle vier Defekte, Stack-Verifikation.
+- `index.md` — Beschreibung auf sprach-/stackagnostisch.
+
 ## [2026-08-01 21:00] query | T.E.A.M.-Starterkit gebaut — Rollenteam per Konsolenbefehl
 
 Auftrag: eine komplette, auf Knopfdruck transferierbare Vorbereitung für jedes neue Software-Projekt. Ergebnis: eigenes Git-Repo `~/Source/team-kit` (Version 1.0.0, 55 Dateien) plus Launcher `~/.claude/scripts/team-init.sh`.
