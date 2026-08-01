@@ -97,11 +97,17 @@ Einträge in `wiki/log.md` beginnen mit einem konsistenten Präfix:
 
 ```
 ## [YYYY-MM-DD HH:MM] ingest | Quellenname
-## [YYYY-MM-DD HH:MM] query | Fragentitel
-## [YYYY-MM-DD HH:MM] lint | Prüfung
+## [YYYY-MM-DD HH:MM] query  | Fragentitel
+## [YYYY-MM-DD HH:MM] lint   | Prüfung
+## [YYYY-MM-DD HH:MM] update | Was aktualisiert wurde
 ```
 
-So sind Einträge mit einfachen Unix-Werkzeugen parsierbar (z.B. `grep "^## \[" log.md | tail -5`).
+`update` steht für Änderungen an bestehenden Seiten ohne neue Quelle — typisch beim
+Zurückspielen von Feld-Erkenntnissen in eine Vorlage.
+
+**Reihenfolge: neueste Einträge stehen oben** (voranstellen, nicht anhängen).
+So sind Einträge mit einfachen Unix-Werkzeugen parsierbar — die letzten Vorgänge
+liest man mit `grep "^## \[" wiki/log.md | head -5`.
 
 ## Zitierregeln
 
