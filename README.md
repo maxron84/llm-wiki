@@ -100,9 +100,20 @@ Schritt-für-Schritt-Guides für Einstieg, Betrieb und Sonderfälle:
 
 | Skript | Zweck | Aufruf |
 |---|---|---|
-| `~/.claude/scripts/wiki_lint.py` | Prüft auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler | `python3 ~/.claude/scripts/wiki_lint.py` (aus dem Projekt-Root) |
+| `~/.claude/scripts/wiki_lint.py` | Acht Prüfungen — siehe Tabelle unten | `python3 ~/.claude/scripts/wiki_lint.py` (aus dem Projekt-Root) |
 
 Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlichen Abhängigkeiten.
+
+| Prüfung | Findet |
+|---|---|
+| `DEAD LINKS` | Links auf nicht existierende Seiten |
+| `ORPHANED PAGES` | Seiten ohne eingehende Links (isolierte Knoten im Graphen) |
+| `PAGES NOT IN INDEX` | Seiten, die in `index.md` fehlen |
+| `FORMAT CHECK` | Fehlende H1, Zusammenfassung, Quellen, Datum, Verwandte Seiten, Footer |
+| `SOURCE CITATIONS` | Quellenangaben, die nicht exakt auf eine Datei in `raw/`/`clippings/` zeigen — abweichende Schreibweise, abgekürzt oder unauflösbar |
+| `UNINGESTED SOURCES` | Quelldokumente, die auf keiner Wiki-Seite genannt werden |
+| `TYPE / FOLDER` | `type:` im Frontmatter passt nicht zum Ordner |
+| `LOG ORDER` | Log-Einträge außer der Reihe oder mit unbekanntem Präfix |
 
 ---
 

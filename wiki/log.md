@@ -1,7 +1,7 @@
 ---
 date: 2026-04-23
-type: konzept
-tags: [konzept]
+type: log
+tags: [log]
 status: active
 ---
 
@@ -14,6 +14,28 @@ status: active
 
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
+
+## [2026-08-01 18:00] lint | wiki_lint.py um vier Prüfungen erweitert + Typ-Felder korrigiert
+
+Das Skript sah bisher vier Fehlerklassen nicht, die der Wiki-Audit an diesem Tag gefunden hat. Vier neue Prüfungen ergänzt (jetzt acht insgesamt), jede mit einem Negativtest in einer Repo-Kopie verifiziert:
+
+| Neue Prüfung | Findet | Hätte gefunden |
+|---|---|---|
+| `SOURCE CITATIONS` | Quellenangaben, die nicht exakt auf `raw/`/`clippings/` zeigen | die 50 abweichenden Angaben (Apostrophe, Doppel-Leerzeichen, `...`-Abkürzungen) |
+| `UNINGESTED SOURCES` | Quelldokumente ohne Erwähnung auf einer Wiki-Seite | die Mysore-Quelle, drei Monate übersehen |
+| `TYPE / FOLDER` | `type:` passt nicht zum Ordner | `token-sparen.md` und `beratungs-crm.md` |
+| `LOG ORDER` | Einträge außer der Reihe, unbekannte Präfixe | die gemischte Log-Sortierung |
+
+**Typ-Felder korrigiert** (die neue Prüfung meldete sie sofort):
+- `anleitungen/token-sparen.md` — `konzept` → `anleitung`
+- `projekte/beratungs-crm.md` — `konzept` → `projekt`
+- `index.md` → `index`, `log.md` → `log` (waren beide als `konzept` geführt)
+
+**Aktualisierte Seiten:**
+- `konzepte/lint-pruefung.md` — Prüftabelle mit Zuordnung zu den sieben inhaltlichen Prüfpunkten; ausdrücklich vermerkt, was das Skript **nicht** kann (Widersprüche, veraltete Behauptungen, fehlende Konzeptseiten bleiben KI-Arbeit).
+- `CLAUDE.md` — Typ muss zum Ordner passen; Sonderfälle `index`/`log` dokumentiert.
+- `README.md` — Prüftabelle im Hilfsskripte-Abschnitt.
+- `~/.claude/CLAUDE.md` (außerhalb des Repos) — Skript-Tabelle nachgezogen.
 
 ## [2026-08-01 17:10] update | T.E.A.M.-Vorlage aufgeteilt — Anhang A als eigene Anleitung
 

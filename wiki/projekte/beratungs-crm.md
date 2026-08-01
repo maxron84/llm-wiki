@@ -1,7 +1,7 @@
 ---
 date: 2026-05-04
-type: konzept
-tags: [konzept, projekt, crm, numerologie, astrologie]
+type: projekt
+tags: [projekt, crm, numerologie, astrologie]
 status: draft
 ---
 

@@ -33,13 +33,26 @@ Die KI prüft auf:
 
 ## Automatisierte Prüfung
 
-Das Skript `wiki_lint.py` im Projekt-Root prüft automatisch auf tote Links, verwaiste Seiten, fehlende Index-Einträge und Formatfehler:
+Das Skript `~/.claude/scripts/wiki_lint.py` deckt die mechanisch prüfbaren Punkte ab:
 
 ```bash
-python3 wiki_lint.py   # aus dem Projekt-Root
+python3 ~/.claude/scripts/wiki_lint.py   # aus dem Projekt-Root
 ```
 
-Ergänzt die KI-Prüfung — sinnvoll vor jedem Commit oder nach einem größeren Ingest.
+| Prüfung | Findet | Deckt Prüfpunkt |
+|---|---|---|
+| `DEAD LINKS` | Links auf nicht existierende Seiten | 5 |
+| `ORPHANED PAGES` | Seiten ohne eingehende Links | 3 |
+| `PAGES NOT IN INDEX` | Seiten, die in `index.md` fehlen | 5 |
+| `FORMAT CHECK` | Fehlende H1, Zusammenfassung, Quellen, Datum, Verwandte Seiten, Footer | 7 |
+| `SOURCE CITATIONS` | Quellenangaben, die nicht exakt auf eine Datei in `raw/`/`clippings/` zeigen | 7 |
+| `UNINGESTED SOURCES` | Quelldokumente ohne Erwähnung auf einer Wiki-Seite | 6 |
+| `TYPE / FOLDER` | `type:` passt nicht zum Ordner | 7 |
+| `LOG ORDER` | Log-Einträge außer der Reihe oder mit unbekanntem Präfix | 7 |
+
+Die letzten vier Prüfungen kamen am 2026-08-01 dazu, nachdem ein Wiki-Audit vier Fehlerklassen gefunden hatte, die das Skript bis dahin nicht sah — darunter eine seit drei Monaten nie aufgenommene Quelle und 50 Quellenangaben, die maschinell nicht auflösbar waren.
+
+**Was das Skript nicht kann**: Prüfpunkte 1, 2 und 4 (Widersprüche, veraltete Behauptungen, fehlende Konzeptseiten) sind Bedeutungsfragen und bleiben Aufgabe der KI-Prüfung. Das Skript ergänzt sie, ersetzt sie nicht — sinnvoll vor jedem Commit oder nach einem größeren Ingest.
 
 ## Wann prüfen?
 

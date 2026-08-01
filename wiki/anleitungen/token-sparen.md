@@ -1,7 +1,7 @@
 ---
 date: 2026-05-11
-type: konzept
-tags: [konzept, werkzeug]
+type: anleitung
+tags: [anleitung, werkzeug, kosten]
 status: active
 ---
 

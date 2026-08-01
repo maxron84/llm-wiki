@@ -1,7 +1,7 @@
 ---
 date: 2026-04-23
-type: konzept
-tags: [konzept]
+type: index
+tags: [index]
 status: active
 ---
 

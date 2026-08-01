@@ -85,6 +85,8 @@ Tags folgen einem Zweistufen-System:
 
 - **Erster Tag = Seitentyp** (muss mit `type:` übereinstimmen):
   `konzept`, `quelle`, `person`, `werkzeug`, `vergleich`, `vorlage`, `anleitung`, `projekt`
+  Der Typ muss zum Ordner passen (`wiki/konzepte/` → `konzept` usw.) — `wiki_lint.py` prüft das.
+  Sonderfälle: `wiki/index.md` trägt `index`, `wiki/log.md` trägt `log`.
 - **Weitere Tags = Themen** (beliebig viele, aus diesem Vokabular wählen oder erweitern):
   `produktion`, `enterprise`, `skalierung`, `automatisierung`, `metrik`, `kosten`,
   `community`, `lokale-modelle`, `hardware`, `setup`, `schema`
