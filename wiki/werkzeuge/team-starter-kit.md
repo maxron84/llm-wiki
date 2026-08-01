@@ -7,7 +7,7 @@ status: active
 
 # T.E.A.M.-Starterkit
 
-**Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 53 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
+**Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 55 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
 **Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.2.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
 **Zuletzt aktualisiert**: 2026-08-01
 
@@ -98,7 +98,7 @@ Alle vier gehören zur selben Fehlerklasse, die schon die [Feldinspektion](../qu
 
 **Verifiziert** (Wegwerf-Repo, 2026-08-01):
 
-- Installation: 53 Dateien, Platzhalter korrekt gefüllt, abgeleitete Pfade und Whitelists stimmen
+- Installation: 55 Dateien, Platzhalter korrekt gefüllt, abgeleitete Pfade und Whitelists stimmen
 - **Stack-Neutralität in Go-, Rust- und PHP-Strukturen**: keine Python-Dateien in fremden Projektordnern, kein `scripts/` oder `prompts/` im Wurzelverzeichnis angelegt, eigene Dateien unangetastet
 - Shell-Syntax aller Skripte, Python-Kompilierung beider Werkzeuge
 - **127 Regressionstests grün** (25 Testdateien der Team-Infrastruktur)
@@ -164,7 +164,7 @@ Konsolenwert. Er wurde nachträglich aus dem Sitzungstranskript **gemessen**
 |---|---:|---|
 | Wiki-Pflege davor | 29,57 | Audit, Log-Hygiene, `wiki_lint.py` auf 8 Prüfungen, Vorlage geteilt |
 | Feldinspektion `website-maxron-de` | 12,36 | read-only, lieferte die Lückenliste |
-| Kit-Bau 1.0.0 → 2.2.0 | 119,09 | 59 Dateien, Installer, Parametrisierung, Tests |
+| Kit-Bau 1.0.0 → 2.2.0 | 119,09 | Kit-Repo mit 59 Dateien, davon 55 im Zielprojekt |
 | Verifikationsläufe Ralph + Harry | 0,75 | **echte** Konsolenwerte (headless, Sonnet 5) |
 | **Summe** | **161,77** | Abo-Gegenwert, real nicht abgerechnet |
 

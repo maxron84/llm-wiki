@@ -15,6 +15,24 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-02 01:45] lint | Abschlussprüfung — Kostenmessung in Vorlage und Kit zurückgespielt
+
+Letzter Pflegedurchgang. `wiki_lint.py` meldet alle acht Prüfungen sauber: 122 Seiten, 45 Quelldokumente (43 namentlich zitiert), 0 tote Links, keine Waisen, keine fehlenden Index-Einträge, Typ und Ordner konsistent, Log chronologisch.
+
+Die formalen Prüfungen waren grün — zwei inhaltliche Funde blieben trotzdem:
+
+**1. Die Vorlage behauptete etwas, das seit heute falsch ist.** In [claude-md-ki-team](vorlagen/claude-md-ki-team.md) stand zum Kostenabschluss im Abo: die A2-Schätzung sei „die belastbarste Zahl, die das Abo zulässt". Genau das hat die heutige Messung widerlegt. Die Stelle nennt jetzt zwei Wege in klarer Rangfolge — **messen** (mit beiden Fallen benannt: Deduplizierung über die Nachrichten-ID, Eichung des Preismodells an einem headless-Lauf) und die Schätzung nur als Notbehelf ohne Transkript. Dazu die Erwartungshaltung, dass der Löwenanteil auf das erneute Vorlegen des Kontexts entfällt.
+
+Bewusst **ohne Wiki-Link** formuliert: Der Abschnitt liegt im kopierbaren Block und landet in fremden Projekten, wo ein Verweis auf `../anleitungen/…` ins Leere zeigen würde. Die Methode steht deshalb selbsttragend dort. Dieselbe Korrektur im Starterkit (`bootstrap/CLAUDE.md.vorlage`) und zusätzlich im Architekten-Briefing an der Stelle, wo er den Betrag tatsächlich einträgt.
+
+**2. Die Dateizahl stimmte seit Version 2.1.0 nirgends.** Vier Stellen nannten „53 Dateien"; der Installer schreibt tatsächlich **55**. Nachgezogen in [team-starter-kit](werkzeuge/team-starter-kit.md), [index](index.md), der globalen `~/.claude/CLAUDE.md` und der Kit-`README.md`. Maßgeblich ist die Zählung des Installers selbst, nicht die Erinnerung an sie.
+
+**Gegenprobe zur Sicherheit**: Die geänderten Kit-Artefakte in ein Wegwerf-Projekt installiert — 132 Regressionstests grün, keine offenen Platzhalter, der neue Text kommt gefüllt an. (Im Kit-Repo selbst schlagen 17 Tests fehl; das ist ein Layout-Artefakt, weil die Entrypoints dort unter `entry/` liegen, und war schon vor dieser Änderung so.)
+
+Beide Funde gehören zur bekannten Klasse: **eine Aussage, die einmal stimmte, altert still weiter.** Der Lint findet so etwas nicht — er prüft Form, nicht Wahrheit.
+
+---
+
 ## [2026-08-02 01:15] update | Sitzungskosten gemessen statt geschätzt — Kit-Herstellung im Feld-Ledger verbucht
 
 Zwei Aufträge: das Wiki pflegen und die Herstellungskosten des Starterkits so festhalten, dass die Projektkarte der Website sie ziehen kann.
