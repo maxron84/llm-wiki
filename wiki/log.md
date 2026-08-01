@@ -15,6 +15,30 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 23:45] update | Starterkit 2.1.0 — Erstlauf-Regeln in die Artefakte
+
+Auslöser war eine Rückfrage des Strippenziehers: „Deine Empfehlung für den ersten Lauf wird der Architekt ausführen, richtig?" — Antwort: **nein, nur teilweise.** Die Prüfung der Artefakte zeigte, dass zwei der sechs Empfehlungen (Smoke-Test hat Vorrang, erste Kaskade kurz halten) **nirgends** standen. Sie existierten nur als Zusage in einem Gespräch; ein kalt startender Architekt in einem frischen Projekt hätte sie nicht gekannt.
+
+Dieselbe Fehlerklasse wie schon zweimal zuvor in diesem Vorhaben — und sie ist genau das, was Planungsregel 5 der Vorlage für den Terminal-Abschlussbericht regelt: **Was nicht im Git steht, existiert für die nächste Instanz nicht.**
+
+**Wer führt was aus** (jetzt vollständig verortet):
+
+| Empfehlung | Ausführender | Steht in |
+|---|---|---|
+| Kleines Projekt wählen | Strippenzieher | — (Entscheidung vor der Installation) |
+| Smoke-Test als Stufe 1 | Architekt plant, Ralph baut | Briefing + Bootstrap-Roadmap |
+| Erste Kaskade kurz halten | Architekt | Briefing |
+| Budget-Deckel | Architekt schreibt `BUDGET_EMPFEHLUNG_USD`, Strippenzieher setzt `TEAM_BUDGET_USD` | Briefing + Installer-Meldung |
+| Committen vor dem Guard | Strippenzieher | Installer-Meldung |
+| Closeout nach dem Lauf | Architekt schreibt und ledgert, Strippenzieher committet | Briefing |
+
+**Geändert im Kit** (`~/Source/team-kit`, 2.1.0): Architekten-Briefing um den Abschnitt „Die erste Kaskade eines Projekts" ergänzt; die vormals leere Bootstrap-Roadmap bringt „Skizze 1: Verifikationsfähigkeit herstellen" mit, die sich über den gefüllten Smoke-Test-Platzhalter selbst als erledigt kennzeichnet; Installer-Abschlussmeldung nennt `TEAM_BUDGET_USD=15` und verweist ohne Smoke-Test ausdrücklich auf Skizze 1.
+
+**Vorabprüfung der CLI** (Anhang A.5, Faktencheck-Pflicht) gegen Claude Code 2.1.206: `-p`, `--model`, `--output-format`, `--permission-mode`, `--allowedTools` alle vorhanden; `git`, `flock`, `python3`, `pytest`, `claude` installiert; Auth im Abo-Modus mit API-Fallback, kein störender Key in der Umgebung. **Zwischenzeitlich fälschlich als Blocker gemeldet**: `--permission-mode default` fehlt in der Auswahlliste von `claude --help` — der diskriminierende Test zeigt aber, dass die CLI den Wert akzeptiert. Als Risikohinweis im Kit festgehalten, falls eine künftige Fassung ihn entfernt (es träfe genau die beiden Read-Only-Rollen).
+
+**Aktualisierte Seiten:**
+- `werkzeuge/team-starter-kit.md` — Version 2.1.0, neuer Abschnitt zu den Erstlauf-Regeln.
+
 ## [2026-08-01 23:00] update | Starterkit 2.0.0 — sprach- und stackagnostisch
 
 Nachbesserung auf Anforderung: Das Kit soll in **jedem** Projekt laufen, unabhängig von Sprache und Stack. Version 1.0.0 setzte an mehreren Stellen still den Stack des Ursprungsprojekts voraus.

@@ -8,7 +8,7 @@ status: active
 # T.E.A.M.-Starterkit
 
 **Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 53 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
-**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.0.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
+**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.1.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
 **Zuletzt aktualisiert**: 2026-08-01
 
 ---
@@ -108,12 +108,22 @@ Alle vier gehören zur selben Fehlerklasse, die schon die [Feldinspektion](../qu
 
 **Nicht verifiziert**: ein vollständiger scharfer `vollautomatik.sh`-Lauf in einem neuen Projekt. Das kostet echtes Geld und braucht einen echten Kaskaden-Plan. Der erste scharfe Lauf bleibt ein Feldtest — das Kit sorgt dafür, dass er nicht an Formalien scheitert.
 
+## Erstlauf-Regeln stehen in den Artefakten, nicht im Gespräch
+
+Beim Abnahmegespräch fiel auf, dass die Empfehlungen für den ersten Lauf nirgends festgehalten waren — ein kalt startender Architekt in einem frischen Projekt hätte sie nicht gekannt. Seit Version 2.1.0 stehen sie dort, wo sie wirken:
+
+- **Architekten-Briefing**, Abschnitt „Die erste Kaskade eines Projekts": Smoke-Test hat Vorrang vor jedem Feature, drei bis fünf Stufen, `BUDGET_EMPFEHLUNG_USD` konservativ aber nicht knauserig, nach dem Lauf den Bauweg ehrlich bewerten.
+- **Bootstrap-Roadmap** bringt „Skizze 1: Verifikationsfähigkeit herstellen" mit und zeigt über den gefüllten Platzhalter selbst an, ob sie noch gebraucht wird.
+- **Installer-Abschlussmeldung** nennt `TEAM_BUDGET_USD=15` für den Erstlauf.
+
+Das ist dieselbe Lehre wie Planungsregel 5 der Vorlage: Was nicht im Git steht, existiert für die nächste Instanz nicht — ob es nun ein Terminal-Abschlussbericht ist oder eine mündliche Empfehlung.
+
 ## Reihenfolge nach der Installation
 
 1. `team.config.sh` und `CLAUDE.md` prüfen, TODO-Stellen füllen
 2. **Committen** — vor dem ersten Guard-Lauf. Der Guard betrachtet uncommittete Dateien außerhalb der Whitelist als Verletzung; im Ursprungsprojekt löschte er einmal die gesamte frisch gebaute Infrastruktur (siehe [read-only-guard](../konzepte/read-only-guard.md))
 3. `./team-test.sh` — prüft die Infrastruktur, nicht das Projekt
-4. Erste Kaskade planen: Claude-Sitzung mit Opus, *„Du bist unser Architekt, lies `team/prompts/rolle-architekt.md`."* Er härtet eine Skizze aus, setzt `RALPH_CAP` und `BUDGET_EMPFEHLUNG_USD` und gibt die Scharfschalt-Sequenz aus
+4. Erste Kaskade planen: Claude-Sitzung mit Opus, *„Du bist unser Architekt, lies `team/prompts/rolle-architekt.md`."* Er härtet eine Skizze aus, setzt `RALPH_CAP` und `BUDGET_EMPFEHLUNG_USD` und gibt die Scharfschalt-Sequenz aus. **Die Erstlauf-Regeln stehen in seinem Briefing** — Smoke-Test vor jedem Feature, drei bis fünf Stufen, Budget konservativ aber nicht knauserig
 5. Scharfschalten: `echo plans/ralph-kaskade-1-….md > .ralph-plan`
 6. `./vollautomatik.sh`
 7. **Nach dem Lauf**: `./team-status.sh --rollen-abschluss <N> <domaene>` und `--architekt-abschluss <USD> <domaene>`. Der Architekt läuft interaktiv außerhalb der Kostenlogs — ohne diesen Schritt bleibt seine Sitzung unerfasst (im Feld ~16 USD)
