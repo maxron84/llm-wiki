@@ -8,7 +8,7 @@ status: active
 # T.E.A.M.-Starterkit
 
 **Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 55 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
-**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.4.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01); Erntelauf aus dem ersten Feldprojekt `team-kit_project_platformer` (Kaskaden 1–2, 2026-08-01).
+**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.4.1); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01); Erntelauf aus dem ersten Feldprojekt `team-kit_project_platformer` (Kaskaden 1–2, 2026-08-01).
 **Zuletzt aktualisiert**: 2026-08-02
 
 ---
@@ -145,7 +145,7 @@ Das Kit hatte keinen eigenen Prüfbefehl (`BL-6`). `pytest team/tests` schlug im
 
 Gegenprobe gefahren: Ein erzwungener Fehlschlag reicht Exit 5 durch. Die 17 Fehlschläge im Kit-Repo bleiben bestehen und sind ausdrücklich **erwartet** — sie sind nur nicht mehr das Gate. Siehe [alarmmuedigkeit](../konzepte/alarmmuedigkeit.md).
 
-**176 Testfälle in 32 Dateien** (Stand 2.4.0, von 127 bei 2.2.0).
+**182 Testfälle in 32 Dateien** (Stand 2.4.1, von 127 bei 2.2.0).
 
 ## `install.sh --update` — der fehlende Weg nach vorn
 
@@ -159,7 +159,7 @@ Der erste echte Einsatz deckte prompt zwei weitere Löcher auf, beide im Update 
 
 **Das Update löschte projekteigene Tests und nahm lokale Fixes still zurück (`BL-12`).** Ein pauschales `rm team/tests/test_*.py` sollte umbenannte Kit-Tests entfernen — im Feld löschte es einen vom Projekt geschriebenen Infrastruktur-Test, und im selben Lauf wurde ein Werkzeug mit der älteren Kit-Fassung überschrieben, samt einem lokalen Fix, der real **12,00 USD** gekostet hatte. Die Annahme „`team/tests/` gehört exklusiv dem Kit" ist falsch, sobald ein Projekt eine Lücke im Team selbst schließt. Seit 2.3.2 löscht das Update **nichts** mehr: Unbekannte Tests bleiben liegen und werden gemeldet, abweichende Infrastrukturdateien mit `git diff`-Hinweis ausgewiesen. Mehr dazu in [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md).
 
-## Der Abschluss wird geprüft, nicht geglaubt (2.4.0)
+## Der Abschluss wird geprüft, nicht geglaubt (2.4.0–2.4.1)
 
 `./team-status.sh --ledger-pruefen` beantwortet nach dem Kostenabschluss drei Fragen: Fehlt einer gelaufenen Kaskade eine Zeile je Quelle? Liegen unarchivierte Logs herum, obwohl sie schon gebucht ist? Und **ergeben die archivierten Rohlogs mehr, als das Ledger ausweist?**
 
@@ -168,6 +168,18 @@ Nur die dritte zieht ihre Kennzahl aus einer anderen Quelle als das Geprüfte �
 Bewusst **kein hartes Gate** im Closeout: Eine Kaskade mit legitim fehlender Zeile könnte sonst nicht abschließen, und ein Gate, das man regelmäßig umgeht, ist wirkungslos. Stattdessen Exit `4` für Warnbefunde (`1` bleibt dem Bedienfehler), zwei Schweregrade, und die Prüfung läuft bei jedem Kontostand-Abruf ungefragt mit.
 
 **Eine Domäne ist jetzt der Normalfall (`BL-9`).** Der Kontostand zeigte eine fest verdrahtete „T.E.A.M."-Domänenzeile — in einem Feldprojekt strukturell `0.0000`, weil dort nicht am Team entwickelt wird. Der Domänenblock erscheint nur noch bei mehreren konfigurierten Domänen und listet dann jede.
+
+### Der erste Lauf gegen ein fremdes Ledger (2.4.1)
+
+Die Prüfung ging mit 176 grünen Tests raus — alle gegen Daten desselben Projekts geschrieben, das sie prüfen sollte. Beim Einpflegen der Kit-Fixe ins Ursprungsprojekt traf sie erstmals ein gewachsenes Ledger: **67 Zeilen aus 22 Kaskaden, drei Warnungen, keine davon echt und keine je auflösbar.**
+
+**Eine Rohquelle kann mehrere Ledger-Rollen speisen (`BL-13`).** Die Prüfung bildete jeden Log-Ordner auf genau eine Rolle ab. Tatsächlich schreiben `redteam.sh`, `frank.sh`, `axel.sh` und `vollautomatik.sh` alle nach `.team-logs`, während das Ursprungsprojekt Franks Out-of-Loop-Arbeit als eigene Ledger-Zeile bucht — wofür `akteur-abschluss --rolle <X>` ausdrücklich existiert. Dessen 17,00 USD meldete die Prüfung als „archiviert, aber nie gebucht", und nachbuchen kann man nichts, was bereits gebucht ist. Der Fix verlängert die Zuordnungsliste nicht, sondern **leitet die Rollenmenge aus dem Ledger ab** — eine gepflegte Liste wäre beim nächsten projekteigenen Rollennamen wieder falsch. Die Architekten-Zeile bleibt ausdrücklich draußen: Sie ist eine gemessene Schätzung ohne Rohlog und hätte mit ihren 275 USD im Ursprungsprojekt jede echte Untergebuchung maskiert (eigener Schutzwächter-Test).
+
+**Benannte Kaskaden sind Out-of-Loop-Buchungen (`BL-14`).** Die Regel „`roles`-Zeile ohne `ralph`-Zeile ⇒ Warnung" gilt nur für **nummerierte** Kaskaden. Benannte (`post-20`, `roles-post-k13`) sind Fixserien nach dem Lauf, in denen Ralph gar nicht gebaut hat — dort ist das Fehlen korrekt, die Warnung dauerhaft unauflösbar, und sie erschien bei **jedem** `--budget`. Jetzt Warnung nur bei nummerierter Kaskade, sonst ein Hinweis, der den Grund nennt. Die Gegenrichtung ist eigens getestet: Bei einer nummerierten Kaskade bleibt es eine Warnung, `BL-4` wird nicht mit entschärft.
+
+Dazu eine kleine, aber tragende Änderung: Der Befund **nennt die Rollen, die er zusammengezählt hat**. `BL-1`, `BL-4` und `BL-5` fand kein Werkzeug, sondern ein nachrechnender Mensch — ein Befund, der nur ein Delta zeigt, macht dieses Nachrechnen unmöglich. Mehr dazu in [gegenprobe-zweite-quelle](../konzepte/gegenprobe-zweite-quelle.md) und [alarmmuedigkeit](../konzepte/alarmmuedigkeit.md).
+
+**Nebenbefund**: Das Ursprungsprojekt trägt noch das Layout von vor dem Kit und nimmt `install.sh --update` deshalb nicht an. Drei Kit-Fixe fehlten dort und wurden einzeln nachgetragen; eine Migration auf das Kit-Layout wären 531 Pfadverweise in 61 Dateien gewesen und wurde bewusst nicht gemacht. Siehe [rueckkanal-feld-kit](../konzepte/rueckkanal-feld-kit.md).
 
 ## Erstlauf-Regeln stehen in den Artefakten, nicht im Gespräch
 

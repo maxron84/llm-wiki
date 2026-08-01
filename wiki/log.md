@@ -15,6 +15,26 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-02 13:15] update | Starterkit 2.4.1 — die Ledger-Prüfung traf zum ersten Mal ein fremdes Ledger
+
+Nachschlag zum Eintrag von 11:30. Das Kit steht jetzt auf **2.4.1**. Neu ist ein Vorgang, der die gestern angelegten Konzeptseiten von einer unerwarteten Seite bestätigt: Die frisch gebaute Ledger-Prüfung lief erstmals gegen ein **fremdes, gewachsenes** Ledger — 67 Zeilen aus 22 Kaskaden im Ursprungsprojekt — und meldete **drei Warnungen, von denen keine echt und keine je auflösbar war**. Und das mit 176 grünen Tests im Rücken.
+
+Zurückgespielt wurde das Verallgemeinerbare, nicht die Fehlerliste:
+
+**Aktualisiert:**
+
+- [gegenprobe-zweite-quelle](konzepte/gegenprobe-zweite-quelle.md) — zwei neue Abschnitte. Erstens: **Die Gegenprobe braucht selbst eine Gegenprobe.** Testdaten aus dem eigenen Projekt sind dieselbe Quelle wie das eigene Projekt — sie bestätigen nur, was der Autor ohnehin annahm. Zwei Annahmen fielen: `BL-13` verdrahtete eine Zuordnung (Log-Ordner ↔ genau eine Rolle), die das Werkzeug **selbst zu brechen erlaubt** — der Befehl `akteur-abschluss --rolle <X>` existiert ausdrücklich dafür. Der Fix verlängert die Liste nicht, sondern schafft sie ab und leitet die Rollenmenge aus dem Ledger ab. Zweitens die Regel, dass eine **geschätzte** Zahl nicht in den Vergleichstopf darf: Die Architekten-Zeile ist eine aus dem Transkript gemessene Schätzung ohne Rohlog und hätte mit 275 USD jede echte Untergebuchung maskiert — die Prüfung wäre dauerhaft grün und damit wertlos gewesen. Dazu: Der Befund nennt jetzt die gezählten Rollen, weil `BL-1`/`BL-4`/`BL-5` kein Werkzeug fand, sondern ein nachrechnender Mensch. Die Automatik ist sein Zubringer, nicht sein Ersatz.
+- [alarmmuedigkeit](konzepte/alarmmuedigkeit.md) — der bemerkenswerteste Teil: **Das Werkzeug, das aus Rücksicht auf Alarmmüdigkeit bewusst kein hartes Gate wurde, war selbst bei jedem Aufruf rot.** Ursache bei `BL-14`: eine Regel, die im Normalfall stimmt, deren Ausnahme aber ständig eintritt (benannte Kaskaden sind Out-of-Loop-Fixserien, dort fehlt die Bau-Zeile zu Recht). Behoben auf Weg 2 der Rangfolge — herabstufen von Warnung auf erklärten Hinweis. Neu präzisiert ist die Trennlinie zum verbotenen vierten Weg: Eine Herabstufung ist nur dann keine Vertuschung, wenn ein Test die **Gegenrichtung** festnagelt. Hier: Bei nummerierter Kaskade bleibt es eine Warnung, `BL-4` wird nicht mit entschärft.
+- [rueckkanal-feld-kit](konzepte/rueckkanal-feld-kit.md) — **die dritte Richtung.** Der Kanal war als Feld → Werkzeug geregelt; übersehen wurde das Projekt, aus dem das Werkzeug ursprünglich herausgelöst wurde. Der 12-USD-Fehler `BL-11` lag dort **bis zuletzt**, drei Fixe fehlten insgesamt. Erschwerend: Der Ahnherr trägt noch das Vor-Kit-Layout und nimmt `install.sh --update` gar nicht an. Zwei Regeln daraus — wer ein Werkzeug herauslöst, erbt **drei** Kanäle statt einem; und wenn der automatische Weg für ein Projekt nicht gilt, muss das ein benannter Entscheid sein, mit beziffertem Aufwand (hier: 531 Pfadverweise in 61 Dateien, bewusst nicht migriert) statt „wäre viel Arbeit".
+- [team-starter-kit](werkzeuge/team-starter-kit.md) — auf 2.4.1, 182 Testfälle, neuer Abschnitt „Der erste Lauf gegen ein fremdes Ledger" mit beiden Fehlern und dem Nebenbefund zum Ursprungsprojekt.
+- [index](index.md) — Version und Testzahl nachgezogen.
+
+Keine neue Seite: Der Fund ist kein neues Muster, sondern dasselbe eine Ebene höher. Genau deshalb steht er in [gegenprobe-zweite-quelle](konzepte/gegenprobe-zweite-quelle.md) statt daneben.
+
+Kein Kosteneintrag: Wiki-Pflege, der Kit-Bau ist im Feld-Ledger unter `team` verbucht.
+
+---
+
 ## [2026-08-02 11:30] update | Starterkit 2.3.0–2.4.0 — Erntelauf des ersten Feldprojekts zurückgespielt
 
 Das Kit ist seit dem letzten Wiki-Stand (2.2.0) auf **2.4.0** gelaufen. Auslöser war der erste scharfe Einsatz in einem fremden Projekt (`team-kit_project_platformer`, Kaskaden 1–2): zwölf Backlog-Einträge, davon sechs aus dem Feld und zwei selbst verursacht beim Beheben. Zurückgespielt wurde nicht die Fehlerliste, sondern das, was sich verallgemeinern lässt.

@@ -8,7 +8,7 @@ status: active
 # Rückkanal Feld → Werkzeug
 
 **Zusammenfassung**: Wer eine Vorlage oder ein Kit in mehrere Projekte ausrollt, braucht einen benannten Weg zurück — sonst bleibt jeder Fund im Feldprojekt liegen und wird vom nächsten Update überschrieben.
-**Quellen**: `~/Source/team-kit` (Roadmap-Skizze C, Backlog `BL-2`/`BL-11`/`BL-12`, Releases 2.3.0–2.3.2, 2026-08-01)
+**Quellen**: `~/Source/team-kit` (Roadmap-Skizze C, Backlog `BL-2`/`BL-11`/`BL-12`/`BL-13`, Releases 2.3.0–2.4.1, 2026-08-01)
 **Zuletzt aktualisiert**: 2026-08-02
 
 ---
@@ -57,6 +57,19 @@ Ein Rückkanal ist nur die halbe Miete — der Weg nach vorn muss den Fix respek
 - **Abweichungen ausweisen, nicht überfahren.** Jede ersetzte Infrastrukturdatei, die vorher von der Werkzeugfassung abwich, wird mit `git diff`-Hinweis genannt — samt der Aufforderung, den darin steckenden eigenen Fix **erst zurückzuspielen und dann erneut zu updaten**.
 
 Das ist die operative Form derselben Einsicht: Eine Abweichung im Feld ist ein Signal, kein Müll.
+
+## Die dritte Richtung: zurück zum Ahnherrn
+
+Der Kanal war als **Feld → Werkzeug** gedacht und genau so geregelt. Übersehen wurde die dritte Beteiligte: die Quelle, aus der das Werkzeug ursprünglich herausgelöst wurde. Sie ist selbst ein Projekt, läuft weiter — und bekommt die Fixe des Werkzeugs **nicht** zurück.
+
+Beim Kit fiel das erst auf, als die Feld-Fixe eingepflegt wurden: Derselbe 12-USD-Fehler (`BL-11`), der zwei Kaskaden im Feldprojekt lag, lag im Ursprungsprojekt **bis zuletzt**. Drei Fixe fehlten dort, jeder einzeln nachgetragen und im dortigen Backlog vermerkt.
+
+Erschwerend: Der Ahnherr trägt noch das Layout von **vor** dem Werkzeug und nimmt den Update-Pfad deshalb gar nicht an. Eine Migration auf das Kit-Layout wären 531 Pfadverweise in 61 Dateien gewesen — bewusst nicht gemacht, per ausdrücklichem Entscheid des Strippenziehers.
+
+Daraus zwei Regeln:
+
+- **Wer ein Werkzeug aus einem laufenden Projekt herauslöst, erbt drei Kanäle, nicht einen**: Feld → Werkzeug, Werkzeug → Feld (das Update) und Werkzeug → Ursprungsprojekt. Der dritte wird vergessen, weil das Ursprungsprojekt sich nicht wie ein Kunde anfühlt — es *war* ja der Ort, an dem alles entstand.
+- **Wenn der automatische Weg für ein Projekt nicht gilt, muss das ein benannter Entscheid sein**, kein stiller Zustand. Sonst gilt es als angeschlossen und wird beim nächsten Fix übersehen. Der Aufwand der Migration gehört dabei beziffert — 531 Verweise in 61 Dateien ist eine Zahl, gegen die man abwägen kann, „wäre viel Arbeit" nicht.
 
 ## Übertragbarkeit
 

@@ -8,7 +8,7 @@ status: active
 # Gegenprobe aus zweiter Quelle
 
 **Zusammenfassung**: Ein Bericht, der seine Kennzahl aus derselben Quelle zieht wie der Fehler, bestätigt ihn, statt ihn zu zeigen — Selbstprüfung trägt nur, wenn mindestens eine Prüfung ihre Zahl woanders herholt.
-**Quellen**: `~/Source/team-kit` (Release 2.4.0, Roadmap-Skizze D, Backlog `BL-1`/`BL-4`/`BL-5`/`BL-13`, 2026-08-01)
+**Quellen**: `~/Source/team-kit` (Releases 2.4.0 und 2.4.1, Roadmap-Skizze D, Backlog `BL-1`/`BL-4`/`BL-5`/`BL-13`/`BL-14`, 2026-08-01)
 **Zuletzt aktualisiert**: 2026-08-02
 
 ---
@@ -50,6 +50,26 @@ Das Muster ist nicht kostenspezifisch. Es passt überall, wo eine Automatisierun
 - **Ein Testlauf, der bei fehlender Testdatei „0 Fehler" meldet**, ist derselbe Fehler — die Gegenprobe ist ein erwarteter Fehlschlag (siehe die Gegenproben-Praxis in [ki-team-forensik](ki-team-forensik.md) und Franks Dreisatz).
 - **Ein Deploy-Skript, das den Erfolg aus seinem eigenen Exit-Code liest** statt aus einem Abruf der laufenden Anwendung.
 - **Ein Wiki-Lint, das nur Links innerhalb des Wikis prüft** — deshalb prüft [lint-pruefung](lint-pruefung.md) Quellenangaben gegen `raw/` und `clippings/`, also gegen Dateien außerhalb des Wikis.
+
+## Die Gegenprobe braucht selbst eine Gegenprobe
+
+Die Prüfung ging mit 176 grünen Tests in Produktion — geschrieben gegen die Daten **desselben** Projekts, das sie prüfen sollte. Beim ersten Lauf gegen ein fremdes, gewachsenes Ledger (67 Zeilen aus 22 Kaskaden) meldete sie drei Warnungen. **Keine davon war echt, und keine war je auflösbar.**
+
+Das ist derselbe Denkfehler eine Ebene höher: Testdaten aus dem eigenen Projekt sind dieselbe Quelle wie das eigene Projekt. Sie können nur bestätigen, was der Autor ohnehin annahm. Zwei Annahmen fielen dabei:
+
+**1. Die Prüfung verdrahtete eine Zuordnung, die das Werkzeug selbst zu brechen erlaubt (`BL-13`).** Sie bildete jeden Log-Ordner auf genau **eine** Ledger-Rolle ab. Im Ursprungsprojekt buchen aber vier Skripte in denselben Ordner, während eine Rolle separat gebucht wird — wofür der Befehl `akteur-abschluss --rolle <X>` ausdrücklich existiert. Deren 17,00 USD meldete die Prüfung als „archiviert, aber nie gebucht": strukturell unauflösbar, denn nachbuchen kann man nichts, was bereits gebucht **ist**.
+
+Der Fix war nicht, die Liste zu verlängern, sondern sie abzuschaffen: Die Rollenmenge wird jetzt aus dem Ledger **abgeleitet**. Eine gepflegte Liste wäre beim nächsten projekteigenen Rollennamen wieder falsch gewesen. Die Regel dahinter: *Eine Prüfung darf keine Struktur voraussetzen, die das geprüfte Werkzeug selbst verletzen darf.*
+
+**2. Eine geschätzte Zahl darf nicht in den Vergleichstopf.** Die Architekten-Zeile ist eine aus dem Sitzungstranskript **gemessene Schätzung** (siehe [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md)); ihr entspricht keine Log-Datei. Wäre sie in die Summe gewandert, hätte sie mit ihren 275 USD im Ursprungsprojekt **jede** echte Untergebuchung maskiert — die Prüfung wäre dauerhaft grün gewesen und damit wertlos. Sie ist deshalb ausdrücklich ausgeschlossen, mit einem eigenen Test als Wächter.
+
+Beides zusammen: Eine Kennzahl aus zweiter Quelle taugt nur, solange beide Seiten der Rechnung dieselbe Art von Zahl sind. Gemessenes gegen Geschätztes ist keine Gegenprobe.
+
+## Der Befund muss nachrechenbar sein
+
+Kleine, aber tragende Änderung aus 2.4.1: Die Meldung nennt jetzt **die Rollen, die sie zusammengezählt hat**. Begründung direkt aus der Fundgeschichte oben — `BL-1`, `BL-4` und `BL-5` fand kein Werkzeug, sondern ein Mensch, der nachrechnete. Ein Befund, der nur ein Delta zeigt, macht dieses Nachrechnen unmöglich und ersetzt es nicht.
+
+Eine automatische Prüfung ist damit nicht der Ersatz für den prüfenden Menschen, sondern sein Zubringer: Sie sagt ihm, **wo** er hinsehen soll, und legt offen, **woraus** sie ihre Zahl gebildet hat.
 
 ## Abgrenzung
 

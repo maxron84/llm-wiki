@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-08-02 (Starterkit 2.4.0 — Erntelauf des ersten Feldprojekts zurückgespielt)
+**Zuletzt aktualisiert**: 2026-08-02 (Starterkit 2.4.1 — die Ledger-Prüfung am fremden Ledger geprüft)
 
 ---
 
@@ -83,7 +83,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [wiki-ralph-sh](werkzeuge/wiki-ralph-sh.md) — Bash-Skript: Ralph-Schleife für autonomen LLM-Wiki-Ingest aus inbox/
 - [radeon-ai-pro-r9700](werkzeuge/radeon-ai-pro-r9700.md) — 32 GB GDDR6 KI-Karte: mehr VRAM als RTX 5080, aber Blower-Kühler macht sie für Desktop-Einsatz problematisch
 - [phi-4](werkzeuge/phi-4.md) — Microsofts Phi-4-Familie (14B/3.8B): stark bei Math und Code, 16K Kontext ein Limit für Wiki-Betrieb
-- [team-starter-kit](werkzeuge/team-starter-kit.md) — Das T.E.A.M. per Konsolenbefehl in jedes neue Projekt: sprach- und stackagnostisch, 55 Dateien, 176 Regressionstests, sicherer Update-Pfad (2.4.0)
+- [team-starter-kit](werkzeuge/team-starter-kit.md) — Das T.E.A.M. per Konsolenbefehl in jedes neue Projekt: sprach- und stackagnostisch, 55 Dateien, 182 Regressionstests, sicherer Update-Pfad (2.4.1)
 - [ralph-wiggum-plugin](werkzeuge/ralph-wiggum-plugin.md) — Offizielles Claude-Code-Plugin für autonome Iterationsschleifen: Stop-Hook, /ralph-loop, Anwendung auf Wiki-Ingest
 
 ## Personen
