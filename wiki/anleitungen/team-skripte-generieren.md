@@ -256,6 +256,7 @@ Die Zitate sind **wörtliche Ausschnitte**, oft nur Halbsätze — genau so ist 
 
 ## Verwandte Seiten
 
+- [team-starter-kit](../werkzeuge/team-starter-kit.md) — Installiert all das fertig; diese Anleitung braucht man nur, wenn wirklich generiert statt kopiert wird
 - [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Die Vorlage, zu der diese Anleitung gehört
 - [read-only-guard](../konzepte/read-only-guard.md) — Die 3-Linien-Durchsetzung aus A.4 im Detail
 - [kostencounter](../konzepte/kostencounter.md) — Kostenkontroll-Standard dieses Wikis (Bezug zu A.7/A.9)

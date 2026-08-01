@@ -15,6 +15,35 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 21:00] query | T.E.A.M.-Starterkit gebaut — Rollenteam per Konsolenbefehl
+
+Auftrag: eine komplette, auf Knopfdruck transferierbare Vorbereitung für jedes neue Software-Projekt. Ergebnis: eigenes Git-Repo `~/Source/team-kit` (Version 1.0.0, 55 Dateien) plus Launcher `~/.claude/scripts/team-init.sh`.
+
+```
+bash ~/.claude/scripts/team-init.sh ~/Source/mein-neues-projekt
+```
+
+**Entscheidungen des Strippenziehers**: eigenes Repo (statt `kit/` im Wiki oder rein global), zentrale `team.config.sh` (statt sed beim Kopieren), interaktives Interview mit fünf Fragen (statt Platzhalter oder Config-Datei).
+
+**Zentraler Befund der Code-Analyse**: Die harten Projektbezüge waren stark konzentriert. `team-lib.sh` (821 Z), `kosten.py` (952 Z), `beutebuch.py` (275 Z), `vollautomatik.sh`, `halbautomatik.sh` und `team-status.sh` (643 Z) waren **bereits projektfrei** und wurden wörtlich übernommen. Nur 32 Stellen in den vier Rollen-Skripten mussten parametrisiert werden. Damit blieben ~3.200 Zeilen über 22 Kaskaden gehärteter Code unangetastet — genau das Risiko, das eine Neugenerierung aus Prosa erzeugt hätte.
+
+**Zwei echte Defekte gefunden** — beide treten ausschließlich in einem frischen Projekt auf: `ralph.sh` und `team_plan_datei()` lasen `.ralph-plan` per `head`. Fehlt die Datei, liefert `head` RC≠0 und riss unter `set -e -o pipefail` den Loop weg, **bevor** die erklärende Fehlermeldung kam — blanker Exit 1 ohne Hinweis. Im Feldprojekt existiert die Zeiger-Datei seit Kaskade 1; beim allerersten Start eines neuen Projekts ist ihr Fehlen der Normalfall. Dieselbe Fehlerklasse wie bei der Feldinspektion: was zur Selbstverständlichkeit wird, meldet niemand zurück.
+
+**Verifiziert im Wegwerf-Repo**: Installation (51 Dateien, Platzhalter und abgeleitete Whitelists korrekt), Shell-Syntax, Python-Kompilierung, **127 Regressionstests grün**, chirurgischer Guard-Rollback (Verletzer weg, erlaubte Datei erhalten, Produktivcode unangetastet), Verhalten aller Rollen ohne Arbeitsvorrat, **perfekte Idempotenz** (zweiter Lauf: 0 Dateien geschrieben, eigene Änderungen bewahrt). **Nicht verifiziert**: ein scharfer Vollautomatik-Lauf — der kostet echtes Geld und braucht einen echten Plan.
+
+Zwei Testanpassungen für den generischen Einsatz, beide im Kit-CHANGELOG begründet: Die Ledger-Prüfung „Summe > 0" überspringt ein leeres Ledger; die BL-55-Regelprüfung testet die Substanz statt eines wörtlichen Satzes der Feldprojekt-CLAUDE.md.
+
+**Das Feldprojekt `website-maxron-de` wurde ausschließlich gelesen**, nicht verändert.
+
+**Neue Seiten:**
+- `werkzeuge/team-starter-kit.md` — Aufruf, Herkunft, was wörtlich übernommen wurde, die fünf Fragen, die zwei Erstlauf-Defekte, Verifikationsstand und Grenzen.
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — „Schnellweg"-Kasten in der Benutzung; „Kein fertiges Skript-Bundle" um den Kit-Hinweis ergänzt.
+- `anleitungen/team-skripte-generieren.md` — Verweis, dass die Anleitung nur noch für fremde CLI/Repo-Konventionen nötig ist.
+- `index.md`, `README.md` — neue Werkzeugseite und Hilfsskript-Zeile.
+- `~/.claude/CLAUDE.md` (außerhalb des Repos) — `team-init.sh` in die globale Skript-Tabelle.
+
 ## [2026-08-01 19:30] update | T.E.A.M.-Vorlage: Erstlauf-Lücken aus Feldinspektion geschlossen
 
 Erste **direkte Inspektion** des Feldprojekts `website-maxron-de` (read-only, keine Änderung dort) statt Rückspielung per Bericht. Anlass: die Frage, ob ein neues Projekt mit der Vorlage genauso läuft wie das Feldprojekt. Antwort: prozessual ja, aber sechs Bausteine fehlten, die im Feld über 22 Kaskaden nebenbei entstanden sind und deshalb in keinem Rückspielbericht auftauchten.

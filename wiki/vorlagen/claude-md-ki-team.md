@@ -25,7 +25,7 @@ status: active
 ## Was diese Vorlage nicht ist
 
 - **Keine pädagogische Bedienmodell-Vorlage.** Für KI-gestützten Unterricht siehe die Schwester-Vorlagen [claude-md-lehrer](claude-md-lehrer.md), [claude-md-nachhilfe](claude-md-nachhilfe.md), [claude-md-laienlehrer](claude-md-laienlehrer.md).
-- **Kein fertiges Skript-Bundle.** Die Team-Skripte (`ralph.sh`, `team-lib.sh`, `harry.sh`/`marv.sh`/`frank.sh`) werden **nicht mitgeliefert**, sondern nach Anhang A **kontextabhängig generiert** — angepasst an die real installierte CLI und die Repo-Konventionen des Zielprojekts.
+- **Kein fertiges Skript-Bundle.** Die Team-Skripte (`ralph.sh`, `team-lib.sh`, `harry.sh`/`marv.sh`/`frank.sh`) sind **nicht Teil dieser Seite**, sondern werden nach Anhang A **kontextabhängig generiert** — angepasst an die real installierte CLI und die Repo-Konventionen des Zielprojekts. *(Seit 2026-08-01 gibt es dafür auch den fertigen Weg: das [T.E.A.M.-Starterkit](../werkzeuge/team-starter-kit.md) bringt die im Feld gehärteten Skripte mit und parametrisiert sie. Für dieselbe Maschine ist das die bessere Wahl — 3.200 Zeilen über 22 Kaskaden gehärteter Code lassen sich nicht verlustfrei aus einer Beschreibung rekonstruieren.)*
 - **Kein Ersatz für den Menschen.** Der Strippenzieher zieht die Fäden; die Vorlage strukturiert nur, wie die KI-Rollen ihm zuarbeiten.
 - **Kein Menschen-Team-Wiki.** Für 2–8 Menschen, die sich ein Wiki teilen, siehe [claude-md-team](claude-md-team.md).
 
@@ -41,6 +41,14 @@ Die Vorlage bildet das **komplette Zielbild** ab — auch Teile, die im Ursprung
 Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen**, die **Voll-Automatik** (Orchestrator + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring), der **kaskaden-abhängige Red-Team-Fokus** (`TEAM_REDTEAM_FOCUS`), die **„success ohne Promise"-Härtung** (Prompt- + Logik-Härtung), die **Session-Limit-Robustheit** (429 → Exit-42-Pausen-Mechanik + Auto-Retry mit Deckel, `BL-20`/`BL-25`), die **Auslauf-Bremse gegen Leerlaufkosten** (`TEAM_FIX_MAX_STAGNATION`), die **aktive Auth-Startwarnung** (`BL-27`), das **Zwei-Schwellen-Budgetmodell** (Soft-/Hard-Cap, `BL-30`), die **automatische & domänengetrennte Kostenerfassung** interaktiver Rollen (Architekt/Frank-im-Abo, `BL-28`/`BL-29`/`BL-33`), die **Scharfschalt-Sequenz-Pflicht** (Planungsregel 4), die **Abschluss-Doc-Pflicht** (Planungsregel 5) und die **Doku-Hygiene mit Regel-Inventar** (`BL-54`, A.10). Der erste echte Ende-zu-Ende-Vollautomatik-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) ist **inzwischen über zweiundzwanzig Kaskaden scharf gelaufen** — im Zweitprojekt website-maxron-de (2026-07-10 bis 2026-08-01), mit realen Red-Team-Funden (HM-1…HM-53), die Frank gefixt hat, und wirksamem Read-Only-Guard (`permission_denials` in den Logs belegen die Durchsetzung). Damit ist auch die Voll-Automatik **✅ erprobt** (zuvor 🟡). Die im Feld gewonnenen Betriebslehren (Budget-Cap-Timing, kaskaden-spezifischer Red-Team-Fokus, „success ohne Promise"-Behandlung, Log-Rotation gegen Doppelzählung, A/B-Kennzahlen-Trennung, Session-Limit-Pause, Stagnations-Bremse, Zwei-Schwellen-Budget, interaktive Akteur-Kostenerfassung, **Prosa gehört nicht in den Bau-Loop**, **Kostenmessung darf nicht blind werden**) siehe Anhang A.7–A.10.
 
 ## Benutzung
+
+> **Schnellweg (empfohlen auf derselben Maschine):** Das
+> [T.E.A.M.-Starterkit](../werkzeuge/team-starter-kit.md) installiert diese Vorlage samt
+> erprobter Skripte mit einem Befehl:
+> `bash ~/.claude/scripts/team-init.sh <zielpfad>`.
+> Die Schritte 1–3 unten entfallen dann; nur Schritt 4 bleibt.
+> Der Weg von Hand lohnt, wenn das Zielprojekt eine **andere CLI oder fremde
+> Repo-Konventionen** hat — dafür ist Anhang A gedacht.
 
 1. Kopiere **nur den Inhalt** des Vorlagenblocks unten (ohne den 4-Backtick-Rahmen) als `CLAUDE.md` ins Wurzelverzeichnis des Zielprojekts — oder füge ihn als eigenständige **„Das Team"-Sektion** in eine vorhandene `CLAUDE.md` ein.
 2. Führe das **Aufnahme-Interview** (im Vorlagenblock enthalten) mit dem Strippenzieher und ersetze alle `{{PLATZHALTER}}` mit den Antworten.
@@ -622,6 +630,7 @@ Zielprojekts beschreibt — hier auf die Vorlage selbst angewandt.
 
 ## Verwandte Seiten
 
+- [team-starter-kit](../werkzeuge/team-starter-kit.md) — **Schnellweg**: dieselbe Vorlage per Konsolenbefehl als lauffähiges Team installieren
 - [team-skripte-generieren](../anleitungen/team-skripte-generieren.md) — Anhang A: die vollständige Bau-Anleitung für die Team-Skripte (A.1–A.10)
 - [claude-md-ki-team](../quellen/claude-md-ki-team.md) — Quellenseite mit Einordnung und Namenskonflikt-Historie
 - [ki-lehrer-app](../konzepte/ki-lehrer-app.md) — Das reale Ursprungsprojekt (KI-Lehrer-App)

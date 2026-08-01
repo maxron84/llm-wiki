@@ -101,6 +101,7 @@ Schritt-für-Schritt-Guides für Einstieg, Betrieb und Sonderfälle:
 | Skript | Zweck | Aufruf |
 |---|---|---|
 | `~/.claude/scripts/wiki_lint.py` | Acht Prüfungen — siehe Tabelle unten | `python3 ~/.claude/scripts/wiki_lint.py` (aus dem Projekt-Root) |
+| `~/.claude/scripts/team-init.sh` | Installiert das [T.E.A.M.-Starterkit](wiki/werkzeuge/team-starter-kit.md) in ein neues Software-Projekt | `bash ~/.claude/scripts/team-init.sh <zielpfad>` |
 
 Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlichen Abhängigkeiten.
 
@@ -123,12 +124,12 @@ Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlich
 |---|---|
 | Konzepte | 48 |
 | Quellen | 25 |
-| Werkzeuge | 14 |
+| Werkzeuge | 15 |
 | Vorlagen | 13 |
 | Anleitungen | 10 |
 | Personen | 7 |
 | Projekte | 1 |
-| **Gesamt** | **120** |
+| **Gesamt** | **121** |
 
 - **45 Quelldokumente** aufgenommen (37 Clippings + 8 Raw) — seit 2026-08-01 restlos alle
 - **25 Quellen** mit eigener Zusammenfassungsseite
