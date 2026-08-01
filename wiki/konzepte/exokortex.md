@@ -8,7 +8,7 @@ status: active
 # Exokortex
 
 **Zusammenfassung**: Ein Exokortex ist eine externe kognitive Erweiterungsschicht — ein System, das wie ein zweites Gehirn außerhalb des eigenen Kopfes arbeitet. Aaron Fulkersons „Exo" ist die bisher ausgefeilteste Implementierung des LLM-Wiki-Musters als vollwertiger Exokortex.
-**Quellen**: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md
+**Quellen**: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md
 **Zuletzt aktualisiert**: 2026-05-02
 
 ---
@@ -17,7 +17,7 @@ status: active
 
 Der Begriff „Exokortex" (von lat. *cortex* = Rinde, Großhirnrinde) bezeichnet eine externe Erweiterung des eigenen Denkens und Gedächtnisses. Vannevar Bushs Memex (1945) war die ursprüngliche Vision — ein mechanisches System zur Gedankenverlängerung. (Mehr: [memex](memex.md))
 
-Aaron Fulkerson benannte sein System „Exo", nachdem er das LLM in einer spätnächtlichen Session fragte, was es gerade werde: „The name came from the system itself." (Quelle: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md)
+Aaron Fulkerson benannte sein System „Exo", nachdem er das LLM in einer spätnächtlichen Session fragte, was es gerade werde: „The name came from the system itself." (Quelle: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md)
 
 ## Was ein Exokortex vom LLM-Wiki unterscheidet
 

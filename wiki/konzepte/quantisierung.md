@@ -59,7 +59,7 @@ Qualitativ macht der Schritt von Q8 auf Q4 bei Coding-Aufgaben einen merklichen 
 - **Q4**: Spürbare Qualitätseinbußen, erhöhte Halluzinationsrate, Instabilität bei komplexen Aufgaben
 - **Q3 und darunter**: Für ernsthafte Coding-Aufgaben in der Regel nicht empfohlen
 
-> „Quantisierung unter Q8 zu gehen macht die Sache schwieriger. Mit 36 GB VRAM habe ich die besten Ergebnisse mit Q8 eines 14B-Modells erzielt." (Quelle: `olilanzRooCode-Local-Evaluation.md`)
+> „Quantisierung unter Q8 zu gehen macht die Sache schwieriger. Mit 36 GB VRAM habe ich die besten Ergebnisse mit Q8 eines 14B-Modells erzielt." (Quelle: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`)
 
 ---
 

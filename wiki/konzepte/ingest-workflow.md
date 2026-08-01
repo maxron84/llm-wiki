@@ -65,7 +65,7 @@ Bei größeren Wikis (viele Seiten) würde ein naiver Ingest alle Seiten berühr
 2. LLM gibt zurück, welche Seiten tatsächlich relevant sind
 3. Nur relevante Seiten werden neu synthetisiert
 
-Dieser Routing-Schritt kann die Ingest-Kosten dramatisch reduzieren. (Quelle: clippings/Beyond RAG...)
+Dieser Routing-Schritt kann die Ingest-Kosten dramatisch reduzieren. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 ## Skalierung
 

@@ -8,7 +8,7 @@ status: active
 # LM Studio
 
 **Zusammenfassung**: LM Studio ist eine Desktop-App mit grafischer Oberfläche zum Herunterladen, Konfigurieren und Ausführen lokaler Sprachmodelle — einsteigerfreundlicher als Ollama, mit eingebautem OpenAI-kompatiblem Inferenz-Server.
-**Quellen**: `Using LM Studio With Roo Code.md`, `Using Local Models Roo Code Documentation.md`, `Local model for coding.md`
+**Quellen**: `Using LM Studio With Roo Code.md`, `Using Local Models  Roo Code Documentation.md`, `Local model for coding.md`
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---

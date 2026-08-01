@@ -8,7 +8,7 @@ status: active
 # Lernschleifen
 
 **Zusammenfassung**: Aaron Fulkersons drei formale Lernschleifen machen den Unterschied zwischen einem Wiki das nur Wissen akkumuliert und einem System das Urteilsvermögen akkumuliert. Täglich erfassen, wöchentlich reviewen, bewährte Muster durch Graduation in permanente Regeln überführen.
-**Quellen**: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md
+**Quellen**: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md
 **Zuletzt aktualisiert**: 2026-05-02
 
 ---
@@ -17,7 +17,7 @@ status: active
 
 Karpathys Muster sieht vor, dass gute Antworten als neue Wiki-Seiten zurückgespeichert werden (mehr: [query-workflow](query-workflow.md)). Fulkerson formalisiert diesen Gedanken in drei expliziten Schleifen:
 
-> „The system doesn't just accumulate knowledge. It accumulates judgment." — Aaron Fulkerson (Quelle: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md)
+> „The system doesn't just accumulate knowledge. It accumulates judgment." — Aaron Fulkerson (Quelle: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md)
 
 Wissen ist das Was. Urteilsvermögen ist das Wie. Lernschleifen überführen einmalige Beobachtungen in generalisierte Regeln.
 

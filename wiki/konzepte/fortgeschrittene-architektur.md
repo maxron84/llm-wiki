@@ -8,7 +8,7 @@ status: active
 # Fortgeschrittene Architektur
 
 **Zusammenfassung**: Erweiterungen des Basis-LLM-Wiki-Musters: RAG über kompilierte Wiki-Seiten, Routing-Schritt für Kostenkontrolle, Prompt Caching (~90% Kostenreduktion), MCP-Integration und Feintuning-Potenzial.
-**Quellen**: clippings/Beyond RAG How Andrej Karpathy's LLM Wiki Pattern Builds Knowledge That Actually Compounds.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture...
+**Quellen**: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
@@ -28,7 +28,7 @@ Das Besondere: Es werden **Wiki-Seiten** eingebettet, nicht Rohchunks. Das macht
 
 Die Wiki-Seite integriert bereits alles, was das System je über dieses Konzept gelernt hat. Das Retrieval ist präziser, der Kontext reichhaltiger.
 
-Plaban Nayak implementiert das mit `text-embedding-3-small` (1536-dimensional) und linearer Cosine-Similarity-Suche über flat JSON — ausreichend für bis zu ~500 Seiten ohne ANN-Infrastruktur. (Quelle: clippings/Beyond RAG...)
+Plaban Nayak implementiert das mit `text-embedding-3-small` (1536-dimensional) und linearer Cosine-Similarity-Suche über flat JSON — ausreichend für bis zu ~500 Seiten ohne ANN-Infrastruktur. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 ## Routing-Schritt für Kostenkontrolle
 
@@ -38,11 +38,11 @@ Ohne Routing würde jeder Ingest einer neuen Quelle alle Wiki-Seiten berühren (
 2. LLM gibt JSON-Array der relevanten Slugs zurück
 3. Nur relevante Seiten werden synthetisiert
 
-Das reduziert Ingest-Kosten dramatisch bei großen Wikis. (Quelle: clippings/Beyond RAG...)
+Das reduziert Ingest-Kosten dramatisch bei großen Wikis. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 ## Prompt Caching
 
-Wenn derselbe System-Prompt über Routing, Synthese und Index-Updates gesendet wird, trifft er den Anthropic-Cache. Ergebnis: **~90% Kostenreduktion** bei Wiederholungsoperationen. (Quelle: clippings/Beyond RAG...)
+Wenn derselbe System-Prompt über Routing, Synthese und Index-Updates gesendet wird, trifft er den Anthropic-Cache. Ergebnis: **~90% Kostenreduktion** bei Wiederholungsoperationen. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 Relevant besonders bei häufigen Ingest-Sitzungen oder großen Wikis.
 
@@ -60,7 +60,7 @@ Tools wie [jdocmunch](../werkzeuge/jdocmunch.md) und [qmd](../werkzeuge/qmd.md) 
 
 Das reifste Wiki ist auch ein hochwertiger Trainingsdatensatz:
 
-> "As the wiki grows and the data becomes more 'pure' through continuous LLM linting, it becomes the perfect training set." — Carl Franzen, VentureBeat (Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture...)
+> "As the wiki grows and the data becomes more 'pure' through continuous LLM linting, it becomes the perfect training set." — Carl Franzen, VentureBeat (Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md)
 
 Statt das Wiki im Kontextfenster zu laden, könnte man ein kleineres Modell auf dem Wiki feintunen — das Modell würde die persönliche Wissensbasis in seinen Gewichten "kennen". Noch experimentell, aber konzeptuell der logische Endpunkt.
 

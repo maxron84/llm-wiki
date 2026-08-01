@@ -8,14 +8,14 @@ status: active
 # Query-Templates (Abfragevorlagen)
 
 **Zusammenfassung**: Benannte Abfragetypen verwandeln das LLM-Wiki vom Frage-Antwort-System zum Denkpartner — Synthese, Lückensuche, Debatte, Output-Generierung, Health-Check und persönliche Anwendung.
-**Quellen**: clippings/Beyond RAG How Andrej Karpathy's LLM Wiki Pattern Builds Knowledge That Actually Compounds.md
+**Quellen**: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
 
 ## Überblick
 
-Query-Templates sind vorgefertigte Abfragemuster, die spezifische Einsichtstypen aus dem Wiki extrahieren. Statt immer neue Fragen zu formulieren, wählt man einen Template-Typ — und das Wiki liefert strukturierte Analyse. (Quelle: clippings/Beyond RAG...)
+Query-Templates sind vorgefertigte Abfragemuster, die spezifische Einsichtstypen aus dem Wiki extrahieren. Statt immer neue Fragen zu formulieren, wählt man einen Template-Typ — und das Wiki liefert strukturierte Analyse. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 ## Die 6 Template-Typen
 
@@ -68,7 +68,7 @@ Nutzen: Verwandelt abstraktes Wissen in konkretes Handeln. Das ist der Schritt v
 
 Query-Templates illustrieren eine zentrale Stärke des LLM-Wiki-Musters:
 
-> "You are not just retrieving facts — you are commissioning analysis across your entire compiled knowledge base." — Plaban Nayak (Quelle: clippings/Beyond RAG...)
+> "You are not just retrieving facts — you are commissioning analysis across your entire compiled knowledge base." — Plaban Nayak (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 Das Wiki ist kein besseres Google. Es ist ein Denkpartner, der das gesamte kompilierte Wissen auf eine spezifische Analyseart anwenden kann.
 

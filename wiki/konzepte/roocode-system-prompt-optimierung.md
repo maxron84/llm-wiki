@@ -71,7 +71,7 @@ Ab Roo Code 3.7.8 gibt es die Möglichkeit, den gesamten System-Prompt durch ein
 - Selbst zu warten und zu testen
 - Zu starke Vereinfachung kann Werkzeugaufrufe destabilisieren
 
-> „Oversimplification of the system prompt may cause the model to malfunction with Roo Code." (Quelle: `olilanzRooCode-Local-Evaluation.md`)
+> „Oversimplification of the system prompt may cause the model to malfunction with Roo Code." (Quelle: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`)
 
 ---
 
@@ -87,7 +87,7 @@ bevorzugt das apply_diff-Werkzeug, um nicht die gesamte Datei neu schreiben
 zu müssen. Nutze write_file nur wenn du wirklich die komplette Datei änderst.
 ```
 
-(Quelle: `olilanzRooCode-Local-Evaluation.md`)
+(Quelle: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`)
 
 ---
 

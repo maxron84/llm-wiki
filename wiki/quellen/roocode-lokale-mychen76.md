@@ -8,7 +8,7 @@ status: active
 # Roo Code Lokale Modelle: mychen76's Ressourcen
 
 **Zusammenfassung**: Minyang Chen (mychen76) hat mehrere quantisierte Modelle speziell für Cline/Roo Code Tool-Nutzung auf Ollama veröffentlicht und einen Artikel über systematische Evaluation lokaler Modelle mit Roo Code geschrieben.
-**Quellen**: `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Vibe Coding 'Locally' with ClineRooCode and Ollama.md`, `No Cost Guide to Local AI Code Assistant Roo Code + Ollama.md`
+**Quellen**: `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Vibe Coding ‘Locally’ with ClineRooCode and Ollama —Getting Better Experience!.md`, `No Cost Guide to Local AI Code Assistant Roo Code + Ollama.md`
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---

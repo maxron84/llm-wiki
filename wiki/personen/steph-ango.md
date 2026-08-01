@@ -8,7 +8,7 @@ status: active
 # Steph Ango (kepano)
 
 **Zusammenfassung**: Steph Ango (alias kepano) ist Mitgründer und CEO von Obsidian und prägte die Empfehlung zur Vault-Trennung als Reaktion auf Karpathys LLM-Wiki-Konzept.
-**Quellen**: clippings/Karpathy shares 'LLM Knowledge Base' architecture..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
+**Quellen**: clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---

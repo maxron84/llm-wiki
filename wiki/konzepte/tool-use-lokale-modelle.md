@@ -8,7 +8,7 @@ status: active
 # Tool-Nutzung mit lokalen Modellen
 
 **Zusammenfassung**: Lokale Modelle scheitern bei Roo Code häufig daran, Werkzeugaufrufe korrekt auszuführen — entweder wegen zu kleinem Kontextfenster oder weil das Modell das erwartete Format nicht zuverlässig produziert. Ab Roo Code 3.54.0 ist natives Function Calling Pflicht; der XML-Fallback wurde entfernt.
-**Quellen**: `Local model for coding.md`, `Roo Code not using tools properly in offline setup.md`, `olilanzRooCode-Local-Evaluation.md`, `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Vibe Coding 'Locally' with ClineRooCode and Ollama.md`
+**Quellen**: `Local model for coding.md`, `Roo Code not using tools properly in offline setup (with Ollama models and Open AI Compatible API provider).md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, `mychen76GLM-4-32B-cline-roocode.md`, `mychen76openhands_32b-cline-roocode.md`, `Vibe Coding ‘Locally’ with ClineRooCode and Ollama —Getting Better Experience!.md`
 **Zuletzt aktualisiert**: 2026-05-16
 
 ---
@@ -123,7 +123,7 @@ Auch mit gut konfiguriertem Modell gilt: **Je kleiner und präziser die Aufgabe,
 - Explizit angeben, welche Datei bearbeitet werden soll (`@dateiname.py`)
 - Bei großen Refactorings: Schritt für Schritt vorgehen
 
-Mit zunehmendem Kontext (mehr Iterationen) steigt die Wahrscheinlichkeit, dass Tool-Calls fehlerhaft werden — auch bei eigentlich gut funktionierenden Modellen. (Quelle: `olilanzRooCode-Local-Evaluation.md`)
+Mit zunehmendem Kontext (mehr Iterationen) steigt die Wahrscheinlichkeit, dass Tool-Calls fehlerhaft werden — auch bei eigentlich gut funktionierenden Modellen. (Quelle: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`)
 
 ---
 

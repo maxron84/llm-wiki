@@ -8,7 +8,7 @@ status: active
 # LLM Wiki: Create Your Own Knowledge Base (Urvil Joshi)
 
 **Zusammenfassung**: Detaillierter Tutorial-Artikel von Urvil Joshi, der das LLM-Wiki-Muster Schritt für Schritt erklärt — mit der Kompilierungs-Metapher, einer Live-Demo (Sutton + Karpathy-Essays), und einem ehrlichen Vergleich mit RAG.
-**Quellen**: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md
+**Quellen**: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---

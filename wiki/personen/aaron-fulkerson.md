@@ -8,7 +8,7 @@ status: active
 # Aaron Fulkerson
 
 **Zusammenfassung**: Mitgründer von MindTouch (Enterprise-Wiki, top-5 Open Source 2006–2010), jetzt Erbauer des „Exo"-Exokortex — der bisher ausgefeiltesten Produktionsimplementierung von Karpathys LLM-Wiki-Muster.
-**Quellen**: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md
+**Quellen**: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md
 **Zuletzt aktualisiert**: 2026-05-02
 
 ---
@@ -17,7 +17,7 @@ status: active
 
 Aaron Fulkerson gründete MindTouch gemeinsam mit Steve Bjorg. MindTouch war von 2006 bis 2010 eines der fünf populärsten Open-Source-Projekte weltweit — ein Enterprise-Wiki mit WYSIWYG, Drag-and-Drop, RESTful API und headless-fähigem Design bevor der Begriff existierte. Die Codebasis treibt heute noch [LibreTexts](https://libretexts.org/) und andere hochfrequentierte Plattformen. MindTouch wurde an NICE Systems verkauft.
 
-> „Twenty years later, I'm building a wiki again. The difference is that this time, I'm not writing the wiki." (Quelle: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md)
+> „Twenty years later, I'm building a wiki again. The difference is that this time, I'm not writing the wiki." (Quelle: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md)
 
 ## Warum seine Perspektive besonders ist
 

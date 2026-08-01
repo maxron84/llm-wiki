@@ -8,7 +8,7 @@ status: active
 # Beyond RAG: Knowledge That Compounds (Plaban Nayak)
 
 **Zusammenfassung**: Technisch tiefgehender Artikel von Plaban Nayak mit Python-Implementierung eines vollständigen LLM-Wiki-Systems: 5-Schritt-Ingest-Pipeline, RAG über kompiliertes Wiki, Query-Templates und Prompt Caching für ~90% Kostenreduktion.
-**Quellen**: clippings/Beyond RAG How Andrej Karpathy's LLM Wiki Pattern Builds Knowledge That Actually Compounds.md
+**Quellen**: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
@@ -44,7 +44,7 @@ Der Qualitätsunterschied zu klassischem RAG: Das LLM liest keine zufälligen PD
 
 ### Prompt Caching
 
-Nayak hebt hervor: Denselben System-Prompt über Routing, Synthese und Index-Updates zu senden trifft den Anthropic-Cache → ~90% Kostenreduktion bei Wiederholungsoperationen. (Quelle: clippings/Beyond RAG...)
+Nayak hebt hervor: Denselben System-Prompt über Routing, Synthese und Index-Updates zu senden trifft den Anthropic-Cache → ~90% Kostenreduktion bei Wiederholungsoperationen. (Quelle: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md)
 
 ### Query-Templates: 6 Typen
 

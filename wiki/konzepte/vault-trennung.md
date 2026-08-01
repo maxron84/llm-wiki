@@ -8,7 +8,7 @@ status: active
 # Vault-Trennung
 
 **Zusammenfassung**: Steph Angos Empfehlung: Persönliches, sauberes Vault (menschlich kuratiert) und separates "unordentliches Vault" für KI-generierte Inhalte — um Kontaminierung durch KI-Halluzinationen zu verhindern.
-**Quellen**: clippings/Karpathy shares 'LLM Knowledge Base' architecture..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
+**Quellen**: clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
@@ -19,7 +19,7 @@ status: active
 
 > Behalte dein persönliches Vault **sauber und hochwertig** — du weißt den Ursprung jedes Inhalts. Erstelle ein separates, "unordentliches Vault" für KI-generierte Inhalte.
 
-(Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture...)
+(Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md)
 
 ## Das Problem, das es löst
 

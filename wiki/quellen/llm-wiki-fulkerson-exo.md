@@ -8,7 +8,7 @@ status: active
 # Karpathy's Pattern in Production: Exo
 
 **Zusammenfassung**: Aaron Fulkerson beschreibt zwei Monate produktiven Betriebs seines „Exo"-Systems — ein über Karpathys Grundmuster hinausgehender Exokortex mit 26 Skills, 14 MCP-Servern, 8 Hooks und drei formalen Lernschleifen.
-**Quellen**: clippings/Karpathy's Pattern for an "LLM Wiki" in Production.md
+**Quellen**: clippings/Karpathy’s Pattern for an “LLM Wiki” in Production.md
 **Zuletzt aktualisiert**: 2026-05-02
 
 ---

@@ -8,7 +8,7 @@ status: active
 # Ollama-Kontextfenster: Das 2K-Standardproblem
 
 **Zusammenfassung**: Ollama setzt standardmäßig ein Kontextfenster von nur 2.048 Token — viel zu klein für Roo Codes System-Prompt (~33–51 KB). Das führt dazu, dass lokale Modelle keine Werkzeuge nutzen und nur Text im Chat ausgeben. Lösung: Custom Modelfile mit `num_ctx`-Parameter.
-**Quellen**: `Using Ollama With Roo Code Roo Code Documentation.md`, `Roo Code not using tools properly in offline setup.md`, `Local model for coding.md`, `olilanzRooCode-Local-Evaluation.md`
+**Quellen**: `Using Ollama With Roo Code  Roo Code Documentation.md`, `Roo Code not using tools properly in offline setup (with Ollama models and Open AI Compatible API provider).md`, `Local model for coding.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---
@@ -28,7 +28,7 @@ Das bedeutet: Das Modell sieht nicht einmal den vollständigen System-Prompt, ge
 - Kontext zwischen Nachrichten geht verloren — jede Folgefrage startet „neu"
 - Roo Code kreist in Schleifen ohne Fortschritt
 
-(Quelle: `Roo Code not using tools properly in offline setup.md`)
+(Quelle: `Roo Code not using tools properly in offline setup (with Ollama models and Open AI Compatible API provider).md`)
 
 ---
 
@@ -57,7 +57,7 @@ PARAMETER repeat_penalty 1.1
 ollama create qwen-32k -f Modelfile
 ```
 
-Roo Code liest den `num_ctx`-Wert automatisch aus dem Ollama-Modell und nutzt ihn ohne weitere Konfiguration. (Quelle: `Using Ollama With Roo Code Roo Code Documentation.md`)
+Roo Code liest den `num_ctx`-Wert automatisch aus dem Ollama-Modell und nutzt ihn ohne weitere Konfiguration. (Quelle: `Using Ollama With Roo Code  Roo Code Documentation.md`)
 
 ---
 
@@ -108,7 +108,7 @@ Ein oft übersehener Parameter: Ollama's Standard-`num_predict` kann Code-Ausgab
 PARAMETER num_predict 12000
 ```
 
-(Quelle: `olilanzRooCode-Local-Evaluation.md`)
+(Quelle: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`)
 
 ---
 

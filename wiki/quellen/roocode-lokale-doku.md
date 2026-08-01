@@ -8,7 +8,7 @@ status: active
 # Roo Code Offizielle Dokumentation: Lokale Modelle
 
 **Zusammenfassung**: Die offizielle Roo Code Dokumentation beschreibt Einrichtung und Betrieb mit lokalen Modellen via Ollama und LM Studio — inklusive Kontextfenster-Konfiguration, Troubleshooting und Hardware-Empfehlungen.
-**Quellen**: `Using Local Models Roo Code Documentation.md`, `Using Ollama With Roo Code Roo Code Documentation.md`, `Using LM Studio With Roo Code.md`
+**Quellen**: `Using Local Models  Roo Code Documentation.md`, `Using Ollama With Roo Code  Roo Code Documentation.md`, `Using LM Studio With Roo Code.md`
 **Zuletzt aktualisiert**: 2026-05-15
 
 ---

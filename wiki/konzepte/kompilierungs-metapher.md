@@ -8,7 +8,7 @@ status: active
 # Kompilierungs-Metapher
 
 **Zusammenfassung**: Die prägnanteste Erklärung des LLM-Wiki-Musters: Rohquellen verhalten sich wie Quellcode, das Wiki ist das kompilierte Binärformat — einmal kompilieren, beliebig oft günstig ausführen.
-**Quellen**: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md, clippings/Beyond RAG..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
+**Quellen**: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md, clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---
@@ -26,7 +26,7 @@ Rohquellen ──[ LLM kompiliert ]──► Wiki
  Notizen)                           jederzeit bereit)
 ```
 
-> "You don't execute source code every time you want to run a program. You compile it once into a binary and run that." — Urvil Joshi (Quelle: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md)
+> "You don't execute source code every time you want to run a program. You compile it once into a binary and run that." — Urvil Joshi (Quelle: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md)
 
 ## Was die Metapher bedeutet
 

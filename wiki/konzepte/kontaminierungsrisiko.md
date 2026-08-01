@@ -8,7 +8,7 @@ status: active
 # Kontaminierungsrisiko
 
 **Zusammenfassung**: Das zentrale Kritikpunkt am LLM-Wiki-Muster: Wenn das LLM beim Aufbau des Wikis halluziniert, werden diese Fehler als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten — im Gegensatz zu RAG, wo Fehler lokal bleiben.
-**Quellen**: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture..., clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md, clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md
+**Quellen**: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md, clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md
 **Zuletzt aktualisiert**: 2026-05-02
 
 ---
@@ -19,7 +19,7 @@ Bei klassischem RAG ist ein Fehler lokal: Eine falsche Antwort bleibt eine falsc
 
 Beim LLM-Wiki ist eine Halluzination **persistent**: Wenn das LLM beim Ingest einer Quelle fälschlicherweise eine Verbindung zwischen zwei Konzepten herstellt, lebt dieser falsche Link im Wiki. Bei der nächsten Abfrage zieht das System diesen Link heran. Wenn das Wiki wächst, kann eine kleine Fehlinterpretation durch Querverweise auf anderen Seiten propagieren.
 
-> "Because the LLM summarizes and compresses sources into wiki pages, there's a risk of hallucinations getting baked in as *facts*." — Urvil Joshi (Quelle: clippings/Andrej Karpathy's LLM Wiki Create your own knowledge base.md)
+> "Because the LLM summarizes and compresses sources into wiki pages, there's a risk of hallucinations getting baked in as *facts*." — Urvil Joshi (Quelle: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md)
 
 ## Warum es beim LLM-Wiki stärker ist
 

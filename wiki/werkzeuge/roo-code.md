@@ -10,7 +10,7 @@ status: archived
 > ⚠️ **Nicht mehr aktiv gepflegt** (Stand: 2026-07): Das Roo-Team hat die Entwicklung eingestellt und fokussiert sich auf „Roomote". Nachfolger in der Community: **[Zoo Code](zoo-code.md)** — Drop-in-Ersatz, Apache 2.0, aktiv entwickelt.
 
 **Zusammenfassung**: Roo Code war eine Open-Source-VS-Code-Extension für autonomes Coding — ein Auto-Coder, der LLMs nutzt um Aufgaben selbstständig abzuarbeiten, Dateien zu lesen und zu schreiben, und schrittweise komplexe Refactorings durchzuführen. Technisch abgelöst durch [Zoo Code](zoo-code.md).
-**Quellen**: `Using Local Models Roo Code Documentation.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, `No Cost Guide to Local AI Code Assistant Roo Code + Ollama.md`, `Vibe Coding 'Locally' with ClineRooCode and Ollama.md`
+**Quellen**: `Using Local Models  Roo Code Documentation.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, `No Cost Guide to Local AI Code Assistant Roo Code + Ollama.md`, `Vibe Coding ‘Locally’ with ClineRooCode and Ollama —Getting Better Experience!.md`
 **Zuletzt aktualisiert**: 2026-07-02
 
 ---

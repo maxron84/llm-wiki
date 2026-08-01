@@ -8,7 +8,7 @@ status: active
 # LLM Wiki: Bye Bye RAG (Mehul Gupta)
 
 **Zusammenfassung**: Einführungsartikel von Mehul Gupta, der das LLM-Wiki-Konzept als Überwindung der RAG-Zustandslosigkeit erklärt — mit der Küchenmetapher: RAG kocht bei jeder Frage neu, das LLM-Wiki baut eine immer besser werdende Küche.
-**Quellen**: clippings/Andrej Karpathy's LLM Wiki  Bye Bye RAG.md
+**Quellen**: clippings/Andrej Karpathy’s LLM Wiki  Bye Bye RAG.md
 **Zuletzt aktualisiert**: 2026-04-23
 
 ---

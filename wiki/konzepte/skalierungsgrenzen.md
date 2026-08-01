@@ -43,7 +43,7 @@ Das Scheitern ist nicht plötzlich — es ist schleichend:
 - Das Modell übersieht Dinge, die definitiv im Wiki stehen
 - Kein Fehler, kein Crash — einfach schlechter
 
-Karpathys eigenes Wiki (~100 Artikel, ~400.000 Wörter zu *einem* Forschungsthema) nähert sich diesen Grenzen bereits. (Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture...)
+Karpathys eigenes Wiki (~100 Artikel, ~400.000 Wörter zu *einem* Forschungsthema) nähert sich diesen Grenzen bereits. (Quelle: clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md)
 
 ## Drei Lösungsansätze
 

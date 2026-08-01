@@ -8,8 +8,8 @@ status: active
 # AMD Radeon AI Pro R9700
 
 **Zusammenfassung**: Professionelle KI-Grafikkarte mit 32 GB GDDR6 und Blower-Kühler. Vergleich zur RTX 5080 im Kontext lokaler LLM-Inferenz.
-**Quellen**: AMD Produktseite R9700, AMD Radeon AI PRO Übersichtsseite, Geizhals Produktseiten (alle 2026-05-15)
-**Zuletzt aktualisiert**: 2026-05-15
+**Quellen**: `clippings/AMD Radeon™ AI PRO R9700.md`, `clippings/AMD Radeon™ AI PRO Graphics cards for AI-First Professionals.md`, `clippings/Grafikkarten PCIe mit GPU-Hersteller AMD  Speichergröße ab 32GB Preisvergleich Geizhals Österreich.md`, `clippings/ASRock Radeon AI PRO R9700 Creator 32GB ab € 1410,76 (2026).md`, `clippings/PowerColor Radeon AI PRO R9700 ab € 1419,01 (2026).md`, `clippings/GIGABYTE Radeon AI PRO R9700 AI TOP 32G ab € 1427,60 (2026).md`, `clippings/Sapphire Radeon AI PRO R9700 ab € 1475,35 (2026).md`, `clippings/ASUS Turbo Radeon AI PRO R9700 ab € 1486,81 (2026).md`, `clippings/XFX Radeon AI PRO R9700 ab € 1575,59 (2026).md` (alle Preisstände 2026-05-15)
+**Zuletzt aktualisiert**: 2026-08-01
 
 ---
 
@@ -75,6 +75,8 @@ Die Gewinne entstehen weil die RTX 5080 diese Modelle nur mit CPU-Offloading aus
 | Sapphire | R9700 | Radial 80mm | € 1.475,35 |
 | ASUS Turbo | R9700 | Radial 75mm | € 1.486,81 |
 | XFX | R9700 | Radial 80mm | € 1.575,59 |
+
+Jede Zeile stammt aus dem gleichnamigen Geizhals-Clipping, Preisstand 2026-05-15 — z.B. (Quelle: `clippings/ASRock Radeon AI PRO R9700 Creator 32GB ab € 1410,76 (2026).md`). Preise für Hardware verfallen schnell; die Tabelle ist ein Momentwert, kein aktueller Marktpreis (überprüfungsbedürftig ab 2026-08).
 
 Alle Varianten verwenden Blower-Kühler — das ist eine Klassen-Entscheidung für professionelle AI-Karten, keine Einschränkung einzelner Hersteller. Eine Axial-gekühlte Variante existiert nicht.
 
