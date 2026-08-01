@@ -15,6 +15,30 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-02 00:30] query | Starterkit 2.2.0 — bedienbar und scharf gelaufen
+
+Zwei Anforderungen des Strippenziehers: „sicherstellen, dass es endlich läuft" **und** „bedienbar ist".
+
+**Bedienbar — die letzte Lücke.** Die Prüfung eines frisch installierten Projekts zeigte: keine `README`, und die teuerste Warnung des Kits („vor dem ersten Guard-Lauf committen") stand **nirgends** im Projekt — nur in der Terminal-Ausgabe des Installers, die wegscrollt. Dieselbe Fehlerklasse wie `BL-55` und Planungsregel 5: flüchtige Ausgabe statt committetes Dokument. Ich hatte die Erstlauf-Regeln für den *Architekten* in die Artefakte geschrieben und dabei den *Menschen* vergessen.
+
+Neu: **`TEAM.md`** im Projekt — Guard-Warnung ganz oben, Rollenübersicht, Kaskaden-Ablauf, Befehls- und Exit-Code-Tabelle (`42` ist eine Pause, kein Absturz), Ablageübersicht, Fehlersuche. Fünf Regressionstests sichern sie ab; der Installer verweist zuerst darauf.
+
+**Läuft — erstmals mit echten CLI-Aufrufen** statt Fixtures, in einem Wegwerf-Projekt (Mini-Python-Projekt, eigener Smoke-Test, Ein-Stufen-Kaskade):
+
+| Rolle | Ergebnis | Kosten |
+|---|---|---|
+| Ralph | Auth (abo) → realer Aufruf → Code gebaut → Smoke-Test grün → ein `feat(stufe1)`-Commit → Promise erkannt → State auf 2 → Cap respektiert → Exit 0 | 0,2728 USD |
+| Harry | realer Sweep, Exit 0, State auf HEAD, Produktivcode nachweislich unangetastet | 0,4751 USD |
+
+**Der Read-Only-Guard ist damit scharf belegt**: zwei `permission_denials` im Log — die `--allowedTools`-Allowlist verweigerte zwei Bash-Aufrufe, ohne dass der Aufruf als Fehler zählte. Die Kostenerfassung wies 0,7479 USD korrekt als **Abo-Gegenwert** aus, getrennt von API-Kosten.
+
+Damit ist die Kette Konfiguration → Briefing → `team_claude` → Auth → Promise → Budget-Check → State → Guard → Kostenlog **durchgängig verifiziert**. Gesamtkosten des Beweises: **0,75 USD**.
+
+**Weiterhin offen**: eine komplette `vollautomatik.sh`-Kaskade über alle vier Phasen. Frank und Axel sind einzeln geprüft (Exit 3 ohne Arbeitsvorrat), aber nie an einem echten Fund.
+
+**Aktualisierte Seiten:**
+- `werkzeuge/team-starter-kit.md` — Version 2.2.0, neuer Abschnitt „Bedienbarkeit: TEAM.md", Verifikationsstand durch den scharfen Lauf ersetzt.
+
 ## [2026-08-01 23:45] update | Starterkit 2.1.0 — Erstlauf-Regeln in die Artefakte
 
 Auslöser war eine Rückfrage des Strippenziehers: „Deine Empfehlung für den ersten Lauf wird der Architekt ausführen, richtig?" — Antwort: **nein, nur teilweise.** Die Prüfung der Artefakte zeigte, dass zwei der sechs Empfehlungen (Smoke-Test hat Vorrang, erste Kaskade kurz halten) **nirgends** standen. Sie existierten nur als Zusage in einem Gespräch; ein kalt startender Architekt in einem frischen Projekt hätte sie nicht gekannt.

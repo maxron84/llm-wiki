@@ -8,7 +8,7 @@ status: active
 # T.E.A.M.-Starterkit
 
 **Zusammenfassung**: Ein installierbares Bündel, das die [T.E.A.M.-Vorlage](../vorlagen/claude-md-ki-team.md) mit einem Konsolenbefehl als lauffähiges KI-Rollenteam in ein neues Software-Projekt bringt — 53 Dateien, sieben Fragen, Selbsttest. Sprach- und stackagnostisch.
-**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.1.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
+**Quellen**: Repo `~/Source/team-kit` (eigenes Git-Repo, Version 2.2.0); Code übernommen aus dem Feldprojekt `website-maxron-de` (22 Kaskaden, 2026-07-10 bis 2026-08-01).
 **Zuletzt aktualisiert**: 2026-08-01
 
 ---
@@ -106,7 +106,18 @@ Alle vier gehören zur selben Fehlerklasse, die schon die [Feldinspektion](../qu
 - Verhalten aller Rollen ohne Arbeitsvorrat (Exit 3 = nichts zu tun)
 - **Idempotenz**: zweiter Lauf schreibt 0 Dateien, eigene Änderungen bleiben, `.gitignore` wird nicht doppelt ergänzt
 
-**Nicht verifiziert**: ein vollständiger scharfer `vollautomatik.sh`-Lauf in einem neuen Projekt. Das kostet echtes Geld und braucht einen echten Kaskaden-Plan. Der erste scharfe Lauf bleibt ein Feldtest — das Kit sorgt dafür, dass er nicht an Formalien scheitert.
+**Scharf gelaufen am 2026-08-01** — erstmals mit echten CLI-Aufrufen statt Fixtures, in einem Wegwerf-Projekt:
+
+| Rolle | Ergebnis | Kosten |
+|---|---|---|
+| **Ralph** | Auth aufgelöst (abo) → realer Aufruf → Code gebaut → Smoke-Test grün → genau ein `feat(stufe1)`-Commit → Promise erkannt → State auf 2 → `RALPH_CAP` respektiert → Exit 0 | 0,2728 USD |
+| **Harry** | realer Sweep über die Historie, Exit 0, State auf HEAD, **Produktivcode nachweislich unangetastet** | 0,4751 USD |
+
+**Der Read-Only-Guard ist damit unter echten Bedingungen belegt**: Das Log enthält zwei `permission_denials` — die `--allowedTools`-Allowlist hat zwei Bash-Aufrufe von Harry real verweigert, ohne dass der Aufruf als Fehler zählte. Die Kostenerfassung wies 0,7479 USD korrekt als **Abo-Gegenwert** aus, getrennt von real abgerechneten API-Kosten.
+
+Damit ist die Kette Konfiguration → Briefing → `team_claude` → Auth → Promise-Auswertung → Budget-Check → State-Fortschritt → Guard → Kostenlog **durchgängig verifiziert**.
+
+**Weiterhin nicht gelaufen**: eine komplette `vollautomatik.sh`-Kaskade über alle vier Phasen inklusive Frank und Axel. Die beiden Rollen sind einzeln geprüft (Exit 3 ohne Arbeitsvorrat), aber nie an einem echten Fund.
 
 ## Erstlauf-Regeln stehen in den Artefakten, nicht im Gespräch
 
@@ -118,9 +129,24 @@ Beim Abnahmegespräch fiel auf, dass die Empfehlungen für den ersten Lauf nirge
 
 Das ist dieselbe Lehre wie Planungsregel 5 der Vorlage: Was nicht im Git steht, existiert für die nächste Instanz nicht — ob es nun ein Terminal-Abschlussbericht ist oder eine mündliche Empfehlung.
 
+## Bedienbarkeit: `TEAM.md`
+
+Bis Version 2.1.0 fehlte der **menschliche** Einstiegspunkt. Die kritischste Warnung des Kits — *vor dem ersten Guard-Lauf committen* — stand nur in der Terminal-Ausgabe des Installers, und die scrollt weg. Genau der Fehler, den Planungsregel 5 der Vorlage für den Abschlussbericht behebt: flüchtige Ausgabe statt committetes Dokument.
+
+Seit 2.2.0 legt der Installer eine `TEAM.md` im Projekt an, gefüllt und im Git:
+
+- **Guard-Warnung ganz oben**, mit Begründung
+- Rollenübersicht und das Finder-≠-Fixer-Prinzip
+- Der Kaskaden-Ablauf in vier Schritten, vom Architekten-Trigger bis zum Closeout
+- Befehlstabelle und **Exit-Code-Tabelle** — `42` ist eine Pause, kein Absturz; das ist die häufigste Verwechslung
+- Ablageübersicht (`team.config.sh` als einziger Ort zum Ändern)
+- Eine Fehlersuch-Tabelle für die typischen Startprobleme
+
+Fünf Regressionstests sichern das ab: Existenz, Guard-Warnung im Kopfbereich, erklärte Exit-Codes, Closeout als Pflicht, keine offenen Platzhalter.
+
 ## Reihenfolge nach der Installation
 
-1. `team.config.sh` und `CLAUDE.md` prüfen, TODO-Stellen füllen
+1. **`TEAM.md` lesen** — sie erklärt alles Weitere. Dann `team.config.sh` und `CLAUDE.md` prüfen, TODO-Stellen füllen
 2. **Committen** — vor dem ersten Guard-Lauf. Der Guard betrachtet uncommittete Dateien außerhalb der Whitelist als Verletzung; im Ursprungsprojekt löschte er einmal die gesamte frisch gebaute Infrastruktur (siehe [read-only-guard](../konzepte/read-only-guard.md))
 3. `./team-test.sh` — prüft die Infrastruktur, nicht das Projekt
 4. Erste Kaskade planen: Claude-Sitzung mit Opus, *„Du bist unser Architekt, lies `team/prompts/rolle-architekt.md`."* Er härtet eine Skizze aus, setzt `RALPH_CAP` und `BUDGET_EMPFEHLUNG_USD` und gibt die Scharfschalt-Sequenz aus. **Die Erstlauf-Regeln stehen in seinem Briefing** — Smoke-Test vor jedem Feature, drei bis fünf Stufen, Budget konservativ aber nicht knauserig
