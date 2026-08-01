@@ -15,6 +15,31 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-02 01:15] update | Sitzungskosten gemessen statt geschätzt — Kit-Herstellung im Feld-Ledger verbucht
+
+Zwei Aufträge: das Wiki pflegen und die Herstellungskosten des Starterkits so festhalten, dass die Projektkarte der Website sie ziehen kann.
+
+**Die Lücke**: Headless-Rollen geben `total_cost_usd` aus, der Architekt läuft interaktiv — im Abo ohne jeden Konsolenwert. Das Feldprojekt behalf sich bisher mit dem A2-Churn-Proxy (geänderte Zeilen × `16/1045` USD). Das Transkript von Claude Code enthält aber die echten Token-Zahlen.
+
+**Zwei Fallen, beide belegt:**
+
+1. Eine Modellantwort erzeugt mehrere `assistant`-Zeilen, die sich eine `message.id` und dieselbe `usage` teilen. Stumpfes Summieren ergab das 1,58- bis 1,72-fache des echten Werts — uneinheitlich, also nicht per Korrekturfaktor zu retten. 518 Zeilen entsprachen 280 eigenständigen Antworten.
+2. Nach dem Deduplizieren blieb ein konstanter Faktor 0,74 — ein Preis-, kein Zählproblem. Ursache: einstündige Prompt-Cache-TTL, Cache-Write kostet dann das Doppelte des Basis-Inputs.
+
+**Geeicht statt geraten**: Aus zwei headless-Läufen mit bekanntem `total_cost_usd` (Ralph 0,2728 / Harry 0,4751) ließ sich das Preismodell auflösen — Cache-Write 6,010 und Cache-Read 0,304 USD/Mio gegen die Liste 6,00 (1 h) und 0,30. Restfehler 0,2 %.
+
+**Ergebnis der Sitzung** (Opus 5, ~3¼ h): Wiki-Pflege 29,57 · Feldinspektion 12,36 · Kit-Bau 119,09 · Verifikationsläufe 0,75 → **161,77 USD** Abo-Gegenwert.
+
+**Die eigentliche Erkenntnis**: 75,5 % der Kosten waren Cache-Reads, Verhältnis zum Output 276 : 1. Bezahlt wird nicht, was das Modell schreibt, sondern dass es bei jedem Werkzeugaufruf den gewachsenen Kontext erneut vorgelegt bekommt. Ein Kostencounter, der nur Ausgabevolumen betrachtet, misst am Haupttreiber vorbei. Das bestätigt die Vorlagen-Regel „Prosa-Arbeit gehört nicht in den Loop" von der anderen Seite.
+
+**Gegenprobe**: A2-Churn hätte 168,09 USD geschätzt, gemessen waren 165,58 — 1,5 % Abweichung. Als Notbehelf brauchbar, bei `n = 1` aber nicht bestätigt; in dieser Sitzung heben sich womöglich zwei Fehler auf (kopierte Dateien blähen den Churn, der Proxy sieht den Cache-Read nicht).
+
+**Neu**: [sitzungskosten-aus-transkript](anleitungen/sitzungskosten-aus-transkript.md) — Fundort des Transkripts, beide Fallen, Eichverfahren, Preistabelle, Skript.
+**Aktualisiert**: [kostencounter](konzepte/kostencounter.md) (Abschnitt „Messen statt schätzen"), [team-starter-kit](werkzeuge/team-starter-kit.md) (Herstellungskosten), [index](index.md).
+**Außerhalb des Wikis**: fünf Zeilen in `website-maxron-de/.budget-ledger` (Domäne `team`, Kaskade `post-22`), von dort über `update_projekt_kosten.py` auf die T.E.A.M.-Projektkarte.
+
+---
+
 ## [2026-08-02 00:30] query | Starterkit 2.2.0 — bedienbar und scharf gelaufen
 
 Zwei Anforderungen des Strippenziehers: „sicherstellen, dass es endlich läuft" **und** „bedienbar ist".

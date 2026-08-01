@@ -154,9 +154,34 @@ Fünf Regressionstests sichern das ab: Existenz, Guard-Warnung im Kopfbereich, e
 6. `./vollautomatik.sh`
 7. **Nach dem Lauf**: `./team-status.sh --rollen-abschluss <N> <domaene>` und `--architekt-abschluss <USD> <domaene>`. Der Architekt läuft interaktiv außerhalb der Kostenlogs — ohne diesen Schritt bleibt seine Sitzung unerfasst (im Feld ~16 USD)
 
+## Was das Kit gekostet hat
+
+Der Bau lief in einer einzigen interaktiven Opus-5-Sitzung, also ohne
+Konsolenwert. Er wurde nachträglich aus dem Sitzungstranskript **gemessen**
+(Methode: [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md)):
+
+| Phase | USD | Anmerkung |
+|---|---:|---|
+| Wiki-Pflege davor | 29,57 | Audit, Log-Hygiene, `wiki_lint.py` auf 8 Prüfungen, Vorlage geteilt |
+| Feldinspektion `website-maxron-de` | 12,36 | read-only, lieferte die Lückenliste |
+| Kit-Bau 1.0.0 → 2.2.0 | 119,09 | 59 Dateien, Installer, Parametrisierung, Tests |
+| Verifikationsläufe Ralph + Harry | 0,75 | **echte** Konsolenwerte (headless, Sonnet 5) |
+| **Summe** | **161,77** | Abo-Gegenwert, real nicht abgerechnet |
+
+Zum Vergleich: der Bau der Infrastruktur im Ursprungsprojekt kostete über 22
+Kaskaden ein Vielfaches davon. Das Kit macht dieses Ergebnis für 0 USD je
+weiterem Projekt wiederverwendbar — genau das ist sein Zweck.
+
+Die Kosten sind in der Domäne `team` des Feld-Ledgers verbucht
+(`website-maxron-de/.budget-ledger`, Kaskade `post-22`) und laufen von dort über
+`update_projekt_kosten.py` auf die T.E.A.M.-Projektkarte der Website. Der teuerste
+Einzelposten der Sitzung war nicht das Schreiben, sondern das wiederholte
+Vorlegen des Kontexts — 75 % der Kosten waren Cache-Reads.
+
 ## Verwandte Seiten
 
 - [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Die Vorlage, die das Kit installiert
+- [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md) — Wie die Herstellungskosten oben gemessen wurden
 - [team-skripte-generieren](../anleitungen/team-skripte-generieren.md) — Anhang A: die Bau-Anleitung, falls doch generiert statt kopiert wird
 - [read-only-guard](../konzepte/read-only-guard.md) — Die 3-Linien-Verteidigung, im Kit verifiziert
 - [finder-fixer-prinzip](../konzepte/finder-fixer-prinzip.md) — Das tragende Prinzip des Rollenteams

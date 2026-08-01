@@ -169,8 +169,33 @@ Am Projektende wird `wiki/kosten.md` um diesen Block ergänzt:
 
 ---
 
+## Messen statt schätzen (2026-08-01)
+
+Der Kostencounter erfasst headless-Läufe exakt (`total_cost_usd` aus der
+Konsole), interaktive Sitzungen dagegen nur geschätzt — im Abo gibt es keinen
+Konsolenwert. Das Feldprojekt behalf sich mit einem **Zeilen-Proxy**
+(A2-Churn, Eichfaktor `16/1045` USD je geänderter Zeile).
+
+Das Transkript von Claude Code enthält die echten Token-Zahlen, also lässt sich
+auch eine interaktive Sitzung nachträglich **messen**. Wie das geht, welche zwei
+Fallen dabei stecken und wie man das Preismodell gegen einen bekannten
+Konsolenwert eicht, steht in
+[sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md).
+
+Die erste so gemessene Sitzung ergab zwei Dinge:
+
+- **Der Zeilen-Proxy lag nur 1,5 % daneben** (168,09 geschätzt / 165,58
+  gemessen) — als Notbehelf also brauchbar, bei `n = 1` aber nicht bestätigt.
+- **Drei Viertel der Kosten waren Cache-Reads**, Verhältnis 276 : 1 zum Output.
+  Bezahlt wird überwiegend das erneute Vorlegen des gewachsenen Kontexts, nicht
+  der erzeugte Text. Ein Kostencounter, der nur Ausgabe-Volumen betrachtet,
+  misst am Haupttreiber vorbei.
+
+---
+
 ## Verhältnis zu anderen Kostenkonzepten
 
+- **[sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md)**: Liefert die Messmethode für genau die Lücke, die der Kostencounter offenlässt — interaktive Sitzungen ohne Konsolenwert.
 - **[usd-pro-wiki-seite](usd-pro-wiki-seite.md)**: Die US$/WP-Metrik ist eine spezifische Kosteneffizienz-Kennzahl für Wiki-Seiten. Der Kostencounter ist der allgemeinere Standard, der US$/WP als optionale Vergleichszahl einbetten kann.
 - **[ralph-schleife](ralph-schleife.md)**: Ralph läuft mit `RALPH_BUDGET_USD`-Env-Variable. Das Kostencounter-Format in `wiki/kosten.md` aggregiert Ralph-Läufe zusammen mit manuellen Sessions.
 - **[claude-md-token-sparen](claude-md-token-sparen.md)**: Die Token-Sparregeln im Kostencounter-Block sind eine kompakte Version der vollständigen Token-Sparstrategie. Bei Projekten, die stark auf Token-Effizienz angewiesen sind, die vollständige Seite als Referenz lesen.
@@ -179,6 +204,7 @@ Am Projektende wird `wiki/kosten.md` um diesen Block ergänzt:
 
 ## Verwandte Seiten
 
+- [sitzungskosten-aus-transkript](../anleitungen/sitzungskosten-aus-transkript.md) — Interaktive Sitzungen aus dem Transkript messen statt schätzen
 - [usd-pro-wiki-seite](usd-pro-wiki-seite.md) — US$/WP-Metrik für Wiki-Seiten
 - [ralph-schleife](ralph-schleife.md) — Agentische Loop: Kostenstruktur und Budget-Kontrolle
 - [claude-md-token-sparen](claude-md-token-sparen.md) — Vollständige Token-Sparstrategie
