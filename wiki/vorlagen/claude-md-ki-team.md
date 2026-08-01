@@ -1,5 +1,5 @@
 ---
-date: 2026-07-12
+date: 2026-08-01
 type: vorlage
 tags: [vorlage, schema, softwareprojekt, automatisierung, kosten]
 status: active
@@ -8,8 +8,8 @@ status: active
 # CLAUDE.md-Vorlage: T.E.A.M. (KI-Rollenteam)
 
 **Zusammenfassung**: Eine wiederverwendbare CLAUDE.md-Vorlage für ein **Team aus KI-Rollen** unter der Regie eines menschlichen Senior-Entwicklers (des „Strippenziehers"). Das Muster stammt aus einem realen Projekt ([KI-Lehrer-App](../konzepte/ki-lehrer-app.md)) und verallgemeinert dessen Rollen-, Prozess- und Automatisierungs-Konzept: ein autonomer Bau-Loop (Ralph), ein planender Architekt, ein Ad-hoc-Fixer (Frank), ein read-only Red Team (Harry & Marv) und ein read-only Forensiker (Axel). Die Vorlage liefert **keine fertigen Skripte**, sondern eine **Bau-Anleitung**, mit der die aufnehmende KI-Instanz die Team-Skripte **kontextabhängig zum Zielprojekt** generiert.
-**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); **Voll-Automatik-Feldtest über fünfzehn Kaskaden** (`website-maxron-de`, 2026-07-10/12): scharfe Vollautomatik-Läufe mit realen Red-Team-Funden (HM-1…HM-32) und Frank-Fixes, plus die Budget-Governance-Bausteine und Betriebslehren aus den Kaskaden 6–15 (siehe Anhang A.7–A.9): Session-Limit-Robustheit (429, Exit-42-Pausen-Mechanik, `BL-20`/`BL-25`), Auth-Startwarnung (`BL-27`), Zwei-Schwellen-Budgetmodell (`BL-30`), automatische & domänengetrennte Architekt-/Akteur-Kostenerfassung (`BL-28`/`BL-29`/`BL-33`) und die Scharfschalt-Sequenz-Pflicht (Planungsregel 4); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
-**Zuletzt aktualisiert**: 2026-07-12
+**Quellen**: Abgeleitet aus `CLAUDE.md`, `plans/team-automation-loops.md`, `plans/roadmap-skizzen.md` (R2, R4) und `ralph.sh` des [KI-Lehrer-App](../konzepte/ki-lehrer-app.md)-Ursprungsprojekts (Dateien liegen dort, nicht in diesem Wiki-Repo); Feldtest der Auth-Mechanik (Abo-Prio-1 + stufen-lokaler API-Fallback): Projekt `website-maxron-de` (2026-07-10, dort `team-lib.sh`/`ralph.sh`); **Voll-Automatik-Feldtest über zweiundzwanzig Kaskaden** (`website-maxron-de`, 2026-07-10 bis 2026-08-01): scharfe Vollautomatik-Läufe mit realen Red-Team-Funden (HM-1…HM-53) und Frank-Fixes, plus die Budget-Governance-Bausteine und Betriebslehren aus den Kaskaden 6–22 (siehe Anhang A.7–A.10): Session-Limit-Robustheit (429, Exit-42-Pausen-Mechanik, `BL-20`/`BL-25`), Auth-Startwarnung (`BL-27`), Zwei-Schwellen-Budgetmodell (`BL-30`), automatische & domänengetrennte Architekt-/Akteur-Kostenerfassung (`BL-28`/`BL-29`/`BL-33`), die Scharfschalt-Sequenz-Pflicht (Planungsregel 4), die Abschluss-Doc-Pflicht (Planungsregel 5), die Reparatur der Kostenmessung (`BL-55`) und die Doku-Konsolidierung samt Regel-Inventar (`BL-54`); Format-Vorbild: [claude-md-lehrer](claude-md-lehrer.md).
+**Zuletzt aktualisiert**: 2026-08-01
 
 ---
 
@@ -38,7 +38,7 @@ Die Vorlage bildet das **komplette Zielbild** ab — auch Teile, die im Ursprung
 | ✅ **erprobt** | Im Ursprungsprojekt produktiv gelaufen. Direkt übernehmbar. |
 | 🟡 **Zielbild** | Konzept vollständig, aber **noch nicht battletested**. Vor produktivem Einsatz an der realen Umgebung verifizieren. |
 
-Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen**, die **Voll-Automatik** (Orchestrator + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring), der **kaskaden-abhängige Red-Team-Fokus** (`TEAM_REDTEAM_FOCUS`), die **„success ohne Promise"-Härtung** (Prompt- + Logik-Härtung), die **Session-Limit-Robustheit** (429 → Exit-42-Pausen-Mechanik + Auto-Retry mit Deckel, `BL-20`/`BL-25`), die **Auslauf-Bremse gegen Leerlaufkosten** (`TEAM_FIX_MAX_STAGNATION`), die **aktive Auth-Startwarnung** (`BL-27`), das **Zwei-Schwellen-Budgetmodell** (Soft-/Hard-Cap, `BL-30`), die **automatische & domänengetrennte Kostenerfassung** interaktiver Rollen (Architekt/Frank-im-Abo, `BL-28`/`BL-29`/`BL-33`) und die **Scharfschalt-Sequenz-Pflicht** (Planungsregel 4). Der erste echte Ende-zu-Ende-Vollautomatik-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) ist **inzwischen über fünfzehn Kaskaden scharf gelaufen** — im Zweitprojekt website-maxron-de (2026-07-10/12), mit realen Red-Team-Funden (HM-1…HM-32), die Frank gefixt hat, und wirksamem Read-Only-Guard (`permission_denials` in den Logs belegen die Durchsetzung). Damit ist auch die Voll-Automatik **✅ erprobt** (zuvor 🟡). Die im Feld gewonnenen Betriebslehren (Budget-Cap-Timing, kaskaden-spezifischer Red-Team-Fokus, „success ohne Promise"-Behandlung, Log-Rotation gegen Doppelzählung, A/B-Kennzahlen-Trennung, Session-Limit-Pause, Stagnations-Bremse, Zwei-Schwellen-Budget, interaktive Akteur-Kostenerfassung) siehe Anhang A.7–A.9.
+Konkret: **✅** Ralph-Loop, manuell angestoßene Rollen (Frank/Harry/Marv/Axel), alle Dreisätze, Status-Ketten, Auth `api|abo`, **Abo-first-mit-API-Fallback für alle automatisierten Rollen**, die **Voll-Automatik** (Orchestrator + `redteam.sh`/`frank.sh`/`axel.sh` + chirurgischer 3-Linien-Guard + `flock` + Beutebuch-Zustandsmaschine + Monitoring), der **kaskaden-abhängige Red-Team-Fokus** (`TEAM_REDTEAM_FOCUS`), die **„success ohne Promise"-Härtung** (Prompt- + Logik-Härtung), die **Session-Limit-Robustheit** (429 → Exit-42-Pausen-Mechanik + Auto-Retry mit Deckel, `BL-20`/`BL-25`), die **Auslauf-Bremse gegen Leerlaufkosten** (`TEAM_FIX_MAX_STAGNATION`), die **aktive Auth-Startwarnung** (`BL-27`), das **Zwei-Schwellen-Budgetmodell** (Soft-/Hard-Cap, `BL-30`), die **automatische & domänengetrennte Kostenerfassung** interaktiver Rollen (Architekt/Frank-im-Abo, `BL-28`/`BL-29`/`BL-33`), die **Scharfschalt-Sequenz-Pflicht** (Planungsregel 4), die **Abschluss-Doc-Pflicht** (Planungsregel 5) und die **Doku-Hygiene mit Regel-Inventar** (`BL-54`, A.10). Der erste echte Ende-zu-Ende-Vollautomatik-Lauf (Feldtest der `--allowedTools`-Wirksamkeit, A.5) ist **inzwischen über zweiundzwanzig Kaskaden scharf gelaufen** — im Zweitprojekt website-maxron-de (2026-07-10 bis 2026-08-01), mit realen Red-Team-Funden (HM-1…HM-53), die Frank gefixt hat, und wirksamem Read-Only-Guard (`permission_denials` in den Logs belegen die Durchsetzung). Damit ist auch die Voll-Automatik **✅ erprobt** (zuvor 🟡). Die im Feld gewonnenen Betriebslehren (Budget-Cap-Timing, kaskaden-spezifischer Red-Team-Fokus, „success ohne Promise"-Behandlung, Log-Rotation gegen Doppelzählung, A/B-Kennzahlen-Trennung, Session-Limit-Pause, Stagnations-Bremse, Zwei-Schwellen-Budget, interaktive Akteur-Kostenerfassung, **Prosa gehört nicht in den Bau-Loop**, **Kostenmessung darf nicht blind werden**) siehe Anhang A.7–A.10.
 
 ## Benutzung
 
@@ -96,7 +96,7 @@ Senior-Entwicklers** (des **{{Strippenzieher}}**). Jede Instanz sollte wissen,
 | Rolle | Wer/Was | Aufgabe | Kern-Prinzip |
 |-------|---------|---------|--------------|
 | **Ralph** | Der headless Bau-Loop ([`{{loop-skript}}`]({{loop-skript}})) | Arbeitet den **aktiven Plan** Stufe für Stufe ab, ein Commit pro Stufe (`{{feat-präfix}}(stufeN): …`). | Nimmt **keine** Features aus späteren Stufen vorweg. Liest vor jeder Stufe den `[Unreleased]`-Block und baut dort gelistete Fixes **nicht erneut**. ✅ erprobt |
-| **Der Architekt** | Planungs-Instanz (interaktiv, Architect-Mode) | **Plant Kaskaden**, schreibt Plan-Dokumente unter [`{{Plan-Ordner}}`]({{Plan-Ordner}}), pflegt Roadmap/Backlog, setzt Caps. Trifft die Struktur-Entscheidungen, die Ralph ausführt. **Committet je nach Projekt-Entscheid** entweder Plan-/Doku-Änderungen selbständig (`docs(plan): …`) **oder liefert die fertigen Commit-Befehle zum Kopieren** — der Strippenzieher führt sie dann händisch aus (so im Feldprojekt website-maxron-de, Entscheid 2026-07-11). | Spec ist Wahrheit vor Annahmen. **Pflicht vor jedem Entwurf:** `[Unreleased]` + `Frank-Fix`-Zeilen abgleichen. **Läuft im `{{starkes-modell}}`/API-Modus** — kein Abo-Default. Greift **normalerweise nicht** selbst in Produktivcode ein. ✅ erprobt |
+| **Der Architekt** | Planungs-Instanz (interaktiv, Architect-Mode) | **Plant Kaskaden**, schreibt Plan-Dokumente unter [`{{Plan-Ordner}}`]({{Plan-Ordner}}), pflegt Roadmap/Backlog, setzt Caps. Trifft die Struktur-Entscheidungen, die Ralph ausführt. **Committet je nach Projekt-Entscheid** entweder Plan-/Doku-Änderungen selbständig (`docs(plan): …`) **oder liefert die fertigen Commit-Befehle zum Kopieren** — der Strippenzieher führt sie dann händisch aus (so im Feldprojekt website-maxron-de, Entscheid 2026-07-11). | Spec ist Wahrheit vor Annahmen. **Pflicht vor jedem Entwurf:** `[Unreleased]` + `Frank-Fix`-Zeilen abgleichen. **Modell stark (`{{starkes-modell}}`); Auth Abo-first** (Feldprojekt website-maxron-de, Entscheid 2026-07-13 — die frühere „Architekt immer API"-Regel ist aufgehoben). Kosten daher **Abo-Gegenwert**, erfasst per Live-Schätzung statt Konsolenwert (siehe `## Kostenkontrolle`). Greift **normalerweise nicht** selbst in Produktivcode ein. ✅ erprobt |
 | **Frank der Fixer** | Spontane Out-of-Loop-Bugfixes | Behebt **akut auffallende** Bugs/UX-Reibungen **außerhalb** des Loops, ohne auf die nächste Kaskade zu warten. | Jeder Fix folgt dem **Dreisatz** (Commit `{{fix-präfix}}: …` → CHANGELOG → Backlog). Der **Normalweg** für Ad-hoc-Fixes. ✅ erprobt |
 | **Harry** | Read-Only Red Team — **Security/Pentest** | Versucht die App **bewusst auszuhebeln**: Auth/PINs/Tokens umgehen, Angriffsfläche der Netz-Schnittstellen, Pfad-/Injection-Tricks, Datenlecks in Logs/Exports. | **Rührt keinen Produktivcode an.** Nur lesen, angreifen, dokumentieren — dann Übergabe an Frank. ✅ erprobt (manuell) |
 | **Marv** | Read-Only Red Team — **Chaos/Regression** | Wirft der App Steine in den Weg: kaputte/riesige/leere Inputs (Fuzzing), Race-Conditions, korrupte Dateien, Migrations-Edge-Cases, „DAU klickt dreimal". | **Rührt keinen Produktivcode an.** Nur lesen, brechen, dokumentieren — dann Übergabe an Frank. ✅ erprobt (manuell) |
@@ -125,7 +125,7 @@ Problem **nicht erneut**.
 
 ---
 
-## Harry & Marv — Read-Only Red Team  ✅ erprobt (manuell) · 🟡 automatisiert
+## Harry & Marv — Read-Only Red Team  ✅ erprobt (manuell **und** automatisiert)
 
 **Eiserne Regel — die Handschuhe bleiben an (Read-Only):**
 
@@ -171,8 +171,10 @@ Problem **nicht erneut**.
 - **Auth:** **Abo-first mit aufruf-lokalem API-Fallback** (wie die anderen
   automatisierten Rollen; Strippenzieher-Entscheid im Feldprojekt
   website-maxron-de, 2026-07-10 — die frühere „Axel immer API"-Regel ist
-  aufgehoben, weil das starke Modell im Abo schlicht günstiger ist). Nur **Der
-  Architekt** (interaktiv, kein Loop) bleibt bewusst API.
+  aufgehoben, weil das starke Modell im Abo schlicht günstiger ist).
+  **Seit 2026-07-13 gilt das auch für Den Architekten** — **keine** Rolle ist
+  mehr fest API. Das ändert nur die Auth-Achse; die Modell-Achse (stark für
+  Axel/Architekt, günstig für die Loop-Rollen) bleibt unberührt.
 
 **Nie im Dauer-Loop** (ein Fall pro Aufruf). Budget pro Fall im
 **Zwei-Schwellen-Modell** (`BL-30`, siehe `## Kostenkontrolle`): **Soft-Cap**
@@ -208,6 +210,16 @@ Umfang, Bezug, offene Fragen — **ohne** feste Stufen-Nummern, **ohne** Cap.
 im Loop-Skript und „Vor dem Start"-Checkliste. Nur die **jeweils nächste** Kaskade
 wird so ausgehärtet; alles Fernere bleibt Skizze.
 
+> **Was nicht in den Loop gehört (✅ Feld-Lehre website-maxron-de, Kaskade 22):**
+> **Textvolumen-gebundene Prosa-Arbeit** (Doku umbauen, verdichten, umziehen)
+> plant der Architekt als **eigene Handarbeit** ein — auch wenn der Rest der
+> Kaskade in den Loop gehört. Der Loop zahlt pro Stufe einen **Kaltstart** und
+> liest die gewachsene Datei erneut; der interaktive Architekt hält denselben
+> Kontext durchgehend. Im Feld kosteten Prosa-Stufen **3,23 / 3,97 / 4,68 USD**
+> gegenüber **2,16 / 2,35 USD** für Code-Stufen derselben Kaskade (Vergleichs-
+> Kaskade: 1,85 USD/Stufe) — die teuerste Prosa-Stufe lag bereits **über der
+> 80-%-Warnschwelle** des Pro-Stufe-Caps. Details siehe Anhang A.7, Lehre 7.
+
 **3. Nummerierung erst bei der Aushärtung.** Der Start richtet sich nach dem
 **aktuellen** Stand in [`{{state-Datei}}`]({{state-Datei}}) — es entstehen keine
 „fernen" fixen Nummern, die verschoben werden müssten.
@@ -240,6 +252,56 @@ wird **aus dem Plankopf abgeleitet** (nicht geraten) und enthält verbindlich:
 Umschalten von `.ralph-plan`/[`{{state-Datei}}`]({{state-Datei}}) und der Start
 bleiben {{Strippenzieher}}-Handarbeit. Die Regel automatisiert die **Ausgabe der
 Vorlage**, nicht ihre Ausführung.
+
+**5. Abschluss-Doc ist Pflicht pro gebauter Kaskade (✅ erprobt,
+website-maxron-de, Entscheid 2026-07-13 — „ab sofort immer so").** Nach **jedem**
+Vollautomatik-Lauf legt der Architekt ein committetes
+**`{{Plan-Ordner}}/kaskade-N-abschluss.md`** an.
+
+**Warum:** Der im Terminal gedruckte Abschlussbericht ist **flüchtig** — er liegt
+nur in `.gitignore`-ten Logs, und die Roh-Kostenlogs werden beim Kostenabschluss
+zusätzlich **wegarchiviert**. Ohne Abschluss-Doc gibt es **kein** dauerhaftes, im
+Git nachlesbares Lauf-Protokoll, aus dem ein später **kalt startendes**
+Architekt-Ich den Lauf eigenständig auswerten kann. Das Doc hält verbindlich
+fest:
+
+- **Ist-Stand** (Bau / Deploy / State / Qualitäts-Gates),
+- **echte Lauf-Kosten** inklusive der Nuance **„gedruckte ‚Dieser Lauf'-Zahl vs.
+  Ledger-Basis + Restlogs"** — die gedruckte Zahl **untertreibt**, weil bereits
+  geledgerte/archivierte Stufen herausfallen (siehe A.7, Lehre 8),
+- **Funde** (Fund-/Akten-/Backlog-Nummern + Status),
+- **Release-Strategie** und **Deploy-Bedarf**,
+- die **offenen operativen Schritte** (Kostenabschluss, Backlog/Roadmap nachziehen).
+
+Wie die Scharfschalt-Sequenz (Regel 4) ist es Architekt-**Ausgabe**; das
+Committen bleibt {{Strippenzieher}}-Handarbeit, sofern das Projekt den
+Architekten nicht selbst committen lässt.
+
+---
+
+## Doku-Hygiene — die Regeldatei bleibt Regelquelle  ✅ erprobt
+
+Diese `CLAUDE.md` ist **geltendes Recht**, kein Bautagebuch. Herleitungen
+(„warum diese Zahl") und Historie („am TT.MM. ergänzt") wachsen sonst über die
+Regeln hinaus und werden **doppelt bezahlt**: Die Datei liegt ohnehin im
+Systemprompt jeder Instanz — und wenn die Rollen-Prompts zusätzlich „Rolle siehe
+CLAUDE.md, lies sie zuerst" verlangen, kommt pro Rollenaufruf ein **zweiter
+Voll-Read** obendrauf (bei ~20–30 Aufrufen je Kaskade). Verbindlich:
+
+1. **Schichten.** Geltende Regel → hierher. Herleitung/Historie → Wiki oder
+   Historien-Doc, **wörtlich verschoben**, nie ersatzlos gestrichen.
+2. **Rollen-Briefings statt Volltext.** Jede automatisierte Rolle bekommt ein
+   kurzes eigenes Briefing (`prompts/rolle-*.md`, ~20 Zeilen: wer ich bin, mein
+   Auftrag, meine eiserne Grenze, mein Dreisatz, mein Promise) — mit Fallback auf
+   diese Datei, falls das Briefing fehlt. **Guards und Promise-Strings im Prompt
+   bleiben unangetastet.**
+3. **Fund-/Aufgabenlisten archivieren**, sobald sie überwiegend abgeschlossen
+   sind — mit **archiv-bewusster Nummernvergabe**, sonst vergibt die
+   Zustandsmaschine nach der Rotation **doppelte Fund-Nummern**.
+4. **Leitplanke: kürzt Text, nie Geltung.** Regel streichen, Default ändern,
+   Guard lockern, Rolle umdefinieren sind bei einem Doku-Umbau **verboten** —
+   dafür braucht es einen eigenen, benannten Entscheid. Absicherung: das
+   **Regel-Inventar** (Anhang A.10).
 
 ---
 
@@ -277,11 +339,12 @@ Vorlage**, nicht ihre Ausführung.
     still aushebelte.
 - `api` = Pay-per-Use. Key-Quelle: Env `ANTHROPIC_API_KEY`, sonst
   `~/.config/claude-team/api-key` (eine Zeile, `chmod 600`).
-- **Abo-Default mit API-Fallback (✅ bei Ralph erprobt, übrige Loop-Rollen 🟡):**
-  Loop-Rollen starten im **Abomodus**; scheitert ein Aufruf (Timeout/Limit),
-  folgt **ein** API-Retry nur **bis zum Abschluss der laufenden Stufe**, danach
-  wieder Abo. **Axel und Der Architekt bleiben immer `api`** (starkes/teures
-  Modell, kein Abo-Default, kein Umschalter). Rezept: Anhang A.3.
+- **Abo-Default mit API-Fallback (✅ erprobt):** Loop-Rollen starten im
+  **Abomodus**; scheitert ein Aufruf (Timeout/Limit), folgt **ein** API-Retry nur
+  **bis zum Abschluss der laufenden Stufe**, danach wieder Abo. **Auch Axel und
+  Der Architekt laufen Abo-first** (Entscheide 2026-07-10/13) — das starke Modell
+  im Abo ist schlicht günstiger, die Budget-Caps bleiben als Airbag. **Keine**
+  Rolle ist mehr fest `api`. Rezept: Anhang A.3.
 - **Einrichtung pro Maschine:** einmalig `~/.claude/scripts/team-auth-setup.sh`
   (idempotent: legt Config an, migriert Keys aus Shell-Profilen in die
   Key-Datei, testet den Abo-Login headless).
@@ -329,7 +392,9 @@ klar benannte dritte Klasse — sie weicht Guard/Read-Only-Regeln **nicht** auf.
 ## Kostenkontrolle
 
 **Modell / Plattform**: {{z. B. Sonnet via Claude Code — Loop-Rollen;
-{{starkes-modell}} via API — Axel/Architekt}}
+{{starkes-modell}} — Axel/Architekt}} (**Modell** und **Auth** sind zwei
+getrennte Achsen: starkes Modell heißt **nicht** API — auch Axel und Der
+Architekt laufen Abo-first, siehe „Loop-Mechanik & Auth")
 **Budget-Modell (Zwei-Schwellen, ✅ erprobt, `BL-30`)**: Ein zentraler
 **Soft-Cap** `{{TEAM_ROLE_BUDGET_USD}}` (Default **5 USD**) gilt für **alle**
 Rollen; ein **Hard-Cap** `{{TEAM_ROLE_HARDCAP_USD}}` (Default **10 USD**) nur für
@@ -386,22 +451,35 @@ Operativer Vertrag (Bau-Details in **Anhang A.9**):
   Plan-/Doku-Churn abgeleitete **Größenordnung** der laufenden Architekt-Kosten,
   klar als „geschätzt" markiert — **nie** persistiert, nie als exakter Wert
   getarnt.
-- **A1 — echter Wert beim Kaskaden-Abschluss (rollen-agnostisch):** Der
-  {{Strippenzieher}} liest den realen Verbrauch aus der Anthropic-Konsole ab und
-  trägt ihn ein:
+- **A1 — Wert beim Kaskaden-Abschluss (rollen-agnostisch), auth-abhängig:**
   `./team-status.sh --akteur-abschluss <rolle> <auth:abo|api> <USD> <domaene> ["<notiz>"]`.
   Das Tool **ersetzt** (statt verdoppelt) eine vorhandene Zeile **derselben Rolle
-  + Kaskade** — Schätzung und echter Wert zählen so nie doppelt.
+  + Kaskade** — Schätzung und eingetragener Wert zählen so nie doppelt.
   `--architekt-abschluss` bleibt als dünner Alias.
+  - **Im API-Betrieb:** Der {{Strippenzieher}} liest den realen Verbrauch aus der
+    Anbieter-Konsole ab und trägt ihn ein.
+  - **Im Abo-Betrieb (Regelfall, seit alle Rollen Abo-first laufen):** Es gibt
+    **keinen** Konsolenwert — im Abo wird nichts abgerechnet. Persistiert wird
+    stattdessen die **A2-Schätzung als Abo-Gegenwert** (`… <rolle> abo <USD> …`).
+    Das ist die belastbarste Zahl, die das Abo zulässt; sie **nie** stillschweigend
+    als abgerechneten Betrag ausgeben.
 - **Ledger domänengetrennt (`BL-29`):** `--budget` weist die Kosten nach Domäne
   getrennt aus; das Ledger-Schema ist rückwärtskompatibel um `domaene`/`rolle`
   erweitert (Altzeilen bleiben „unzugeordnet").
 
-**Projektabschluss-Pflicht (Abschluss-Variante — Projekt hat definiertes Ende pro
-Kaskade):** Vor dem letzten Commit `wiki/kosten.md` (oder projekteigenes Pendant)
-mit vollständiger Gesamtauswertung abschließen — Tabelle aller Stufen/Fälle mit
-Kosten, Gesamtsumme, Kosteneffizienz-Notiz (z. B. Kosten pro Stufe / pro gefixtem
-Finding).
+**Kaskadenabschluss-Pflicht (✅ erprobt, website-maxron-de bis Kaskade 22):** Pro
+gebauter Kaskade sind **zwei** Dinge Pflicht — das **Abschluss-Doc**
+(Planungsregel 5) **und** der **Kostenabschluss** über das Kontostand-Werkzeug
+(`--rollen-abschluss`, `--akteur-abschluss`), beides **nach** dem Lauf im
+Architekten-Closeout, **nie** in einer Loop-Stufe (siehe A.7, Lehre 8).
+
+> **Feld-Lehre gegen die naheliegende Alternative:** Eine fortgeschriebene
+> Kosten-Prosaseite (`wiki/kosten.md` o. Ä.) als Abschlusspflicht **trägt nicht**
+> — im Feld blieb genau diese Seite bei Kaskade 17 stehen, während die Kaskaden
+> weiterliefen, und die Regel zeigte ins Leere. Konsequenz: Prosa-Kostenseite als
+> **Historie einfrieren**, maschinelle Wahrheit ist die committete
+> {{ledger-datei}} plus das Kontostand-Werkzeug; die erzählende Auswertung je Lauf
+> übernimmt das Abschluss-Doc.
 
 ---
 
@@ -430,14 +508,15 @@ Bevor die Platzhalter ersetzt werden, klärt die einrichtende Instanz mit dem
    Kosten-Politik (Modell und Auth sind **zwei getrennte Achsen**): Loop-Rollen =
    günstiges Modell (Sonnet) + Abo-first mit API-Fallback. **Axel** = starkes
    Modell (Opus/Fable) **auch im Abomodus**, Auth aber ebenfalls Abo-first mit
-   Fallback. **Der Architekt** = starkes Modell + immer API (interaktiv, kein
-   Loop). Budget-Limits siehe `## Kostenkontrolle`."
+   Fallback. **Der Architekt** = starkes Modell, Auth ebenfalls **Abo-first**
+   (interaktiv, kein Loop) — **keine** Rolle ist fest API. Budget-Limits siehe
+   `## Kostenkontrolle`."
 10. **`{{TEAM_ROLE_BUDGET_USD}}` / `{{TEAM_ROLE_HARDCAP_USD}}`** → „Budget-Schwellen
     (Default 5 / 10 USD): der zentrale **Soft-Cap** (Hinweis) gilt für alle Rollen,
     der **Hard-Cap** (Abbruch) für die iterierenden Frank & Axel. Axel-eigene
     Werte optional als `{{AXEL-Soft-Cap}}`/`{{AXEL-Hard-Cap}}`."
 11. **`{{ledger-datei}}` / `{{ARCHITEKT_USD_PRO_CHURN_ZEILE}}`** → „Optional, falls
-    Budget-Governance gewünscht (A.7–A.9): committete Ledger-Datei (Default
+    Budget-Governance gewünscht (A.7–A.10): committete Ledger-Datei (Default
     `.budget-ledger`) und Eichfaktor für die Architekt-Live-Schätzung (an einer
     realen Session eichen)."
 
@@ -464,11 +543,11 @@ Vor jeder Skript-Generierung prüfen:
 
 Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht als fertiger Code geliefert. Reifegrad wie angegeben:
 
-1. **`team-lib.sh`** 🟡 — gemeinsame Bausteine (Config-Sourcing, `flock`-Guard, Promise-Auswertung, Logging, Budget-Flags) + zentrale **Auth-Logik** (A.3). Im Feld gewachsen um: `team_claude` (Abo-first + API-Fallback, 429-Erkennung/-Retry, Exit 42), `team_guard_verify` (chirurgischer Guard), die Fehler-/429-Helfer (`team_result_is_error`, `team_result_is_429`, `team_429_reset_epoch`, `team_429_sleep`), die Kosten-Helfer (`team_kosten_summe`/`team_kosten_split`/`team_ledger_summe`/`team_kontostand_gesamt`/`team_kosten_seit`), `team_logs_archivieren` (Log-Rotation gegen Doppelzählung), `team_architekt_schaetzung` und `team_resolve_budget_cap`.
+1. **`team-lib.sh`** ✅ — gemeinsame Bausteine (Config-Sourcing, `flock`-Guard, Promise-Auswertung, Logging, Budget-Flags) + zentrale **Auth-Logik** (A.3). Im Feld gewachsen um: `team_claude` (Abo-first + API-Fallback, 429-Erkennung/-Retry, Exit 42), `team_guard_verify` (chirurgischer Guard), die Fehler-/429-Helfer (`team_result_is_error`, `team_result_is_429`, `team_429_reset_epoch`, `team_429_sleep`), die Kosten-Helfer (`team_kosten_summe`/`team_kosten_split`/`team_ledger_summe`/`team_kontostand_gesamt`/`team_kosten_seit` sowie einen Summierer über **alle** Versuchs-Logs eines Aufrufs, `BL-55`), `team_logs_archivieren` (Log-Rotation gegen Doppelzählung), `team_architekt_schaetzung` und `team_resolve_budget_cap`.
 2. **`{{loop-skript}}`** ✅ — Ralph-Äquivalent: falls keiner existiert, nach dem Loop-Muster generieren; sonst auf `team-lib.sh` umstellen.
-3. **`frank.sh`** 🟡 — Event-Loop am Beutebuch (einfachster Loop, kein Guard): greift Funde mit Status `an Frank übergeben`, fixt nach Franks Dreisatz, Promise `<promise>FRANK_FIX_COMPLETE</promise>`, Versuchszähler (Default 3) → dann `an Mensch eskaliert`.
-4. **Read-Only-Guard** 🟡 — 3 Linien (A.4) + rollenspezifischer `pre-commit`-Hook (aktiv nur bei `{{ROLE-ENV}}=harry|marv`).
-5. **`harry.sh` / `marv.sh`** 🟡 — State = letzter geprüfter Commit-Hash; Trigger = neue Commits seit State (Angriff auf **stabilen** Code, idealerweise am Kaskaden-Übergang); Promise `<promise>REDTEAM_SWEEP_COMPLETE</promise>`; **Guard Pflicht**.
+3. **`frank.sh`** ✅ — Event-Loop am Beutebuch (einfachster Loop, kein Guard): greift Funde mit Status `an Frank übergeben`, fixt nach Franks Dreisatz, Promise `<promise>FRANK_FIX_COMPLETE</promise>`, Versuchszähler (Default 3) → dann `an Mensch eskaliert`.
+4. **Read-Only-Guard** ✅ — 3 Linien (A.4) + rollenspezifischer `pre-commit`-Hook (aktiv nur bei `{{ROLE-ENV}}=harry|marv`).
+5. **`harry.sh` / `marv.sh`** ✅ — State = letzter geprüfter Commit-Hash; Trigger = neue Commits seit State (Angriff auf **stabilen** Code, idealerweise am Kaskaden-Übergang); Promise `<promise>REDTEAM_SWEEP_COMPLETE</promise>`; **Guard Pflicht**.
 6. **Polling-Orchestrator (Vollautomatik)** ✅ — dünne Schleife, die die Loops sequenziell startet (`inotify`/`post-commit` als späterer Ausbau). Sprechend benennen (`vollautomatik.sh`; ein schrittweiser Bruder `halbautomatik.sh` mit Halt/Entscheidung durch den {{Strippenzieher}}) statt kryptischer Marken-Namen (Designhinweis 7). Erkennt **Exit 42** (Session-Pause, A.8) in **allen** Phasen und die **Stagnations-Bremse** (`TEAM_FIX_MAX_STAGNATION`) in der Fixphase; liest `BUDGET_EMPFEHLUNG_USD` aus dem aktiven Plan und hebt den Lauf-Deckel nur an (nie senken).
 7. **Kosten-/Status-Werkzeug (`kosten.py` + `team-status.sh`)** ✅ — bündelt die Kosten-Summierung an **einer** Stelle (statt doppelt in `vollautomatik.sh`/`team-status.sh`); `--budget` zeigt den domänengetrennten Kontostand, `--akteur-abschluss` trägt echte interaktive Akteur-Kosten ein (A.9).
 8. **`.gitignore`** ergänzen um `.{{rolle}}-state`, `.team-loop.lock`, `.{{rolle}}-logs/` (die committete {{ledger-datei}} bleibt getrackt).
@@ -484,9 +563,9 @@ Referenz-Bausteine — nach dem bewährten Loop-Muster **beschrieben**, nicht al
 > Geschwister-Pfade (`source ./team-lib.sh`, `./ralph.sh`) eng verzahnt und
 > erwarten die Repo-Root als Standort — nicht ohne Not verschieben.
 
-### A.3 Auth-Fallback  ✅ bei Ralph erprobt (website-maxron-de, 2026-07-10) · 🟡 übrige Loop-Rollen
+### A.3 Auth-Fallback  ✅ erprobt für alle automatisierten Rollen (website-maxron-de, 2026-07-10 bis 2026-08-01)
 
-Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **aufruf-lokal** auf `api` zurück, danach zurück zu Abo. **Nur Der Architekt** (interaktiv, kein Loop) bleibt bewusst API. **Axel** ist bei der **Auth** in die Abo-first-Regel aufgenommen (Feldprojekt website-maxron-de, Strippenzieher-Entscheid 2026-07-10: starkes Modell im Abo ist günstiger, das Budget-Cap pro Fall bleibt als Airbag) — sein **Modell** bleibt davon unberührt **immer stark** (`{{starkes-modell}}`, siehe Axel-Sektion: Modell und Auth sind zwei getrennte Achsen). Das erprobte Rezept:
+Zentral in `team-lib.sh` (Feldprojekt: Helfer `team_claude`): Rollen starten im **Abomodus**, fallen bei einem gescheiterten Aufruf **aufruf-lokal** auf `api` zurück, danach zurück zu Abo. **Axel** ist bei der **Auth** in die Abo-first-Regel aufgenommen (Feldprojekt website-maxron-de, Strippenzieher-Entscheid 2026-07-10: starkes Modell im Abo ist günstiger, das Budget-Cap pro Fall bleibt als Airbag) — sein **Modell** bleibt davon unberührt **immer stark** (`{{starkes-modell}}`, siehe Axel-Sektion: Modell und Auth sind zwei getrennte Achsen). **Seit dem Folge-Entscheid 2026-07-13 läuft auch Der Architekt Abo-first** — damit ist **keine** Rolle mehr fest API, und die Kosten der interaktiven Rollen sind **Abo-Gegenwert** statt Konsolenwert (Folgewirkung auf A1, siehe A.9). Das erprobte Rezept:
 
 - **`team_resolve_auth_mode [rollen-default]`**: löst Env `AUTH_MODE` → `~/.config/claude-team/auth-mode` → Rollen-Default auf. `abo` **entfernt** `ANTHROPIC_API_KEY` aus der Prozess-Umgebung (Verdrängungsfalle, s. o.); `api` lädt den Key notfalls aus `~/.config/claude-team/api-key` (`chmod 600`) — erst diese Key-Datei macht den Fallback möglich, wenn der Loop ohne Key in der Env gestartet wurde.
 - **Stufen-lokal durch frische Auflösung**: Der Loop merkt sich die etwaige Nutzer-Übersteuerung beim Start (`AUTH_MODE_START="${AUTH_MODE:-}"`) und löst **pro Stufe neu** auf — damit endet jeder Fallback automatisch mit der Stufe.
@@ -522,45 +601,66 @@ An der **real installierten** CLI verifizieren — **nicht raten**:
 - **Empfehlung:** sequenziell (Rollen hängen inhaltlich voneinander ab: Ralph → Red Team → Frank) + **`flock`-Airbag** in **alle** Loops, gegen `index.lock`-/`status`-Races. Echte Parallelität (Git-Worktrees) bleibt späterer Ausbau.
 - **Guard-Reproducer:** ein Loop, der absichtlich `{{Produktivcode-Globs}}` anfasst, **muss** vom Post-Hook hart zurückgerollt werden (grüner Regressions-Schutz).
 
-### A.7 Budget-Governance & Feld-Betriebslehren  ✅ erprobt (website-maxron-de, Kaskaden 6–7, 2026-07-11)
+### A.7 Budget-Governance & Feld-Betriebslehren  ✅ erprobt (website-maxron-de, Kaskaden 6–22, 2026-07-11 bis 2026-08-01)
 
 **Budget-Governance (optionaler, aber empfohlener Ausbau).** Statt eines starren, wandernden Projekt-Gesamtdeckels bewährt sich das Modell **„Pro-Lauf-Deckel = operative Grenze, Gesamtstand nur dokumentiert"**:
 
 - **Committete `{{ledger-datei}}` (z. B. `.budget-ledger`)** — append-only, tab-/pipe-getrennt (`datum | kaskade | usd | auth | notiz`), **nicht** `.gitignore`-t. Sie ist die maschinenlesbare historische Basis, weil die Log-Ordner (`.{{rolle}}-logs/`) rotiert/`.gitignore`-t sind und den Stand sonst „vergessen".
-- **Log-Rotation/Archivierung (Pflicht, sonst Doppelzählung).** Wer eine committete Ledger-Datei einführt, **muss** die zugrundeliegenden Rohlogs **nach** dem Anhängen der Ledger-Zeile aus dem gezählten Pfad entfernen — **archivieren, nicht löschen** (z. B. Helfer `team_logs_archivieren <dir>`, verschiebt `*.json` nach `<dir>/archiv/`, das vom Kosten-Tool nicht-rekursiv **nicht** mitgezählt wird). Fehlt dieser Schritt, zählt **jede** abgeschlossene Kaskade **doppelt** (Ledger-Zeile **und** die nie gelöschte Rohlog-Datei). Pflicht-Reihenfolge in jeder Kaskaden-Abschluss-Stufe: Ledger-Zeile anhängen → **direkt danach** archivieren.
+- **Log-Rotation/Archivierung (Pflicht, sonst Doppelzählung) — aber im Closeout, nicht im Lauf.** Wer eine committete Ledger-Datei einführt, **muss** die zugrundeliegenden Rohlogs **nach** dem Anhängen der Ledger-Zeile aus dem gezählten Pfad entfernen — **archivieren, nicht löschen** (z. B. Helfer `team_logs_archivieren <dir>`, verschiebt `*.json` nach `<dir>/archiv/`, das vom Kosten-Tool nicht-rekursiv **nicht** mitgezählt wird). Fehlt dieser Schritt, zählt **jede** abgeschlossene Kaskade **doppelt** (Ledger-Zeile **und** die nie gelöschte Rohlog-Datei). **Reihenfolge: Ledger-Zeile anhängen → direkt danach archivieren — beides aber im Architekten-Closeout NACH dem Lauf, niemals in einer Loop-Stufe.** Eine Abschluss-**Stufe** würde mitten im Lauf genau das Geld wegräumen, das die Pro-Lauf-Durchsetzung noch messen muss (Lehre 8 — im Feld teuer gelernt). Ein Kaskaden-Plan endet in seiner letzten Stufe mit Doku/CHANGELOG.
 - **Kontostand-Tool** (z. B. `./team-status.sh --budget`, Kern in einem kleinen `scripts/kosten.py`): summiert Ledger-Basis **plus** laufende Logs und weist **real via API abgerechnet** und **Abo-Gegenwert (nicht abgerechnet)** getrennt aus — sonst wird der Abo-Gegenwert als reale Ausgabe fehlinterpretiert.
 - **Zwei Kennzahlen sauber trennen — nie vermischen.** **A) Kosten dieses Laufs** (nur Logs seit Lauf-Start, z. B. `kosten.py summe --since EPOCH` + Helfer `team_kosten_seit "$LAUF_START"`) ist die **operative Grenze**, gegen die die Durchsetzung den Pro-Lauf-Deckel prüft. **B) Gesamt-Kontostand** (lebenslang: Ledger-Basis + alle Logs) ist **reine Anzeige** (`--budget`, Abschlussbericht, Notify, Deckel-Anhebungs-Meldung). Wird die Durchsetzung versehentlich auf B umgestellt, stoppt der Lauf **sofort**, sobald die Lebenssumme die Plan-Empfehlung übersteigt — noch bevor der aktuelle Lauf etwas kostet.
 - **`BUDGET_EMPFEHLUNG_USD=…`-Zeile je Kaskaden-Plan** — der Architekt setzt sie analog zu `RALPH_CAP=…`. Die Vollautomatik liest sie und **hebt den Lauf-Deckel automatisch nur an, senkt nie**; eine explizite User-Übersteuerung (`TEAM_BUDGET_USD=…`) hat Vorrang; fehlt die Zeile, gilt der bisherige Default. Die Halbautomatik zeigt Stand + Empfehlung und fragt den User.
 - **CAP/PLAN aus dem aktiven Plan statt Skript-Edit** — der Loop liest `RALPH_CAP` per `grep` aus dem aktiven Plan und den Plan-Pfad aus einer Zeiger-Datei (z. B. `.ralph-plan`). Kaskadenwechsel wird `echo {{Plan-Präfix}}-N-….md > .ralph-plan` statt eines Skript-Edits; nur das *Auslesen* ist automatisiert, das *Weiterschalten* bleibt bewusste Strippenzieher-Aktion. Verhindert den stillen Fehlstart „`RALPH_CAP` vergessen".
 
-**Feld-Betriebslehren (in den Kaskade-6/7-Läufen real erlebt — für jedes Team wertvoll):**
+**Feld-Betriebslehren (in scharfen Läufen real erlebt — für jedes Team wertvoll):**
 
 1. **Budget-Cap-Timing.** Der Pro-Stufe-Budget-Check greift typischerweise **nach** dem LLM-Aufruf, aber **vor** dem State-Weiterschalten. Sprengt eine Stufe den Cap, ist ihre Arbeit bereits **committet**, aber die State-Datei bleibt stehen und die Vollautomatik stoppt — **kein Datenverlust**. Der Mensch prüft den Commit, schaltet manuell weiter (`echo N+1 > {{state-Datei}}`) und setzt fort. **Konsequenz:** den Pro-Stufe-Default großzügig genug wählen (Infrastruktur-/Skript-Stufen kosten mehr als reine Content-Stufen — im Feld 1 → 3 USD angehoben).
 2. **Red-Team-Fokus ist kaskaden-abhängig  ✅ gebaut (Kaskade 7).** Ein fest auf den Produktivcode (`{{Produktivcode-Globs}}`) verdrahteter Red-Team-Auftrag zielt bei einer **Infrastruktur-Kaskade** (die nur `*.sh`/Skripte/Doku anfasst) am Bau vorbei. Lösung im Feld: eine Env `TEAM_REDTEAM_FOCUS`, die **beide** festen Verdrahtungen übersteuert — den `AUFTRAG` der Red-Team-Rollen **und** den „Prüfe … unter {{Produktivcode-Globs}}"-Prompt-Scope; ohne Env bleibt alles wortgleich beim Produktivcode-Default (rückwärtskompatibel). Dogfooding: der Red-Team-Schritt der Kaskade, die diese Env baute, war selbst ihr erster Anwendungsfall (Harry/Marv auf die geänderten Skripte statt auf den Produktivcode gelenkt).
 3. **„success ohne Promise" ≠ harter Fehler  ✅ gebaut (Kaskade 7).** Verweigert der Read-Only-Guard einer Red-Team-Rolle korrekt das Ausführen (`permission_denials`), kann sie in eine Rückfrage laufen und **kein Sweep-Promise** ausgeben — obwohl sie einen Fund sauber ins Beutebuch übergeben hat. Wertet die Vollautomatik jedes Nicht-Promise als harten Stopp, hängt ein Neustart an derselben Stelle. Im Feld **beide Hebel gebaut** (Gürtel + Hosenträger): (1) **Prompt-Härtung** — die Red-Team-Rollen stellen **nie** Ausführ-Rückfragen (der Guard erzwingt Read-Only ohnehin) und geben bei sauber übergebenem Fund **immer** das Promise aus; (2) **Logik-Härtung** — ein `success`-Log (kein `is_error`) mit **neuem, sauber übergebenem** Beutebuch-Eintrag zählt **nicht** als harter Fehler. Echte Fehler (`is_error`, Guard-Bruch, Aufruf-Fehlschlag) bleiben harter Stopp. Übergangsweise ließ sich ein solcher Fund gezielt über die Halbautomatik (`halbautomatik.sh frank`) weiterverarbeiten.
-4. **Log-Rotation nicht vergessen (Doppelzählung).** Die committete Ledger-Datei sichert Kosten gegen das Rotieren/Löschen der `.gitignore`-ten Log-Ordner — **aber nur, wenn der Rotationsschritt auch gebaut wird**. Wird er vergessen, zählt jede abgeschlossene Kaskade doppelt (Ledger-Zeile **und** nie gelöschte Rohlog-Datei); im Feld summierte sich das über sieben Kaskaden auf real ~13,7 USD Phantom-Kosten. Gegenmittel: der Pflicht-Archivierungsschritt oben (Ledger-Zeile → **direkt danach** `team_logs_archivieren`).
+4. **Log-Rotation nicht vergessen (Doppelzählung).** Die committete Ledger-Datei sichert Kosten gegen das Rotieren/Löschen der `.gitignore`-ten Log-Ordner — **aber nur, wenn der Rotationsschritt auch gebaut wird**. Wird er vergessen, zählt jede abgeschlossene Kaskade doppelt (Ledger-Zeile **und** nie gelöschte Rohlog-Datei); im Feld summierte sich das über sieben Kaskaden auf real ~13,7 USD Phantom-Kosten. Gegenmittel: der Pflicht-Archivierungsschritt oben (Ledger-Zeile → **direkt danach** `team_logs_archivieren`) — **im Closeout nach dem Lauf**, siehe Lehre 8.
 5. **Durchsetzung misst Pro-Lauf-Kosten (A), nicht die Lebenssumme (B).** Wird die harte Budget-Durchsetzung versehentlich auf den lebenslangen Gesamtstand (B) statt auf die Kosten des aktuellen Laufs (A) verdrahtet, stoppt die Vollautomatik **sofort**, sobald die kumulierte Lebenssumme die Plan-Empfehlung übersteigt — man müsste bei jeder Kaskade den Pro-Lauf-Deckel hochdrehen, nur um eine Lebenszeit-Summe zu überbieten. Durchsetzung immer gegen A (Logs seit Lauf-Start); B bleibt reine Anzeige (siehe Governance-Punkte oben).
 
 6. **Zwei-Schwellen-Budget statt divergierender Defaults  ✅ gebaut (`BL-30`).** Ein zentraler **Soft-Cap** (`{{TEAM_ROLE_BUDGET_USD}}`, Default 5 USD) für alle Rollen plus ein **Hard-Cap** (`{{TEAM_ROLE_HARDCAP_USD}}`, Default 10 USD) für Frank & Axel ersetzen mehrere auseinanderlaufende Pro-Rolle-Defaults. **Kernlehre (realer Auslöser HM-32):** Ein Pro-Fall-Cap greift **nach** dem bereits bezahlten Aufruf — ist er zu tief, wird ein teurer, aber plausibler Fix als „Fehlversuch" per Rollback weggeworfen und **vervielfacht** die Kosten, statt zu sparen. Für die iterierenden Rollen (Frank/Axel) daher: Soft-Cap = **nur Hinweis** (kein Rollback), erst der Hard-Cap bricht ab. Details siehe `## Kostenkontrolle`.
+
+7. **Prosa-Arbeit gehört nicht in den Bau-Loop  ✅ erprobt (Kaskade 22).** Eine Kaskade, die überwiegend **Text** umbaut (Doku verdichten, verschieben, inventarisieren), ist im Loop **rund doppelt so teuer** wie eine Code-Kaskade: im Feld **3,23 / 3,97 / 4,68 USD** je Prosa-Stufe gegen **2,16 / 2,35 USD** je Code-Stufe derselben Kaskade (Vergleichs-Kaskade: 1,85 USD/Stufe). **Ursache:** Der Loop zahlt pro Stufe einen **Kaltstart** und liest die inzwischen gewachsene Datei erneut vollständig; der interaktive Architekt hält denselben Kontext über alle Schritte. **Zweite, unangenehmere Wirkung:** Die teuerste Stufe lag mit 4,68 USD **über der 80-%-Warnschwelle** des 5-USD-Pro-Stufe-Caps — die Kaskade stand näher am harten Stopp, als die Gesamtsumme vermuten ließ. **Konsequenz:** Textvolumen-gebundene Arbeit beim Aushärten als **Architekt-Handarbeit** einplanen (Planungsregel 2), auch wenn der Rest der Kaskade in den Loop gehört.
+
+8. **Die Kostenmessung darf weder blind werden noch Fehlversuche verschenken  ✅ gefixt (`BL-55`, 2026-08-01).** Im Feld druckte ein Abschlussbericht **6,1644 USD**, ausgegeben waren **26,4183 USD** — eine Untertreibung um **77 %**, entdeckt nur, weil ein Mensch die Zahl unplausibel fand. Drei Ursachen, jede für sich übertragbar:
+   - **(a) Die Pflicht-Reihenfolge war selbst der Bug.** Eine Kaskaden-Abschluss-**Stufe** *innerhalb* des Laufs ledgerte und **archivierte** die Rohlogs — dadurch fielen 20,25 USD aus der Pro-Lauf-Durchsetzung (Kennzahl A), und zwar **unmittelbar bevor** die offene Fixphase startete: der Deckel war ab da faktisch **zurückgesetzt**, dieselbe Leerlauf-Klasse wie die Stagnations-Bremse sie verhindern soll. **Regel:** Kostenabschluss nur im **Closeout nach dem Lauf**.
+   - **(b) Die Durchsetzung muss die Archivpfade mitzählen.** Sonst wird sie blind, sobald überhaupt jemand mitten im Lauf archiviert. Im Feld über einen **mtime-Filter** gelöst (`mv` erhält die mtime, ältere Kaskaden fallen sauber heraus). Kennzahl **B** bleibt bewusst **ohne** Archiv — sonst zählt die Ledger-Basis doppelt.
+   - **(c) Ein gescheiterter Aufrufversuch war gratis.** Die Kosten eines Aufrufs wurden aus dem **finalen** Log gelesen. Scheitert der Abo-Aufruf nach 1,68 USD und kostet der API-Fallback 0,40 USD, meldet die Stufe **0,40**. Damit ist der Pro-Stufe-Cap **umgehbar**: 4,9 (Abo-Fehlversuch) + 4,9 (API) melden 4,9 gegen einen 5-USD-Cap. **Regel:** Kosten eines Aufrufs = **Summe aller Versuchs-Logs** (Abo-Fehlversuch + API-Fallback + 429-Retries); das finale Log bleibt separat für Promise-/Erfolgsauswertung.
 
 ### A.8 Session-Limit-Robustheit (429) generieren  ✅ erprobt (`BL-20`/`BL-25`, website-maxron-de 2026-07-11)
 
 Ein Claude-Session-Limit ist eine **dritte Fehlerklasse** neben „sauberer Erfolg" und „echter Fehler" — der **Verhaltens-Vertrag** steht im Vorlagenblock („Loop-Mechanik & Auth"); **hier** liegen die **numerischen Default-Deckel** (die Feinabstimmung), auf die der Block verweist:
 
 - **Zentral in `team_claude()`:** 429-Erkennung (`api_error_status == 429` **oder** Text „session limit"/„resets"), **API-Fallback zuerst** (separates Kontingent), dann Auto-Retry mit Deckel, sonst **Exit 42** + `TEAM_LAST_PAUSE`/`TEAM_LAST_RESET`.
+- **Kosten über alle Versuche summieren (`BL-55`, A.7/Lehre 8c).** Weil ein Aufruf hier **mehrfach** stattfinden kann (Abo-Fehlversuch → API-Fallback → 429-Retries) und **jeder Versuch bezahlt** ist, muss `team_claude()` **alle** Versuchs-Logs sammeln und ihre Kosten **summieren** — nicht nur das letzte Log lesen. Sonst ist der Pro-Stufe-Cap umgehbar. Die Variable mit dem **finalen** Log bleibt davon getrennt bestehen: sie ist die richtige Quelle für die Promise-/Erfolgsauswertung (die Rollen-Skripte müssen sie lesen, nicht ihre eigene unveränderte Ausgangsvariable).
 - **Env-Deckel (Defaults):** `TEAM_429_MAX_RETRIES` = **2**, `TEAM_429_MAX_WARTEN` = **1800 s** (`0` schaltet den Auto-Retry A komplett ab), `TEAM_429_PUFFER` = **30 s** (Aufschlag auf die geparste Reset-Zeit). Ist der Reset unbekannt oder liegt er jenseits von `TEAM_429_MAX_WARTEN`, entfällt das Warten sofort zugunsten des Pausen-Exits.
 - **Alle Rollen-Skripte** reichen Exit 42 **unverändert** durch (kein State-Fortschritt, kein Fehlversuchs-Zähler); der Read-Only-Guard läuft auf **jedem** Pfad (auch Pause) **vor** der RC-Auswertung.
 - **`vollautomatik.sh`** erkennt Exit 42 in **allen** Phasen (Ralph, Red-Team-Sweeps, Frank↔Axel-Fixphase) und beendet mit einer eigenen Pausen-Meldung statt „ECHTER Fehler".
 - **Auslauf-Bremse** `TEAM_FIX_MAX_STAGNATION` = **2** (grobe zweite Obergrenze `TEAM_MAX_RUNDEN` = **12**): Fixphase bricht ab, wenn N Runden **keinen** Fortschritt zeigen (kein Frank-Fix, keine neue Axel-Akte, kein Beutebuch-Statuswechsel per Snapshot-Vergleich).
 - **Testbarkeit:** Fixture-Tests netz-/CLI-frei halten (`subprocess`+`bash -c`), Warten über `TEAM_DRY_RUN=1`/`TEAM_429_SKIP_SLEEP=1` überspringbar machen.
 
-### A.9 Interaktive Akteur-Kosten erfassen  ✅ erprobt (`BL-28`/`BL-29`/`BL-33`, website-maxron-de 2026-07-12)
+### A.9 Interaktive Akteur-Kosten erfassen  ✅ erprobt (`BL-28`/`BL-29`/`BL-33`/`HM-36`/`BL-55`, website-maxron-de 2026-07-12 bis 2026-08-01)
 
 Interaktiv arbeitende Rollen (Architekt, Frank-im-Abo) laufen **außerhalb** `team_claude` und schreiben keine `total_cost_usd`-JSONs — sonst strukturell unerfasst. Der **operative Vertrag** steht im Vorlagenblock („Kostenkontrolle"); **hier** liegen die **Bau-Details** des Kosten-Werkzeugs (`kosten.py`):
 
 - **A2 (nur Architekt):** Unterkommando `kosten.py architekt-schaetzung --since REF` (Wrapper `team_architekt_schaetzung`) schätzt aus dem Zeilen-Churn (`git diff --numstat` in `{{Plan-Ordner}}/**` + `CLAUDE.md` seit dem letzten Ledger-Commit) × Eichfaktor `{{ARCHITEKT_USD_PRO_CHURN_ZEILE}}` (an einer realen Session eichen, Rechenweg im Code kommentieren) — bewusst grob, **nie** persistiert; für `{{Produktivcode-Globs}}`-Fixes (Frank) nicht aussagekräftig, daher architekt-spezifisch.
-- **A1 (rollen-agnostisch):** Kern `kosten.py akteur-abschluss` mit `akteur_abschluss(usd, domaene, kaskade, rolle, auth, notiz)` hängt den echten, aus der Konsole abgelesenen Wert an und **ersetzt** (statt verdoppelt) die Zeile derselben **Rolle + Kaskade** (Idempotenz; Architekt- und Frank-Zeile überschreiben sich nicht). Defensiv validieren (endliche, nicht-negative Zahl, **keine** rohe `python3 -c`-Interpolation — Lehre aus `BL-23`/`HM-17`). `architekt-abschluss` bleibt als dünner Alias (`--rolle architekt --auth api`).
+- **A1 (rollen-agnostisch):** Kern `kosten.py akteur-abschluss` mit `akteur_abschluss(usd, domaene, kaskade, rolle, auth, notiz)` hängt den Wert an und **ersetzt** (statt verdoppelt) die Zeile derselben **Rolle + Kaskade** (Idempotenz; Architekt- und Frank-Zeile überschreiben sich nicht). Der Wert ist im API-Betrieb der abgelesene Konsolenwert, im **Abo-Betrieb** die A2-Schätzung als **Abo-Gegenwert** (siehe Vorlagenblock). Defensiv validieren (endliche, nicht-negative Zahl, **keine** rohe `python3 -c`-Interpolation — Lehre aus `BL-23`/`HM-17`). `architekt-abschluss` bleibt als dünner Alias (`--rolle architekt --auth api`).
+- **Sanitisierung gilt für *jedes* interpolierte Feld (Fund `HM-36`).** Nicht nur die Notiz, sondern **auch** `rolle` und `kaskade` müssen **vor** Idempotenz-Match und Zeilen-Template gegen das Trennzeichen und Zeilenumbrüche gesäubert werden — sonst zerschießt ein einzelnes `|` im Rollennamen das Ledger-Schema. Die atomare Schreib-/Ersetzungslogik in **einen** gemeinsamen Helfer auslagern, den alle Abschluss-Funktionen nutzen (sonst divergieren zwei Atomizitäts-Implementierungen, und der Schutz gilt nur für eine davon).
+- **Rollenkosten kaskadenscharf ledgern (`rollen-abschluss`).** Die automatisch geloggten Rollenkosten (Red Team, Fixer, Forensiker) wandern nicht in eine kaskadenübergreifende Sammelzeile, sondern in **eine `rolle=roles`-Zeile je Kaskade**: `kosten.py rollen-abschluss --kaskade N --domaene …`, Oberfläche `./team-status.sh --rollen-abschluss <kaskade> <domaene>` — **ledgert und archiviert in einem Schritt**. `auth` ergibt sich aus dem tatsächlichen Abo/API-Split, der exakte Split gehört in die Notiz. Ein zweiter Aufruf für dieselbe Kaskade **ersetzt** die Zeile. Läuft **nie** in der Vollautomatik — reines Closeout-Werkzeug (A.7, Lehre 8a).
+- **Auth-Split ehrlich halten (`ledger --split`).** Die Aufschlüsselung „real abgerechnet vs. Abo-Gegenwert" muss auch die `auth`-Spalte **archivierter** Ledger-Zeilen berücksichtigen, sonst fehlt die historische Zuordnung nach jeder Archivierung. Bucket-Regel mit **drittem Bucket**: `abo` → abo, `api` → api, **jeder** andere Wert (`"abo/api"`, leer, unbekannt, Altzeilen) → **`gemischt`**, so dass immer `abo + api + gemischt == Summe` gilt. **Nie** einen Split raten.
 - **Ledger-Schema rückwärtskompatibel erweitern:** `datum | kaskade | usd | auth | domaene | rolle | notiz` (bestehende 5-Feld-Zeilen bleiben gültig). `domaene` aus dem Kaskaden-**Bezug** ableiten, **nicht** aus dem rohen `{{Plan-Ordner}}/`-Pfad (Planungs-Commits liegen immer dort). `kosten.py ledger --domaene … [--rolle …] [--kaskade N]` filtert; Altzeilen ohne die Felder zählen bei gesetztem Filter **nie** mit („unzugeordnet", nie stillschweigend zugeschlagen). `--budget` markiert die Architekt-Zeile als „geschätzt" oder „echt".
+
+### A.10 Doku-Konsolidierung — die Regeldatei schlank halten  ✅ erprobt (`BL-54`, website-maxron-de Kaskade 22, 2026-08-01)
+
+Nach ~20 Kaskaden wächst die Wissensbasis zuverlässig zu, ohne sich zu schichten. Im Feld: `CLAUDE.md` **859 Zeilen**, davon ~334 Z reine Baugeschichte („am TT.MM. ergänzt"-Blöcke) und ~200 Z Herleitung — **geltende Kernregeln nur ~160 Z**; die Fundliste **3075 Zeilen** bei ~46 abgeschlossenen von 53 Funden, von vier Rollen bei **jedem** Sweep gelesen. Der **operative Vertrag** steht im Vorlagenblock („Doku-Hygiene"); hier die Bau-Details:
+
+- **Die Doppelbezahlung ist der eigentliche Hebel.** Die Regeldatei liegt ohnehin im Systemprompt jeder Instanz. Fordert der Rollen-Prompt zusätzlich „Rolle siehe CLAUDE.md — lies sie zuerst", zahlt **jeder** Rollenaufruf einen **zweiten Voll-Read** (im Feld ~20–30 Aufrufe je Kaskade). Ersatz: **Rollen-Briefings** `prompts/rolle-*.md` mit **je ~20 Zeilen** (wer ich bin / mein Auftrag / meine eiserne Grenze / mein Dreisatz / mein Promise) und Fallback auf die Regeldatei, falls die Briefing-Datei fehlt. Im Feld: **859 Z → 19–23 Z je Rollenaufruf**.
+- **Sicherheitsgurt zuerst bauen, dann umbauen — das ist die eigentliche Lehre.** **Vor** dem ersten Verschieben ein **Regel-Inventar** anlegen: jede Aussage der Regeldatei als **`NORM`** (geltendes Recht), **`HERLEITUNG`** (warum) oder **`HISTORIE`** (wann gebaut) klassifiziert, mit wörtlichem Zitat. Dazu ein **dauerhafter Regressionstest**: jedes `NORM`-Zitat muss wörtlich (whitespace-normalisiert) in der Regeldatei vorkommen, und jeder Abschnitt muss im Inventar vertreten sein. `HERLEITUNG`/`HISTORIE` dürfen ins Wiki wandern, `NORM` nicht. **Leitplanke: kürzt Text, nie Geltung** — Regel streichen, Default ändern, Guard lockern, Rolle umdefinieren sind im Umbau verboten.
+- **Der Gurt hat im Feld real gehalten.** Als eine spätere Regeländerung (`BL-55`) eine Regel **bewusst umkehrte**, schlug der Test rot an und zwang dazu, die betroffenen Inventar-Zeilen **benannt** nachzuziehen — statt sie stillschweigend verschwinden zu lassen. Genau dafür ist er da: Er verbietet keine Änderung, er macht sie **sichtbar**.
+- **Fundliste rotieren — mit archiv-bewusster Nummernvergabe.** Abgeschlossene Funde in ein Archiv-Doc verschieben (im Feld **3075 Z → 46 Z**). **Fallstrick:** Die `next-id`-Logik der Zustandsmaschine muss **Archiv und aktive Liste zusammen** betrachten, sonst vergibt sie nach der Rotation **doppelte Fund-Nummern** und zwei verschiedene Funde tragen dieselbe ID.
+- **Diese Kaskade nicht in den Loop geben** — sie ist der Musterfall für A.7/Lehre 7 (Prosa-Arbeit als Architekt-Handarbeit).
 
 ---
 
