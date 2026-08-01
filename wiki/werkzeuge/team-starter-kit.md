@@ -178,6 +178,13 @@ Die Kosten sind in der Domäne `team` des Feld-Ledgers verbucht
 Einzelposten der Sitzung war nicht das Schreiben, sondern das wiederholte
 Vorlegen des Kontexts — 75 % der Kosten waren Cache-Reads.
 
+> **Offen (`BL-56` im Feldprojekt)**: Die Verbuchung deckt eine Schwäche der
+> abgeleiteten Kennzahl auf. Der dort ausgewiesene „Wert-Hebel" teilt den
+> Engineering-Gegenwert durch die Compute-Kosten — der Gegenwert zählt aber
+> Commit-Tage **des Feld-Repos**, während die Kosten inzwischen repo-übergreifend
+> erfasst werden. Der Kit-Bau erzeugte dort keine Commits, also wuchs nur der
+> Nenner. Die Kostenzahlen sind belastbar, die Kennzahl wird vor Ort überarbeitet.
+
 ## Verwandte Seiten
 
 - [claude-md-ki-team](../vorlagen/claude-md-ki-team.md) — Die Vorlage, die das Kit installiert

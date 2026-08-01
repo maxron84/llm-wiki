@@ -36,7 +36,9 @@ Zwei Aufträge: das Wiki pflegen und die Herstellungskosten des Starterkits so f
 
 **Neu**: [sitzungskosten-aus-transkript](anleitungen/sitzungskosten-aus-transkript.md) — Fundort des Transkripts, beide Fallen, Eichverfahren, Preistabelle, Skript.
 **Aktualisiert**: [kostencounter](konzepte/kostencounter.md) (Abschnitt „Messen statt schätzen"), [team-starter-kit](werkzeuge/team-starter-kit.md) (Herstellungskosten), [index](index.md).
-**Außerhalb des Wikis**: fünf Zeilen in `website-maxron-de/.budget-ledger` (Domäne `team`, Kaskade `post-22`), von dort über `update_projekt_kosten.py` auf die T.E.A.M.-Projektkarte.
+**Außerhalb des Wikis**: sechs Zeilen in `website-maxron-de/.budget-ledger` (Domäne `team`, Kaskade `post-22`), von dort über `update_projekt_kosten.py` auf die T.E.A.M.-Projektkarte.
+
+**Nachtrag — was die Verbuchung sichtbar machte**: Der „Wert-Hebel" der Projektkarte fiel von 102× auf 49×. Nach Formel korrekt, in der Sache nicht: der Zähler (Engineering-Gegenwert) zählt Commit-Tage **des Feld-Repos**, der Nenner nimmt seit dieser Buchung auch Kosten aus fremden Repos auf. Der Kit-Bau hinterließ dort keine Commits — Zähler stand, Nenner wuchs. Kosten werden repo-übergreifend gemessen, Wert repo-lokal. Auf Einwand des Strippenziehers als `BL-56` im Feldprojekt vermerkt (Backlog **und** Roadmap-Skizzen, Prio hoch, vier Lösungswege), zur Überarbeitung mit dem dortigen Architekten. Warnung an beiden Stellen: `update_projekt_kosten.py` läuft bei jedem Deploy — vor der Klärung nicht ausrollen.
 
 ---
 
