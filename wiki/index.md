@@ -147,6 +147,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [token-sparen](anleitungen/token-sparen.md) — Token sparen mit Claude Code: 4-stufige Strategie von Sofortmaßnahmen bis fortgeschrittener Architektur
 - [zusammenarbeit-git](anleitungen/zusammenarbeit-git.md) — Gemeinsam am Wiki arbeiten: GitHub Collaborators, Branch-Workflow, Konflikte lösen
 - [flutter-claude-md-anpassung](anleitungen/flutter-claude-md-anpassung.md) — Software-Vorlage für ein Flutter-Projekt über 5 Plattformen anpassen (Struktur, State-Management, Zielplattformen)
+- [team-skripte-generieren](anleitungen/team-skripte-generieren.md) — Anhang A der T.E.A.M.-Vorlage: Skripte bauen, Auth-Fallback, Read-Only-Guard, Budget-Governance, 429-Robustheit (A.1–A.10)
 
 ## Projekte
 

@@ -15,6 +15,28 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 17:10] update | T.E.A.M.-Vorlage aufgeteilt — Anhang A als eigene Anleitung
+
+Die T.E.A.M.-Vorlage war mit **69,8 KB** die größte Datei im Repo — größer als das Log, dreimal so groß wie die nächstgrößte Vorlage. Aufgeteilt entlang der Nutzungsgrenze:
+
+| | vorher | nachher |
+|---|---|---|
+| `vorlagen/claude-md-ki-team.md` | 69,8 KB | **41,1 KB** |
+| `anleitungen/team-skripte-generieren.md` | — | **32,8 KB** |
+
+**Trennlinie**: Betriebsregeln (was das Team befolgt, bei jeder Vorlagen-Änderung gelesen) bleiben in der Vorlage; die Bau-Anleitung Anhang A.1–A.10 (Einrichtungsarbeit, einmal beim Aufsetzen gelesen) wandert in die neue Anleitung. Das ist A.10 der Vorlage — „Regeldatei schichten, kürzt Text, nie Geltung" — auf die Vorlage selbst angewandt.
+
+**Abschnittsnummern A.1–A.10 blieben unverändert**, damit alle bestehenden Verweise („siehe Anhang A.7") weiter stimmen. Betroffene Verweise in `konzepte/kostencounter.md`, `konzepte/ki-team-forensik.md` und `quellen/claude-md-ki-team.md` funktionieren unverändert.
+
+**Korrektur zur Audit-Schätzung**: Der Audit-Bericht nannte „~20K Token in jeder Session" für die Vorlage als CLAUDE.md. Das war zu hoch — der tatsächlich in ein Zielprojekt kopierte Vorlagenblock ist **28,5 KB (~8K Token)**; die restlichen 41 KB waren Wiki-Meta und Anhang A, die nie in die Ziel-`CLAUDE.md` wandern. Die Aufteilung entlastet also nicht den Zielprojekt-Betrieb, sondern die Arbeit **an** der Vorlage in diesem Wiki.
+
+**Neue Seiten:**
+- `anleitungen/team-skripte-generieren.md` — A.1 Vorbedingungs-Check, A.2 Generierungs-Reihenfolge, A.3 Auth-Fallback, A.4 Read-Only-Guard (3 Linien), A.5 Faktencheck-Pflicht, A.6 Parallelität, A.7 Budget-Governance + acht Feld-Betriebslehren, A.8 Session-Limit-Robustheit (429), A.9 Interaktive Akteur-Kosten, A.10 Doku-Konsolidierung.
+
+**Aktualisierte Seiten:**
+- `vorlagen/claude-md-ki-team.md` — Anhang A durch Zeiger-Abschnitt ersetzt; Benutzung Schritt 3 und neuer Designhinweis 9 verweisen auf die Anleitung.
+- `index.md`, `README.md` — neue Anleitung aufgenommen, Zahlen auf 120 Seiten.
+
 ## [2026-08-01 16:20] update | Seitenklassifikation als Konzeptskizze eingeordnet
 
 Beim Audit aufgefallen: `konzepte/seitenklassifikation.md` beschrieb ein **Pflichtfeld** `**Klassifikation**:`, das auf **0 von 118 Seiten** existierte und in der `CLAUDE.md` nicht gefordert wird — das Wiki stellte eine Regel über sich selbst auf und brach sie.

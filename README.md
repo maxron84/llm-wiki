@@ -92,6 +92,7 @@ Schritt-für-Schritt-Guides für Einstieg, Betrieb und Sonderfälle:
 | [Token sparen](wiki/anleitungen/token-sparen.md) | 4-stufige Strategie zur Token-Reduktion — von Sofortmaßnahmen bis fortgeschrittener Architektur |
 | [Zusammenarbeit & Git](wiki/anleitungen/zusammenarbeit-git.md) | Gemeinsam am Wiki arbeiten: GitHub Collaborators, Branch-Workflow, Konflikte lösen |
 | [Flutter-Anpassung](wiki/anleitungen/flutter-claude-md-anpassung.md) | Software-Vorlage für ein Flutter-Projekt über 5 Plattformen anpassen (Struktur, State-Management, Zielplattformen) |
+| [T.E.A.M.-Skripte generieren](wiki/anleitungen/team-skripte-generieren.md) | Anhang A der T.E.A.M.-Vorlage: Skripte bauen, Auth-Fallback, Read-Only-Guard, Budget-Governance, 429-Robustheit |
 
 ---
 
@@ -113,10 +114,10 @@ Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlich
 | Quellen | 25 |
 | Werkzeuge | 14 |
 | Vorlagen | 13 |
-| Anleitungen | 9 |
+| Anleitungen | 10 |
 | Personen | 7 |
 | Projekte | 1 |
-| **Gesamt** | **119** |
+| **Gesamt** | **120** |
 
 - **45 Quelldokumente** aufgenommen (37 Clippings + 8 Raw) — seit 2026-08-01 restlos alle
 - **25 Quellen** mit eigener Zusammenfassungsseite
