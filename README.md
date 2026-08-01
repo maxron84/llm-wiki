@@ -109,18 +109,18 @@ Das Skript liegt global unter `~/.claude/scripts/` und braucht keine zusätzlich
 
 | Bereich | Seiten |
 |---|---|
-| Konzepte | 46 |
-| Quellen | 24 |
+| Konzepte | 48 |
+| Quellen | 25 |
 | Werkzeuge | 14 |
 | Vorlagen | 13 |
 | Anleitungen | 9 |
 | Personen | 7 |
 | Projekte | 1 |
-| **Gesamt** | **114** |
+| **Gesamt** | **119** |
 
-- **45 Quelldokumente** aufgenommen (37 Clippings + 8 Raw)
+- **46 Quelldokumente** aufgenommen (38 Clippings + 8 Raw)
 - **24 Quellen** mit eigener Zusammenfassungsseite
-- Keine toten Links, keine verwaisten Seiten (zuletzt geprüft 2026-07-10 mit `wiki_lint.py`)
+- Keine toten Links, keine verwaisten Seiten (zuletzt geprüft 2026-08-01 mit `wiki_lint.py`)
 
 ---
 

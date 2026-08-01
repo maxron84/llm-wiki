@@ -15,6 +15,31 @@ status: active
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
 
+## [2026-08-01 16:20] update | Seitenklassifikation als Konzeptskizze eingeordnet
+
+Beim Audit aufgefallen: `konzepte/seitenklassifikation.md` beschrieb ein **Pflichtfeld** `**Klassifikation**:`, das auf **0 von 118 Seiten** existierte und in der `CLAUDE.md` nicht gefordert wird — das Wiki stellte eine Regel über sich selbst auf und brach sie.
+
+Entscheidung: **nicht einführen**, Seite als Konzeptskizze kennzeichnen. Drei Gründe (ausführlich auf der Seite): Der Nutzen ist hier klein, weil fast alle Seiten „Zeitlos"/„Gemischt" wären; die zeitgebundenen Fälle sind bereits über Datumsangaben im Text und ⚠️/`status: archived` gelöst; und eine Halbeinführung wäre schlechter als keine, weil der Lint sie nicht durchsetzen könnte.
+
+**Aktualisierte Seiten:**
+- `konzepte/seitenklassifikation.md` — `status: draft`, Geltungsbereichs-Kasten oben (Feld gilt in der YouTube-Vorlage, nicht hier), neuer Abschnitt „Warum hier nicht eingeführt", Lint-Abschnitt relativiert.
+- `index.md` — Beschreibung auf *(Konzeptskizze)* umgestellt.
+
+## [2026-08-01 16:00] ingest | What Is Andrej Karpathy's LLM Wiki — And How Can You Extend It (Vishal Mysore)
+
+Beim Audit als **einzige nie aufgenommene Quelle** gefunden — lag seit dem 2026-05-02 in `clippings/`.
+Tiefe: **Mittel** (Quellenseite + eine Konzeptseite)
+
+**Neue Seiten:**
+- `quellen/llm-wiki-wikizz-mysore.md` — Medium-Artikel vom 2026-04-18. Referiert das Grundmuster und erweitert es um einen **5W1H-Kontextrahmen**; umgesetzt im quelloffenen Browser-Werkzeug **LLM WikiZZ** (Zero-Server, lokales Parsen, Cloudflare-Worker als CORS-Proxy zu NVIDIA NIM/Anthropic/Gemini). Drei Mechanismen: autonomes Gerüst, Kontrast-Maschine (Plain vs. WikiZZ nebeneinander), LLM-Jury (Bewerter-Modell benennt die Differenz). Neue Zahl fürs Wiki: 5.000 Stars / 4.400 Forks binnen zwei Wochen — als Sekundärangabe und Momentwert markiert.
+- `konzepte/kontextrahmen-5w1h.md` — Die sechs Felder (Wer/Was/Wann/Wo/Warum/Wie), Mysores Diagnose der **Kontextschuld**, Beispieltabelle am Karpathy-Gist, Vorschlag für einen optionalen Block auf Quellenseiten. Bewertung: übernehmenswert ist der Rahmen, nicht das Werkzeug; Nutzen ist unbelegt (der Messaufbau existiert, Ergebnisse fehlen), und sechs autonom gefüllte Interpretationsfelder sind sechs neue Angriffsflächen fürs Kontaminierungsrisiko.
+
+**Aktualisierte Seiten:**
+- `konzepte/llm-wiki-v2.md` — Querverweis: zwei Wege zum selben Wissensgraphen (typisierte Kanten vs. gemeinsame Rahmenfelder).
+- `konzepte/query-templates.md` — Querverweis: 5W1H als Gegenstück (Rahmenbedingungen statt Analyseart).
+- `konzepte/community-projekte.md` — LLM WikiZZ als vierte unabhängige Implementierung ergänzt.
+- `index.md` — beide neuen Seiten aufgenommen.
+
 ## [2026-08-01 14:30] update | T.E.A.M.-Vorlage: Feldstand Kaskaden 16–22 zurückgespielt
 
 Sechster Rückfluss aus dem Feldprojekt (`website-projekt`, Zeitraum 2026-07-12 bis 2026-08-01). Sieben Erkenntnisse, davon **zwei Korrekturen überholter Vorlagen-Aussagen** statt reiner Ergänzungen — das erste Mal, dass der Rückfluss eine bestehende Pflichtregel als Bug entlarvt.

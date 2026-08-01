@@ -79,6 +79,7 @@ Query-Templates sind besonders wertvoll beim [täglichen Workflow](taeglicher-wo
 ## Verwandte Seiten
 
 - [query-workflow](query-workflow.md)
+- [kontextrahmen-5w1h](kontextrahmen-5w1h.md) — Gegenstück: unter welchen Rahmenbedingungen eine Quelle gilt
 - [lint-pruefung](lint-pruefung.md)
 - [taeglicher-workflow](taeglicher-workflow.md)
 - [llm-wiki-muster](llm-wiki-muster.md)

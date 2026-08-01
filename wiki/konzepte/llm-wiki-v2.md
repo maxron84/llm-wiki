@@ -115,6 +115,7 @@ llm-wiki/
 
 - [llm-wiki-muster](llm-wiki-muster.md) — Das Grundmuster, das v2 erweitert
 - [llm-wiki-v2-tamiltech](../quellen/llm-wiki-v2-tamiltech.md) — Quellartikel
+- [kontextrahmen-5w1h](kontextrahmen-5w1h.md) — Konkurrierende Musterweiterung: Graph über gemeinsame Rahmenfelder statt typisierter Kanten
 - [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Grundmuster
 - [yaml-frontmatter](yaml-frontmatter.md) — Metadatenstruktur
 - [lint-pruefung](lint-pruefung.md) — Qualitätsprüfung

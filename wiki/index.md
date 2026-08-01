@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-07-12 (Konzeptskizze: T.E.A.M.-Forensik — 1 neue Seite)
+**Zuletzt aktualisiert**: 2026-08-01 (Wiki-Audit: 2 neue Seiten, Log-Hygiene, Vorlagen-Aufteilung)
 
 ---
 
@@ -31,7 +31,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [query-templates](konzepte/query-templates.md) — 6 Abfragetypen: Synthese, Lücken, Debatte, Output, Health, Anwendung
 - [fortgeschrittene-architektur](konzepte/fortgeschrittene-architektur.md) — RAG über Wiki-Seiten, Routing, Prompt Caching, Feintuning
 - [claude-md-design](konzepte/claude-md-design.md) — 6 Designprinzipien für effektive CLAUDE.md-Anweisungsdateien
-- [seitenklassifikation](konzepte/seitenklassifikation.md) — Zeitlos / Gemischt / Zeitgenössisch: Pflichtfeld für zeitliche Relevanz von Wiki-Seiten
+- [seitenklassifikation](konzepte/seitenklassifikation.md) — *(Konzeptskizze)* Zeitlos / Gemischt / Zeitgenössisch — Pflichtfeld der YouTube-Vorlage, hier bewusst nicht eingeführt
+- [kontextrahmen-5w1h](konzepte/kontextrahmen-5w1h.md) — Wer/Was/Wann/Wo/Warum/Wie: Rahmen einer Quelle festhalten, nicht nur ihren Inhalt
 - [multimodale-quellen](konzepte/multimodale-quellen.md) — *(Konzeptskizze)* Audio, Bild und Video als Wiki-Quellen jenseits von Text
 - [mece-prinzip](konzepte/mece-prinzip.md) — MECE-Ordnerstruktur für Vaults (keine Überlappungen, keine Lücken)
 - [taeglicher-workflow](konzepte/taeglicher-workflow.md) — Sitzungseröffnung und -abschluss als tägliches Protokoll
@@ -107,6 +108,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [llm-wiki-fulkerson-exo](quellen/llm-wiki-fulkerson-exo.md) — Aaron Fulkerson: 2 Monate Produktionsbetrieb mit Exo (26 Skills, 14 MCP-Server, 3 Lernschleifen)
 - [llm-wiki-tecadrise](quellen/llm-wiki-tecadrise.md) — TecAdRise.ai: Karpathys Idee als Bewegung, Community-Projekte, Constrained Pipelines
 - [llm-wiki-v2-tamiltech](quellen/llm-wiki-v2-tamiltech.md) — Tamiltech: LLM Wiki v2 mit Produktionserfahrung — typisierte Beziehungen, Hooks, Trust Score
+- [llm-wiki-wikizz-mysore](quellen/llm-wiki-wikizz-mysore.md) — Vishal Mysore: 5W1H-Kontextrahmen als Musterweiterung, Werkzeug LLM WikiZZ mit Kontrast-Modus und LLM-Jury
 - [llm-wiki-enterprise-falconer](quellen/llm-wiki-enterprise-falconer.md) — Falconer: Enterprise-Skalierung — vier Eigenschaften, warum persönliche Muster nicht skalieren
 - [ralph-claude-code-llm-wiki-metrik](quellen/ralph-claude-code-llm-wiki-metrik.md) — Ökonomische Analyse: Ralph + Karpathy, US$/WP-Metrik, drei Kostenszenarien
 - [guide-flutter-integration](quellen/guide-flutter-integration.md) — Anleitung zur Anpassung der Software-Vorlage für ein Flutter-Projekt über 5 Plattformen

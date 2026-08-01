@@ -67,6 +67,7 @@ Für die Weiterentwicklung des Musters (v2 mit typisierten Beziehungen, Enterpri
 - [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Das Grundmuster
 - [llm-wiki-tecadrise](../quellen/llm-wiki-tecadrise.md) — Quelle
 - [llm-wiki-v2](llm-wiki-v2.md) — Weiterentwicklung des Musters
+- [llm-wiki-wikizz-mysore](../quellen/llm-wiki-wikizz-mysore.md) — LLM WikiZZ: vierte unabhängige Implementierung, quelloffen und browser-lokal
 - [kontaminierungsrisiko](kontaminierungsrisiko.md) — BrainDB adressiert dieses Problem
 - [fortgeschrittene-architektur](fortgeschrittene-architektur.md)
 
