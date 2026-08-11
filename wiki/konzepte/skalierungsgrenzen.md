@@ -8,8 +8,8 @@ status: active
 # Skalierungsgrenzen des LLM-Wikis
 
 **Zusammenfassung**: Das LLM-Wiki hat strukturelle Skalierungsgrenzen: index.md wird bei ~50–100K Token zum Flaschenhals, Qualitätsdegradierung beginnt bei ~200–300K Token. Lösungen: jDocMunch (sektionsbasiert) und qmd (semantische Suche).
-**Quellen**: clippings/J. Gravelle — DEV Community Profile.md, clippings/LLM Wiki Revolution..., clippings/What Is Andrej Karpathy's LLM Wiki...
-**Zuletzt aktualisiert**: 2026-04-23
+**Quellen**: clippings/J. Gravelle — DEV Community Profile.md, clippings/LLM Wiki Revolution..., clippings/What Is Andrej Karpathy's LLM Wiki..., raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -92,6 +92,10 @@ Ein typischer Ingest (System-Prompt + Clipping + Gesprächsverlauf) braucht 18�
 
 Das ist keine Skalierungsgrenze des Wikis, sondern eine Grenze der *Session-Kapazität*. Auch ein kleines Wiki (30 Seiten) überfordert lokale Modelle beim Ingest. → [lokale-modelle](../anleitungen/lokale-modelle.md), [ollama-kontextfenster](ollama-kontextfenster.md)
 
+**Die Unterscheidung hat einen Namen bekommen.** Die beiden Grenzen sind Engpass A (Wiki-Größe, alles oben auf dieser Seite) und Engpass B (Session-Kapazität, dieser Abschnitt). Sie werden ständig verwechselt, weil beide sich als „Kontextfenster voll" melden — der Unterschied entscheidet aber darüber, wann ein Umbau begründet ist. A tritt bei Claude ab ~300 Seiten auf und lässt sich mit einem größeren Modell erschlagen; B tritt lokal ab Seite 1 auf und lässt sich *nicht* mit mehr VRAM erschlagen, weil die quadratische Attention vor dem Speicher greift. (Quelle: raw/sqlwiki_lokalesmodell_architektur.md) → [engpass-groesse-vs-session](engpass-groesse-vs-session.md), [kv-cache-rechnung](kv-cache-rechnung.md)
+
+Daraus folgt eine Korrektur an der Empfehlungstabelle weiter unten: Sie gilt für Engpass A. Wer lokal arbeitet, kommt mit „< 50–100 Seiten → direkt laden" nicht durch — dort ist die Datenbank kein Skalierungswerkzeug, sondern die Voraussetzung für den Betrieb überhaupt. → [sql-wiki-architektur](sql-wiki-architektur.md)
+
 ---
 
 ## Das mentale Modell (J. Gravelle)
@@ -106,6 +110,8 @@ Die Wahl der Lösung hängt von der Wiki-Größe ab:
 | 100–500 Seiten | qmd oder jDocMunch |
 | > 500 Seiten | RAG über kompilierte Wiki-Seiten |
 
+Diese Tabelle gilt für ein Wiki, das von einem starken Cloud-Modell gepflegt wird. Bei lokalem Betrieb greift die vierte Zeile von Anfang an — siehe [engpass-groesse-vs-session](engpass-groesse-vs-session.md).
+
 ## Verwandte Seiten
 
 - [jdocmunch](../werkzeuge/jdocmunch.md)
@@ -114,6 +120,9 @@ Die Wahl der Lösung hängt von der Wiki-Größe ab:
 - [rag-vs-wiki](rag-vs-wiki.md)
 - [query-workflow](query-workflow.md)
 - [ingest-workflow](ingest-workflow.md)
+- [engpass-groesse-vs-session](engpass-groesse-vs-session.md) — Die zwei Engpässe sauber getrennt
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Die Datenbank als Antwort auf beide
+- [kv-cache-rechnung](kv-cache-rechnung.md) — Warum mehr VRAM Engpass B nicht löst
 
 ---
 

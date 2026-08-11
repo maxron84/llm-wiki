@@ -8,8 +8,8 @@ status: active
 # Ralph-Schleife
 
 **Zusammenfassung**: Geoffrey Huntleys deterministisches Agentenmuster — eine primitive `while true`-Bash-Schleife, die einem Coding-Agenten denselben Prompt wiederholt vorlegt, bis dieser eine Completion-Promise emittiert. Benchmark: $10,42/h mit Sonnet 4.5. Für das LLM-Wiki ist es die fehlende Ingest-Automatisierungsschicht.
-**Quellen**: raw/ralph-claude-code-llm-wiki_metrik.md
-**Zuletzt aktualisiert**: 2026-05-11
+**Quellen**: raw/ralph-claude-code-llm-wiki_metrik.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -62,9 +62,23 @@ Konkret: Ein Ralph-Loop, der das `inbox/`-Verzeichnis pollt und neue Quellen aut
 
 Die Ralph-Schleife ist **keine** KI-Planung — die Planung liegt im Agenten. Die Schleife ist der dumbste mögliche Scheduler. Das ist ihr Vorteil: sie versagt nicht auf interessante Art, sie ist deterministisch, und sie skaliert linear mit Token-Kosten.
 
+## Die Schleife mit einer Datenbank als Gedächtnis
+
+Das Muster überträgt sich unverändert auf den [SQL-Betrieb](sql-wiki-architektur.md) — zustandslose Iterationen, frischer Kontext bei jedem Durchgang, Persistenz über einen externen Speicher statt über das Kontextfenster.
+
+> „Nur liegt der externe Speicher hier in einer Datenbank mit Constraints statt in einem Dateisystem ohne." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Zwei Dinge ändern sich dadurch, und beide betreffen die Achillesferse des Musters — dass Ralph nicht weiß, wann er fertig ist:
+
+1. **Die Abbruchbedingung wird maschinell prüfbar.** Statt einer Completion-Promise des Modells oder eines Iterationslimits läuft die Schleife, bis alle [Lint-Queries](lint-pruefung.md) leer zurückkommen.
+2. **Jede Iteration wird klein genug für ein schwaches Modell.** Das [Ingest-Fließband](ingest-fliessband.md) zerlegt den Ingest in sechs Schritte, von denen drei ohne Modell laufen und keiner 3k Token übersteigt. Damit wird die Schleife erstmals auch lokal fahrbar — allerdings mit schlechterer Synthese-Qualität. → [wh-pro-wiki-seite](wh-pro-wiki-seite.md)
+
 ## Verwandte Seiten
 
 - [geoffrey-huntley](../personen/geoffrey-huntley.md) — Entwickler des Musters
+- [ingest-fliessband](ingest-fliessband.md) — Die Schleife im SQL-Betrieb, sechsstufig zerlegt
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Die Datenbank als externer Speicher
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle der Übertragung
 - [wiki-ralph-sh](../werkzeuge/wiki-ralph-sh.md) — Implementierung für das LLM-Wiki
 - [usd-pro-wiki-seite](usd-pro-wiki-seite.md) — Kostmetrik, die auf dem Benchmark aufbaut
 - [ingest-workflow](ingest-workflow.md) — Was die Schleife automatisiert

@@ -8,8 +8,8 @@ status: active
 # Kontaminierungsrisiko
 
 **Zusammenfassung**: Das zentrale Kritikpunkt am LLM-Wiki-Muster: Wenn das LLM beim Aufbau des Wikis halluziniert, werden diese Fehler als persistente "Fakten" eingebacken und können sich über Querverweise ausbreiten — im Gegensatz zu RAG, wo Fehler lokal bleiben.
-**Quellen**: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md, clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md
-**Zuletzt aktualisiert**: 2026-05-02
+**Quellen**: clippings/Andrej Karpathy’s LLM Wiki Create your own knowledge base.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, clippings/Karpathy's LLM Knowledge Bases The Post-Code AI Workflow.md, clippings/The LLM Wiki How Karpathy's AI Memory Idea Sparked a Movement.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -70,6 +70,29 @@ Quantifiziert: Ein Stundensatz von $80 bei einer Stunde verlorener Arbeitszeit p
 
 Abhilfe: Confidence Scores (LLM Wiki v2), harte Source-Linking-Regel (eine Behauptung = eine Quelldatei), regelmäßiger Lint. (Quelle: raw/ralph-claude-code-llm-wiki_metrik.md)
 
+### 9. Provenienz als Fremdschlüssel statt als Konvention
+
+Die Minderungsstrategien 1 bis 8 haben eine gemeinsame Schwäche: Sie sind Konventionen. `(Quelle: dateiname.md)` kann vergessen werden, ein Confidence Score kann fehlen, ein Lint-Lauf kann ausbleiben. Wie wenig das trägt, zeigte ein Lint-Lauf am eigenen Wiki: **50 Quellenangaben waren maschinell nicht auflösbar** — sie sahen aus wie Provenienz, waren aber keine.
+
+Im [SQL-Betrieb](sql-wiki-architektur.md) wird die Zitierregel zu einer Spalte:
+
+```sql
+source_id  INTEGER REFERENCES sources(id),
+confidence TEXT NOT NULL DEFAULT 'sourced' CHECK (confidence IN
+           ('sourced','derived','unverified')),
+```
+
+Der Unterschied ist nicht kosmetisch. `source_id` zeigt auf eine existierende Quelle oder ist `NULL` — ein Dazwischen gibt es nicht, und `NULL` ist per Definition `confidence = 'unverified'`.
+
+> „Eine Zeile in einem Report, keine unsichtbare Lücke im Fließtext." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Zwei weitere Punkte fallen dabei ab:
+
+- **Widersprüche werden Daten.** Die Kante `contradicts` in der Beziehungstabelle erfasst einen Widerspruch als Objekt, statt ihn in einem Absatz zu vermerken, den beim nächsten Umschreiben niemand mehr findet. Und die Kandidatenliste („gleiches `subject`, verschiedene Quelle") entsteht per Query — aus einer für ein schwaches Modell unmöglichen Aufgabe werden zehn triviale. → [lint-pruefung](lint-pruefung.md)
+- **Frischheit auf der richtigen Ebene.** `last_verified` und `against_version` hängen an der einzelnen Behauptung, nicht an der Seite — die Verfallslogik aus [llm-wiki-v2](llm-wiki-v2.md) wird damit erst brauchbar. → [sektion-als-atom](sektion-als-atom.md)
+
+Was das *nicht* löst: Eine Halluzination mit korrekt gesetztem `source_id` bleibt eine Halluzination. Der Fremdschlüssel erzwingt, dass eine Quelle *existiert*, nicht dass sie die Behauptung *stützt*. Spot-Checking (Strategie 5) bleibt unersetzt. → [wiki-datenbankschema](wiki-datenbankschema.md)
+
 ## Karpathys Einschätzung
 
 Karpathy erwähnt Lint-Checks als direkte Reaktion auf das Kontaminierungsrisiko. Die Community (besonders [Steph Ango](../personen/steph-ango.md)) hob das Thema als den wichtigsten offenen Punkt des Musters hervor.
@@ -85,6 +108,9 @@ Das Konsens in der Community: Das Risiko ist real, aber handhabbar — wenn man 
 - [rag-vs-wiki](rag-vs-wiki.md)
 - [llm-wiki-v2](llm-wiki-v2.md) — Trust Score und automatische Verfallslogik
 - [llm-wiki-tecadrise](../quellen/llm-wiki-tecadrise.md) — Constrained Pipelines
+- [wiki-datenbankschema](wiki-datenbankschema.md) — Die `claims`-Tabelle mit Provenienz als Pflichtfeld
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Konventionen werden zu Constraints
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Die Quelle
 
 ---
 

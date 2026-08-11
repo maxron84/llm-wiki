@@ -8,8 +8,8 @@ status: active
 # LLM Wiki v2
 
 **Zusammenfassung**: LLM Wiki v2 ist eine Community-Erweiterung von Karpathys Grundmuster auf Basis von Produktionserfahrung. Vier Kernergänzungen: Lifecycle-Management mit Frischheits-Metadaten, typisierte Beziehungen (relationships.json), Automatisierungshooks und Trust-Score-basierte Qualitätskontrolle.
-**Quellen**: clippings/LLM Wiki v2 Extending Karpathy's Pattern with Production Lessons.md
-**Zuletzt aktualisiert**: 2026-05-02
+**Quellen**: clippings/LLM Wiki v2 Extending Karpathy's Pattern with Production Lessons.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -111,9 +111,28 @@ llm-wiki/
 | Wartung | Mensch kuratiert | Git-Hooks + LLM-Entwürfe |
 | Metadaten | date, type, tags | + last_verified, against_version |
 
+## Was eine Datenbank aus v2 machen würde
+
+Drei der vier v2-Ergänzungen sind im Kern Datenbankkonzepte, die als Dateien nachgebaut wurden. Der [SQL-Entwurf](wiki-datenbankschema.md) benennt das ausdrücklich: (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+| v2-Ergänzung | Als SQL |
+|---|---|
+| `relationships.json` (typisierte Beziehungen) | Eine Kantentabelle `links (from_page, to_page, rel)` — „nur als das, was sie ohnehin ist" |
+| Frischheits-Metadaten (Lifecycle) | `last_verified`, `against_version` — aber **pro Behauptung**, nicht pro Seite |
+| Trust Score mit Verfallslogik | `confidence` als CHECK-Spalte plus eine Query auf `last_verified` |
+| Automatisierungshooks | Trigger und Transaktions-Nebeneffekte |
+
+Der Unterschied zur JSON-Datei ist dabei nicht kosmetisch: `ON DELETE RESTRICT` auf `to_page` bedeutet, dass eine verlinkte Seite nicht gelöscht werden kann. Tote Links werden nicht gefunden, sie entstehen nicht. Und die Kante `contradicts` kommt als fünfter Beziehungstyp dazu — Widersprüche werden erfasste Daten statt eines Absatzes im Fließtext.
+
+Die Präzisierung bei den Frischheits-Metadaten ist die interessanteste: Auf Seitenebene sind sie zu grob, um nützlich zu sein — der Abschnitt „VRAM-Bedarf" veraltet, während „Die Grundidee" auf derselben Seite gültig bleibt. → [sektion-als-atom](sektion-als-atom.md), [kontaminierungsrisiko](kontaminierungsrisiko.md)
+
 ## Verwandte Seiten
 
 - [llm-wiki-muster](llm-wiki-muster.md) — Das Grundmuster, das v2 erweitert
+- [wiki-datenbankschema](wiki-datenbankschema.md) — v2-Konzepte als Tabellen
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Der Rahmen
+- [sektion-als-atom](sektion-als-atom.md) — Frischheit auf der richtigen Granularität
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle des SQL-Vergleichs
 - [llm-wiki-v2-tamiltech](../quellen/llm-wiki-v2-tamiltech.md) — Quellartikel
 - [kontextrahmen-5w1h](kontextrahmen-5w1h.md) — Konkurrierende Musterweiterung: Graph über gemeinsame Rahmenfelder statt typisierter Kanten
 - [llm-wiki-karpathy](../quellen/llm-wiki-karpathy.md) — Grundmuster

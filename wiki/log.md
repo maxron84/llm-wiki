@@ -8,12 +8,57 @@ status: active
 # Änderungsprotokoll
 
 **Zusammenfassung**: Chronologisches Protokoll aller Vorgänge im Wiki.
-**Zuletzt aktualisiert**: 2026-08-02
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
 > **Reihenfolge**: Neueste Einträge stehen **oben**. Die letzten Vorgänge liest man mit
 > `grep "^## \[" wiki/log.md | head -5`.
+
+## [2026-08-11 16:20] ingest | Das Wiki als Datenbank — SQL-Betrieb mit schwachen lokalen Modellen
+
+Quelle: `raw/sqlwiki_lokalesmodell_architektur.md` (interne Architekturanalyse, 505 Zeilen). Tiefe: **vollständig**. Anders als die übrigen Quellen ist das kein externes Fundstück, sondern eine Analyse, die auf dem Wiki selbst aufsetzt — und an einer Stelle ausdrücklich eine Korrektur einfordert.
+
+**Die These**: Die naheliegende Begründung für einen SQL-Umbau ist Wachstum. Sie ist richtig, greift aber zu spät. Der stärkere Grund ist die Umkehrung — **SQL macht das große Kontextfenster überflüssig und damit das schwache lokale Modell erst arbeitsfähig**. Damit wird aus einer Hardware-Kaufentscheidung eine Software-Entscheidung.
+
+**Neu (14 Seiten):**
+
+- [sql-wiki-architektur](konzepte/sql-wiki-architektur.md) — Das Kernkonzept. Die Umkehrung, die Architekturgabel (SQL als Index über Markdown vs. SQL als Quelle der Wahrheit) und die Entscheidung für Variante B mit verpflichtendem Export. Der Grund liegt beim Schreiben, nicht beim Lesen: Variante A wird mit wachsendem Wiki *schlechter*, weil das Modell weiter ganze Dateien neu ausgeben muss.
+- [engpass-groesse-vs-session](konzepte/engpass-groesse-vs-session.md) — Die Unterscheidung, die alles trägt. Engpass A (Wiki-Größe) tritt bei Claude ab ~300 Seiten auf und lässt sich mit einem größeren Modell erschlagen. Engpass B (Session-Kapazität) tritt lokal ab Seite 1 auf und lässt sich *nicht* mit mehr VRAM erschlagen. Beide melden sich als „Kontextfenster voll", deshalb die ständige Verwechslung.
+- [kv-cache-rechnung](konzepte/kv-cache-rechnung.md) — Die Rechnung vollständig hingeschrieben. 160 KiB pro Token bei FP16 für ein 24B-Modell der Mistral-Small-Klasse; 24B mit 100–200k Kontext auf 16 GB scheitert um Faktor 2–3. Der bemerkenswerteste Befund: `qwen3:14b` hat dieselbe Geometrie und damit denselben KV-Bedarf pro Token — ein kleineres Modell spart bei den Gewichten, nicht beim Kontext.
+- [sektion-als-atom](konzepte/sektion-als-atom.md) — Die folgenreichste Schemaentscheidung. Nicht die Tabellenwahl, sondern die Granularität: H2-Abschnitt mit 200–600 Token, zugleich natürliche Einheit für Retrieval und für Frischheit.
+- [wiki-datenbankschema](konzepte/wiki-datenbankschema.md) — Der Tabellenentwurf: `sources` (mit `sha256` gegen stille Änderungen), `pages`/`sections`/`tags`, `links` mit typisierten Kanten, `claims` mit Provenienz als Pflichtfeld, `log` mit Kostenspalten, FTS5.
+- [werkzeugschicht](konzepte/werkzeugschicht.md) — Die eine Regel: das Modell schreibt niemals SQL. Sechs enge, flache Werkzeuge; alles Mechanische verantwortet die Vermittlungsschicht.
+- [ingest-fliessband](konzepte/ingest-fliessband.md) — Der Ingest in sechs Schritten, drei davon ohne Modell. Ein Clipping von 8.000 Wörtern wird zu ~20 kleinen Aufrufen statt einem unmöglichen großen.
+- [markdown-als-rendering](konzepte/markdown-als-rendering.md) — Der Export als Architekturbestandteil. Der Vault verliert seinen Status als Original; der Rückweg ist bewusst nicht vorgesehen.
+- [deutsche-volltextsuche](konzepte/deutsche-volltextsuche.md) — Die ernsteste Schwäche der SQLite-Variante: FTS5 hat keinen deutschen Stemmer, „Kontextfenster" findet weder „Kontextfenstern" noch „Fenster".
+- [datenbankwahl-wiki](konzepte/datenbankwahl-wiki.md) — SQLite, MariaDB, PostgreSQL, DuckDB im Vergleich. DuckDB scheidet aus (OLAP-Engine bei einem OLTP-Lastprofil), MariaDB erst beim Team-Wiki.
+- [wh-pro-wiki-seite](konzepte/wh-pro-wiki-seite.md) — Die Metrik für lokalen Betrieb. ~0,006 € Strom pro Seite gegen ~0,42 US$ bei Sonnet — zwei Größenordnungen, aber ungemessen, und die Quelle nennt den Vergleich selbst unfair, solange die Qualität nicht gleichzieht.
+- [sqlite](werkzeuge/sqlite.md), [postgresql](werkzeuge/postgresql.md) — Die beiden Datenbanken als Werkzeugseiten.
+- [sqlwiki-lokalesmodell-architektur](quellen/sqlwiki-lokalesmodell-architektur.md) — Die Quellenzusammenfassung.
+
+**Korrigiert — ein Widerspruch, den die Quelle ausdrücklich einforderte:**
+
+Die Angabe „`qwen3:14b-40k` (Q8, ~9,3 GB Gewichte + ~6,7 GB KV-Cache = ~16 GB)" stand an **drei** Stellen und ist in sich falsch. 6,7 GB KV entsprechen exakt 40k × 160 KiB bei **FP16**, nicht bei Q8-KV (das wären ~3,3 GB); und 9,3 GB Gewichte entsprechen bei 14B einer **Q4_K_M**-Quantisierung — Q8_0 wären ~15,7 GB, damit wäre die Karte allein durch die Gewichte voll. Die gemessene Gesamtbelegung von 15,1 GiB ist plausibel und bleibt stehen; falsch war nur das Label. Korrigiert in [hardware-vergleich-sonnet-vs-lokal](konzepte/hardware-vergleich-sonnet-vs-lokal.md), [quantisierung](konzepte/quantisierung.md) und [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md), jeweils mit dem Rechenweg statt nur der neuen Zahl.
+
+Nebenbefund: Die Qualitätsvergleichstabelle in `hardware-vergleich` führt eine Spalte `14B@Q8`, während Tier 1 (RTX 5080) tatsächlich Q4_K_M fährt. Die Bewertungen dort sind also eher optimistisch — vermerkt statt stillschweigend nachgezogen.
+
+**Aktualisiert:**
+
+- [skalierungsgrenzen](konzepte/skalierungsgrenzen.md) — Der Abschnitt „Session-Limits bei lokalen Modellen" beschrieb Engpass B bereits, ohne ihn von A zu trennen. Jetzt benannt, plus die Einschränkung an der Empfehlungstabelle: „< 50–100 Seiten → direkt laden" gilt nur für Cloud-Betrieb.
+- [lint-pruefung](konzepte/lint-pruefung.md) — Neuer Abschnitt: Vier von acht Prüfungen entfallen im SQL-Betrieb **ersatzlos**, weil ihre Fehlerklasse nicht mehr existiert (FK, CHECK, `ORDER BY`, generierter Index). Interessanter noch: Die drei Bedeutungsfragen, die das Skript bisher gar nicht kann, werden zerlegbar — die Datenbank liefert die Kandidatenliste, das Modell entscheidet je Paar in 300 Token.
+- [kontaminierungsrisiko](konzepte/kontaminierungsrisiko.md) — Neunte Minderungsstrategie: Provenienz als Fremdschlüssel statt als Konvention. Die acht bisherigen sind alle Konventionen, und wie wenig das trägt, zeigte der eigene Lint-Lauf mit 50 maschinell nicht auflösbaren Quellenangaben. Ausdrücklich mitvermerkt, was das *nicht* löst: Ein `source_id` erzwingt, dass eine Quelle existiert, nicht dass sie die Behauptung stützt.
+- [usd-pro-wiki-seite](konzepte/usd-pro-wiki-seite.md) — Vierter Punkt unter „Wo das Modell zerfällt": Bei lokalem Betrieb ist der Zähler null, die Metrik meldet „kostenlos". Dazu der Weg von der Schätzung zur Abfrage über die Log-Spalten.
+- [hardware-vergleich-sonnet-vs-lokal](konzepte/hardware-vergleich-sonnet-vs-lokal.md) — Neben der Korrektur ein neuer Abschnitt „Die dritte Option": Alle vier Hardware-Tiers beantworten dieselbe Kauffrage; die Architekturlösung beantwortet sie nicht, sondern lässt sie verschwinden.
+- [llm-wiki-v2](konzepte/llm-wiki-v2.md) — Drei der vier v2-Ergänzungen sind Datenbankkonzepte, als Dateien nachgebaut. `relationships.json` ist eine Kantentabelle; der Unterschied ist `ON DELETE RESTRICT`.
+- [ralph-schleife](konzepte/ralph-schleife.md) — Das Fließband ist strukturell Ralph, nur mit Constraints. Zwei Gewinne, beide an der Achillesferse des Musters: Die Abbruchbedingung wird maschinell prüfbar, und jede Iteration wird klein genug für ein schwaches Modell.
+- [modellunabhaengigkeit](konzepte/modellunabhaengigkeit.md) — Der naheliegende Einwand („Datenbank = Unabhängigkeit weg") greift nur halb. Die Eigenschaft hängt am deterministischen Export, nicht an der Speicherform. Der Preis ist ehrlich benannt: Der Export-Vault wird schreibgeschützt.
+- [fortgeschrittene-architektur](konzepte/fortgeschrittene-architektur.md) — Der Routing-Schritt war dort als Kostenhebel beschrieben, ist im Dateibetrieb aber selbst eine Modellaufgabe. In SQL wird er eine Query.
+- [ollama-kontextfenster](konzepte/ollama-kontextfenster.md) — Neuer Abschnitt zur KV-Quantisierung (`OLLAMA_FLASH_ATTENTION=1`, `OLLAMA_KV_CACHE_TYPE=q8_0`): halber Cache, praktisch kein Qualitätsverlust. Dazu der Hinweis, dass die Latenzgrenze davon unberührt bleibt.
+- [quantisierung](konzepte/quantisierung.md), [lokale-modelle-fortgeschritten](anleitungen/lokale-modelle-fortgeschritten.md), [tool-use-lokale-modelle](konzepte/tool-use-lokale-modelle.md), [jdocmunch](werkzeuge/jdocmunch.md), [qmd](werkzeuge/qmd.md) — Korrektur bzw. Querverweise nachgezogen.
+- [index](index.md) — 14 neue Einträge.
+
+**Offen geblieben** (die Quelle benennt es selbst): Die Sektionsgranularität ist eine empirische Frage, die erst Stufe 2 des Migrationspfads beantwortet. Und Wh/WP sind vorgeschlagen, nicht gemessen — die 300 W und 4 Minuten sind Annahmen. Ohne Messung bleibt der Vergleich lokal-gegen-Cloud eine Behauptung.
 
 ## [2026-08-02 13:15] update | Starterkit 2.4.1 — die Ledger-Prüfung traf zum ersten Mal ein fremdes Ledger
 

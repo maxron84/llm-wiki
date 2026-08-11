@@ -81,6 +81,8 @@ Für Wikis unter ~100 Seiten ist direktes Laden in der Regel einfacher.
 - [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 - [tobi-luetke](../personen/tobi-luetke.md)
 - [llm-wiki-analytics-vidhya](../quellen/llm-wiki-analytics-vidhya.md)
+- [deutsche-volltextsuche](../konzepte/deutsche-volltextsuche.md) — qmd als Alternative zum Selbstbau der Suchschicht
+- [ingest-fliessband](../konzepte/ingest-fliessband.md) — BM25/Graph-Routing als Eigenschaft des Schemas
 
 ---
 

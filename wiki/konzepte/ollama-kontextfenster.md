@@ -8,8 +8,8 @@ status: active
 # Ollama-Kontextfenster: Das 2K-Standardproblem
 
 **Zusammenfassung**: Ollama setzt standardmäßig ein Kontextfenster von nur 2.048 Token — viel zu klein für Roo Codes System-Prompt (~33–51 KB). Das führt dazu, dass lokale Modelle keine Werkzeuge nutzen und nur Text im Chat ausgeben. Lösung: Custom Modelfile mit `num_ctx`-Parameter.
-**Quellen**: `Using Ollama With Roo Code  Roo Code Documentation.md`, `Roo Code not using tools properly in offline setup (with Ollama models and Open AI Compatible API provider).md`, `Local model for coding.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`
-**Zuletzt aktualisiert**: 2026-05-15
+**Quellen**: `Using Ollama With Roo Code  Roo Code Documentation.md`, `Roo Code not using tools properly in offline setup (with Ollama models and Open AI Compatible API provider).md`, `Local model for coding.md`, `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -128,6 +128,35 @@ Der Sprung von Request 2 auf 3 zeigt das Muster deutlich: mehr neue Tokens × gr
 
 **Praktische Nutzungsgrenze**: Bei ~20–25k Tokens (halbes 40k-Fenster) wird die Latenz für interaktive Nutzung mit Roo Code inakzeptabel — lange vor dem eigentlichen Kontextlimit. Lange Coding-Sessions sollten daher regelmäßig mit `/new task` neu gestartet werden.
 
+Diese Grenze ist hardwareunabhängig. Wer sie mit mehr VRAM verschieben will, verschiebt sie nicht:
+
+> „Wer 150k Kontext konfiguriert, konfiguriert eine Zahl, die er nie erreicht, weil er vorher aufgibt." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+→ [kv-cache-rechnung](kv-cache-rechnung.md), [engpass-groesse-vs-session](engpass-groesse-vs-session.md)
+
+---
+
+## KV-Cache quantisieren: mehr Kontext ohne mehr VRAM
+
+Der KV-Cache liegt standardmäßig in FP16. Bei `qwen3:14b-40k` sind das ~6,7 GB für 40k Kontext — knapp die Hälfte des Speichers einer 16-GB-Karte. Ollama kann ihn quantisieren, das setzt aber Flash Attention voraus:
+
+```bash
+OLLAMA_FLASH_ATTENTION=1
+OLLAMA_KV_CACHE_TYPE=q8_0
+```
+
+| Einstellung | KV-Cache bei 40k | Qualität |
+|---|---|---|
+| FP16 (Standard) | ~6,7 GB | Referenz |
+| `q8_0` | ~3,3 GB | praktisch kein Verlust |
+| `q4_0` | ~1,7 GB | spürbar, besonders bei Zahlen und Code |
+
+(Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Q8-KV ist damit die naheliegendste Einstellung überhaupt: halber Speicherbedarf, kein nennenswerter Qualitätsverlust. Der gewonnene Platz geht in mehr Kontext oder in ein größer quantisiertes Modell — aber die Latenzgrenze oben bleibt davon unberührt.
+
+Unabhängig davon: `num_predict` ≥ 8.000 setzen. Abgeschnittene Ausgaben sind der teuerste Fehler, weil sie stillschweigend passieren. → [quantisierung](quantisierung.md)
+
 ---
 
 ## Out-of-Memory beim ersten Request (OOM)
@@ -174,6 +203,9 @@ ollama ps  # CONTEXT-Spalte zeigt den tatsächlichen Wert
 - [quantisierung](quantisierung.md) — VRAM-Kalkulation und Quantisierungsstufen
 - [roocode-system-prompt-optimierung](roocode-system-prompt-optimierung.md) — System-Prompt verkleinern für lokale Setups
 - [lm-studio](../werkzeuge/lm-studio.md) — Alternative mit GUI-basierter Kontextfenster-Konfiguration
+- [kv-cache-rechnung](kv-cache-rechnung.md) — Die Formel hinter dem KV-Cache und die Grenzen auf 16 GB
+- [engpass-groesse-vs-session](engpass-groesse-vs-session.md) — Warum die Latenzgrenze eine Architekturfrage ist
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle der KV-Quantisierungsangaben
 
 ---
 

@@ -8,7 +8,7 @@ status: active
 # Wiki-Index
 
 **Zusammenfassung**: Inhaltsverzeichnis und Übersicht aller Seiten im LLM-Wiki.
-**Zuletzt aktualisiert**: 2026-08-02 (Starterkit 2.4.1 — die Ledger-Prüfung am fremden Ledger geprüft)
+**Zuletzt aktualisiert**: 2026-08-11 (Das Wiki als SQL-Datenbank für schwache lokale Modelle — 14 neue Seiten, VRAM-Korrektur an drei Stellen)
 
 ---
 
@@ -67,6 +67,17 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [gegenprobe-zweite-quelle](konzepte/gegenprobe-zweite-quelle.md) — Ein Bericht aus derselben Quelle wie der Fehler bestätigt ihn, statt ihn zu zeigen
 - [alarmmuedigkeit](konzepte/alarmmuedigkeit.md) — Kennzahl immer null, Gate immer umgangen: Signale, die zum Wegsehen erziehen
 - [rueckkanal-feld-kit](konzepte/rueckkanal-feld-kit.md) — Funde aus Feldprojekten zurück ins Werkzeug — als Konvention, nicht als Automatik
+- [sql-wiki-architektur](konzepte/sql-wiki-architektur.md) — Das Wiki als Datenbank: SQL macht das große Kontextfenster überflüssig, nicht das Wachstum den Umbau nötig
+- [engpass-groesse-vs-session](konzepte/engpass-groesse-vs-session.md) — Wiki-Größe (Claude ab ~300 Seiten) vs. Session-Kapazität (lokal ab Seite 1) — zwei ständig verwechselte Engpässe
+- [kv-cache-rechnung](konzepte/kv-cache-rechnung.md) — Warum 24B mit 100–200k Kontext auf 16 GB um Faktor 2–3 scheitert — und warum die machbaren Zahlen Papierzahlen sind
+- [sektion-als-atom](konzepte/sektion-als-atom.md) — Die kleinste schreibbare Einheit: H2-Abschnitt mit 200–600 Token, zugleich Einheit für Retrieval und Frischheit
+- [wiki-datenbankschema](konzepte/wiki-datenbankschema.md) — Tabellenentwurf: Quellen, Seiten, Sektionen, typisierte Kanten, Behauptungen mit Provenienz, Log mit Kostenspalten
+- [werkzeugschicht](konzepte/werkzeugschicht.md) — Die eine Regel: das Modell schreibt niemals SQL, sondern bedient sechs enge Werkzeuge
+- [ingest-fliessband](konzepte/ingest-fliessband.md) — Ingest in sechs Schritten statt einem Aufruf; kein Schritt über 3k Token
+- [markdown-als-rendering](konzepte/markdown-als-rendering.md) — Der Vault wird zur generierten Ansicht; der Export ist Architekturbestandteil, nicht Nebenprodukt
+- [deutsche-volltextsuche](konzepte/deutsche-volltextsuche.md) — FTS5 hat keinen deutschen Stemmer: drei Behelfe und der benannte Ausweg
+- [datenbankwahl-wiki](konzepte/datenbankwahl-wiki.md) — SQLite, MariaDB, PostgreSQL, DuckDB im Vergleich für den Wiki-Betrieb
+- [wh-pro-wiki-seite](konzepte/wh-pro-wiki-seite.md) — Wattstunden und Minuten pro Wiki-Seite: die Metrik für lokalen Betrieb (~0,006 € statt ~0,42 US$)
 
 ## Werkzeuge
 
@@ -85,6 +96,8 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [phi-4](werkzeuge/phi-4.md) — Microsofts Phi-4-Familie (14B/3.8B): stark bei Math und Code, 16K Kontext ein Limit für Wiki-Betrieb
 - [team-starter-kit](werkzeuge/team-starter-kit.md) — Das T.E.A.M. per Konsolenbefehl in jedes neue Projekt: sprach- und stackagnostisch, 55 Dateien, 182 Regressionstests, sicherer Update-Pfad (2.4.1)
 - [ralph-wiggum-plugin](werkzeuge/ralph-wiggum-plugin.md) — Offizielles Claude-Code-Plugin für autonome Iterationsschleifen: Stop-Hook, /ralph-loop, Anwendung auf Wiki-Ingest
+- [sqlite](werkzeuge/sqlite.md) — Eingebettete SQL-Datenbank ohne Serverdienst: der empfohlene Einstieg fürs SQL-Wiki, FTS5/BM25 ohne deutschen Stemmer
+- [postgresql](werkzeuge/postgresql.md) — Serverdatenbank mit deutscher Volltextsuche ab Werk: der benannte Migrationspfad von SQLite
 
 ## Personen
 
@@ -123,6 +136,7 @@ Dieses Wiki ist eine strukturierte, vernetzte Wissensdatenbank für das LLM-Wiki
 - [roocode-lokale-community-reddit](quellen/roocode-lokale-community-reddit.md) — Reddit r/RooCode: Praxiserfahrungen, Kontextfenster-Bug, Fine-tuned Modelle
 - [roocode-local-evaluation-olilanz](quellen/roocode-local-evaluation-olilanz.md) — olilanz GitHub: technische Evaluation auf 36 GB VRAM, Modelfile-Konfigurationen, System-Prompt-Optimierung
 - [roocode-lokale-mychen76](quellen/roocode-lokale-mychen76.md) — mychen76's quantisierte Tool-Use-Modelle (GLM-4-32B, OpenHands-32B) und Evaluations-Artikel
+- [sqlwiki-lokalesmodell-architektur](quellen/sqlwiki-lokalesmodell-architektur.md) — Interne Architekturanalyse: das Wiki als SQL-Datenbank, betrieben von einem 14B-Modell auf 16 GB VRAM
 
 ## Vorlagen
 

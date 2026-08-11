@@ -8,7 +8,8 @@ status: active
 # Lokale Modelle für Fortgeschrittene: Pygame-Projekt mit Qwen3
 
 **Zusammenfassung**: Einrichtung eines Pygame-Projekts mit lokalem Qwen3-Modell — Ollama als Backend, Continue in VS Codium als Arbeitsumgebung, halbautomatischer Wiki-Betrieb ohne Cloud.
-**Zuletzt aktualisiert**: 2026-05-13
+**Quellen**: raw/sqlwiki_lokalesmodell_architektur.md (Korrektur der VRAM-Angaben)
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -42,7 +43,9 @@ Offizielle Qwen3-Modelle auf Ollama (Stand Mai 2026) und ihre VRAM-Anforderungen
 | Kontext | 4K | 4K | 4K | **40K** |
 | KI-Lehrer geeignet | ❌ | ❌ | ❌ | ✅ |
 
-> `qwen3:14b-40k` nutzt die vollen 16 GB VRAM optimal: ~9,3 GB Modellgewichte + ~6,7 GB KV-Cache für 40K Kontext — alles auf der GPU, kein CPU-Anteil. Das ist das Optimum für eine RTX 5080.
+> `qwen3:14b-40k` nutzt die vollen 16 GB VRAM optimal: ~9,3 GB Modellgewichte (**Q4_K_M** — das ist Ollamas Standard-Quantisierung für `qwen3:14b`) + ~6,7 GB KV-Cache für 40K Kontext bei FP16 — alles auf der GPU, kein CPU-Anteil. Das ist das Optimum für eine RTX 5080.
+
+> **Korrektur vom 2026-08-11**: Diese Konfiguration wurde im Wiki bis dahin als „Q8" geführt. Das ist falsch: Q8_0 wären bei 14B ~15,7 GB allein für die Gewichte. Wer den KV-Cache halbieren will, braucht Flash Attention und explizite KV-Quantisierung — `OLLAMA_FLASH_ATTENTION=1` und `OLLAMA_KV_CACHE_TYPE=q8_0`, dann sinkt der Cache von ~6,7 GB auf ~3,3 GB und schafft Luft für mehr Kontext. (Quelle: raw/sqlwiki_lokalesmodell_architektur.md) → [kv-cache-rechnung](../konzepte/kv-cache-rechnung.md)
 
 **Empfohlener Stack für RTX 5080:**
 - **Lokal / alltäglich**: `qwen3:14b` — volle GPU, 40K Kontext

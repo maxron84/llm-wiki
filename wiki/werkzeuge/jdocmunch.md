@@ -92,6 +92,8 @@ Für kleine Wikis (< 50 Seiten) ist direktes Laden einfacher und ausreichend.
 - [fortgeschrittene-architektur](../konzepte/fortgeschrittene-architektur.md)
 - [query-workflow](../konzepte/query-workflow.md)
 - [llm-wiki-jgravelle](../quellen/llm-wiki-jgravelle.md)
+- [sektion-als-atom](../konzepte/sektion-als-atom.md) — Sektionsbasierter Zugriff als Schemaeigenschaft statt als Werkzeug
+- [sql-wiki-architektur](../konzepte/sql-wiki-architektur.md) — Die Alternative ohne zweite Datenhaltung
 
 ---
 

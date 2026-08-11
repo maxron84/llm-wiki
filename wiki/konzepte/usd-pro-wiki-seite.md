@@ -8,8 +8,8 @@ status: active
 # US$/WP — Dollar pro Wiki-Seite
 
 **Zusammenfassung**: Eine Stückkostenmetrik für LLM-Wikis: (Input- + Output-Token-Kosten) geteilt durch die Anzahl substanziell neu entstandener oder geänderter Wiki-Seiten. Lifetime-Wert bei Sonnet 4.6 in einer Ralph-Schleife: ~$0,42/WP. Die Metrik verschiebt die Diskussion von „viel oder wenig" zu messbaren ROI-Entscheidungen.
-**Quellen**: raw/ralph-claude-code-llm-wiki_metrik.md
-**Zuletzt aktualisiert**: 2026-05-11
+**Quellen**: raw/ralph-claude-code-llm-wiki_metrik.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -94,6 +94,8 @@ Verhältnis zu einem menschlichen Knowledge-Manager (≥$80.000/Jahr fully loade
 
 **Context-Window-Klippen** — Ab ~200.000 Wörtern passt der Index nicht mehr in den Schemakontext. Dann sind hybride Retrieval-Strategien nötig, die die Stückkosten nicht-linear erhöhen. Mehr: [skalierungsgrenzen](skalierungsgrenzen.md)
 
+**Lokaler Betrieb** — Bei lokalen Modellen ist der Zähler null: Es gibt keine Token-Rechnung. Die Metrik meldet damit „kostenlos", was falsch ist — Strom, Zeit und Hardware-Abschreibung fallen weiter an, und die Zeit ist lokal die knappste Größe. Vorgeschlagener Ersatz: **Wattstunden und Minuten pro Wiki-Seite** (Größenordnung ~0,006 € Strom pro Seite, aber ungemessen). (Quelle: raw/sqlwiki_lokalesmodell_architektur.md) Mehr: [wh-pro-wiki-seite](wh-pro-wiki-seite.md)
+
 **Modellpreisverfall** — Die Zahlen sind auf Mai 2026 geeicht. Anthropic hat Sonnet zwischen 4.5 und 4.6 bereits im Preis halbiert. Die *Form* der Rechnung bleibt stabil; die Absolutwerte werden in 12 Monaten um Faktor 3–5 zu hoch sein.
 
 ## Drei Konsequenzen
@@ -104,6 +106,16 @@ Verhältnis zu einem menschlichen Knowledge-Manager (≥$80.000/Jahr fully loade
 
 3. **Modellwahl als Strategie** — Haiku schreibt für $0,07/WP, aber mit niedrigerer Synthese-Qualität. Opus für $1,80/WP, aber mit besserer Cross-Reference-Qualität. Sonnet 4.6 ist der vermutliche Sweet Spot — aber das ist eine Hypothese, die erst empirisch klärbar ist.
 
+## Von der Schätzung zur Abfrage
+
+Die Zahlen dieser Seite sind gerechnet, nicht gemessen. Im [SQL-Betrieb](sql-wiki-architektur.md) hat die `log`-Tabelle die Spalten `tokens_in`, `tokens_out`, `seconds`, `wh` und `cost_usd` — dann ist die Metrik eine Query statt einer Modellrechnung:
+
+```sql
+SELECT SUM(cost_usd) / (SELECT COUNT(*) FROM pages) AS usd_pro_seite FROM log;
+```
+
+Der eigentliche Gewinn ist das Nebeneinander der Spalten: Wenn `ingest` mit einem starken Modell läuft und `query`/`update` lokal, steht in einer Tabelle, was welcher Weg gekostet hat. Die Modellwahl (Konsequenz 3) wird damit von einer Strategie- zu einer Buchungsfrage — pro Operation statt pro Wiki. (Quelle: raw/sqlwiki_lokalesmodell_architektur.md) → [wiki-datenbankschema](wiki-datenbankschema.md), [ingest-fliessband](ingest-fliessband.md)
+
 ## Verwandte Seiten
 
 - [ralph-schleife](ralph-schleife.md) — Benchmark-Quelle und Voraussetzung für die Metrik
@@ -113,6 +125,9 @@ Verhältnis zu einem menschlichen Knowledge-Manager (≥$80.000/Jahr fully loade
 - [enterprise-skalierung](enterprise-skalierung.md) — Szenario C (Enterprise-Onboarding)
 - [token-sparen](../anleitungen/token-sparen.md) — Praktische Strategien zur Kostensenkung
 - [ralph-claude-code-llm-wiki-metrik](../quellen/ralph-claude-code-llm-wiki-metrik.md) — Quellartikel
+- [wh-pro-wiki-seite](wh-pro-wiki-seite.md) — Die Neufassung für lokalen Betrieb
+- [wiki-datenbankschema](wiki-datenbankschema.md) — Die Log-Spalten, die die Metrik messbar machen
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle der Neufassung
 
 ---
 

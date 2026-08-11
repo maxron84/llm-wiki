@@ -8,8 +8,8 @@ status: active
 # Hardware-Vergleich: Sonnet 4.6 vs. lokale Modelle für LLM-Wiki
 
 **Zusammenfassung**: Welche Hardware braucht man, um mit lokalen Modellen eine mit Claude Sonnet 4.6 vergleichbare Qualität bei der LLM-Wiki-Pflege zu erreichen — und was "vergleichbar" in der Praxis bedeutet.
-**Quellen**: Synthese aus Wiki-internen Seiten (quantisierung.md, tool-use-lokale-modelle.md, radeon-ai-pro-r9700.md, roocode-llm-wiki-einrichten.md)
-**Zuletzt aktualisiert**: 2026-05-16
+**Quellen**: raw/sqlwiki_lokalesmodell_architektur.md; Synthese aus Wiki-internen Seiten (quantisierung.md, tool-use-lokale-modelle.md, radeon-ai-pro-r9700.md, roocode-llm-wiki-einrichten.md)
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -30,7 +30,9 @@ Kein aktuelles lokales Modell unter ~70B erreicht das für komplexe Wiki-Aufgabe
 
 ### Tier 1 — Minimal (RTX 5080, 16 GB VRAM)
 
-Bestes Modell: `qwen3:14b-40k` (Q8, ~9,3 GB Gewichte + ~6,7 GB KV-Cache = ~16 GB)
+Bestes Modell: `qwen3:14b-40k` (**Q4_K_M**, ~9,3 GB Gewichte + ~6,7 GB KV-Cache bei FP16 = ~16 GB)
+
+> **Korrigiert am 2026-08-11**: Diese Angabe trug bis dahin das Label „Q8". Das war in sich widersprüchlich — 9,3 GB Gewichte entsprechen bei 14B einer Q4_K_M-Quantisierung (Q8_0 wären ~15,7 GB, damit wäre die Karte allein durch die Gewichte voll), und 6,7 GB KV-Cache entsprechen exakt 40k × 160 KiB bei **FP16**, nicht bei Q8-KV (das wären ~3,3 GB). Die gemessene Gesamtbelegung von 15,1 GiB bleibt gültig; falsch war nur das Label. (Quelle: raw/sqlwiki_lokalesmodell_architektur.md) → [kv-cache-rechnung](kv-cache-rechnung.md)
 
 | Aufgabe | Ergebnis |
 |---|---|
@@ -103,6 +105,18 @@ Der **Mac Studio** hat dabei praktische Vorteile:
 | Lint-Lauf (viele Seiten gleichzeitig) | ✅✅ | ❌ | ⚠️ | ✅ |
 | Deutsch, klarer Stil | ✅✅ | ✅ | ✅ | ✅✅ |
 
+Die Spalte `14B@Q8` beschreibt die Qualitätsstufe ab Tier 2 (24 GB). Tier 1 (RTX 5080, 16 GB) fährt tatsächlich **Q4_K_M** — der Unterschied ist bei Tool-Use und Zahlen spürbar, die Bewertungen dort also eher optimistisch. → [quantisierung](quantisierung.md)
+
+---
+
+## Die dritte Option: die Anforderung verschwinden lassen
+
+Alle Tiers oben beantworten dieselbe Frage — welche Karte kaufe ich, damit das Modell genug Kontext hat? Es gibt eine Antwort, die ohne Hardware auskommt: Wenn jede Operation nur die Daten sieht, die sie tatsächlich braucht, ist ein 14B-Modell mit 32k Fenster nicht knapp, sondern reichlich.
+
+> „Die richtige Reaktion darauf ist nicht, eine größere Karte zu kaufen, sondern die Anforderung verschwinden zu lassen." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Das verschiebt die Grenze spürbar, hebt sie aber nicht auf: Ein 14B-Modell schreibt schlechtere Zusammenfassungen als Sonnet, in jeder Architektur. Der Gewinn liegt bei mechanischer Zuverlässigkeit, nicht bei inhaltlicher Tiefe — `query` und `update` werden lokal machbar, der Ingest neuer Quellen bleibt die Operation, bei der ein starkes Modell deutlich besser ist. → [sql-wiki-architektur](sql-wiki-architektur.md), [wh-pro-wiki-seite](wh-pro-wiki-seite.md)
+
 ---
 
 ## Empfehlung
@@ -128,6 +142,10 @@ Der **Mac Studio** hat dabei praktische Vorteile:
 - [radeon-ai-pro-r9700](../werkzeuge/radeon-ai-pro-r9700.md) — R9700: 32 GB, ROCm, Blower-Kühler
 - [ollama-kontextfenster](ollama-kontextfenster.md) — Kontextlimits und KV-Cache-Berechnung
 - [roocode-llm-wiki-einrichten](../anleitungen/roocode-llm-wiki-einrichten.md) — Bestätigte Konfiguration RTX 5080 + Roo Code
+- [kv-cache-rechnung](kv-cache-rechnung.md) — Die Rechnung hinter den Tiers, und die Korrektur des Q8-Labels
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Die Architekturlösung statt der Hardwarelösung
+- [wh-pro-wiki-seite](wh-pro-wiki-seite.md) — Was lokaler Betrieb tatsächlich kostet
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle der Korrektur
 
 ---
 

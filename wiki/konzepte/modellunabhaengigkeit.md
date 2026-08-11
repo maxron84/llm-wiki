@@ -8,8 +8,8 @@ status: active
 # Modellunabhängigkeit
 
 **Zusammenfassung**: Ein Obsidian-Vault aus Markdown-Dateien macht unabhängig vom KI-Anbieter — die KI wird austauschbar, die Daten bleiben.
-**Quellen**: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md
-**Zuletzt aktualisiert**: 2026-04-22
+**Quellen**: clippings/Obsidian + Claude Code Das zweite Gehirn, das KI-Agenten wirklich nützlich macht.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -48,8 +48,23 @@ Für Unternehmen ist das kein philosophisches Detail — es ist **Risikomanageme
 
 Das [llm-wiki-muster](llm-wiki-muster.md) profitiert direkt von dieser Eigenschaft. Karpathy beschreibt das Wiki als „ein Git-Repository aus Markdown-Dateien" — versionierbar, portabel, zukunftssicher. Die Wahl des LLM-Agenten wird zu einer taktischen, nicht strategischen Entscheidung. (Quelle: clippings/llm-wiki.md)
 
+## Woran die Eigenschaft tatsächlich hängt
+
+Ein naheliegender Einwand gegen jede Datenbanklösung lautet: Damit ist die Modellunabhängigkeit weg, die Daten stecken wieder in einem proprietären Format. Der Einwand greift nur halb.
+
+> „Die Eigenschaft, dass das Wiki jeden Agenten überlebt, hängt daran, dass am Ende lesbares Markdown steht, nicht an der Speicherform dazwischen." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Entscheidend ist nicht, wo das Wiki gespeichert wird, sondern dass es **jederzeit vollständig und deterministisch als Markdown vorliegt**. Solange ein Export-Skript aus der Datenbank den kompletten Vault erzeugt — Ordner aus `type`, Dateiname aus `slug`, Frontmatter aus den Spalten —, bleibt die Eigenschaft erhalten. Fällt der Export weg, fällt sie weg.
+
+Deshalb ist der Export in der [SQL-Wiki-Architektur](sql-wiki-architektur.md) kein Nebenprodukt, sondern Architekturbestandteil. → [markdown-als-rendering](markdown-als-rendering.md)
+
+Der Preis ist ehrlich zu benennen: Der Export-Vault wird schreibgeschützt. Wer in Obsidian eine Datei ändert, verliert die Änderung beim nächsten Export. Man behält die Unabhängigkeit vom Anbieter, gibt aber die direkte Bearbeitbarkeit auf.
+
 ## Verwandte Seiten
 
+- [markdown-als-rendering](markdown-als-rendering.md) — Der Export als Bedingung der Unabhängigkeit
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Wo die Frage aufkommt
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Die Quelle
 - [obsidian-claude-code-pillitteri](../quellen/obsidian-claude-code-pillitteri.md)
 - [obsidian](../werkzeuge/obsidian.md)
 - [claude-code](../werkzeuge/claude-code.md)

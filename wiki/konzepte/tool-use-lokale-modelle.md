@@ -144,6 +144,8 @@ Mit zunehmendem Kontext (mehr Iterationen) steigt die Wahrscheinlichkeit, dass T
 - [roo-code](../werkzeuge/roo-code.md) — Roo Code: interne Funktionsweise und Modi
 - [roocode-system-prompt-optimierung](roocode-system-prompt-optimierung.md) — System-Prompt verkleinern
 - [roocode-lokale-mychen76](../quellen/roocode-lokale-mychen76.md) — mychen76's fine-tuned Modelle im Detail
+- [werkzeugschicht](werkzeugschicht.md) — Sechs enge Werkzeuge statt eines vollen Dateisystem-Agenten
+- [engpass-groesse-vs-session](engpass-groesse-vs-session.md) — Die vier Fehlerbilder lokaler Modelle im Überblick
 
 ---
 

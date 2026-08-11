@@ -8,8 +8,8 @@ status: active
 # Fortgeschrittene Architektur
 
 **Zusammenfassung**: Erweiterungen des Basis-LLM-Wiki-Musters: RAG über kompilierte Wiki-Seiten, Routing-Schritt für Kostenkontrolle, Prompt Caching (~90% Kostenreduktion), MCP-Integration und Feintuning-Potenzial.
-**Quellen**: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md
-**Zuletzt aktualisiert**: 2026-04-23
+**Quellen**: clippings/Beyond RAG How Andrej Karpathy’s LLM Wiki Pattern Builds Knowledge That Actually Compounds.md, clippings/Karpathy shares 'LLM Knowledge Base' architecture that bypasses RAG with an evolving markdown library maintained by AI.md, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -76,8 +76,19 @@ Benchmark: ~$0,32 pro Ingest-Iteration mit Sonnet 4.6; lifetime ~$0,42 pro subst
 
 Lex Fridman erwähnte ein nützliches Variante: Für spezifische Aufgaben eine temporäre, fokussierte Mini-Wissensbasis erzeugen — und diese nach dem Abschlussbericht auflösen. Der Vorteil: maximale Relevanz bei minimalem Token-Overhead für die jeweilige Aufgabe.
 
+## Der Routing-Schritt als Query
+
+Der oben beschriebene Routing-Schritt — erst eine kompakte Schema-Zusammenfassung lesen, dann entscheiden, welche Seiten relevant sind — ist im Dateibetrieb selbst eine Modellaufgabe und damit fehleranfällig: Das Modell liest den Index und rät. Im [SQL-Betrieb](sql-wiki-architektur.md) wird er deterministisch — BM25-Volltreffer über Sektionen plus zwei Schritte Graph-Traversal über typisierte Kanten, als rekursives CTE. Ergebnis: eine Kandidatenliste mit je einer Zeile Zusammenfassung, ~600 Token für 30 Seiten.
+
+> „Das Modell bekommt eine fertige Liste und muss nur noch auswählen, nicht suchen." (Quelle: raw/sqlwiki_lokalesmodell_architektur.md)
+
+Was [jdocmunch](../werkzeuge/jdocmunch.md) und [qmd](../werkzeuge/qmd.md) als externe Werkzeuge liefern, fällt damit als Eigenschaft des Schemas an — ohne zweite Datenhaltung. Der Vektorindex aus dem RAG-Ansatz oben bleibt als späterer Zusatz möglich (`sqlite-vec`, `pgvector`), ist aber nicht der erste Schritt: BM25 über sauber geschnittene Sektionen deckt viel ab, und Embeddings lokal zu erzeugen kostet erneut GPU-Zeit. → [ingest-fliessband](ingest-fliessband.md)
+
 ## Verwandte Seiten
 
+- [sql-wiki-architektur](sql-wiki-architektur.md) — Routing, Lint und Referenzintegrität als Code statt als Modellaufgabe
+- [ingest-fliessband](ingest-fliessband.md) — Der Routing-Query im Detail
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Die Quelle
 - [skalierungsgrenzen](skalierungsgrenzen.md)
 - [jdocmunch](../werkzeuge/jdocmunch.md)
 - [qmd](../werkzeuge/qmd.md)

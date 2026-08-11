@@ -8,8 +8,8 @@ status: active
 # Quantisierung lokaler Modelle
 
 **Zusammenfassung**: Quantisierung reduziert die Speicherpräzision von Modellgewichten um den VRAM-Bedarf zu senken — auf Kosten von Modellqualität. Das richtige Gleichgewicht zwischen Parametergröße, Quantisierungsstufe und Kontextfenster ist der Schlüssel zu funktionierenden lokalen Setups.
-**Quellen**: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`
-**Zuletzt aktualisiert**: 2026-05-15
+**Quellen**: `olilanzRooCode-Local-Evaluation Evaluation of Roo Code and locally hosted LLMs.md`, raw/sqlwiki_lokalesmodell_architektur.md
+**Zuletzt aktualisiert**: 2026-08-11
 
 ---
 
@@ -123,7 +123,7 @@ Auf einer RTX 5080 (16 GB VRAM) ist 32B + 40K Kontext unter keiner praxistauglic
 
 Der KV-Cache bei 40K Kontext ist für 32B-Modelle (~64 Layer, 8 KV-Heads) mit ~10–11 GB unabhängig von der Gewichts-Quantisierung — er liegt immer in fp16. Das bedeutet: selbst die aggressivste Quantisierung der Gewichte reicht nicht aus.
 
-**Fazit für RTX 5080**: Das Optimum bleibt `qwen3:14b-40k` — ~9,3 GB Gewichte + ~6,7 GB KV-Cache = ~16 GB, alles auf der GPU. 32B mit reduziertem Kontext (≤ 8K) ist möglich, aber dann entfällt der 40K-Vorteil. → [ollama-kontextfenster](ollama-kontextfenster.md), [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md)
+**Fazit für RTX 5080**: Das Optimum bleibt `qwen3:14b-40k` — ~9,3 GB Gewichte bei **Q4_K_M** + ~6,7 GB KV-Cache bei FP16 = ~16 GB, alles auf der GPU. (Bis 2026-08-11 stand hier fälschlich das Label „Q8"; beide Zahlen widersprechen dem. → [kv-cache-rechnung](kv-cache-rechnung.md)) 32B mit reduziertem Kontext (≤ 8K) ist möglich, aber dann entfällt der 40K-Vorteil. → [ollama-kontextfenster](ollama-kontextfenster.md), [lokale-modelle-fortgeschritten](../anleitungen/lokale-modelle-fortgeschritten.md)
 
 **Für 32 GB VRAM (RTX 5090 oder Radeon AI Pro R9700)**: 32B Q4_K_M + 40K passt knapp (~29 GB). Komfortabler: Q4_K_M bei 32K (~26,5 GB) oder Q5_K_M bei 32K (~30,5 GB). RTX 5090 bietet dabei ~2,8× höhere Speicherbandbreite als R9700 → deutlich mehr Token/s; dafür CUDA statt ROCm und in Mai 2026 massiv überhöhte Marktpreise. → [radeon-ai-pro-r9700](../werkzeuge/radeon-ai-pro-r9700.md)
 
@@ -136,6 +136,8 @@ Der KV-Cache bei 40K Kontext ist für 32B-Modelle (~64 Layer, 8 KV-Heads) mit ~1
 - [roo-code](../werkzeuge/roo-code.md) — Roo Code und lokale Modelle
 - [radeon-ai-pro-r9700](../werkzeuge/radeon-ai-pro-r9700.md) — 32 GB VRAM-Karte für lokales KI-Setup
 - [phi-4](../werkzeuge/phi-4.md) — Phi-4: 14B mit 16K Kontext-Limit
+- [kv-cache-rechnung](kv-cache-rechnung.md) — KV-Cache-Formel, Q8-/Q4-KV-Quantisierung und die praktische Latenzgrenze
+- [sqlwiki-lokalesmodell-architektur](../quellen/sqlwiki-lokalesmodell-architektur.md) — Quelle der Q8-Korrektur
 
 ---
 
